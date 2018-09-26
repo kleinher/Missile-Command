@@ -1,5 +1,5 @@
 package general;
 
-public class PuntajeUsuario {
+public class PuntajeUsuario extends TablaDePuntajes{
 
 }

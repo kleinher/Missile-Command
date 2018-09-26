@@ -1,5 +1,5 @@
 package enemigos;
 
-public class MisilCruceroInteligente {
+public class MisilCruceroInteligente extends Misiles{
 
 }
