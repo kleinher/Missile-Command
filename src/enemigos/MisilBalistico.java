@@ -1,5 +1,5 @@
 package enemigos;
 
-public class MisilBalistico {
+public class MisilBalistico extends Misiles {
 
 }

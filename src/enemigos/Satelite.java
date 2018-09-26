@@ -1,5 +1,5 @@
 package enemigos;
 
-public class Satelite {
+public class Satelite extends Bombardero{
 
 }

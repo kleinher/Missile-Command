@@ -1,5 +1,5 @@
 package enemigos;
 
-public class Avion {
+public class Avion extends Bombardero{
 
 }
