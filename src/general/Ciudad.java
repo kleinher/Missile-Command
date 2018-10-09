@@ -1,18 +1,16 @@
 package general;
 
 public class Ciudad {
-<<<<<<< HEAD
-	static public void HayCiudades() {
-		
+	private boolean hayCiudades;
+
+	public static boolean hayCiudades() {
+
+		return hayCiudades;
+	}
+	
+
+	public void sethayCiudades(boolean hayCiudades) {
+		this.hayCiudades = hayCiudades;
 	}
 
-	public boolean hayCiudades() {
-		return HayCiudades;
-	}
-
-	public void setHayCiudades(boolean hayciudades) {
-		this.HayCiudades = hayciudades;
-	}
-=======
->>>>>>> branch 'master' of https://github.com/kleinher/Missile-Command.git
 }
