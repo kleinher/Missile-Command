@@ -11,7 +11,17 @@ public class Nivel {
 	public Nivel() {
 		// TODO Auto-generated constructor stub
 	}
-	public static void main(String[] args){
+	public void loopDelNivel(){
+		while(Oleada.hayEnemigos()) 			//IMPLEMENTAR
+			Thread.sleep(1000/60);
+        	this.Actualizar();
+        	Colisiones.comprobarColision(); 
+        	
+	}
+	
+	
+	private void Actualizar() {
+		
 		
 	}
 	public Base[] getBases() {
