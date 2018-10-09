@@ -6,8 +6,8 @@ public class Nivel {
 	private Integer[] numeroDeEnemigos;
 	private Base[] bases;
 
-	public Nivel(Integer nivelActual) {
-		// TODO Auto-generated constructor stub
+	public Nivel(Integer nivelActual) { /*limpia pantalla,reponer misiles, reconstruye bases*/  
+	
 	}
 
 	public Nivel() {
@@ -15,18 +15,21 @@ public class Nivel {
 	}
 
 	public void loopDelNivel() {
-		while (Oleada.hayEnemigos()) // IMPLEMENTAR
+		while (Oleada.hayEnemigos()&& !Colisiones.Hayciudades()) // IMPLEMENTAR
 			try{
 				Thread.sleep(1000 / 60);
+				this.ActualizarPosiciones();
+				Colisiones.comprobarColision(this);
+				
 			}
 		catch(Exception e){
 			System.err.println(e);
 		}
-		this.Actualizar();
-		Colisiones.comprobarColision();
+		PuntajeJugador.actualizarTablaDePuntajes(); //PARAMETROS
+		
 	}
 
-	private void Actualizar() {
+	private void ActualizarPosiciones() {
 
 	}
 
