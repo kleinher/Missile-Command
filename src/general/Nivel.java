@@ -16,6 +16,7 @@ public class Nivel {
 			Thread.sleep(1000/60);
         	this.Actualizar();
         	Colisiones.comprobarColision(); 
+        	asdkfhbakxlhvbasdf
         	
 	}
 	
