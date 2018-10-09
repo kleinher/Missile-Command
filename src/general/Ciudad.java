@@ -1,6 +1,7 @@
 package general;
 
 public class Ciudad {
+<<<<<<< HEAD
 	static public void HayCiudades() {
 		
 	}
@@ -12,4 +13,6 @@ public class Ciudad {
 	public void setHayCiudades(boolean hayciudades) {
 		this.HayCiudades = hayciudades;
 	}
+=======
+>>>>>>> branch 'master' of https://github.com/kleinher/Missile-Command.git
 }

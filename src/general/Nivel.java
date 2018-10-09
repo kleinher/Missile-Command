@@ -33,21 +33,4 @@ public class Nivel {
 
 	}
 
-	public Base[] getBases() {
-		return bases;
-	}
-
-	public void setBases(Base[] bases) {
-		this.bases = bases;
-	}
-
-	public boolean getPerdio() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public void jugar() {
-		// TODO Auto-generated method stub
-
-	}
 }
