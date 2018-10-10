@@ -18,6 +18,7 @@ public class Oleada {
 	
 	// Determina si hay enemigos en la lista de Oleadas para agregar
 	public boolean hayEnemigos() { 
+
 		if (ListaDeOleadasPorNivel.isEmpty())
 			return false;
 		else
