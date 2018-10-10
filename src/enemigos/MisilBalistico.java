@@ -10,5 +10,6 @@ public class MisilBalistico extends Misiles {
 	public void mover(){
 		float pendiente;
 		float distancia;
+		
 	}
 }
