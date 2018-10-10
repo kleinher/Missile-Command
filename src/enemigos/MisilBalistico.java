@@ -8,8 +8,29 @@ public class MisilBalistico extends Misiles {
 	 *
 	 */
 	public void mover(){
-		float pendiente;
-		float distancia;
+		double pendiente;
+		double distancia;
+		int distanciaX;
+		int distanciaY;
+		int movimientoX;
+		int movimientoY;
 		
+		//Calculo de los catetos x e y(desplazamiento en x e y)
+		distanciaX = this.PosicionInicial.getPosicionX() - this.PosicionObjetivo.getPosicionX();
+		distanciaY = this.PosicionInicial.getPosicionY() - this.PosicionObjetivo.getPosicionY();
+		
+		//Calculo de la hipotenusa(distancia)
+		distancia = Math.sqrt(Math.pow(distanciaX, 2) + Math.pow(distanciaY, 2));
+		
+		//Calculo de la pendiente de la hipotenusa(distancia)
+		pendiente = distanciaX/distanciaY;
+		
+		//Calculo del movimiento en X
+		movimientoX= (int)Math.sqrt(Math.pow(distancia, 2)/(1+Math.pow(pendiente,2)));
+		movimientoY= (int)pendiente*movimientoX;
+		
+		//Actualiza la posicion 
+		this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()+movimientoX,
+											   this.PosicionActual.getPosicionY()+movimientoY);
 	}
 }
