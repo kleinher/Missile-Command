@@ -30,18 +30,25 @@ public class Nivel {
 	public Nivel() {
 
 	}
-	/*Loop del nivel
+	/*LOOP NIVEL
 	 * En este método se va a iterar todo el nivel, básicamente es el método principal del juego
 	 */
 	public void loopDelNivel() 
 		throws InterruptedException{
 		Integer segundos=new Integer(0);
-		while (Oleada.hayEnemigos()) // Mientras hayan enemigos && Queden
+		
+		// Mientras hayan queden ciudades en pie
+		while (Ciudad.hayCiudades(ciudades))
 		{
-			Thread.sleep(1000/60);
-			Colisiones.comprobarColision(this);
+			// Mientras hayan enemigos
+			while (Oleada.hayEnemigos())
+			{
 			this.actualizarPosiciones();
+			Colisiones.comprobarColision(this);
+			//dibujar();
+			Thread.sleep(1000/60);
 			//pausa entre una oleada y la siguiente
+			}
 		}
 		PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
 		// MostrarPuntaje (ParteGrafica)
@@ -54,12 +61,15 @@ public class Nivel {
 	*/
 	private void actualizarPosiciones() {
 		//Actualiza posiciones de los de los enemigos
-		for(Iterator<Enemigo> i = Enemigos.iterator(); i.hasNext();) {
+		for(Iterator<Enemigo> i = Enemigos.iterator(); i.hasNext();) 
+		{
 			Enemigo enemigo = i.next();
 			enemigo.mover();
 		}
+		
 		//Actualiza la posición de los misiles aliados
-		for(Iterator<MisilAntibalistico> i = ListaMisilesAntibalisticos.iterator(); i.hasNext();) {
+		for(Iterator<MisilAntibalistico> i = ListaMisilesAntibalisticos.iterator(); i.hasNext();) 
+		{
 			MisilAntibalistico misil = i.next();
 			misil.mover();
 		}

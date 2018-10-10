@@ -2,9 +2,9 @@ package general;
 
 public class Colisiones {
 	
-	public static void comprobarColision(Nivel nivelAct) // recibe como parámetro el nivel actual
+	public static void comprobarColision(Nivel nivelAct) // recibe como parï¿½metro el nivel actual
 	{
-		// TODO Auto-generated method stub
+		
 		
 	}
 
