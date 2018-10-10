@@ -5,22 +5,25 @@ import java.util.LinkedList;
 import enemigos.*;
 
 public class Nivel {
-	private Integer numeroDeOleada;
+	private Integer NumeroDeNivel;
 	private Long velocidad;
-	private LinkedList<Enemigo> Enemigos;
+	private LinkedList<Enemigo> EnemigosEnPantalla;
 	private LinkedList<MisilAntibalistico> ListaMisilesAntibalisticos;
 	private Ciudad ciudades[];
 	private Base bases[];
 	
 	
 	public Nivel(Integer nivelActual) { /* limpia pantalla,reponer misiles, reconstruye bases */
-		LinkedList Aliados = new LinkedList ();
-		Ciudad ciudades[] = new Ciudad[8];
+		LinkedList Aliados = new LinkedList();
+		Ciudad ciudades[] = new Ciudad[7];
 		Base bases[]= new Base[2];
+		
+		//Crea la lista de enemigos del nivel
+		LinkedList<Enemigo> Enemigos = new LinkedList<Enemigo>(); 
+		Oleada.CrearListaDeOleadasPorNivel(this.NumeroDeNivel, Enemigos);
 		//Instancia las nueve ciudades
-		for (int i=0;i<9;i++) {
-			ciudades[i]= new Ciudad(); 
-		}
+		Ciudad.InstanciarCuidades(ciudades);
+		
 		//Instancia las tres bases
 		for (int i=0;i<3;i++) {
 			bases[i]= new Base();
@@ -41,7 +44,7 @@ public class Nivel {
 		while (Ciudad.hayCiudades(ciudades))
 		{
 			// Mientras hayan enemigos
-			while (Oleada.hayEnemigos())
+			while (!Enemigos.isEmpty())
 			{
 			this.actualizarPosiciones();
 			Colisiones.comprobarColision(this);
@@ -61,7 +64,7 @@ public class Nivel {
 	*/
 	private void actualizarPosiciones() {
 		//Actualiza posiciones de los de los enemigos
-		for(Iterator<Enemigo> i = Enemigos.iterator(); i.hasNext();) 
+		for(Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) 
 		{
 			Enemigo enemigo = i.next();
 			enemigo.mover();

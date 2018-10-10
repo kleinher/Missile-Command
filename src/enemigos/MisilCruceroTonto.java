@@ -1,6 +1,6 @@
 package enemigos;
 
-public class MisilCrucero extends Misiles{
+public class MisilCruceroTonto extends Misiles{
 	public void mover() {
 		
 	}
