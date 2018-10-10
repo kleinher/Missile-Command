@@ -12,9 +12,9 @@ public class Ciudad {
 	 * */
 	public static void InstanciarCiudades(Ciudad[] ciudades) {
 		//Se instancian las 6 ciudades del vector de ciudades
-		int posX=110;
+		int posX=95;
 		int posY=450;
-		int DistanciaEntreCiudad=55;
+		int DistanciaEntreCiudades=55;
 		
 		//En este FOR se setean las posiciones en la pantalla de todas las ciudades
 		for(int i = 1; i <= ciudades.length;i++) {
@@ -22,11 +22,11 @@ public class Ciudad {
 			ciudades[1].posicion.actualizarPosicion(posX, posY);
 			
 			//Aumento la posicion para la ciudad siguiente
-			posX += DistanciaEntreCiudad;
+			posX += DistanciaEntreCiudades;
 			
 			//Cuando se pasa la tercera ciudad hay una en la mitad, por lo tanto se suma una distancia mas para que no se superponga
 			if(i == 3) {
-				posX += DistanciaEntreCiudad;
+				posX += DistanciaEntreCiudades;
 			}
 		}
 		

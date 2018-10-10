@@ -25,9 +25,7 @@ public class Nivel {
 		Ciudad.InstanciarCuidades(ciudades);
 		
 		//Instancia las tres bases
-		for (int i=0;i<3;i++) {
-			bases[i]= new Base();
-		}
+		Base.InstanciarBases(bases);
 	}
 
 	public Nivel() {

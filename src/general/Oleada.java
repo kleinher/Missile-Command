@@ -27,7 +27,7 @@ public class Oleada {
 	public static void CrearListaDeOleadasPorNivel(int nivelAct, LinkedList<Enemigo> ListaDeOleadasPorNivel) {
 		Random aleatorio = new Random();
 		int NumeroDeOleada = 1;
-		
+		DeterminarArregloDeMisiles();
 		/* Genera Un numero Random de enemigos para cada nivel de 12 a 17*/
 		Integer NumeroDeEnemigosPorNivel = (12 + aleatorio.nextInt((17 + 1) - 12)); 
 		
