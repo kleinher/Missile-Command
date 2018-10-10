@@ -5,51 +5,52 @@ import java.util.LinkedList;
 import enemigos.*;
 
 public class Nivel {
-	private Integer numeroDeOleada;
-	private Long velocidad;
+	//Variables de juego
+	private Long Velocidad;
+	private boolean Perdio;
+	
+	//Variables enemigas
+	private LinkedList<Enemigo> EnemigosEnPantalla;
 	private LinkedList<Enemigo> Enemigos;
+	
+	//Variables aliadas
 	private LinkedList<MisilAntibalistico> ListaMisilesAntibalisticos;
-	private Ciudad ciudades[];
-	private Base bases[];
+	private Ciudad Ciudades[];
+	private Base Bases[];
 	
 	
-	public Nivel(Integer nivelActual) { /* limpia pantalla,reponer misiles, reconstruye bases */
-		LinkedList Aliados = new LinkedList ();
-		Ciudad ciudades[] = new Ciudad[8];
-		Base bases[]= new Base[2];
+	public Nivel() { /* limpia pantalla,reponer misiles, reconstruye bases */
+		Ciudad ciudades[] = new Ciudad[7];
+		Base bases[]= new Base[4];
+		
+		//Crea la lista de enemigos del nivel
+		LinkedList<Enemigo> Enemigos = new LinkedList<Enemigo>(); 
+		Oleada.CrearListaDeOleadasPorNivel(Juego.getNivelActual(), Enemigos);
+		
 		//Instancia las nueve ciudades
-		for (int i=0;i<9;i++) {
-			ciudades[i]= new Ciudad(); 
-		}
+		Ciudad.InstanciarCiudades(ciudades);
+		
 		//Instancia las tres bases
-		for (int i=0;i<3;i++) {
-			bases[i]= new Base();
-		}
+		Base.InstanciarBases(bases);
 	}
 
-	public Nivel() {
-
-	}
 	/*LOOP NIVEL
 	 * En este método se va a iterar todo el nivel, básicamente es el método principal del juego
 	 */
 	public void loopDelNivel() 
 		throws InterruptedException{
-		Integer segundos=new Integer(0);
-		
-		// Mientras hayan queden ciudades en pie
-		while (Ciudad.hayCiudades(ciudades))
+		// Mientras hayan queden ciudades en pie. Mientras hayan enemigos
+		while (!Enemigos.isEmpty())
 		{
-			// Mientras hayan enemigos
-			while (Oleada.hayEnemigos())
-			{
 			this.actualizarPosiciones();
 			Colisiones.comprobarColision(this);
 			//dibujar();
 			Thread.sleep(1000/60);
 			//pausa entre una oleada y la siguiente
-			}
 		}
+	    if(!Ciudad.hayCiudades(Ciudades)) {
+	    	this.Perdio = true;
+	    }
 		PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
 		// MostrarPuntaje (ParteGrafica)
 
@@ -61,7 +62,7 @@ public class Nivel {
 	*/
 	private void actualizarPosiciones() {
 		//Actualiza posiciones de los de los enemigos
-		for(Iterator<Enemigo> i = Enemigos.iterator(); i.hasNext();) 
+		for(Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) 
 		{
 			Enemigo enemigo = i.next();
 			enemigo.mover();
@@ -73,6 +74,10 @@ public class Nivel {
 			MisilAntibalistico misil = i.next();
 			misil.mover();
 		}
+	}
+
+	public boolean getPerdio() {
+		return this.Perdio;
 	}
 
 }
