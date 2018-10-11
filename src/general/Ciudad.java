@@ -24,7 +24,7 @@ public class Ciudad {
 			//Aumento la posicion para la ciudad siguiente
 			posX += DistanciaEntreCiudades;
 			
-			//Cuando se pasa la tercera ciudad hay una en la mitad, por lo tanto se suma una distancia mas para que no se superponga
+			/*Cuando se pasa la tercera ciudad hay una en la mitad, por lo tanto se suma una distancia mas para que no se superponga*/
 			if(i == 3) {
 				posX += DistanciaEntreCiudades;
 			}

@@ -2,6 +2,7 @@ package enemigos;
 
 import java.util.Random;
 
+import general.Nivel;
 import general.Posicion;
 
 public abstract class Misiles extends Enemigo{
@@ -47,12 +48,13 @@ public abstract class Misiles extends Enemigo{
 	}
 	public void determinarObjetivo() {
 		int posicionGeneralObjetivo;
+		int posicionObjetivoX;
+		int posicionObjetivoY;
 		Random aleatorio = new Random();
 		posicionGeneralObjetivo = (aleatorio.nextInt(10));
-		
-		/*PosicionObjetivoX= a completar determinar objetivo 
+		/*PosicionObjetivoX= a completar determinar objetivo************************************************************************* 
 		PosicionObjetivoY=*/
-		
+		this.PosicionObjetivo.actualizarPosicion(posicionObjetivoX, posicionObjetivoY);		
 	}
 	/*Determina el inicio comenzando siempre en el inicio de la pantalla en la coordenada 'y', y de manera completamente aleatoria en la coordenada 'x'  */
 	public void determinarInicio() {

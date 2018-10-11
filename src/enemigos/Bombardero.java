@@ -15,6 +15,7 @@ public class Bombardero extends Enemigo {
 	public void destruccion() {
 		
 	}
+	/*Determina la posicion inicial del borbardero, y su posicion de destino*/
 	public void determinarRecorrido() {
 		int AparicionEnX;
 		int AparicionEnY;

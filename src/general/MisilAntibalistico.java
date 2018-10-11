@@ -18,9 +18,7 @@ public class MisilAntibalistico extends Misiles{
 		Area = area;
 	}
 	private AreaDeExplosion Area;
-	public void mover() {
-		
-	}
+	
 	@Override
 	public void destruccion() {
 		// TODO Auto-generated method stub

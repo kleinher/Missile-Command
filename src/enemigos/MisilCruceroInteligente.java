@@ -1,9 +1,4 @@
 package enemigos;
-
+/*Implementa lo mismo que misiles*/
 public class MisilCruceroInteligente extends Misiles{
-	public void mover() {
-	}
-	public void destruccion() {
-		
-	}
 }

@@ -27,7 +27,6 @@ public class Nivel {
 	private Base Bases[];
 	private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
 
-	
 	public Nivel() { /* limpia pantalla,reponer misiles, reconstruye bases */
 		Ciudad ciudades[] = new Ciudad[7];
 		Base bases[]= new Base[4];
@@ -85,10 +84,7 @@ public class Nivel {
 		}
 	}
 	
-	public 
-
 	public boolean getPerdio() {
 		return this.Perdio;
 	}
-
 }
