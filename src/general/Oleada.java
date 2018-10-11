@@ -1,6 +1,5 @@
 package general;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Set;
@@ -40,9 +39,10 @@ public class Oleada {
 				if (VectorDeMisilesCrucerosPorNivel[nivelAct]) {
 					MisilCruceroInteligente MCI = new MisilCruceroInteligente();
 					ListaDeOleadasPorNivel.add(MCI);
-				}else
+				}else {
 					MisilCrucero MC = new MisilCrucero();
 					ListaDeOleadasPorNivel.add(MC);
+				}
 			ListaDeOleadasPorNivel.add(null);
 			// reinicio el hashset
 		}
@@ -51,22 +51,17 @@ public class Oleada {
 
 	private static void DeterminarArregloDeMisiles() {
 		VectorDeMisilesCrucerosPorNivel[3] = true;
-		VectorDeMisilesCrucerosPorNivel[5] = true;
+		VectorDeMisilesCrucerosPorNivel[4] = true;
 		VectorDeMisilesCrucerosPorNivel[7] = true;
 		VectorDeMisilesCrucerosPorNivel[8] = true;
-		VectorDeMisilesCrucerosPorNivel[10] = true;
 		VectorDeMisilesCrucerosPorNivel[11] = true;
-		VectorDeMisilesCrucerosPorNivel[14] = true;
+		VectorDeMisilesCrucerosPorNivel[12] = true;
 		VectorDeMisilesCrucerosPorNivel[15] = true;
+		VectorDeMisilesCrucerosPorNivel[16] = true;
 
 	}
 
 	private void instanciarMisil() {
 
 	}
-
-	/*
-	 * El siguiente metodo devuelve un vector con K numeros aleatorios sin repetirse
-	 */
-
 }
