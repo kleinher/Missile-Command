@@ -22,14 +22,22 @@ public class Oleada {
 		else
 			return true;
 	}
-
-	private void CrearListaDeOleadasPorNivel(LinkedList<Enemigo> Enemigos) {
+	/*CrearListaDeOleadasPorNivel
+	 * Metodo estatico de la clase Oleada
+	 * Parametro Enemigos: cada nodo de esta lista es una oleada.
+	 * */
+	public static void CrearListaDeOleadasPorNivel(LinkedList<LinkedList<Enemigo>> Enemigos) {
 		Random aleatorio = new Random();
 		int oleada = 1;
 		
-		/* Genera un numero Random de enemigos para cada nivel de 12 a 17*/
+		// Genera un numero Random de enemigos para cada nivel de 12 a 17
 		Integer numeroDeEnemigosPorNivel = (12+aleatorio.nextInt(6)); 
+		
+		//Adentro de este loop se agregan todos los enemigos a la lista Enemigos
 		while (numeroDeEnemigosPorNivel > 0) {
+			
+			//oleadaEnemigos es una oleada
+			LinkedList<Enemigo> oleadaEnemigos = new LinkedList<Enemigo>();
 			
 			// Genera Un numero Random de enemigos para cada oleada de 0 a 4
 			int numeroDeEnemigosPorOleada = (aleatorio.nextInt(5));
@@ -37,23 +45,32 @@ public class Oleada {
 				
 				/* Genera Un numero Random de enemigos para cada oleada de 0 a 4*/
 				MisilBalistico MB = new MisilBalistico();		
-				ListaDeOleadasPorNivel.add(MB);
+				oleadaEnemigos.add(MB);
 				numeroDeEnemigosPorNivel--;
 				oleada++;
 			}
-			if (oleada == 4)
+			//En todos los niveles se van a agregar los Misil Cruceros Inteligentes y los Misil cruceros apartir de la oleada 4
+			if (oleada == 4) {
 				if (VectorDeMisilesCrucerosPorNivel[Juego.getNivelActual()]) {
 					MisilCruceroInteligente MCI = new MisilCruceroInteligente();
-					ListaDeOleadasPorNivel.add(MCI);
+					oleadaEnemigos.add(MCI);
 				}
 				else 
 				{
 					MisilCrucero MC = new MisilCrucero();
-					ListaDeOleadasPorNivel.add(MC);
+					oleadaEnemigos.add(MC);
 				}
-			ListaDeOleadasPorNivel.add(null);
+			}
+			
+			//Agrego la oleada a la lista de oleadas
+			Enemigos.add(oleadaEnemigos);
 		}
 
+	}
+
+	private static void crearVectorPosicionesAliados(Base[] bases, Ciudad[] ciudades) {
+		
+		
 	}
 
 	private static void DeterminarArregloDeMisiles() {
