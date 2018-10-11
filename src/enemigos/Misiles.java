@@ -45,5 +45,8 @@ public abstract class Misiles extends Enemigo{
 		
 	}
 	public void determinarInicio() {
-}
+	}
+	public void destruccion(){
+		
+	}
 }

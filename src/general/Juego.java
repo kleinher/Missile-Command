@@ -49,4 +49,11 @@ public class Juego {
 		return nivelActual;
 	}
 	
+	public void Pausar() {
+		
+	}
+	public void Salir() {
+		
+	}
+	
 }
