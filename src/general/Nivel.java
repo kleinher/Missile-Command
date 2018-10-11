@@ -17,7 +17,8 @@ public class Nivel {
 	private LinkedList<MisilAntibalistico> ListaMisilesAntibalisticos;
 	private Ciudad Ciudades[];
 	private Base Bases[];
-	
+	private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
+
 	
 	public Nivel() { /* limpia pantalla,reponer misiles, reconstruye bases */
 		Ciudad ciudades[] = new Ciudad[7];
@@ -75,6 +76,8 @@ public class Nivel {
 			misil.mover();
 		}
 	}
+	
+	public 
 
 	public boolean getPerdio() {
 		return this.Perdio;

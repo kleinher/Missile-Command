@@ -1,6 +1,5 @@
 package general;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Set;
@@ -59,13 +58,13 @@ public class Oleada {
 
 	private static void DeterminarArregloDeMisiles() {
 		VectorDeMisilesCrucerosPorNivel[3] = true;
-		VectorDeMisilesCrucerosPorNivel[5] = true;
+		VectorDeMisilesCrucerosPorNivel[4] = true;
 		VectorDeMisilesCrucerosPorNivel[7] = true;
 		VectorDeMisilesCrucerosPorNivel[8] = true;
-		VectorDeMisilesCrucerosPorNivel[10] = true;
 		VectorDeMisilesCrucerosPorNivel[11] = true;
-		VectorDeMisilesCrucerosPorNivel[14] = true;
+		VectorDeMisilesCrucerosPorNivel[12] = true;
 		VectorDeMisilesCrucerosPorNivel[15] = true;
+		VectorDeMisilesCrucerosPorNivel[16] = true;
 
 	}
 }
