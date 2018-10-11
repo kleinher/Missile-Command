@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import enemigos.Enemigo;
 
 public class Colisiones {
+
 	/*
 	 * recibo lista de enemigos, de ListaMisilesAntibalisticos, de bases, y de
 	 * ciudades
@@ -35,31 +36,33 @@ public class Colisiones {
 		/* Ahora verifico si algun enemigo llgo a la base */
 		for (Iterator<Enemigo> i = enemigos.iterator(); i.hasNext();) {
 			Enemigo EnemigoAct = i.next();
-			/*Por cada enemigo verifico si llego a alguna de las bases o de las ciudades*/
+
+			/* Por cada enemigo verifico si llego a alguna de las bases o de las ciudades */
 			for (int j = 0; j < ciudades.length; j++) {
-				if(EnemigoAct.getPosicionActual().equals(ciudades[j])) {
+				if (EnemigoAct.getPosicionActual().equals(ciudades[j].getPosicion())) {
 					ciudades[j].destruccion();
 				}
 			}
 			for (int j = 0; j < ciudades.length; j++) {
-				if(EnemigoAct.getPosicionActual().equals(ciudades[j].)) {
+				if (EnemigoAct.getPosicionActual().equals(ciudades[j].getPosicion())) {
 					ciudades[j].destruccion();
 				}
 			}
-			
+
 		}
 	}
 
-	private static boolean choque(Posicion posicionActual, AreaDeExplosion area, Posicion posicionActual2) {
-		// TODO Auto-generated method stub
-		return false;
+	private static boolean choque(Posicion posAliado, AreaDeExplosion areaExpAliada, Posicion posEnemigo) {
+		/*
+		 * Si la distancia entre los dos puntos es menor al radio de explosion del
+		 * enemigo aliado => HAY COLISION
+		 */
+		boolean hayColision = ((Math.sqrt(Math.pow(posAliado.getPosicionX() - posEnemigo.getPosicionX(), 2)
+				+ Math.pow(posAliado.getPosicionY() - posEnemigo.getPosicionY(), 2)) < areaExpAliada.getRadio()));
+
+		if (hayColision)
+			return true;
+		else
+			return false;
 	}
-
-	private static boolean coincidencia(Posicion posicion1, Posicion posicion2) {
-		return false;
-
-		/////
-
-	}
-
 }

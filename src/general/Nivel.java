@@ -13,7 +13,7 @@ public class Nivel {
 	private LinkedList<Enemigo> EnemigosEnPantalla;
 
 	public void setEnemigosEnPantalla(LinkedList<Enemigo> enemigosEnPantalla) {
-		EnemigosEnPantalla = enemigosEnPantalla;
+		LinkedList<Enemigo> EnemigosEnPantalla = enemigosEnPantalla ;
 
 
 	private LinkedList<Enemigo> Enemigos;
@@ -52,7 +52,7 @@ public class Nivel {
 		while (!enemigosEnEspera.isEmpty())
 		{
 			this.actualizarPosiciones();
-			Colisiones.comprobarColision(this);
+			Colisiones.comprobarColision(EnemigosEnPantalla,listaMisilesAntibalisticos,Ciudades,Bases);
 			//dibujar();
 			Thread.sleep(1000/60);
 			//pausa entre una oleada y la siguiente
@@ -83,12 +83,6 @@ public class Nivel {
 			MisilAntibalistico misil = i.next();
 			misil.mover();
 		}
-	}
-	
-	public 
-
-	public boolean getPerdio() {
-		return this.Perdio;
 	}
 
 }

@@ -23,7 +23,7 @@ public class Oleada {
 			return true;
 	}
 
-	private void CrearListaDeOleadasPorNivel(LinkedList<Enemigo> Enemigos) {
+	static void CrearListaDeOleadasPorNivel(LinkedList<Enemigo> Enemigos) {
 		Random aleatorio = new Random();
 		int oleada = 1;
 		
