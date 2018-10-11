@@ -5,6 +5,7 @@ public class Juego {
 	private static int nivelActual;
 	private static TablaDePuntajes tablaDePuntajes;
 	private static PuntajeJugador puntaje;
+	private static Posicion[] vectorObjetivosAliados;
 	
 	/*CONSTRUCTOR
 	*
@@ -26,13 +27,14 @@ public class Juego {
 	*/
 	public static void main(String args[]) throws InterruptedException {
 		Nivel nivel = new Nivel();
+		int velocidad = 20;
 		while(nivel.getPerdio()) {
 			nivel = new Nivel();
-			nivel.loopDelNivel();
+			nivel.loopDelNivel(velocidad);
 		}
+		velocidad+=5;
 		terminarJuego();
 	}
-	
 	/*METODO TERMINAR
 	 * Pensado para guardar todo lo que se tenga que guardar
 	 * Imprimir game over
@@ -55,6 +57,4 @@ public class Juego {
 	public void Salir() {
 		
 	}
-	
-	
 }

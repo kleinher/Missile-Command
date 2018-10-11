@@ -11,8 +11,6 @@ public abstract class Misiles extends Enemigo{
 	 *
 	 */
 	public Misiles () {
-		determinarObjetivo();
-		determinarInicio();
 	}
 	public void mover(){
 		double pendiente;
@@ -45,14 +43,14 @@ public abstract class Misiles extends Enemigo{
 		this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()+movimientoX,
 											   this.PosicionActual.getPosicionY()+movimientoY);
 	}
-	public void determinarObjetivo() {
-		int posicionGeneralObjetivo;
+	public Posicion determinarObjetivo(Posicion[] vectorPosicionesAliados) {
+		int numeroDeObjetivo = 0;
+		Posicion Objetivo = new Posicion();
 		Random aleatorio = new Random();
-		posicionGeneralObjetivo = (aleatorio.nextInt(10));
+		numeroDeObjetivo = 1+(aleatorio.nextInt(10));
+		Objetivo.actualizarPosicion(vectorPosicionesAliados[numeroDeObjetivo].getPosicionX(), vectorPosicionesAliados[numeroDeObjetivo].getPosicionY());
 		
-		/*PosicionObjetivoX= a completar determinar objetivo 
-		PosicionObjetivoY=*/
-		
+		return Objetivo;
 	}
 	/*Determina el inicio comenzando siempre en el inicio de la pantalla en la coordenada 'y', y de manera completamente aleatoria en la coordenada 'x'  */
 	public void determinarInicio() {
