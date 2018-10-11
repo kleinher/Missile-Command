@@ -19,6 +19,7 @@ public class MisilAntibalistico extends Misiles{
 	}
 	private AreaDeExplosion Area;
 	public void mover() {
+		//implementar mover porque es inverso al resto de los misiles
 		
 	}
 	@Override

@@ -22,6 +22,7 @@ public class Oleada {
 		else
 			return true;
 	}
+
 	/*CrearListaDeOleadasPorNivel
 	 * Metodo estatico de la clase Oleada
 	 * Parametro Enemigos: cada nodo de esta lista es una oleada.
