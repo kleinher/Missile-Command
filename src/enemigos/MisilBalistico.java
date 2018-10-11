@@ -2,7 +2,8 @@ package enemigos;
 
 public class MisilBalistico extends Misiles {
 	
-	public void mover ()
-	{
+	public void mover (){
+		
+	}
 	
 }

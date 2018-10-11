@@ -7,6 +7,7 @@ public abstract class Enemigo {
 	protected int Velocidad=1;
 	//protected img Imagen;
 	
+	/*Variables Abstractas que van a implementar tanto bombardero como Misiles*/
 
 	public abstract void mover();
 	public abstract void destruccion();
