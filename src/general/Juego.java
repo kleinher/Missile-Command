@@ -31,8 +31,8 @@ public class Juego {
 		Juego juego;
 		Nivel nivel = new Nivel();
 		while(nivel.getPerdio()) {
-		nivel = new Nivel(nivelActual);
-		nivel.loopDelNivel();
+			nivel = new Nivel(nivelActual);
+			nivel.loopDelNivel();
 		}
 		
 		terminarJuego();

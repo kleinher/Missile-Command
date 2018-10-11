@@ -37,4 +37,8 @@ public abstract class Misiles extends Enemigo{
 		this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()+movimientoX,
 											   this.PosicionActual.getPosicionY()+movimientoY);
 	}
+	public void DeterminarObjetivo(){
+		int PosicionObjetivox;
+		int PosicionObjetivoy;
+	}
 }

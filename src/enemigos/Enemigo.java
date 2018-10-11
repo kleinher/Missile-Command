@@ -4,12 +4,12 @@ public abstract class Enemigo {
 	protected Posicion PosicionInicial;
 	protected Posicion PosicionObjetivo;
 	protected Posicion PosicionActual;
+	protected int Velocidad=1;
+	//protected img Imagen;
 	
-	public Posicion getPosicionActual() {
-		return PosicionActual;
-	}
 
 	public abstract void mover();
+	public abstract void destruccion();
 	
 	public Posicion getPosicionInicial() {
 		return PosicionInicial;
@@ -23,6 +23,11 @@ public abstract class Enemigo {
 	public void setPosicionObjetivo(Posicion posicionObjetivo) {
 		PosicionObjetivo = posicionObjetivo;
 	}
-	
-		
+	public Posicion getPosicionActual() {
+		return PosicionActual;
+	}
+	public void setPosicionActual(Posicion posicionActual) {
+		PosicionActual = posicionActual;
+	}
+
 }

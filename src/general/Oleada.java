@@ -27,7 +27,8 @@ public class Oleada {
 		int oleada = 1;
 		Integer numeroDeEnemigosPorNivel = (12 + aleatorio.nextInt((17 + 1) - 12)); /* Genera Un numero Random de enemigos para cada nivel de 12 a17*/
 		while (numeroDeEnemigosPorNivel > 0) {
-			int numeroDeEnemigosPorOleada = (0+ aleatorio.nextInt((4 + 1) - 0));// Genera Un numero Random de enemigos para cada oleada de 0 a 4
+			int numeroDeEnemigosPorOleada = (aleatorio.nextInt(5));// Genera Un numero Random de enemigos para cada oleada de 0 a 4
+			
 			for (int i=numeroDeEnemigosPorOleada; i == 0; i--) { 
 				/* Genera Un numero Random de enemigos para cada oleada de 0 a 4*/
 				MisilBalistico MB = new MisilBalistico();		//
