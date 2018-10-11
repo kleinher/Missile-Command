@@ -25,7 +25,7 @@ public class Nivel {
 		
 		//Crea la lista de enemigos del nivel
 		LinkedList<Enemigo> Enemigos = new LinkedList<Enemigo>(); 
-		Oleada.CrearListaDeOleadasPorNivel(Juego.getNivelActual(), Enemigos);
+		Oleada.CrearListaDeOleadasPorNivel(Enemigos);
 		
 		//Instancia las nueve ciudades
 		Ciudad.InstanciarCiudades(ciudades);

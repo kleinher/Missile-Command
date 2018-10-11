@@ -15,36 +15,44 @@ import enemigos.MisilCruceroInteligente;
 public class Oleada {
 	static boolean[] VectorDeMisilesCrucerosPorNivel = new boolean[16];
 	private LinkedList<Enemigo> ListaDeOleadasPorNivel;
-
-	public boolean hayEnemigos() { // Determina si hay enemigos en la lista de oleadas para agregar
+	
+	// Determina si hay enemigos en la lista de oleadas para agregar
+	public boolean hayEnemigos() { 
 		if (ListaDeOleadasPorNivel.isEmpty())
 			return false;
 		else
 			return true;
 	}
 
-	private LinkedList<Enemigo> CrearListaDeOleadasPorNivel(int nivelAct) {
+	private void CrearListaDeOleadasPorNivel(LinkedList<Enemigo> Enemigos) {
 		Random aleatorio = new Random();
 		int oleada = 1;
-		Integer numeroDeEnemigosPorNivel = (12+aleatorio.nextInt(6)); /* Genera Un numero Random de enemigos para cada nivel de 12 a17*/
+		
+		/* Genera un numero Random de enemigos para cada nivel de 12 a 17*/
+		Integer numeroDeEnemigosPorNivel = (12+aleatorio.nextInt(6)); 
 		while (numeroDeEnemigosPorNivel > 0) {
-			int numeroDeEnemigosPorOleada = (aleatorio.nextInt(5));// Genera Un numero Random de enemigos para cada oleada de 0 a 4
+			
+			// Genera Un numero Random de enemigos para cada oleada de 0 a 4
+			int numeroDeEnemigosPorOleada = (aleatorio.nextInt(5));
 			for (int i=numeroDeEnemigosPorOleada; i == 0; i--) { 
+				
 				/* Genera Un numero Random de enemigos para cada oleada de 0 a 4*/
-				MisilBalistico MB = new MisilBalistico();		//
+				MisilBalistico MB = new MisilBalistico();		
 				ListaDeOleadasPorNivel.add(MB);
 				numeroDeEnemigosPorNivel--;
 				oleada++;
 			}
 			if (oleada == 4)
-				if (VectorDeMisilesCrucerosPorNivel[nivelAct]) {
+				if (VectorDeMisilesCrucerosPorNivel[Juego.getNivelActual()]) {
 					MisilCruceroInteligente MCI = new MisilCruceroInteligente();
 					ListaDeOleadasPorNivel.add(MCI);
-				}else
+				}
+				else 
+				{
 					MisilCrucero MC = new MisilCrucero();
 					ListaDeOleadasPorNivel.add(MC);
+				}
 			ListaDeOleadasPorNivel.add(null);
-			// reinicio el hashset
 		}
 
 	}
@@ -60,13 +68,4 @@ public class Oleada {
 		VectorDeMisilesCrucerosPorNivel[15] = true;
 
 	}
-
-	private void instanciarMisil() {
-
-	}
-
-	/*
-	 * El siguiente metodo devuelve un vector con K numeros aleatorios sin repetirse
-	 */
-
 }
