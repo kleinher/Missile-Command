@@ -6,6 +6,10 @@ public abstract class Misiles extends Enemigo{
 	 *Este método va a calcular el desplazamiento del misil balistico interplanetario(Enemigo)
 	 *
 	 */
+	public Misiles () {
+		determinarObjetivo();
+		determinarInicio();
+	}
 	public void mover(){
 		double pendiente;
 		double distancia;
@@ -37,8 +41,9 @@ public abstract class Misiles extends Enemigo{
 		this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()+movimientoX,
 											   this.PosicionActual.getPosicionY()+movimientoY);
 	}
-	public void DeterminarObjetivo(){
-		int PosicionObjetivox;
-		int PosicionObjetivoy;
+	public void determinarObjetivo() {
+		
 	}
+	public void determinarInicio() {
+}
 }

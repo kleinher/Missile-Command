@@ -2,7 +2,7 @@ package general;
 
 public class Juego {
 	private static Juego juego = new Juego();
-	private static Integer nivelActual;
+	private static int nivelActual;
 	private static TablaDePuntajes tablaDePuntajes;
 	private static PuntajeJugador puntaje;
 	
@@ -17,24 +17,19 @@ public class Juego {
 		//tablaDePuntajes = archivo?
 		puntaje = new PuntajeJugador();
 	}
-	
-	public static Juego getJuego() {
-		return juego;
-	}
-	
+
+
 	/*METODO MAIN
 	*
 	*aca pasa todo lo bueno 
 	*
 	*/
-	public static void main(String args[]) {
-		Juego juego;
+	public static void main(String args[]) throws InterruptedException {
 		Nivel nivel = new Nivel();
 		while(nivel.getPerdio()) {
-			nivel = new Nivel(nivelActual);
+			nivel = new Nivel();
 			nivel.loopDelNivel();
 		}
-		
 		terminarJuego();
 	}
 	
@@ -47,6 +42,11 @@ public class Juego {
 		tablaDePuntajes.actualizarTablaDePuntajes();
 		/* Imprimer Game Over */
 		System.out.println("Game Over prro");
+	}
+
+
+	public static int getNivelActual() {
+		return nivelActual;
 	}
 	
 }
