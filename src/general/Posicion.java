@@ -3,7 +3,7 @@ package general;
 public class Posicion {
 	private int posicionX;
 	private int posicionY;
-	
+	//HACER EL METODO EQUALS
 	public void actualizarPosicion(int x, int y){
 		this.posicionX = posicionX;
 		this.posicionY = posicionY;

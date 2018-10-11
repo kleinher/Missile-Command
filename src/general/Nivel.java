@@ -10,11 +10,19 @@ public class Nivel {
 	private boolean Perdio;
 	
 	//Variables enemigas
+	private LinkedList<Enemigo> EnemigosEnPantalla;
+
+	public void setEnemigosEnPantalla(LinkedList<Enemigo> enemigosEnPantalla) {
+		EnemigosEnPantalla = enemigosEnPantalla;
+
+
+	private LinkedList<Enemigo> Enemigos;
 	private LinkedList<Enemigo> enemigosEnPantalla;		/* Enemigos Mostrados y procesados durante el nivel*/
 	private LinkedList<Enemigo> enemigosEnEspera;				/* Enemigos en espera (Oleada) por ser procesados y aparecer en el nivel*/
+
 	
 	//Variables aliadas
-	private LinkedList<MisilAntibalistico> ListaMisilesAntibalisticos;
+	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
 	private Ciudad Ciudades[];
 	private Base Bases[];
 	private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
@@ -70,7 +78,7 @@ public class Nivel {
 		}
 		
 		//Actualiza la posición de los misiles aliados
-		for(Iterator<MisilAntibalistico> i = ListaMisilesAntibalisticos.iterator(); i.hasNext();) 
+		for(Iterator<MisilAntibalistico> i = listaMisilesAntibalisticos.iterator(); i.hasNext();) 
 		{
 			MisilAntibalistico misil = i.next();
 			misil.mover();

@@ -57,5 +57,12 @@ public class Ciudad {
 		
 		this.hayCiudades = hayCiudades;
 	}
+	public void destruccion() {
+		// TODO Auto-generated method stub
+		
+	}
+	public Posicion getPosicion() {
+		return posicion;
+	}
 
 }

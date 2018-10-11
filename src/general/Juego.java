@@ -43,7 +43,7 @@ public class Juego {
 		/* Imprimer Game Over */
 		System.out.println("Game Over prro");
 	}
-
+	
 
 	public static int getNivelActual() {
 		return nivelActual;
