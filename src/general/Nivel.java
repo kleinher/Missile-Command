@@ -12,9 +12,6 @@ public class Nivel {
 	//Variables enemigas
 	private LinkedList<Enemigo> EnemigosEnPantalla;
 
-	public void setEnemigosEnPantalla(LinkedList<Enemigo> enemigosEnPantalla) {
-		LinkedList<Enemigo> EnemigosEnPantalla = enemigosEnPantalla ;
-
 	private LinkedList<Enemigo> enemigosEnPantalla;		/* Enemigos Mostrados y procesados durante el nivel*/
 	private LinkedList<LinkedList<Enemigo>> enemigosEnEspera;		/* Enemigos en espera (Oleada) por ser procesados y aparecer en el nivel*/
 
@@ -103,6 +100,10 @@ public class Nivel {
 			MisilAntibalistico misil = i.next();
 			misil.mover();
 		}
+	}
+
+	public boolean Perdio() {
+		return this.Perdio;
 	}
 
 }

@@ -28,7 +28,7 @@ public class Juego {
 	public static void main(String args[]) throws InterruptedException {
 		Nivel nivel = new Nivel();
 		int velocidad = 20;
-		while(nivel.getPerdio()) {
+		while(!nivel.Perdio()) {
 			nivel = new Nivel();
 			nivel.loopDelNivel(velocidad);
 		}
