@@ -54,6 +54,7 @@ public class Ciudad {
 
 	
 	public void sethayCiudades(boolean hayCiudades) {
+		
 		this.hayCiudades = hayCiudades;
 	}
 	public void destruccion() {

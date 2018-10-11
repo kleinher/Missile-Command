@@ -6,7 +6,7 @@ import enemigos.*;
 
 public class Nivel {
 	//Variables de juego
-	private Long Velocidad;
+	private int velocidad;
 	private boolean Perdio;
 	
 	//Variables enemigas
@@ -14,15 +14,19 @@ public class Nivel {
 
 	public void setEnemigosEnPantalla(LinkedList<Enemigo> enemigosEnPantalla) {
 		EnemigosEnPantalla = enemigosEnPantalla;
-	}
+
 
 	private LinkedList<Enemigo> Enemigos;
+	private LinkedList<Enemigo> enemigosEnPantalla;		/* Enemigos Mostrados y procesados durante el nivel*/
+	private LinkedList<Enemigo> enemigosEnEspera;				/* Enemigos en espera (Oleada) por ser procesados y aparecer en el nivel*/
+
 	
 	//Variables aliadas
 	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
 	private Ciudad Ciudades[];
 	private Base Bases[];
-	
+	private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
+
 	
 	public Nivel() { /* limpia pantalla,reponer misiles, reconstruye bases */
 		Ciudad ciudades[] = new Ciudad[7];
@@ -30,7 +34,7 @@ public class Nivel {
 		
 		//Crea la lista de enemigos del nivel
 		LinkedList<Enemigo> Enemigos = new LinkedList<Enemigo>(); 
-		Oleada.CrearListaDeOleadasPorNivel(Juego.getNivelActual(), Enemigos);
+		Oleada.CrearListaDeOleadasPorNivel(Enemigos);
 		
 		//Instancia las nueve ciudades
 		Ciudad.InstanciarCiudades(ciudades);
@@ -45,7 +49,7 @@ public class Nivel {
 	public void loopDelNivel() 
 		throws InterruptedException{
 		// Mientras hayan queden ciudades en pie. Mientras hayan enemigos
-		while (!Enemigos.isEmpty())
+		while (!enemigosEnEspera.isEmpty())
 		{
 			this.actualizarPosiciones();
 			Colisiones.comprobarColision(this);
@@ -67,7 +71,7 @@ public class Nivel {
 	*/
 	private void actualizarPosiciones() {
 		//Actualiza posiciones de los de los enemigos
-		for(Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) 
+		for(Iterator<Enemigo> i = enemigosEnPantalla.iterator(); i.hasNext();) 
 		{
 			Enemigo enemigo = i.next();
 			enemigo.mover();
@@ -80,6 +84,8 @@ public class Nivel {
 			misil.mover();
 		}
 	}
+	
+	public 
 
 	public boolean getPerdio() {
 		return this.Perdio;
