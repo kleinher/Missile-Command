@@ -2,6 +2,7 @@ package general;
 
 public class Ciudad {
 	private Posicion posicion;
+	private boolean hayCiudades;
 	private boolean EstaViva;
 	
 	/*INSTANCIAR CIUDADES
