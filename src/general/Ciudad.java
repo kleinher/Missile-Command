@@ -2,7 +2,6 @@ package general;
 
 public class Ciudad {
 	private Posicion posicion;
-	private boolean hayCiudades;
 	private boolean EstaViva;
 	
 	/*INSTANCIAR CIUDADES
@@ -10,6 +9,14 @@ public class Ciudad {
 	 * posX: determina la posicion en X de la ciudad, las ciudades tienen una distancia entre ellas de DistanciaEntreCiudad
 	 * posY: determina la posicion en Y de la ciudad, todas tienen la misma posicion
 	 * */
+	public Ciudad() {
+		
+	}
+	public Ciudad(int posX, int posY) {
+		
+		this.posicion.actualizarPosicion(posX, posY);
+		
+	}
 	public static void InstanciarCiudades(Ciudad[] ciudades) {
 		//Se instancian las 6 ciudades del vector de ciudades
 		int posX=95;
@@ -18,8 +25,7 @@ public class Ciudad {
 		
 		//En este FOR se setean las posiciones en la pantalla de todas las ciudades
 		for(int i = 1; i <= ciudades.length;i++) {
-			ciudades[i] = new Ciudad();
-			ciudades[1].posicion.actualizarPosicion(posX, posY);
+			ciudades[i] = new Ciudad(posX, posY);
 			
 			//Aumento la posicion para la ciudad siguiente
 			posX += DistanciaEntreCiudades;
@@ -29,7 +35,6 @@ public class Ciudad {
 				posX += DistanciaEntreCiudades;
 			}
 		}
-		
 	}
 	public static boolean hayCiudades(Ciudad[] ciudades) {
 		int indice = 0; 
