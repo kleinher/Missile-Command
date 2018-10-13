@@ -12,7 +12,7 @@ import enemigos.MisilCrucero;
 import enemigos.MisilCruceroInteligente;
 
 public class Oleada {
-	static boolean[] VectorDeMisilesCrucerosPorNivel = new boolean[16];
+	static boolean[] VectorDeMisilesCrucerosPorNivel = new boolean[17];
 	private LinkedList<Enemigo> ListaDeOleadasPorNivel;
 	
 	// Determina si hay enemigos en la lista de oleadas para agregar
@@ -36,20 +36,20 @@ public class Oleada {
 		
 		//Adentro de este loop se agregan todos los enemigos a la lista Enemigos
 		while (numeroDeEnemigosPorNivel > 0) {
-			
+			oleada++;
 			//oleadaEnemigos es una oleada
 			LinkedList<Enemigo> oleadaEnemigos = new LinkedList<Enemigo>();
 			
 			// Genera Un numero Random de enemigos para cada oleada de 0 a 4
 			int numeroDeEnemigosPorOleada = (aleatorio.nextInt(5));
-			for (int i=numeroDeEnemigosPorOleada; i == 0; i--) { 
+			for (int i=numeroDeEnemigosPorOleada; i != 0; i--) { 
 				
 				/* Genera Un numero Random de enemigos para cada oleada de 0 a 4*/
 				MisilBalistico MB = new MisilBalistico();		
 				oleadaEnemigos.add(MB);
 				numeroDeEnemigosPorNivel--;
-				oleada++;
 			}
+
 			//En todos los niveles se van a agregar los Misil Cruceros Inteligentes y los Misil cruceros apartir de la oleada 4
 			if (oleada == 4) {
 				if (VectorDeMisilesCrucerosPorNivel[NumeroDeNivel]) {
@@ -69,12 +69,7 @@ public class Oleada {
 
 	}
 
-	private static void crearVectorPosicionesAliados(Base[] bases, Ciudad[] ciudades) {
-		
-		
-	}
-
-	private static void DeterminarArregloDeMisiles() {
+	public static void DeterminarArregloDeMisiles() {
 		VectorDeMisilesCrucerosPorNivel[3] = true;
 		VectorDeMisilesCrucerosPorNivel[4] = true;
 		VectorDeMisilesCrucerosPorNivel[7] = true;
@@ -83,6 +78,5 @@ public class Oleada {
 		VectorDeMisilesCrucerosPorNivel[12] = true;
 		VectorDeMisilesCrucerosPorNivel[15] = true;
 		VectorDeMisilesCrucerosPorNivel[16] = true;
-
 	}
 }

@@ -6,7 +6,6 @@ import enemigos.*;
 
 public class GestorDeNivel {
 	//Gestor de nivel se instancia en su misma clase para ser Singleton
-<<<<<<< HEAD
 	static GestorDeNivel GestorDeNivel=new GestorDeNivel();
 	//Variables de juego
 	private int Dificultad;
@@ -32,6 +31,9 @@ public class GestorDeNivel {
 	 * Se inicializan las Ciudades y Bases con sus datos iniciales 
 	 * */
 	private GestorDeNivel() {
+
+		this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
+		this.EnemigosEnPantalla = new LinkedList<Enemigo>();
 		
 		//Instancia las nueve ciudades
 		Ciudad.InstanciarCiudades(this.Ciudades);
@@ -49,7 +51,7 @@ public class GestorDeNivel {
 	 *Funcion: Modifica la instancia nivel(de Juego) cada ves que comienza un nuevo nivel
 	 * */
 	public void gestionarNivel(){
-		
+		this.NivelActual++;
 		//Crea la lista de enemigos del nivel
 		Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera,NivelActual);
 		
