@@ -1,16 +1,21 @@
 package general;
 
+import java.util.LinkedList;
+import java.util.Iterator;
+
 public class Base {
 	private int cantMisiles;
 	private Posicion posicion;
 	private boolean viva;
+	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
 
 	/*INSTANCIAR CIUDADES
 	 * este metodo setea todas las posiciones de las 3 Bases en la pantalla
 	 * posX: determina la posicion en X de la base, las ciudades tienen una distancia entre ellas de DistanciaEntreBases
 	 * posY: determina la posicion en Y de la base, todas tienen la misma posicion
-	 * */
-	
+	 * 
+	 * */	
+
 	public Base() {
 		this.posicion=new Posicion();
 	}
@@ -25,29 +30,40 @@ public class Base {
 		int DistanciaEntreBases=220;
 		
 		//En este FOR se setean las posiciones en la pantalla de todas las ciudades
+
 		for(int i = 1; i < bases.length;i++) {
 			bases[i] = new Base(posX,posY);
-			
 			//Aumento la posicion para la ciudad siguiente
 			posX += DistanciaEntreBases;
 			
 			//Cuando se pasa la tercera ciudad hay una en la mitad, por lo tanto se suma una distancia mas para que no se superponga
-			if(i == 3) {
+			if(i == 3)
 				posX += DistanciaEntreBases;
+			
+			//Agrego 15 MisilesAntibalisticos a la lista de misiles antibalisticos de cada base	
+			for (int j=0;j==15;j++) {
+				bases[i].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[i].posicion));
 			}
-		}
-		
 	}
-
-	public Posicion getPosicion() {
-		return posicion;
-	}
-	public void destruccion() {
-
-		
-	}
-
-
-
 
 }
+
+	public int getCantMisiles() {
+		return this.listaMisilesAntibalisticos.size();
+	}
+/*Primero le determino el objetivo, en este caso lo  "HardCodeamos" para testear, y luego agrego los misiles a la lista de misiles en pantalla*/
+	public static void Disparar(Base base, LinkedList<MisilAntibalistico> listaMisilesAntibalisticosEnPantalla) {
+			int posX=40,posY=240;
+				Iterator<MisilAntibalistico> Iter= base.listaMisilesAntibalisticos.iterator();
+				MisilAntibalistico aux = base.listaMisilesAntibalisticos.element();
+				for(int i=1;i<=9;i++) {
+					aux.determinarObjetivo(posX, posY);
+					listaMisilesAntibalisticosEnPantalla.add(aux);
+					Iter.remove();
+					aux= Iter.next();
+					posX+=55;
+				}
+				
+	}
+}
+
