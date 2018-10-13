@@ -6,6 +6,7 @@ import enemigos.*;
 
 public class GestorDeNivel {
 	//Gestor de nivel se instancia en su misma clase para ser Singleton
+<<<<<<< HEAD
 	static GestorDeNivel GestorDeNivel=new GestorDeNivel();
 	//Variables de juego
 	private int Dificultad;
