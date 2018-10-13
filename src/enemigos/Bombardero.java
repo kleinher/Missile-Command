@@ -2,6 +2,7 @@ package enemigos;
 
 import java.util.Random;
 
+import general.GestorDeNivel;
 import general.Juego;
 
 public class Bombardero extends Enemigo {
@@ -19,7 +20,7 @@ public class Bombardero extends Enemigo {
 		int AparicionEnX;
 		int AparicionEnY;
 		Random aleatorio = new Random();
-		if (Juego.getNivelActual()<5) {
+		if (GestorDeNivel.getGestorDeNivel().getNivelActual()<5) {
 			/*Determina una posicion random de */
 			AparicionEnY = (40+aleatorio.nextInt(121));
 		} else {/*

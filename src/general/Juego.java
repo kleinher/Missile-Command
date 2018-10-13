@@ -9,10 +9,6 @@ public class Juego {
 	* 
 	* 
 	*/
-	private Juego() {
-		//tablaDePuntajes = archivo?
-	}
-
 
 	/*METODO MAIN
 	*
