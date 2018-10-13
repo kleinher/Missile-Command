@@ -1,11 +1,7 @@
 package general;
 
 public class Juego {
-	private static Juego juego = new Juego();
-	private static int nivelActual;
 	private static TablaDePuntajes tablaDePuntajes;
-	private static PuntajeJugador puntaje;
-	private static Posicion[] vectorObjetivosAliados;
 	
 	/*CONSTRUCTOR
 	*
@@ -13,12 +9,6 @@ public class Juego {
 	* 
 	* 
 	*/
-	private Juego() {
-		nivelActual = new Integer(1);
-		//tablaDePuntajes = archivo?
-		puntaje = new PuntajeJugador();
-	}
-
 
 	/*METODO MAIN
 	*
@@ -26,13 +16,12 @@ public class Juego {
 	*
 	*/
 	public static void main(String args[]) throws InterruptedException {
-		Nivel nivel = new Nivel();
-		int velocidad = 20;
-		while(!nivel.Perdio()) {
-			nivel = new Nivel();
-			nivel.loopDelNivel(velocidad);
+		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
+		while(!nivel.Perdio()) 
+		{
+			nivel.gestionarNivel();
+			nivel.loopDelNivel();
 		}
-		velocidad+=5;
 		terminarJuego();
 	}
 	/*METODO TERMINAR
@@ -43,18 +32,7 @@ public class Juego {
 		/* Guarda los puntajes en la tabla de puntajes */
 		tablaDePuntajes.actualizarTablaDePuntajes();
 		/* Imprimer Game Over */
-		System.out.println("Game Over prro");
+		System.out.println("Game Over");
 	}
-	
 
-	public static int getNivelActual() {
-		return nivelActual;
-	}
-	
-	public void Pausar() {
-		
-	}
-	public void Salir() {
-		
-	}
 }
