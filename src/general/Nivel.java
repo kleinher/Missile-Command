@@ -14,7 +14,7 @@ public class Nivel {
 
 	public void setEnemigosEnPantalla(LinkedList<Enemigo> enemigosEnPantalla) {
 		EnemigosEnPantalla = enemigosEnPantalla;
-
+	}
 
 	private LinkedList<Enemigo> Enemigos;
 	private LinkedList<Enemigo> enemigosEnPantalla;		/* Enemigos Mostrados y procesados durante el nivel*/
@@ -22,7 +22,7 @@ public class Nivel {
 
 	
 	//Variables aliadas
-	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
+	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticosEnPantalla;
 	private Ciudad Ciudades[];
 	private Base Bases[];
 	private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
@@ -38,15 +38,20 @@ public class Nivel {
 		//Instancia las nueve ciudades
 		Ciudad.InstanciarCiudades(ciudades);
 		
-		//Instancia las tres bases
+		//Instancia las tres bases con sus posiciones y sus misiles
+		LinkedList<MisilAntibalistico> listaMisilesAntibalisticosEnPantalla = new  LinkedList<MisilAntibalistico>();
 		Base.InstanciarBases(bases);
+		
+		Base.Disparar(bases[1],listaMisilesAntibalisticosEnPantalla);
+		
 	}
 
 	/*LOOP NIVEL
 	 * En este método se va a iterar todo el nivel, básicamente es el método principal del juego
 	 */
 	public void loopDelNivel() 
-		throws InterruptedException{
+			throws InterruptedException{
+		
 		// Mientras hayan queden ciudades en pie. Mientras hayan enemigos
 		while (!enemigosEnEspera.isEmpty())
 		{
@@ -77,7 +82,7 @@ public class Nivel {
 		}
 		
 		//Actualiza la posición de los misiles aliados
-		for(Iterator<MisilAntibalistico> i = listaMisilesAntibalisticos.iterator(); i.hasNext();) 
+		for(Iterator<MisilAntibalistico> i = listaMisilesAntibalisticosEnPantalla.iterator(); i.hasNext();) 
 		{
 			MisilAntibalistico misil = i.next();
 			misil.mover();

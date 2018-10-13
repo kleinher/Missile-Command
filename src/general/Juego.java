@@ -55,6 +55,4 @@ public class Juego {
 	public void Salir() {
 		
 	}
-	
-	PRUEBA
 }

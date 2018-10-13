@@ -12,7 +12,7 @@ import enemigos.MisilCrucero;
 import enemigos.MisilCruceroInteligente;
 
 public class Oleada {
-	static boolean[] VectorDeMisilesCrucerosPorNivel = new boolean[16];
+	private static boolean[] VectorDeMisilesCrucerosPorNivel = new boolean[16];
 	private LinkedList<Enemigo> ListaDeOleadasPorNivel;
 	
 	// Determina si hay enemigos en la lista de oleadas para agregar
@@ -23,7 +23,7 @@ public class Oleada {
 			return true;
 	}
 
-	private void CrearListaDeOleadasPorNivel(LinkedList<Enemigo> Enemigos) {
+	public void CrearListaDeOleadasPorNivel(LinkedList<Enemigo> Enemigos) {
 		Random aleatorio = new Random();
 		int oleada = 1;
 		
