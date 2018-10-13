@@ -22,6 +22,7 @@ public class GestorDeNivel {
 
 	//Variables aliadas
 	private LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla;
+	private LinkedList<Explosiones> explosionesEnPantalla;
 	private Ciudad Ciudades[];
 	private Base Bases[];
 	
@@ -85,7 +86,7 @@ public class GestorDeNivel {
 			}
 			
 			this.actualizarPosiciones();
-			Colisiones.comprobarColision(EnemigosEnPantalla,MisilesAliadosEnPantalla,Ciudades,Bases);
+			Colisiones.comprobarColision(EnemigosEnPantalla,explosionesEnPantalla,Ciudades,Bases);
 			//dibujar();
 			Thread.sleep(1000/Dificultad);
 			tics++;
