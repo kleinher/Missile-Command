@@ -32,22 +32,9 @@ public class Juego {
 	 */
 	public static void terminarJuego() {
 		/* Guarda los puntajes en la tabla de puntajes */ /*Falta Pasarle todos los argumentos que necesita*/
-		tablaDePuntajes.actualizarTablaDePuntajes();
+		//tablaDePuntajes.actualizarTablaDePuntajes();
 		/* Imprimer Game Over */
 		System.out.println("Game Over");
 	}
 
-<<<<<<< HEAD
-	public static int getNivelActual() {
-		return nivelActual;
-	}
-	
-	public void Pausar() {
-		
-	}
-	public void Salir() {
-		
-	}
-=======
->>>>>>> branch 'Nico' of https://github.com/kleinher/Missile-Command.git
 }

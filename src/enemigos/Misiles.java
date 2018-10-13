@@ -5,10 +5,9 @@ import general.Posicion;
 public abstract class Misiles extends Enemigo{ 
 	private static Posicion[] posicionDeLasBasesYCiudades= new Posicion[8];
 	
-	Misiles (){
+	public Misiles (){
 		determinarObjetivo();
 		determinarInicio();
-
 	}
 
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */

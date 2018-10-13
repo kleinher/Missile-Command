@@ -4,9 +4,7 @@ import java.util.LinkedList;
 import java.util.Iterator;
 
 public class Base {
-	private int cantMisiles;
 	private Posicion posicion;
-	private boolean viva;
 	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
 
 	/*INSTANCIAR CIUDADES
@@ -51,7 +49,8 @@ public class Base {
 	public int getCantMisiles() {
 		return this.listaMisilesAntibalisticos.size();
 	}
-/*Primero le determino el objetivo, en este caso lo  "HardCodeamos" para testear, y luego agrego los misiles a la lista de misiles en pantalla*/
+	
+	/*Primero le determino el objetivo, en este caso lo  "HardCodeamos" para testear, y luego agrego los misiles a la lista de misiles en pantalla*/
 	public static void Disparar(Base base, LinkedList<MisilAntibalistico> listaMisilesAntibalisticosEnPantalla) {
 			int posX=40,posY=240;
 				Iterator<MisilAntibalistico> Iter= base.listaMisilesAntibalisticos.iterator();

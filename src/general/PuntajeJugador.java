@@ -3,13 +3,13 @@ package general;
 import java.util.Scanner;
 
 public class PuntajeJugador extends TablaDePuntajes{
-	private static Integer score;
+	private Integer score;
 	private static String nombre;
 
-	public static Integer getScore() {
+	public Integer getScore() {
 		return score;
 	}
-	public static String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 
@@ -18,7 +18,7 @@ public class PuntajeJugador extends TablaDePuntajes{
 	public PuntajeJugador() {
 		InicializarTablaDePuntajePorCadaEnemigo();
 		this.score = 0;
-		this.nombre = leerNombre();
+		//this.nombre = leerNombre();
 	}
 	/*LEER NOMBRE JUGADOR
 	 * Solicita en pantalla que se carga un nuevo jugador
@@ -44,7 +44,7 @@ public class PuntajeJugador extends TablaDePuntajes{
 		VDePuntajes[3]=100;
 	}
 	
-	public static void CalcularPuntajePorNivel(int NivelAct, int cantMisDest, int cantMisCruDest, int misilesAliadosSinU, int ciuVi) {
+	public void CalcularPuntajePorNivel(int NivelAct, int cantMisDest, int cantMisCruDest, int misilesAliadosSinU, int ciuVi) {
 		int MultiplicadorPorNivel=1;
 		if(NivelAct>2) {
 			switch (NivelAct) {
@@ -68,6 +68,6 @@ public class PuntajeJugador extends TablaDePuntajes{
 				break;
 				}
 		}
-		score+= (MultiplicadorPorNivel*((VDePuntajes[0]*cantMisDest)+(VDePuntajes[1]*cantMisCruDest)+(VDePuntajes[2]*misilesAliadosSinU)+(VDePuntajes[3]*ciuVi)));
+		score += (MultiplicadorPorNivel*((VDePuntajes[0]*cantMisDest)+(VDePuntajes[1]*cantMisCruDest)+(VDePuntajes[2]*misilesAliadosSinU)+(VDePuntajes[3]*ciuVi)));
 	}
 }
