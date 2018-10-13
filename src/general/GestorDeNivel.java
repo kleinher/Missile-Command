@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import enemigos.*;
 
 public class GestorDeNivel {
+	//Gestor de nivel se instancia en su misma clase para ser Singleton
 	static GestorDeNivel GestorDeNivel=new GestorDeNivel();
 	//Variables de juego
 	private int Dificultad;
@@ -54,7 +55,7 @@ public class GestorDeNivel {
 		
 	}
 
-	/*LOOP NIVEL
+	/*---LOOP NIVEL---
 	 * En este método se va a iterar todo el nivel, básicamente es el método principal del juego
 	 */
 	public void loopDelNivel() 
@@ -89,10 +90,8 @@ public class GestorDeNivel {
 		// MostrarPuntaje (ParteGrafica)
 
 	}
-
-
 	
-	/*ActualizarPosiciones
+	/*---ActualizarPosiciones---
 	 * Este método actualiza las posiciones de todos los objetos del juego
 	 * 
 	*/
@@ -119,6 +118,9 @@ public class GestorDeNivel {
 		return this.Perdio;
 	}
 
+	/*---getGestorDeNivel---
+	 * Al ser singleton la clase este metodo se utiliza para obtener la instancia
+	 * */
 	public static GestorDeNivel getGestorDeNivel() {
 		return GestorDeNivel;
 	}
