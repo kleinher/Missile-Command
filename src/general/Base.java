@@ -49,11 +49,12 @@ public class Base {
 	public static void Disparar(Base base, LinkedList<MisilAntibalistico> listaMisilesAntibalisticosEnPantalla) {
 			int posX=40,posY=240;
 				Iterator<MisilAntibalistico> Iter= base.listaMisilesAntibalisticos.iterator();
+				MisilAntibalistico aux = base.listaMisilesAntibalisticos.element();
 				for(int i=1;i<=9;i++) {
-					MisilAntibalistico aux= Iter.next();
 					aux.determinarObjetivo(posX, posY);
 					listaMisilesAntibalisticosEnPantalla.add(aux);
 					Iter.remove();
+					aux= Iter.next();
 					posX+=55;
 				}
 				
