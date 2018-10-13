@@ -5,8 +5,8 @@ public class Posicion {
 	private int posicionY;
 	//HACER EL METODO EQUALS
 	public void actualizarPosicion(int x, int y){
-		this.posicionX = posicionX;
-		this.posicionY = posicionY;
+		this.posicionX = x;
+		this.posicionY = y;
 	}
 	public Posicion(){
 		

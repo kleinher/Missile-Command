@@ -6,10 +6,12 @@ import enemigos.*;
 
 public class GestorDeNivel {
 	//Gestor de nivel se instancia en su misma clase para ser Singleton
-	static GestorDeNivel GestorDeNivel=new GestorDeNivel();
+	private static GestorDeNivel GestorDeNivel=new GestorDeNivel();
 	//Variables de juego
 	private int Dificultad;
 	private boolean Perdio;
+	
+
 	private int NivelActual;
 	
 	//Variables enemigas
@@ -18,8 +20,10 @@ public class GestorDeNivel {
 
 	//Variables aliadas
 	private LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla;
+	private LinkedList<Explosiones> explosionesEnPantalla;
 	private Ciudad Ciudades[];
 	private Base Bases[];
+	
 	
 	// private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
 
@@ -28,10 +32,13 @@ public class GestorDeNivel {
 	 * */
 	private GestorDeNivel() {
 		
+		
 		//Instancia las nueve ciudades
+		this.Ciudades = new Ciudad[7];
 		Ciudad.InstanciarCiudades(this.Ciudades);
 		
 		//Instancia las tres bases
+		this.Bases = new Base[4];
 		Base.InstanciarBases(this.Bases);
 		
 		this.Perdio = false;
@@ -78,7 +85,7 @@ public class GestorDeNivel {
 			}
 			
 			this.actualizarPosiciones();
-			Colisiones.comprobarColision(EnemigosEnPantalla,MisilesAliadosEnPantalla,Ciudades,Bases);
+			Colisiones.comprobarColision(EnemigosEnPantalla,explosionesEnPantalla,Ciudades,Bases);
 			//dibujar();
 			Thread.sleep(1000/Dificultad);
 			tics++;
@@ -122,7 +129,11 @@ public class GestorDeNivel {
 	 * Al ser singleton la clase este metodo se utiliza para obtener la instancia
 	 * */
 	public static GestorDeNivel getGestorDeNivel() {
+		
 		return GestorDeNivel;
+	}
+	public int getNivelActual() {
+		return NivelActual;
 	}
 	
 }
