@@ -7,21 +7,16 @@ import enemigos.Enemigo;
 
 public class Colisiones {
 
-	/*
-	 * recibo lista de enemigos, de ListaMisilesAntibalisticos, de bases, y de
-	 * ciudades
+	/*--Comprobar Colision---
+	 * Parametros: Enemigos, Misiles aliados, Ciudades, Bases
 	 */
 	public static void comprobarColision(LinkedList<Enemigo> enemigos,
 			LinkedList<MisilAntibalistico> listaMisilesAntibalisticos, Ciudad[] ciudades, Base[] bases) {
-		/* Recorro los ListaMisilesAntibalisticos que estan en pantalla */
+		//Recorro los ListaMisilesAntibalisticos que estan en pantalla
 		for (Iterator<MisilAntibalistico> i = listaMisilesAntibalisticos.iterator(); i.hasNext();) {
+			//
 			MisilAntibalistico AliadoAct = i.next();
-			/* filtro los que estan en estado de explosion */
-			if (AliadoAct.isExploto())
-				/*
-				 * Recorro los enemigos y pregunto si algun enemigo esta dentro del radio de
-				 * explosion
-				 */
+				//Busco 
 				while (enemigos.iterator().hasNext()) {
 					Enemigo EnemigoAct = enemigos.iterator().next();
 					if (choque(AliadoAct.getPosicionActual(), AliadoAct.getArea(), EnemigoAct.getPosicionActual())) {

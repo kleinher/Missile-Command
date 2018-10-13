@@ -3,8 +3,6 @@ package general;
 import enemigos.Misiles;
 
 public class MisilAntibalistico extends Misiles{
-	/*variable que dice que exploto o no*/
-	private boolean exploto;
 	public boolean isExploto() {
 		return exploto;
 	}
