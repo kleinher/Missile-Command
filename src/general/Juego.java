@@ -22,6 +22,8 @@ public class Juego {
 		{
 			nivel.gestionarNivel();
 			nivel.loopDelNivel();
+			//PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
+			
 		}
 		terminarJuego();
 		TablaDePuntajes.actualizarTablaDePuntajes(PuntajeJugador.getScore(), PuntajeJugador.getNombre());
@@ -37,4 +39,5 @@ public class Juego {
 		System.out.println("Game Over");
 	}
 
+	prueba
 }

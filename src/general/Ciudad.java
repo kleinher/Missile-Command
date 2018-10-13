@@ -59,6 +59,7 @@ public class Ciudad {
 
 	
 	public void destruccion() {
+
 		// TODO Auto-generated method stub
 		
 	}

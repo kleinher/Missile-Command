@@ -13,7 +13,7 @@ public abstract class Enemigo {
 	/*Variables Abstractas que van a implementar tanto bombardero como Misiles*/
 
 	public abstract void mover();
-	public abstract void destruccion();
+	public void destruccion();
 	
 	public static void lanzarEnemigos(LinkedList<Enemigo> auxOleada, LinkedList<Enemigo> EnemigosEnPantalla) {
 		//Agrego los enemigos a la lista enemigosEnPantalla

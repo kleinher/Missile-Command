@@ -44,14 +44,13 @@ public abstract class Misiles extends Enemigo{
 	}
 	/*Determina El objetivo de cada misil de manera aleatoria*/
 	public void determinarObjetivo() {
-
 		int posicionGeneralObjetivo;
 		int posicionObjetivoX;
 		int posicionObjetivoY;
 		Random aleatorio = new Random();
 		posicionGeneralObjetivo = (aleatorio.nextInt(10));
-		posicionObjetivoX= posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionX();
-		posicionObjetivoY=posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionY();
+		posicionObjetivoX = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionX();
+		posicionObjetivoY = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionY();
 		this.PosicionObjetivo.actualizarPosicion(posicionObjetivoX, posicionObjetivoY);	
 	}
 	
@@ -65,6 +64,7 @@ public abstract class Misiles extends Enemigo{
 		this.PosicionActual.actualizarPosicion(aparicionEnX, aparicionEnY);
 	}
 	public void destruccion(){
+
 		
 	}
 	/* Determina la posicion de las bases y las ciudades para facilitar el determinarObjetivo de cada misil*/

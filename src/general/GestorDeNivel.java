@@ -67,6 +67,7 @@ public class GestorDeNivel {
 	 * En este método se va a iterar todo el nivel, básicamente es el método principal del juego
 	 */
 	public void loopDelNivel()
+
  
 		throws InterruptedException{
 		int tics = 0;
@@ -95,7 +96,7 @@ public class GestorDeNivel {
 	    if(!Ciudad.hayCiudades(Ciudades)) {
 	    	this.Perdio = true;
 	    }
-		//PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
+
 		// MostrarPuntaje (ParteGrafica)
 
 	}
