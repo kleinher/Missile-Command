@@ -32,6 +32,10 @@ public class Base {
 		
 	}
 
+	public Posicion getPosicion() {
+		return posicion;
+	}
+
 
 
 }

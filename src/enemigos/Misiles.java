@@ -12,8 +12,6 @@ public abstract class Misiles extends Enemigo{
 	 *
 	 */
 	public Misiles () {
-		determinarObjetivo();
-		determinarInicio();
 	}
 	public void mover(){
 		double pendiente;
