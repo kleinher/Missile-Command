@@ -27,7 +27,7 @@ public class Oleada {
 	 * Metodo estatico de la clase Oleada
 	 * Parametro Enemigos: cada nodo de esta lista es una oleada.
 	 * */
-	public static void CrearListaDeOleadasPorNivel(LinkedList<LinkedList<Enemigo>> Enemigos) {
+	public static void CrearListaDeOleadasPorNivel(LinkedList<LinkedList<Enemigo>> Enemigos, int NumeroDeNivel) {
 		Random aleatorio = new Random();
 		int oleada = 1;
 		
@@ -52,7 +52,7 @@ public class Oleada {
 			}
 			//En todos los niveles se van a agregar los Misil Cruceros Inteligentes y los Misil cruceros apartir de la oleada 4
 			if (oleada == 4) {
-				if (VectorDeMisilesCrucerosPorNivel[Juego.getNivelActual()]) {
+				if (VectorDeMisilesCrucerosPorNivel[NumeroDeNivel]) {
 					MisilCruceroInteligente MCI = new MisilCruceroInteligente();
 					oleadaEnemigos.add(MCI);
 				}
