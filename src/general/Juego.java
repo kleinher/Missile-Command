@@ -20,7 +20,7 @@ public class Juego {
 	*
 	*/
 	public static void main(String args[]) throws InterruptedException {
-		GestorDeNivel nivel = new GestorDeNivel();
+		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
 		while(!nivel.Perdio()) 
 		{
 			nivel.gestionarNivel();

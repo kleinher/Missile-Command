@@ -5,26 +5,27 @@ import java.util.LinkedList;
 import enemigos.*;
 
 public class GestorDeNivel {
+	static GestorDeNivel GestorDeNivel=new GestorDeNivel();
 	//Variables de juego
 	private int Dificultad;
 	private boolean Perdio;
-	private int NumeroDeNivel;
+	private int NivelActual;
 	
 	//Variables enemigas
 	private LinkedList<Enemigo> EnemigosEnPantalla;		/* Enemigos Mostrados y procesados durante el nivel*/
 	private LinkedList<LinkedList<Enemigo>> EnemigosEnEspera;		/* Enemigos en espera (Oleada) por ser procesados y aparecer en el nivel*/
 
 	//Variables aliadas
-	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
+	private LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla;
 	private Ciudad Ciudades[];
 	private Base Bases[];
+	
 	// private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
 
 	/*---CONSTRUCTOR GESTOR DE NIVEL----
 	 * Se inicializan las Ciudades y Bases con sus datos iniciales 
 	 * */
-	public GestorDeNivel() { /* limpia pantalla,reponer misiles, reconstruye bases */
-
+	private GestorDeNivel() {
 		
 		//Instancia las nueve ciudades
 		Ciudad.InstanciarCiudades(this.Ciudades);
@@ -44,7 +45,7 @@ public class GestorDeNivel {
 	public void gestionarNivel(){
 		
 		//Crea la lista de enemigos del nivel
-		Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera,NumeroDeNivel);
+		Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera,NivelActual);
 		
 		//Incrementa la dificultad cuando aumenta un nivel
 		this.Dificultad += 5;
@@ -76,7 +77,7 @@ public class GestorDeNivel {
 			}
 			
 			this.actualizarPosiciones();
-			Colisiones.comprobarColision(EnemigosEnPantalla,listaMisilesAntibalisticos,Ciudades,Bases);
+			Colisiones.comprobarColision(EnemigosEnPantalla,MisilesAliadosEnPantalla,Ciudades,Bases);
 			//dibujar();
 			Thread.sleep(1000/Dificultad);
 			tics++;
@@ -104,7 +105,7 @@ public class GestorDeNivel {
 		}
 		
 		//Actualiza la posición de los misiles aliados
-		for(Iterator<MisilAntibalistico> i = listaMisilesAntibalisticos.iterator(); i.hasNext();) 
+		for(Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) 
 		{
 			MisilAntibalistico misil = i.next();
 			misil.mover();
@@ -117,6 +118,11 @@ public class GestorDeNivel {
 	public boolean Perdio() {
 		return this.Perdio;
 	}
+
+	public static GestorDeNivel getGestorDeNivel() {
+		return GestorDeNivel;
+	}
+	
 }
 
 
