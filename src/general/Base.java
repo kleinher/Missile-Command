@@ -42,6 +42,11 @@ public class Base {
 	public Posicion getPosicion() {
 		return posicion;
 	}
+	public void destruccion() {
+
+		
+	}
+
 
 
 
