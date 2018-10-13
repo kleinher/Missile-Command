@@ -1,4 +1,7 @@
 package enemigos;
+import java.util.Iterator;
+import java.util.LinkedList;
+
 import general.Posicion;
 public abstract class Enemigo {
 	protected Posicion PosicionInicial;
@@ -12,6 +15,12 @@ public abstract class Enemigo {
 	public abstract void mover();
 	public abstract void destruccion();
 	
+	public static void lanzarEnemigos(LinkedList<Enemigo> auxOleada, LinkedList<Enemigo> EnemigosEnPantalla) {
+		//Agrego los enemigos a la lista enemigosEnPantalla
+		for(Iterator<Enemigo> i= auxOleada.iterator(); i.hasNext();) {
+			EnemigosEnPantalla.add(i.next());
+		}
+	}
 	public Posicion getPosicionInicial() {
 		return PosicionInicial;
 	}

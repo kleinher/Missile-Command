@@ -8,6 +8,7 @@ public abstract class Misiles extends Enemigo{
 	Misiles (){
 		determinarObjetivo();
 		determinarInicio();
+
 	}
 
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */
@@ -44,6 +45,7 @@ public abstract class Misiles extends Enemigo{
 	}
 	/*Determina El objetivo de cada misil de manera aleatoria*/
 	public void determinarObjetivo() {
+
 		int posicionGeneralObjetivo;
 		int posicionObjetivoX;
 		int posicionObjetivoY;

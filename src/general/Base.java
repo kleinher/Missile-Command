@@ -1,7 +1,6 @@
 package general;
 
 import java.util.LinkedList;
-import java.io.LineNumberInputStream;
 import java.util.Iterator;
 
 public class Base {
@@ -16,6 +15,14 @@ public class Base {
 	 * posY: determina la posicion en Y de la base, todas tienen la misma posicion
 	 * 
 	 * */	
+
+	public Base() {
+		this.posicion=new Posicion();
+	}
+	public Base(int posX, int posY) {
+		this();
+		this.posicion.actualizarPosicion(posX, posY);
+	}
 	public static void InstanciarBases(Base[] bases) {
 		//Se instancian las 6 ciudades del vector de ciudades
 		int posX=40;
@@ -23,10 +30,9 @@ public class Base {
 		int DistanciaEntreBases=220;
 		
 		//En este FOR se setean las posiciones en la pantalla de todas las ciudades
-		for(int i = 1; i <= bases.length;i++) {
-			bases[i] = new Base();
-			bases[i].posicion.actualizarPosicion(posX, posY);
-			
+
+		for(int i = 1; i < bases.length;i++) {
+			bases[i] = new Base(posX,posY);
 			//Aumento la posicion para la ciudad siguiente
 			posX += DistanciaEntreBases;
 			
@@ -39,7 +45,7 @@ public class Base {
 				bases[i].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[i].posicion));
 			}
 	}
-		
+
 }
 
 	public int getCantMisiles() {

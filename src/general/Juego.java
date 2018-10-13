@@ -1,10 +1,7 @@
 package general;
 
 public class Juego {
-	private static Juego juego = new Juego();
-	private static int nivelActual;
 	private static TablaDePuntajes tablaDePuntajes;
-	private static PuntajeJugador puntaje;
 	
 	/*CONSTRUCTOR
 	*
@@ -12,12 +9,6 @@ public class Juego {
 	* 
 	* 
 	*/
-	private Juego() {
-		nivelActual = new Integer(1);
-		//tablaDePuntajes = archivo?
-		puntaje = new PuntajeJugador();
-	}
-
 
 	/*METODO MAIN
 	*
@@ -25,15 +16,16 @@ public class Juego {
 	*
 	*/
 	public static void main(String args[]) throws InterruptedException {
-		Nivel nivel = new Nivel();
-		while(nivel.getPerdio()) {
-			nivel = new Nivel();
+		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
+		Oleada.DeterminarArregloDeMisiles();
+		while(!nivel.Perdio()) 
+		{
+			nivel.gestionarNivel();
 			nivel.loopDelNivel();
 		}
 		terminarJuego();
 		TablaDePuntajes.actualizarTablaDePuntajes(PuntajeJugador.getScore(), PuntajeJugador.getNombre());
 	}
-	
 	/*METODO TERMINAR
 	 * Pensado para guardar todo lo que se tenga que guardar
 	 * Imprimir game over
@@ -42,10 +34,10 @@ public class Juego {
 		/* Guarda los puntajes en la tabla de puntajes */ /*Falta Pasarle todos los argumentos que necesita*/
 		tablaDePuntajes.actualizarTablaDePuntajes();
 		/* Imprimer Game Over */
-		System.out.println("Game Over prro");
+		System.out.println("Game Over");
 	}
-	
 
+<<<<<<< HEAD
 	public static int getNivelActual() {
 		return nivelActual;
 	}
@@ -56,4 +48,6 @@ public class Juego {
 	public void Salir() {
 		
 	}
+=======
+>>>>>>> branch 'Nico' of https://github.com/kleinher/Missile-Command.git
 }

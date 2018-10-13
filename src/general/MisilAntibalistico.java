@@ -5,12 +5,15 @@ import java.util.LinkedList;
 import enemigos.Misiles;
 
 public class MisilAntibalistico extends Misiles{
+
 /*error!!!!! Fijense si saben como se soluciona **************************/
 	
 		MisilAntibalistico(Posicion pos){
+		super();
 		determinarInicio(pos);
-	}
+		}
 
+	/*variable que dice que exploto o no*/
 	private boolean exploto;
 	public boolean isExploto() {
 		return exploto;
@@ -26,7 +29,12 @@ public class MisilAntibalistico extends Misiles{
 		Area = area;
 	}
 	private AreaDeExplosion Area;
-	
+
+	public void mover() {
+		//implementar mover porque es inverso al resto de los misiles
+		
+	}
+
 	@Override
 	public void destruccion() {
 		// TODO Auto-generated method stub
