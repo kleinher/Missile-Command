@@ -1,9 +1,12 @@
 package general;
 
-public class Explosiones {
+public class Explosion {
 	private Posicion posicionActual;
 	private int radio;
-
+	public Explosion() {
+		posicionActual = new Posicion();
+		this.radio=20;
+	}
 	public Posicion getPosicionActual() {
 		return posicionActual;
 	}

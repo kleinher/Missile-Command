@@ -22,8 +22,8 @@ public abstract class Misiles extends Enemigo{
 		int movimientoY;
 		
 		//Calculo de los catetos x e y(desplazamiento en x e y)
-		distanciaX = this.PosicionInicial.getPosicionX() - this.PosicionObjetivo.getPosicionX();
-		distanciaY = this.PosicionInicial.getPosicionY() - this.PosicionObjetivo.getPosicionY();
+		distanciaX = this.posicionInicial.getPosicionX() - this.posicionObjetivo.getPosicionX();
+		distanciaY = this.posicionInicial.getPosicionY() - this.posicionObjetivo.getPosicionY();
 		
 		//Calculo de la hipotenusa(distancia)
 		distancia = Math.sqrt(Math.pow(distanciaX, 2) + Math.pow(distanciaY, 2));
@@ -41,8 +41,8 @@ public abstract class Misiles extends Enemigo{
 			movimientoX = ((-1)*movimientoX);
 		}
 		//Actualiza la posicion 
-		this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()+movimientoX,
-											   this.PosicionActual.getPosicionY()+movimientoY);
+		this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+movimientoX,
+											   this.posicionActual.getPosicionY()+movimientoY);
 	}
 	public void determinarObjetivo() {
 		int posicionGeneralObjetivo;
@@ -52,7 +52,7 @@ public abstract class Misiles extends Enemigo{
 		posicionGeneralObjetivo = (aleatorio.nextInt(10));
 		/*PosicionObjetivoX= a completar determinar objetivo************************************************************************* 
 		PosicionObjetivoY=*/
-		this.PosicionObjetivo.actualizarPosicion(posicionObjetivoX, posicionObjetivoY);		
+		this.posicionObjetivo.actualizarPosicion(posicionObjetivoX, posicionObjetivoY);		
 	}
 	/*Determina el inicio comenzando siempre en el inicio de la pantalla en la coordenada 'y', y de manera completamente aleatoria en la coordenada 'x'  */
 	public void determinarInicio() {
@@ -60,8 +60,8 @@ public abstract class Misiles extends Enemigo{
 		int aparicionEnY=0;
 		Random aleatorio = new Random();
 		aparicionEnX= (aleatorio.nextInt(525));
-		this.PosicionInicial.actualizarPosicion(aparicionEnX, aparicionEnY);
-		this.PosicionActual.actualizarPosicion(aparicionEnX, aparicionEnY);
+		this.posicionInicial.actualizarPosicion(aparicionEnX, aparicionEnY);
+		this.posicionActual.actualizarPosicion(aparicionEnX, aparicionEnY);
 	}
 	public void destruccion(){
 		

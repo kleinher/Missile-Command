@@ -8,6 +8,10 @@ public class Posicion {
 		this.posicionX = x;
 		this.posicionY = y;
 	}
+	public void actualizarPosicion(Posicion pos){
+		this.posicionX=pos.getPosicionX();
+		this.posicionY=pos.getPosicionY();
+	}
 	public Posicion(){
 		
 	}

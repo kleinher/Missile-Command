@@ -22,7 +22,7 @@ public class GestorDeNivel {
 
 	//Variables aliadas
 	private LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla;
-	private LinkedList<Explosiones> explosionesEnPantalla;
+	private LinkedList<Explosion> explosionesEnPantalla;
 	private Ciudad Ciudades[];
 	private Base Bases[];
 	
@@ -67,6 +67,7 @@ public class GestorDeNivel {
 	 * En este método se va a iterar todo el nivel, básicamente es el método principal del juego
 	 */
 	public void loopDelNivel() 
+
 		throws InterruptedException{
 		int tics = 0;
 		

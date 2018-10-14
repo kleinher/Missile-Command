@@ -16,6 +16,7 @@ public class Juego {
 	*
 	*/
 	public static void main(String args[]) throws InterruptedException {
+		PuntajeJugador puntajeJugador = PuntajeJugador.getPuntajeJugador();
 		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
 		Oleada.DeterminarArregloDeMisiles();
 		while(!nivel.Perdio()) 
