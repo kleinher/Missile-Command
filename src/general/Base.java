@@ -33,6 +33,7 @@ public class Base {
 	public Base(int posX, int posY) {
 		this();
 		this.posicion.actualizarPosicion(posX, posY);
+		this.listaMisilesAntibalisticos=new LinkedList<MisilAntibalistico>();
 	}
 
 	/**

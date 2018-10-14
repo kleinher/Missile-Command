@@ -5,7 +5,8 @@ public class Posicion {
 	private int posicionY;
 	
 	public Posicion(){
-		
+		this.posicionX=0;
+		this.posicionY=0;
 	}
 	public Posicion(Posicion pos){
 		this.posicionX=pos.getPosicionX();

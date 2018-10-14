@@ -67,11 +67,11 @@ public class Ciudad {
 	 * @return Retorna un booleano con la existencia o no de ciudades
 	 */
 	public static boolean hayCiudades(Ciudad[] ciudades) {
-		int indice = 0;
+		int indice = 1;
 		boolean hayCiudad = false;
 
 		// Recorro el vector de ciudades para comprobar si hay ciudades en pie
-		while (indice <= ciudades.length && !hayCiudad) {
+		while (indice < ciudades.length && !hayCiudad) {
 
 			// En caso de que se encuentre una ciudad viva actualizo
 			if (ciudades[indice].estaViva) {

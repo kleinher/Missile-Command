@@ -3,14 +3,12 @@ package general;
 import java.util.Scanner;
 
 public class PuntajeJugador extends TablaDePuntajes{
-	//Clase que implemente Singleton
-	private static PuntajeJugador puntajeJugador=new PuntajeJugador();
 	private Integer score;
 	private String nombre;
 	
 
 
-	private static int [] VDePuntajes= new int[3];
+	private static int [] VDePuntajes= new int[4];
 
 	public void actualizarScore(int puntos) {
 		score+=puntos;
