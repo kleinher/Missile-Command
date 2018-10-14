@@ -2,14 +2,14 @@ package general;
 
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.Set;
-import java.util.Vector;
 
+import enemigos.Avion;
 // Inicio1= de 0 a 175 / Inicio2 de 175 a 350 / inicio 3 de 350 a 525
 import enemigos.Enemigo;
 import enemigos.MisilBalistico;
 import enemigos.MisilCrucero;
 import enemigos.MisilCruceroInteligente;
+import enemigos.Satelite;
 
 public class Oleada {
 	static boolean[] VectorDeMisilesCrucerosPorNivel = new boolean[17];
@@ -56,11 +56,15 @@ public class Oleada {
 				if (VectorDeMisilesCrucerosPorNivel[NumeroDeNivel]) {
 					MisilCruceroInteligente MCI = new MisilCruceroInteligente();
 					oleadaEnemigos.add(MCI);
+					Avion Av= new Avion();
+					oleadaEnemigos.add(Av);
 				}
 				else 
 				{
 					MisilCrucero MC = new MisilCrucero();
 					oleadaEnemigos.add(MC);
+					Satelite Sat= new Satelite();
+					oleadaEnemigos.add(Sat);
 				}
 			}
 			

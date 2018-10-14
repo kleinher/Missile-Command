@@ -3,18 +3,23 @@ package general;
 import java.util.Scanner;
 
 public class PuntajeJugador extends TablaDePuntajes{
+	//Clase que implemente Singleton
+	private static PuntajeJugador puntajeJugador=new PuntajeJugador();
 	private Integer score;
-	private static String nombre;
-
-	public Integer getScore() {
-		return score;
+	private String nombre;
+	
+	public static PuntajeJugador getPuntajeJugador() {
+		return puntajeJugador;
 	}
 	public String getNombre() {
 		return nombre;
 	}
 
 	private static int [] VDePuntajes= new int[3];
-	
+
+	public static void actualizarScore(int puntos) {
+		PuntajeJugador.getPuntajeJugador().score+=puntos;
+	}
 	public PuntajeJugador() {
 		InicializarTablaDePuntajePorCadaEnemigo();
 		this.score = 0;
@@ -23,7 +28,8 @@ public class PuntajeJugador extends TablaDePuntajes{
 	/*LEER NOMBRE JUGADOR
 	 * Solicita en pantalla que se carga un nuevo jugador
 	 * */
-	public String leerNombre() {
+	public String leerNombre(){
+
 		Scanner in = new Scanner(System.in);
 		String nombre = new String();
 		

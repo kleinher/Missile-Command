@@ -8,15 +8,25 @@ import general.Juego;
 public class Bombardero extends Enemigo {
 
 	public void mover() {
-		if(this.PosicionInicial.getPosicionX()==525)
-			this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()-1,this.PosicionActual.getPosicionY());
-		else 
-			this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()+1, this.PosicionActual.getPosicionY());
-		if((this.PosicionActual.getPosicionX()==175)||(this.PosicionActual.getPosicionX()==350)){
-			//Reutilizo el metodo clonar para los misiles que se dividen
-			Misiles.clonar(this.PosicionActual);
+		if(this.posicionInicial.getPosicionX()==525) {
+			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()-1,this.posicionActual.getPosicionY());
+			if(this.posicionActual.getPosicionX()==0) {
+				GestorDeNivel.getGestorDeNivel().getEnemigosEnPantalla().remove(this);
+			}
+				
 		}
- 	}
+		else {
+			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+1, this.posicionActual.getPosicionY());
+			if(this.posicionActual.getPosicionX()==525) {
+				GestorDeNivel.getGestorDeNivel().getEnemigosEnPantalla().remove(this);
+			}
+		}
+		if((this.posicionActual.getPosicionX()==175)||(this.posicionActual.getPosicionX()==350)){
+			//Reutilizo el metodo clonar para los misiles que se dividen
+			Misiles.clonar(this.posicionActual);
+		}
+		this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+1, this.posicionActual.getPosicionY());
+	}
 	public void destruccion() {
 		
 	}
@@ -38,14 +48,14 @@ public class Bombardero extends Enemigo {
 		 * Genera un random de 0 a 1 para determinar el lado en el que sale(Coordenada x) izquierda o derecha de la pantalla eso lo seteo tanto en la posicion de inicio, como en la actual
 		 */
 		AparicionEnX = (aleatorio.nextInt(2)) * 525;
-		this.PosicionInicial.actualizarPosicion(AparicionEnX, AparicionEnY);
-		this.PosicionActual.actualizarPosicion(AparicionEnX, AparicionEnY);
+		this.posicionInicial.actualizarPosicion(AparicionEnX, AparicionEnY);
+		this.posicionActual.actualizarPosicion(AparicionEnX, AparicionEnY);
 
 		/* En Base al inicio determina la posicion de destino */
 		if (AparicionEnX == 525) {
-			this.PosicionObjetivo.actualizarPosicion(0, AparicionEnY);
+			this.posicionObjetivo.actualizarPosicion(0, AparicionEnY);
 		} else {
-			this.PosicionObjetivo.actualizarPosicion(525, AparicionEnY);
+			this.posicionObjetivo.actualizarPosicion(525, AparicionEnY);
 		}
 	}
 

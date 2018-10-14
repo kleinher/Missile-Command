@@ -1,19 +1,30 @@
 package enemigos;
 import java.util.Iterator;
 import java.util.LinkedList;
-
+import general.Explosion;
 import general.Posicion;
 public abstract class Enemigo {
-	protected Posicion PosicionInicial;
-	protected Posicion PosicionObjetivo;
-	protected Posicion PosicionActual;
+	protected int puntos;
+	protected Posicion posicionInicial;
+	protected Posicion posicionObjetivo;
+	protected Posicion posicionActual;
 	protected int Velocidad=1;
 	//protected img Imagen;
 	
 	/*Variables Abstractas que van a implementar tanto bombardero como Misiles*/
 
 	public abstract void mover();
-	public void destruccion();
+
+	public void destruccion(LinkedList<Explosion> listaExplocionesEnPantalla,
+							LinkedList<Enemigo> enemigos)
+	{
+		PuntajeJugador.
+		//Elimino el misil de la pantalla
+		enemigos.remove(this);
+		Explosion nuevaExplosion = new Explosion();
+		nuevaExplosion.getPosicionActual().actualizarPosicion(this.posicionActual);
+	}
+
 	
 	public static void lanzarEnemigos(LinkedList<Enemigo> auxOleada, LinkedList<Enemigo> EnemigosEnPantalla) {
 		//Agrego los enemigos a la lista enemigosEnPantalla
@@ -22,22 +33,25 @@ public abstract class Enemigo {
 		}
 	}
 	public Posicion getPosicionInicial() {
-		return PosicionInicial;
+		return posicionInicial;
 	}
 	public void setPosicionInicial(Posicion posicionInicial) {
-		PosicionInicial = posicionInicial;
+
+		this.posicionInicial = posicionInicial;
 	}
 	public Posicion getPosicionObjetivo() {
-		return PosicionObjetivo;
+		return posicionObjetivo;
 	}
 	public void setPosicionObjetivo(Posicion posicionObjetivo) {
-		PosicionObjetivo = posicionObjetivo;
+
+		this.posicionObjetivo = posicionObjetivo;
 	}
 	public Posicion getPosicionActual() {
-		return PosicionActual;
+		return posicionActual;
 	}
 	public void setPosicionActual(Posicion posicionActual) {
-		PosicionActual = posicionActual;
+
+		this.posicionActual = posicionActual;
 	}
 
 }

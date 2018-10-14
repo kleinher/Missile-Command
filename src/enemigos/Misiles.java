@@ -22,8 +22,8 @@ public abstract class Misiles extends Enemigo{
 		int movimientoY;
 		
 		//Calculo de los catetos x e y(desplazamiento en x e y)
-		distanciaX = this.PosicionInicial.getPosicionX() - this.PosicionObjetivo.getPosicionX();
-		distanciaY = this.PosicionInicial.getPosicionY() - this.PosicionObjetivo.getPosicionY();
+		distanciaX = this.posicionInicial.getPosicionX() - this.posicionObjetivo.getPosicionX();
+		distanciaY = this.posicionInicial.getPosicionY() - this.posicionObjetivo.getPosicionY();
 		
 		//Calculo de la hipotenusa(distancia)
 		distancia = Math.sqrt(Math.pow(distanciaX, 2) + Math.pow(distanciaY, 2));
@@ -41,14 +41,15 @@ public abstract class Misiles extends Enemigo{
 			movimientoX = ((-1)*movimientoX);
 		}
 		//Actualiza la posicion 
-		this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()+movimientoX,
-											   this.PosicionActual.getPosicionY()+movimientoY);
+
+		this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+movimientoX,
+											   this.posicionActual.getPosicionY()+movimientoY);
 		//Clonar misil si llega a la mitad del mapa
-		if(this.PosicionActual.getPosicionY()==210) {
+		if(this.posicionActual.getPosicionY()==210) {
 			Random aleatorio = new Random();
 			int ProbabilidadDeClonarse= (aleatorio.nextInt(4));
 			while(ProbabilidadDeClonarse==1) {
-				clonar(this.PosicionActual);
+				clonar(this.posicionActual);
 			}
 		}
 
@@ -60,11 +61,13 @@ public abstract class Misiles extends Enemigo{
 		int CantMisilesClonados= (1+aleatorio.nextInt(4));
 		while(CantMisilesClonados>0) {
 			MisilBalistico nuevoEnem= new MisilBalistico(); 
-				nuevoEnem.PosicionInicial.actualizarPosicion(Pos.getPosicionX(), Pos.getPosicionY());
-				nuevoEnem.PosicionActual.actualizarPosicion(Pos.getPosicionX(),Pos.getPosicionY());
+				nuevoEnem.posicionInicial.actualizarPosicion(Pos.getPosicionX(), Pos.getPosicionY());
+				nuevoEnem.posicionActual.actualizarPosicion(Pos.getPosicionX(),Pos.getPosicionY());
 				GestorDeNivel.getGestorDeNivel().getEnemigosEnPantalla().add(nuevoEnem);
 				CantMisilesClonados--;
 			}
+		this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+movimientoX,
+											   this.posicionActual.getPosicionY()+movimientoY);
 	}
 	/*Determina El objetivo de cada misil de manera aleatoria*/
 	public void determinarObjetivo() {
@@ -73,9 +76,10 @@ public abstract class Misiles extends Enemigo{
 		int posicionObjetivoY;
 		Random aleatorio = new Random();
 		posicionGeneralObjetivo = (aleatorio.nextInt(10));
+
 		posicionObjetivoX = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionX();
 		posicionObjetivoY = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionY();
-		this.PosicionObjetivo.actualizarPosicion(posicionObjetivoX, posicionObjetivoY);	
+		this.posicionObjetivo.actualizarPosicion(posicionObjetivoX, posicionObjetivoY);	
 	}
 	
 	/*Determina el inicio comenzando siempre en el inicio de la pantalla en la coordenada 'y', y de manera completamente aleatoria en la coordenada 'x'  */
@@ -84,8 +88,8 @@ public abstract class Misiles extends Enemigo{
 		int aparicionEnY=0;
 		Random aleatorio = new Random();
 		aparicionEnX= (aleatorio.nextInt(525));
-		this.PosicionInicial.actualizarPosicion(aparicionEnX, aparicionEnY);
-		this.PosicionActual.actualizarPosicion(aparicionEnX, aparicionEnY);
+		this.posicionInicial.actualizarPosicion(aparicionEnX, aparicionEnY);
+		this.posicionActual.actualizarPosicion(aparicionEnX, aparicionEnY);
 	}
 	public void destruccion(){
 

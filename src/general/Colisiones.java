@@ -11,7 +11,7 @@ public class Colisiones {
 	 * Parametros: Enemigos, Misiles aliados, Ciudades, Bases
 	 */
 	public static void comprobarColision(LinkedList<Enemigo> enemigos,
-			LinkedList<Explosiones> listaExplocionesEnPantalla, Ciudad[] ciudades, Base[] bases) {
+			LinkedList<Explosion> listaExplocionesEnPantalla, Ciudad[] ciudades, Base[] bases) {
 
 		// Recorro la lista de enemigos en pantalla
 		for (Iterator<Enemigo> i = enemigos.iterator(); i.hasNext();) {
@@ -19,19 +19,24 @@ public class Colisiones {
 			boolean explotoEnemigo = false;
 
 			// Primero busco colisiones con misiles antibalisticos
-			for (Iterator<Explosiones> j = listaExplocionesEnPantalla.iterator(); j.hasNext();) {
-				Explosiones explosionActual = j.next();
+			for (Iterator<Explosion> j = listaExplocionesEnPantalla.iterator(); j.hasNext();) {
+				Explosion explosionActual = j.next();
 				if (colisionEnemigosConExplosiones(explosionActual, enemigoAct)) {
 					// Cuando enemigo colisiona con explosion destruyo enemigo
-					enemigoAct.destruccion();
+					enemigoAct.destruccion(listaExplocionesEnPantalla,enemigos);
 					explotoEnemigo = true;
 				}
 			}
+			
+			//Si el enemigo ya colisiono con una explosion no me preocupo
 			if (!explotoEnemigo) {
+				
 				// Por cada enemigo verifico si llego a alguna de las bases o de las ciudades
 				if (enemigoAct.getPosicionActual().equals(enemigoAct.getPosicionObjetivo())) {
+					
+					//Si hay colision, destruyo base/ciudad y el misil enemigo
 					destruirObjetivo(enemigoAct.getPosicionActual(), ciudades, bases);
-					enemigoAct.destruccion();
+					enemigoAct.destruccion(listaExplocionesEnPantalla,enemigos);
 				}
 			}
 		}
@@ -41,6 +46,7 @@ public class Colisiones {
 	 * Cuando un misil enemigo llega a su objetivo, se destruye el objetivo
 	 * */
 	private static void destruirObjetivo(Posicion posicionActual, Ciudad[] ciudades, Base[] bases) {
+		
 		for(int i=1; i<ciudades.length;i++) {
 			if(ciudades[i].getPosicion().equals(posicionActual)) {
 				ciudades[i].destruccion();
@@ -54,7 +60,7 @@ public class Colisiones {
 		}
 	}
 
-	private static boolean colisionEnemigosConExplosiones(Explosiones explosionActual, Enemigo enemigoAct) {
+	private static boolean colisionEnemigosConExplosiones(Explosion explosionActual, Enemigo enemigoAct) {
 		/*
 		 * Si la distancia entre los dos puntos es menor al radio de explosion del
 		 * enemigo aliado => HAY COLISION
