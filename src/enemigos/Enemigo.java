@@ -25,13 +25,18 @@ public abstract class Enemigo {
 		nuevaExplosion.getPosicionActual().actualizarPosicion(this.posicionActual);
 	}
 
-	
+	/**
+	 * Este metodo lanza una oleada de enemigos
+	 * @param auxOleada	>Lista con los enemigos Restantes ??<<<<<<
+	 * @param EnemigosEnPantalla > Lista con Enemigos en pantalla
+	 */
 	public static void lanzarEnemigos(LinkedList<Enemigo> auxOleada, LinkedList<Enemigo> EnemigosEnPantalla) {
 		//Agrego los enemigos a la lista enemigosEnPantalla
 		for(Iterator<Enemigo> i= auxOleada.iterator(); i.hasNext();) {
 			EnemigosEnPantalla.add(i.next());
 		}
 	}
+	
 	public Posicion getPosicionInicial() {
 		return posicionInicial;
 	}

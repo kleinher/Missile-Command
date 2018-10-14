@@ -10,12 +10,20 @@ import enemigos.Enemigo;
 import enemigos.MisilBalistico;
 import enemigos.MisilCrucero;
 import enemigos.MisilCruceroInteligente;
-
+/**
+ * Esta clase representa a cada oleada dentro de la lista de Oleadas de cada nivel
+ * @author LosPi
+ *
+ */
 public class Oleada {
 	static boolean[] VectorDeMisilesCrucerosPorNivel = new boolean[17];
 	private LinkedList<Enemigo> ListaDeOleadasPorNivel;
 	
-	// Determina si hay enemigos en la lista de oleadas para agregar
+	
+	/**
+	 * Este metodo determina si hay enemigos en la liste de oleadas para agregarlos
+	 * @return Devuelve Verdadero si hay enemigos, Negativo en caso contrario
+	 */
 	public boolean hayEnemigos() { 
 		if (ListaDeOleadasPorNivel.isEmpty())
 			return false;
@@ -28,6 +36,11 @@ public class Oleada {
 	 * Metodo estatico de la clase Oleada
 	 * Parametro Enemigos: cada nodo de esta lista es una oleada.
 	 * */
+	/**
+	 * ---CREAR LISTA DE OLEADAS POR NIVEL--- Metodo estatico que crea la lista de Oleadas
+	 * @param Enemigos >>Cada nodo de esta lista es una oleada
+	 * @param NumeroDeNivel >>Numero de nivel
+	 */
 	public static void CrearListaDeOleadasPorNivel(LinkedList<LinkedList<Enemigo>> Enemigos, int NumeroDeNivel) {
 		Random aleatorio = new Random();
 		int oleada = 1;
@@ -69,7 +82,9 @@ public class Oleada {
 		}
 
 	}
-
+	/**
+	 *  ???????????????????????????????????????????????????????????????????????????
+	 */
 	public static void DeterminarArregloDeMisiles() {
 		VectorDeMisilesCrucerosPorNivel[3] = true;
 		VectorDeMisilesCrucerosPorNivel[4] = true;
