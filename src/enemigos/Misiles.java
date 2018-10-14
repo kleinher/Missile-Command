@@ -1,6 +1,8 @@
 package enemigos;
 
 import java.util.Random;
+
+import general.GestorDeNivel;
 import general.Posicion;
 public abstract class Misiles extends Enemigo{ 
 	private static Posicion[] posicionDeLasBasesYCiudades= new Posicion[8];
@@ -41,6 +43,28 @@ public abstract class Misiles extends Enemigo{
 		//Actualiza la posicion 
 		this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()+movimientoX,
 											   this.PosicionActual.getPosicionY()+movimientoY);
+		//Clonar misil si llega a la mitad del mapa
+		if(this.PosicionActual.getPosicionY()==210) {
+			Random aleatorio = new Random();
+			int ProbabilidadDeClonarse= (aleatorio.nextInt(4));
+			while(ProbabilidadDeClonarse==1) {
+				clonar(this.PosicionActual);
+			}
+		}
+
+	}
+	/** Clona de 1 a 4 enemigos (aleatoriamente) en la mitad del mapa
+	 * @param misiles */
+	public static void clonar(Posicion Pos) {
+		Random aleatorio = new Random();
+		int CantMisilesClonados= (1+aleatorio.nextInt(4));
+		while(CantMisilesClonados>0) {
+			MisilBalistico nuevoEnem= new MisilBalistico(); 
+				nuevoEnem.PosicionInicial.actualizarPosicion(Pos.getPosicionX(), Pos.getPosicionY());
+				nuevoEnem.PosicionActual.actualizarPosicion(Pos.getPosicionX(),Pos.getPosicionY());
+				GestorDeNivel.getGestorDeNivel().getEnemigosEnPantalla().add(nuevoEnem);
+				CantMisilesClonados--;
+			}
 	}
 	/*Determina El objetivo de cada misil de manera aleatoria*/
 	public void determinarObjetivo() {

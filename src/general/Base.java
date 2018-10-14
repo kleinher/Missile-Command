@@ -6,6 +6,7 @@ import java.util.Iterator;
 public class Base {
 	private Posicion posicion;
 	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
+	private boolean estaViva;
 
 	/*INSTANCIAR CIUDADES
 	 * este metodo setea todas las posiciones de las 3 Bases en la pantalla
@@ -63,6 +64,9 @@ public class Base {
 					posX+=55;
 				}
 				
+	}
+	public boolean isEstaViva() {
+		return estaViva;
 	}
 }
 

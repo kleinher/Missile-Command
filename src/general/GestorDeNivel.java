@@ -12,10 +12,6 @@ public class GestorDeNivel {
 	private boolean Perdio;
 	private int NivelActual;
 	
-	public int getNivelActual() {
-		return NivelActual;
-	}
-
 	//Variables enemigas
 	private LinkedList<Enemigo> EnemigosEnPantalla;		/* Enemigos Mostrados y procesados durante el nivel*/
 	private LinkedList<LinkedList<Enemigo>> EnemigosEnEspera;		/* Enemigos en espera (Oleada) por ser procesados y aparecer en el nivel*/
@@ -134,7 +130,15 @@ public class GestorDeNivel {
 	public static GestorDeNivel getGestorDeNivel() {
 		return GestorDeNivel;
 	}
+	public LinkedList<Enemigo> getEnemigosEnPantalla() {
+		return EnemigosEnPantalla;
+	}
 	
+	public int getNivelActual() {
+		return NivelActual;
+	}
+
+
 }
 
 

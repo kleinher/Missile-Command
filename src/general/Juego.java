@@ -39,5 +39,4 @@ public class Juego {
 		System.out.println("Game Over");
 	}
 
-	prueba
 }

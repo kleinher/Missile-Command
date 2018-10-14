@@ -3,10 +3,7 @@ package general;
 
 import enemigos.Misiles;
 
-public class MisilAntibalistico extends Misiles{
-
-/*error!!!!! Fijense si saben como se soluciona **************************/
-	
+public class MisilAntibalistico extends Misiles{	
 		MisilAntibalistico(Posicion pos){
 		super();
 		determinarInicio(pos);

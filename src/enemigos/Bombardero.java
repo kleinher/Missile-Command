@@ -12,7 +12,11 @@ public class Bombardero extends Enemigo {
 			this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()-1,this.PosicionActual.getPosicionY());
 		else 
 			this.PosicionActual.actualizarPosicion(this.PosicionActual.getPosicionX()+1, this.PosicionActual.getPosicionY());
-	}
+		if((this.PosicionActual.getPosicionX()==175)||(this.PosicionActual.getPosicionX()==350)){
+			//Reutilizo el metodo clonar para los misiles que se dividen
+			Misiles.clonar(this.PosicionActual);
+		}
+ 	}
 	public void destruccion() {
 		
 	}
