@@ -14,6 +14,7 @@ public abstract class Enemigo {
 	/*Variables Abstractas que van a implementar tanto bombardero como Misiles*/
 
 	public abstract void mover();
+
 	public void destruccion(LinkedList<Explosion> listaExplocionesEnPantalla,
 							LinkedList<Enemigo> enemigos)
 	{
@@ -23,6 +24,7 @@ public abstract class Enemigo {
 		Explosion nuevaExplosion = new Explosion();
 		nuevaExplosion.getPosicionActual().actualizarPosicion(this.posicionActual);
 	}
+
 	
 	public static void lanzarEnemigos(LinkedList<Enemigo> auxOleada, LinkedList<Enemigo> EnemigosEnPantalla) {
 		//Agrego los enemigos a la lista enemigosEnPantalla

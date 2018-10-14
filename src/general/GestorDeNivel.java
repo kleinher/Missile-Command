@@ -95,7 +95,7 @@ public class GestorDeNivel {
 	    if(!Ciudad.hayCiudades(Ciudades)) {
 	    	this.Perdio = true;
 	    }
-		PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
+
 		// MostrarPuntaje (ParteGrafica)
 
 	}

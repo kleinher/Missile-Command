@@ -2,7 +2,6 @@ package general;
 
 public class Ciudad {
 	private Posicion posicion = new Posicion();
-	private boolean hayCiudades;
 	private boolean EstaViva;
 	
 	/*INSTANCIAR CIUDADES
@@ -59,11 +58,8 @@ public class Ciudad {
 	}
 
 	
-	public void sethayCiudades(boolean hayCiudades) {
-		
-		this.hayCiudades = hayCiudades;
-	}
 	public void destruccion() {
+
 		// TODO Auto-generated method stub
 		
 	}
