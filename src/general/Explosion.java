@@ -1,6 +1,9 @@
 package general;
 
-public class Explosion {
+import taller2.grafico.Dibujable;
+import taller2.grafico.InformacionDibujable;
+
+public class Explosion implements Dibujable {
 	private Posicion posicionActual;
 	private int radio;
 	public Explosion() {
@@ -32,7 +35,10 @@ public class Explosion {
 		// TODO Auto-generated method stub
 		
 	}
-	
+	public InformacionDibujable getInformacionDibujable() {
+		InformacionDibujable dib= new InformacionDibujable(this.getPosicionActual().getPosicionX(), this.getPosicionActual().getPosicionY(), '+');
+		return dib;
+	}
 	
 	
 }

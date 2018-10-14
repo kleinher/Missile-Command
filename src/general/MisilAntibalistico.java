@@ -2,6 +2,7 @@ package general;
 
 
 import enemigos.Misiles;
+import taller2.grafico.InformacionDibujable;
 
 public class MisilAntibalistico extends Misiles{
 
@@ -47,5 +48,12 @@ public class MisilAntibalistico extends Misiles{
 	
 	public void determinarObjetivo(int X,int Y){
 		this.posicionObjetivo.actualizarPosicion(X, Y);
+	}
+	
+	@Override
+	public InformacionDibujable getInformacionDibujable() {
+		InformacionDibujable dib = new InformacionDibujable(this.getPosicionActual().getPosicionX(),
+				this.getPosicionActual().getPosicionY(), 'B');
+		return dib;
 	}
 }

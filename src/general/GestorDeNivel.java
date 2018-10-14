@@ -3,6 +3,7 @@ package general;
 import java.util.Iterator;
 import java.util.LinkedList;
 import enemigos.*;
+import taller2.modelo.Graficador;
 
 /**
  * Gestor de nivel se instancia en su misma clase para ser Singleton
@@ -124,6 +125,7 @@ public class GestorDeNivel {
 			// dibujar();
 			Thread.sleep(1000 / Dificultad);
 			tics++;
+			Graficador.refrescarDownTop(EnemigosEnPantalla, tics);
 		}
 		if (!Ciudad.hayCiudades(Ciudades)) {
 			this.Perdio = true;
@@ -145,7 +147,7 @@ public class GestorDeNivel {
 		for(int i = 1; i<4;i++) {
 			contadorBases+=Bases[i].getCantMisiles();
 		}
-		puntajeJugador.CalcularPuntajePorNivel(NivelActual, contadorBases, contadorCiudades);
+		puntajeJugador.CalcularPuntajePorNivel(this.getNivelActual(), contadorBases, contadorCiudades);
 		
 	}
 

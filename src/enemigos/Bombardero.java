@@ -1,28 +1,32 @@
 package enemigos;
+
 import java.util.Random;
 import general.GestorDeNivel;
 
-public class Bombardero extends Enemigo {
-	
+public abstract class Bombardero extends Enemigo {
+
 	public Bombardero() {
 		super();
-		this.puntos=150;
+		this.puntos = 150;
 	}
-	
+
 	public void mover() {
-		if(this.posicionInicial.getPosicionX()==525)
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()-1,this.posicionActual.getPosicionY());
-		else 
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+1, this.posicionActual.getPosicionY());
+		if (this.posicionInicial.getPosicionX() == 525)
+			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX() - 1,
+					this.posicionActual.getPosicionY());
+		else
+			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX() + 1,
+					this.posicionActual.getPosicionY());
 	}
-	/*Determina la posicion inicial del borbardero, y su posicion de destino*/
+
+	/* Determina la posicion inicial del borbardero, y su posicion de destino */
 	public void determinarRecorrido() {
 		int AparicionEnX;
 		int AparicionEnY;
 		Random aleatorio = new Random();
-		if (GestorDeNivel.getGestorDeNivel().getNivelActual()<5) {
-			/*Determina una posicion random de */
-			AparicionEnY = (40+aleatorio.nextInt(121));
+		if (GestorDeNivel.getGestorDeNivel().getNivelActual() < 5) {
+			/* Determina una posicion random de */
+			AparicionEnY = (40 + aleatorio.nextInt(121));
 		} else {/*
 				 * Determina Una posicion random (mas Abajo) que la anterior para aumentar la
 				 * dificultad
@@ -30,7 +34,9 @@ public class Bombardero extends Enemigo {
 			AparicionEnY = (160 + aleatorio.nextInt(160));
 		}
 		/*
-		 * Genera un random de 0 a 1 para determinar el lado en el que sale(Coordenada x) izquierda o derecha de la pantalla eso lo seteo tanto en la posicion de inicio, como en la actual
+		 * Genera un random de 0 a 1 para determinar el lado en el que sale(Coordenada
+		 * x) izquierda o derecha de la pantalla eso lo seteo tanto en la posicion de
+		 * inicio, como en la actual
 		 */
 		AparicionEnX = (aleatorio.nextInt(2)) * 525;
 		this.posicionInicial.actualizarPosicion(AparicionEnX, AparicionEnY);

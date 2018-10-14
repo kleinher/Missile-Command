@@ -1,6 +1,10 @@
 package general;
 
 import java.util.LinkedList;
+
+import taller2.grafico.Dibujable;
+import taller2.grafico.InformacionDibujable;
+
 import java.util.Iterator;
 
 /**
@@ -10,7 +14,7 @@ import java.util.Iterator;
  * @author LosPi
  *
  */
-public class Base {
+public class Base implements Dibujable {
 	private Posicion posicion;
 	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
 	private boolean estaViva;
@@ -106,5 +110,11 @@ public class Base {
 
 	public void destruccion() {
 		this.estaViva=false;
+	}
+
+	@Override
+	public InformacionDibujable getInformacionDibujable() {
+		InformacionDibujable dib= new InformacionDibujable(this.getPosicion().getPosicionX(), this.getPosicion().getPosicionY(), '+');
+		return dib;
 	}
 }

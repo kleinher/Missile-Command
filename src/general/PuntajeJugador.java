@@ -23,9 +23,10 @@ public class PuntajeJugador extends TablaDePuntajes{
 	public  Integer getScore() {
 		return score;
 	}
-	/*LEER NOMBRE JUGADOR
+	/**
 	 * Solicita en pantalla que se carga un nuevo jugador
-	 * */
+	 * @return Retorna el nombre leido por pantalla
+	 */
 	public String leerNombre(){
 
 		Scanner in = new Scanner(System.in);
@@ -33,6 +34,7 @@ public class PuntajeJugador extends TablaDePuntajes{
 		
 		System.out.println("Jugador: ");
 		nombre = in.nextLine();
+		in.close();
 		return nombre;
 	}
 	
@@ -47,7 +49,12 @@ public class PuntajeJugador extends TablaDePuntajes{
 		//Puntaje por ciudades vivas
 		VDePuntajes[3]=100;
 	}
-	
+	/**
+	 * 
+	 * @param NivelAct
+	 * @param misilesAliadosSinU
+	 * @param ciuVi
+	 */
 	public void CalcularPuntajePorNivel(int NivelAct, int misilesAliadosSinU, int ciuVi) {
 		int MultiplicadorPorNivel=1;
 		if(NivelAct>2) {
