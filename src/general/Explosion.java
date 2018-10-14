@@ -7,9 +7,14 @@ public class Explosion {
 		posicionActual = new Posicion();
 		this.radio=20;
 	}
+	public Explosion(Posicion pos){
+		this.posicionActual=new Posicion(pos);
+		this.radio=20;
+	}
 	public Posicion getPosicionActual() {
 		return posicionActual;
 	}
+	
 
 	public void setPosicionActual(Posicion posicionActual) {
 		this.posicionActual = posicionActual;

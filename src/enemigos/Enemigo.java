@@ -9,21 +9,29 @@ public abstract class Enemigo {
 	protected Posicion posicionInicial;
 	protected Posicion posicionObjetivo;
 	protected Posicion posicionActual;
-	protected int Velocidad=1;
 	//protected img Imagen;
 	
 	/*Variables Abstractas que van a implementar tanto bombardero como Misiles*/
 
 	public abstract void mover();
-
+	public Enemigo () {
+		this.puntos=25;
+		this.posicionActual=new Posicion();
+		this.posicionInicial= new Posicion();
+		this.posicionObjetivo=new Posicion();
+	}
 	public void destruccion(LinkedList<Explosion> listaExplocionesEnPantalla,
 							LinkedList<Enemigo> enemigos)
 	{
-		GestorDeNivel.getGestorDeNivel().getPuntajeJugador().actualizarScore(25);
+		//sumo el puntaje por destruir misiles enemigos en tiempo real
+		GestorDeNivel.getGestorDeNivel().getPuntajeJugador().actualizarScore(this.puntos);
+		
 		//Elimino el misil de la pantalla
 		enemigos.remove(this);
-		Explosion nuevaExplosion = new Explosion();
-		nuevaExplosion.getPosicionActual().actualizarPosicion(this.posicionActual);
+		
+		//creo una nueva explosion y la agrego a la lsita de explosiones en pantalla
+		Explosion nuevaExplosion = new Explosion(this.posicionActual);
+		listaExplocionesEnPantalla.add(nuevaExplosion);
 	}
 
 	/**

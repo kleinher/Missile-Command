@@ -1,20 +1,19 @@
 package enemigos;
-
 import java.util.Random;
-
 import general.GestorDeNivel;
-import general.Juego;
 
 public class Bombardero extends Enemigo {
-
+	
+	public Bombardero() {
+		super();
+		this.puntos=150;
+	}
+	
 	public void mover() {
 		if(this.posicionInicial.getPosicionX()==525)
 			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()-1,this.posicionActual.getPosicionY());
 		else 
 			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+1, this.posicionActual.getPosicionY());
-	}
-	public void destruccion() {
-		
 	}
 	/*Determina la posicion inicial del borbardero, y su posicion de destino*/
 	public void determinarRecorrido() {

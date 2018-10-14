@@ -4,6 +4,13 @@ public class Posicion {
 	private int posicionX;
 	private int posicionY;
 	
+	public Posicion(){
+		
+	}
+	public Posicion(Posicion pos){
+		this.posicionX=pos.getPosicionX();
+		this.posicionY=pos.getPosicionY();
+	}
 	public void actualizarPosicion(int x, int y){
 		this.posicionX = x;
 		this.posicionY = y;
@@ -12,9 +19,7 @@ public class Posicion {
 		this.posicionX=pos.getPosicionX();
 		this.posicionY=pos.getPosicionY();
 	}
-	public Posicion(){
-		
-	}
+
 	public Integer getPosicionX() {
 		return posicionX;
 	}
@@ -22,8 +27,8 @@ public class Posicion {
 		return posicionY;
 	}
 	public Posicion(Integer x, Integer y){
-		this.posicionX=posicionX;
-		this.posicionY=posicionY;
+		this.posicionX=x;
+		this.posicionY=x;
 	}
 	
 	/*Metodo equals para determinar si dos posiciones son iguales*/
