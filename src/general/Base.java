@@ -13,9 +13,11 @@ import java.util.Iterator;
 public class Base {
 	private Posicion posicion;
 	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
+	private boolean estaViva;
 
 	public Base() {
 		this.posicion = new Posicion();
+		this.estaViva=false;
 	}
 
 	/**
@@ -68,6 +70,10 @@ public class Base {
 
 	}
 
+	public Posicion getPosicion() {
+		return posicion;
+	}
+
 	public int getCantMisiles() {
 		return this.listaMisilesAntibalisticos.size();
 	}
@@ -78,7 +84,7 @@ public class Base {
 	 */
 	/**
 	 * ---DISPARAR--- 
-	 * Este metodo Estatico primero determina el objetivo (está "Harcodeado")
+	 * Este metodo Estatico primero determina el objetivo (estï¿½ "Harcodeado")
 	 * y luego agrega los misiles a la lista de misiles en pantalla
 	 * 
 	 * @param base >> La base desde la que se dispara
@@ -96,5 +102,9 @@ public class Base {
 			posX += 55;
 		}
 
+	}
+
+	public void destruccion() {
+		this.estaViva=false;
 	}
 }
