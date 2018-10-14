@@ -8,8 +8,7 @@ package general;
  *
  */
 public class Juego {
-	private static TablaDePuntajes tablaDePuntajes;
-
+	private static PuntajeJugador puntajeJugador= new PuntajeJugador();
 	/**
 	 * CONSTRUCTOR
 	 *
@@ -26,17 +25,16 @@ public class Juego {
 	 * @throws InterruptedException
 	 */
 	public static void main(String args[]) throws InterruptedException {
-		PuntajeJugador puntajeJugador = PuntajeJugador.getPuntajeJugador();
 		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
 		Oleada.DeterminarArregloDeMisiles();
 		while (!nivel.Perdio()) {
 			nivel.gestionarNivel();
-			nivel.loopDelNivel();
+			nivel.loopDelNivel(Juego.puntajeJugador);
 			// PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
 
 		}
 		terminarJuego();
-		TablaDePuntajes.actualizarTablaDePuntajes(PuntajeJugador.getScore(), PuntajeJugador.getNombre());
+		TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(), nivel.getPuntajeJugador().getNombre());
 	}
 
 	/**

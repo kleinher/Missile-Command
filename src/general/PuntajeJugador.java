@@ -8,22 +8,20 @@ public class PuntajeJugador extends TablaDePuntajes{
 	private Integer score;
 	private String nombre;
 	
-	public static PuntajeJugador getPuntajeJugador() {
-		return puntajeJugador;
-	}
-	public String getNombre() {
-		return nombre;
-	}
+
 
 	private static int [] VDePuntajes= new int[3];
 
-	public static void actualizarScore(int puntos) {
-		PuntajeJugador.getPuntajeJugador().score+=puntos;
+	public void actualizarScore(int puntos) {
+		score+=puntos;
 	}
 	public PuntajeJugador() {
 		InicializarTablaDePuntajePorCadaEnemigo();
 		this.score = 0;
 		//this.nombre = leerNombre();
+	}
+	public  Integer getScore() {
+		return score;
 	}
 	/*LEER NOMBRE JUGADOR
 	 * Solicita en pantalla que se carga un nuevo jugador
@@ -50,7 +48,7 @@ public class PuntajeJugador extends TablaDePuntajes{
 		VDePuntajes[3]=100;
 	}
 	
-	public void CalcularPuntajePorNivel(int NivelAct, int cantMisDest, int cantMisCruDest, int misilesAliadosSinU, int ciuVi) {
+	public void CalcularPuntajePorNivel(int NivelAct, int misilesAliadosSinU, int ciuVi) {
 		int MultiplicadorPorNivel=1;
 		if(NivelAct>2) {
 			switch (NivelAct) {
@@ -74,6 +72,12 @@ public class PuntajeJugador extends TablaDePuntajes{
 				break;
 				}
 		}
-		score += (MultiplicadorPorNivel*((VDePuntajes[0]*cantMisDest)+(VDePuntajes[1]*cantMisCruDest)+(VDePuntajes[2]*misilesAliadosSinU)+(VDePuntajes[3]*ciuVi)));
+		this.score += (MultiplicadorPorNivel*((VDePuntajes[2]*misilesAliadosSinU)+(VDePuntajes[3]*ciuVi)));
+	}
+	public PuntajeJugador getPuntajeJugador() {
+		return puntajeJugador;
+	}
+	public String getNombre() {
+		return nombre;
 	}
 }

@@ -41,11 +41,11 @@ public class MisilAntibalistico extends Misiles{
 	
 	//Determina la posicion inicial de cada misil, seteandolo en la posicion inicial de cada base
 	public void determinarInicio(Posicion pos) {
-		this.PosicionInicial.actualizarPosicion(pos.getPosicionX(),pos.getPosicionY());
-		this.PosicionActual.actualizarPosicion(pos.getPosicionX(),pos.getPosicionY());
+		this.posicionInicial.actualizarPosicion(pos.getPosicionX(),pos.getPosicionY());
+		this.posicionActual.actualizarPosicion(pos.getPosicionX(),pos.getPosicionY());
 	}
 	
 	public void determinarObjetivo(int X,int Y){
-		this.PosicionObjetivo.actualizarPosicion(X, Y);
+		this.posicionObjetivo.actualizarPosicion(X, Y);
 	}
 }

@@ -52,7 +52,7 @@ public abstract class Misiles extends Enemigo{
 
 		posicionObjetivoX = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionX();
 		posicionObjetivoY = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionY();
-		this.PosicionObjetivo.actualizarPosicion(posicionObjetivoX, posicionObjetivoY);	
+		this.posicionObjetivo.actualizarPosicion(posicionObjetivoX, posicionObjetivoY);	
 	}
 	
 	/*Determina el inicio comenzando siempre en el inicio de la pantalla en la coordenada 'y', y de manera completamente aleatoria en la coordenada 'x'  */

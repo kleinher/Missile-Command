@@ -2,6 +2,7 @@ package enemigos;
 import java.util.Iterator;
 import java.util.LinkedList;
 import general.Explosion;
+import general.GestorDeNivel;
 import general.Posicion;
 public abstract class Enemigo {
 	protected int puntos;
@@ -18,7 +19,7 @@ public abstract class Enemigo {
 	public void destruccion(LinkedList<Explosion> listaExplocionesEnPantalla,
 							LinkedList<Enemigo> enemigos)
 	{
-		PuntajeJugador.
+		GestorDeNivel.getGestorDeNivel().getPuntajeJugador().actualizarScore(25);
 		//Elimino el misil de la pantalla
 		enemigos.remove(this);
 		Explosion nuevaExplosion = new Explosion();

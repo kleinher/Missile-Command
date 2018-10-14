@@ -8,7 +8,7 @@ import enemigos.Enemigo;
 /**
  * Esta clase, a traves de sus metodos estaticos, se encarga de checkear en cada
  * 'tic' la existencia de colisiones, ya sea entre enemigos y areas de
- * explosión, como tambien entre los misiles enemigos y las ciudades/bases
+ * explosiï¿½n, como tambien entre los misiles enemigos y las ciudades/bases
  * 
  * @author UnPobreDesgraciado
  *

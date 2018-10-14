@@ -9,7 +9,7 @@ package general;
  */
 public class Ciudad {
 	private Posicion posicion = new Posicion();
-	private boolean EstaViva;
+	private boolean estaViva;
 
 	public Ciudad() {
 
@@ -74,7 +74,7 @@ public class Ciudad {
 		while (indice <= ciudades.length && !hayCiudad) {
 
 			// En caso de que se encuentre una ciudad viva actualizo
-			if (ciudades[indice].EstaViva) {
+			if (ciudades[indice].estaViva) {
 				hayCiudad = true;
 			}
 			indice++;
@@ -87,13 +87,11 @@ public class Ciudad {
 	 * @return Retorna el estado de existencia de una ciudad en particular
 	 */
 	public boolean estaViva() {
-		return EstaViva;
+		return estaViva;
 	}
 
 	public void destruccion() {
-
-		// TODO Auto-generated method stub
-
+		this.estaViva=false;
 	}
 
 	public Posicion getPosicion() {

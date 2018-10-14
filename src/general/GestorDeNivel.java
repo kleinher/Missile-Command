@@ -23,6 +23,9 @@ public class GestorDeNivel {
 	private int Dificultad;
 	private boolean Perdio;
 	private int NivelActual;
+	private PuntajeJugador  puntajeJugador;
+
+
 
 	/**
 	 * @return Devuelve el nivel actual
@@ -54,7 +57,7 @@ public class GestorDeNivel {
 	 * sus datos iniciales
 	 */
 	private GestorDeNivel() {
-
+		this.puntajeJugador = new PuntajeJugador();
 		this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
 		this.EnemigosEnPantalla = new LinkedList<Enemigo>();
 
@@ -97,7 +100,7 @@ public class GestorDeNivel {
 	 * 
 	 * @throws InterruptedException
 	 */
-	public void loopDelNivel()
+	public void loopDelNivel(PuntajeJugador puntajeJugador)
 
 			throws InterruptedException {
 		int tics = 0;
@@ -125,9 +128,25 @@ public class GestorDeNivel {
 		if (!Ciudad.hayCiudades(Ciudades)) {
 			this.Perdio = true;
 		}
+		
+		 contarPuntajes(puntajeJugador);
 
-		// MostrarPuntaje (ParteGrafica)
+	}
 
+	private void contarPuntajes(PuntajeJugador puntajeJugador) {
+		int contadorCiudades=0;
+		int contadorBases=0;
+		
+		for(int i = 1; i<7;i++) {
+			if(Ciudades[i].estaViva()) {
+				contadorCiudades++;
+			}
+		}
+		for(int i = 1; i<4;i++) {
+			contadorBases+=Bases[i].getCantMisiles();
+		}
+		puntajeJugador.CalcularPuntajePorNivel(NivelActual, contadorBases, contadorCiudades);
+		
 	}
 
 	/**
@@ -155,7 +174,7 @@ public class GestorDeNivel {
 
 	/**
 	 * 
-	 * @return Devuelve un booleano si perdio o no, en funión del estado de la
+	 * @return Devuelve un booleano si perdio o no, en funiï¿½n del estado de la
 	 *         partida
 	 */
 	public boolean Perdio() {
@@ -171,5 +190,7 @@ public class GestorDeNivel {
 	public static GestorDeNivel getGestorDeNivel() {
 		return GestorDeNivel;
 	}
-
+	public PuntajeJugador getPuntajeJugador() {
+		return puntajeJugador;
+	}
 }
