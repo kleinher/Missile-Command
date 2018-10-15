@@ -4,7 +4,8 @@ import java.util.LinkedList;
 import general.Explosion;
 import general.GestorDeNivel;
 import general.Posicion;
-public abstract class Enemigo {
+import taller2.grafico.Dibujable;
+public abstract class Enemigo implements Dibujable{
 	protected int puntos;
 	protected Posicion posicionInicial;
 	protected Posicion posicionObjetivo;

@@ -27,9 +27,9 @@ public class Juego {
 	 * @throws InterruptedException
 	 */
 	public static void main(String args[]) throws InterruptedException {
-		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
-		Oleada.DeterminarArregloDeMisiles();
 		Misiles.DeterminarPosicionesDeLasbases();
+		Oleada.DeterminarArregloDeMisiles();
+		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
 		
 		while (!nivel.Perdio()&& nivel.getNivelActual() != 17) {
 			nivel.gestionarNivel();

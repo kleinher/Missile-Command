@@ -51,7 +51,6 @@ public class GestorDeNivel {
 	private LinkedList<LinkedList<Enemigo>> EnemigosEnEspera;
 
 	// Variables aliadas
-
 	private LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla;
 	private LinkedList<Explosion> explosionesEnPantalla;
 	private Ciudad Ciudades[];
@@ -115,6 +114,7 @@ public class GestorDeNivel {
 	 * @throws InterruptedException
 	 */
 	public void loopDelNivel(PuntajeJugador puntajeJugador)
+
 			throws InterruptedException {
 		int tics = 0;
 
@@ -142,7 +142,7 @@ public class GestorDeNivel {
 			// dibujar();
 			//Thread.sleep(1000 / Dificultad);
 			tics++;
-			Graficador.refrescarTopDown(ActualizarListaDibujables(), delayMilis);
+			Graficador.refrescarTopDown(ActualizarListaDibujables(), 20);
 		}
 		if (!Ciudad.hayCiudades(Ciudades)) {
 			this.Perdio = true;
@@ -151,19 +151,40 @@ public class GestorDeNivel {
 		
 	}
 
+	/**
+	 * METODO QUE ACTUALIZA EN CADA TIC LA LISTA DE LOS ELEMENTOS DIBUJABLES
+	 * 
+	 * @return devuelve una lista de elementos dibujables
+	 */
 	private List<? extends Dibujable> ActualizarListaDibujables() {
-		List<? extends Dibujable> lista=new List<? extends Dibujable>();
-		/*Agrego los enemigos que est�n en pantalla*/
-		for(Iterator<Enemigo >i= EnemigosEnPantalla.iterator();i.hasNext();) {
-			
+		/* Creo una nueva lista con todo lo que sea dibujable */
+		List<Dibujable> listaDibujables = new LinkedList<Dibujable>();
+
+		/* Agrego los enemigos que están en pantalla */
+		for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
+			listaDibujables.add(i.next());
 		}
-		
-		for (Iterator<Enemigo> i = .iterator(); i.hasNext();) 
-		lista.add(this)
-		//= (List<? extends Dibujable>) new List<Object>();
-		// TODO Auto-generated method stub
-		return null;
+		/* Agrego las explosiones que estan en pantalla */
+		for (Iterator<Explosion> i = explosionesEnPantalla.iterator(); i.hasNext();) {
+			listaDibujables.add(i.next());
+		}
+		/* Agrego los misiles aliados que estan en pantalla */
+		for (Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) {
+			listaDibujables.add(i.next());
+		}
+		/* Agrego las ciudades y las bases*/
+		for(int i=1;i<Bases.length;i++) {
+			if(Bases[i].isEstaViva())
+				listaDibujables.add(Bases[i]);
+		}
+		for(int i=1;i<Ciudades.length;i++) {
+			if(Ciudades[i].estaViva())
+				listaDibujables.add(Ciudades[i]);
+		}
+		return listaDibujables;
 	}
+
+//
 
 	private void contarPuntajes(PuntajeJugador puntajeJugador) {
 		int contadorCiudades=0;
