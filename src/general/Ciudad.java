@@ -11,11 +11,12 @@ import taller2.grafico.InformacionDibujable;
  *
  */
 public class Ciudad implements Dibujable{
-	private Posicion posicion = new Posicion();
+	private Posicion posicion;
 	private boolean estaViva;
 
 	public Ciudad() {
-
+		this.estaViva=true;
+		this.posicion = new Posicion();
 	}
 
 	/**

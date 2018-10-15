@@ -21,7 +21,7 @@ public class Base implements Dibujable{
 
 	public Base() {
 		this.posicion = new Posicion();
-		this.estaViva=false;
+		this.estaViva=true;
 		this.listaMisilesAntibalisticos=new LinkedList<MisilAntibalistico>();
 	}
 
@@ -99,7 +99,7 @@ public class Base implements Dibujable{
 		int posX = 40, posY = 240;
 		if(!base.listaMisilesAntibalisticos.isEmpty()) {
 		
-		for (int i = 1; i <= 9; i++) {
+		for (int i = 1; i <= 3; i++) {
 			MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
 			aux.determinarObjetivo(posX, posY);
 			MisilesAliadosEnPantalla.add(aux);

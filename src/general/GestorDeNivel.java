@@ -23,7 +23,7 @@ import taller2.modelo.Graficador;
 
 public class GestorDeNivel {
 	//Delay para la clase graficador
-	final private int delayMilis=1000;
+	final private int delayMilis=5000;
 	
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 	// Variables de juego
@@ -64,7 +64,6 @@ public class GestorDeNivel {
 	 * sus datos iniciales
 	 */
 	private GestorDeNivel() {
-
 		this.puntajeJugador = new PuntajeJugador();
 		this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 		this.EnemigosEnPantalla = new LinkedList<Enemigo>();
@@ -113,9 +112,7 @@ public class GestorDeNivel {
 	 * 
 	 * @throws InterruptedException
 	 */
-	public void loopDelNivel(PuntajeJugador puntajeJugador)
-
-			throws InterruptedException {
+	public void loopDelNivel(PuntajeJugador puntajeJugador)throws InterruptedException {
 		int tics = 0;
 
 		// Lanzo la primer oleada de enemigos
@@ -142,7 +139,7 @@ public class GestorDeNivel {
 			// dibujar();
 			//Thread.sleep(1000 / Dificultad);
 			tics++;
-			Graficador.refrescarTopDown(ActualizarListaDibujables(), 20);
+			Graficador.refrescarTopDown(ActualizarListaDibujables(), delayMilis);
 		}
 		if (!Ciudad.hayCiudades(Ciudades)) {
 			this.Perdio = true;
@@ -156,7 +153,8 @@ public class GestorDeNivel {
 	 * 
 	 * @return devuelve una lista de elementos dibujables
 	 */
-	private List<? extends Dibujable> ActualizarListaDibujables() {
+	private List<Dibujable> ActualizarListaDibujables() {
+		
 		/* Creo una nueva lista con todo lo que sea dibujable */
 		List<Dibujable> listaDibujables = new LinkedList<Dibujable>();
 

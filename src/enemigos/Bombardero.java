@@ -2,6 +2,7 @@ package enemigos;
 import java.util.Random;
 
 import general.GestorDeNivel;
+import taller2.grafico.InformacionDibujable;
 
 public class Bombardero extends Enemigo{
 	
@@ -43,5 +44,11 @@ public class Bombardero extends Enemigo{
 		} else {
 			this.posicionObjetivo.actualizarPosicion(525, AparicionEnY);
 		}
+	}
+
+	@Override
+	public InformacionDibujable getInformacionDibujable() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
