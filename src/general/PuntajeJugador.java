@@ -72,9 +72,6 @@ public class PuntajeJugador extends TablaDePuntajes{
 		}
 		this.score += (MultiplicadorPorNivel*((VDePuntajes[2]*misilesAliadosSinU)+(VDePuntajes[3]*ciuVi)));
 	}
-	public PuntajeJugador getPuntajeJugador() {
-		return puntajeJugador;
-	}
 	public String getNombre() {
 		return nombre;
 	}

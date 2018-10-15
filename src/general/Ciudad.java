@@ -1,5 +1,8 @@
 package general;
 
+import taller2.grafico.Dibujable;
+import taller2.grafico.InformacionDibujable;
+
 /**
  * Esta Clase Representa cada una de las 6 Ciudades del juego, posee un metodo
  * estatico (InstanciarCiudades) que intancia dichas ciudades
@@ -7,7 +10,7 @@ package general;
  * @author eze96
  *
  */
-public class Ciudad {
+public class Ciudad implements Dibujable{
 	private Posicion posicion = new Posicion();
 	private boolean estaViva;
 
@@ -96,6 +99,12 @@ public class Ciudad {
 
 	public Posicion getPosicion() {
 		return posicion;
+	}
+
+	@Override
+	public InformacionDibujable getInformacionDibujable() {
+		
+		return null;
 	}
 
 }

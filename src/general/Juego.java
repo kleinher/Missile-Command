@@ -31,14 +31,14 @@ public class Juego {
 		Oleada.DeterminarArregloDeMisiles();
 		Misiles.DeterminarPosicionesDeLasbases();
 		
-		while (!nivel.Perdio()) {
+		while (!nivel.Perdio()&& nivel.getNivelActual() != 17) {
 			nivel.gestionarNivel();
 			nivel.loopDelNivel(Juego.puntajeJugador);
 			// PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
 
 		}
 		terminarJuego();
-		TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(), nivel.getPuntajeJugador().getNombre());
+		//TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(), nivel.getPuntajeJugador().getNombre());
 	}
 
 	/**

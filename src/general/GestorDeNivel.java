@@ -3,6 +3,7 @@ package general;
 import java.util.Iterator;
 import java.util.LinkedList;
 import enemigos.*;
+import taller2.modelo.Graficador;
 
 /**
  * Gestor de nivel se instancia en su misma clase para ser Singleton
@@ -57,6 +58,7 @@ public class GestorDeNivel {
 	 * sus datos iniciales
 	 */
 	private GestorDeNivel() {
+
 		this.puntajeJugador = new PuntajeJugador();
 		
 		this.EnemigosEnPantalla = new LinkedList<Enemigo>();
@@ -107,7 +109,6 @@ public class GestorDeNivel {
 	 * @throws InterruptedException
 	 */
 	public void loopDelNivel(PuntajeJugador puntajeJugador)
-
 			throws InterruptedException {
 		int tics = 0;
 
@@ -134,9 +135,8 @@ public class GestorDeNivel {
 		if (!Ciudad.hayCiudades(Ciudades)) {
 			this.Perdio = true;
 		}
+		 //contarPuntajes(puntajeJugador);
 		
-		 contarPuntajes(puntajeJugador);
-
 	}
 
 	private void contarPuntajes(PuntajeJugador puntajeJugador) {
