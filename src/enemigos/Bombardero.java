@@ -1,8 +1,9 @@
 package enemigos;
 import java.util.Random;
+
 import general.GestorDeNivel;
 
-public class Bombardero extends Enemigo {
+public class Bombardero extends Enemigo{
 	
 	public Bombardero() {
 		super();
@@ -43,5 +44,4 @@ public class Bombardero extends Enemigo {
 			this.posicionObjetivo.actualizarPosicion(525, AparicionEnY);
 		}
 	}
-
 }

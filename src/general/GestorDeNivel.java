@@ -51,6 +51,7 @@ public class GestorDeNivel {
 	private LinkedList<LinkedList<Enemigo>> EnemigosEnEspera;
 
 	// Variables aliadas
+
 	private LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla;
 	private LinkedList<Explosion> explosionesEnPantalla;
 	private Ciudad Ciudades[];
@@ -66,7 +67,7 @@ public class GestorDeNivel {
 	private GestorDeNivel() {
 
 		this.puntajeJugador = new PuntajeJugador();
-		
+		this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 		this.EnemigosEnPantalla = new LinkedList<Enemigo>();
 		
 		// Instancia las nueve ciudades
@@ -119,8 +120,13 @@ public class GestorDeNivel {
 
 		// Lanzo la primer oleada de enemigos
 		Enemigo.lanzarEnemigos(EnemigosEnEspera.poll(), EnemigosEnPantalla);
+		
 		// LANZAR MISILES ALIADOS HARDCODEADOS
-
+		Base.Disparar(Bases[1],MisilesAliadosEnPantalla);
+		Base.Disparar(Bases[2],MisilesAliadosEnPantalla);
+		Base.Disparar(Bases[3],MisilesAliadosEnPantalla);
+		
+		List<Dibujable> listaDibujables = new LinkedList<Dibujable>();
 		// Mientras hayan enemigos
 		while (!EnemigosEnEspera.isEmpty()) {
 
@@ -134,7 +140,7 @@ public class GestorDeNivel {
 			this.actualizarPosiciones();
 			Colisiones.comprobarColision(EnemigosEnPantalla, explosionesEnPantalla, Ciudades, Bases);
 			// dibujar();
-			Thread.sleep(1000 / Dificultad);
+			//Thread.sleep(1000 / Dificultad);
 			tics++;
 			Graficador.refrescarTopDown(ActualizarListaDibujables(), delayMilis);
 		}
@@ -147,7 +153,7 @@ public class GestorDeNivel {
 
 	private List<? extends Dibujable> ActualizarListaDibujables() {
 		List<? extends Dibujable> lista=new List<? extends Dibujable>();
-		/*Agrego los enemigos que están en pantalla*/
+		/*Agrego los enemigos que estï¿½n en pantalla*/
 		for(Iterator<Enemigo >i= EnemigosEnPantalla.iterator();i.hasNext();) {
 			
 		}
@@ -194,7 +200,7 @@ public class GestorDeNivel {
 		}
 
 		// ACTUALIZAR EXPLOSIONES
-
+		
 		// ACTUALIZAR ESTELA
 	}
 

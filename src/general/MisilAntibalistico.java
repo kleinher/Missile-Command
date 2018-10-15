@@ -2,14 +2,16 @@ package general;
 
 
 import enemigos.Misiles;
+import taller2.grafico.Dibujable;
+import taller2.grafico.InformacionDibujable;
 
-public class MisilAntibalistico extends Misiles{
+public class MisilAntibalistico extends Misiles implements Dibujable{
 
 /*error!!!!! Fijense si saben como se soluciona **************************/
 	
 		MisilAntibalistico(Posicion pos){
-		super();
-		determinarInicio(pos);
+			super();
+			determinarInicio(pos);
 		}
 
 	/*variable que dice que exploto o no*/
@@ -21,18 +23,14 @@ public class MisilAntibalistico extends Misiles{
 	public void setExploto(boolean exploto) {
 		this.exploto = exploto;
 	}
-	public AreaDeExplosion getArea() {
+	public Explosion getArea() {
 		return Area;
 	}
-	public void setArea(AreaDeExplosion area) {
+	public void setArea(Explosion area) {
 		Area = area;
 	}
-	private AreaDeExplosion Area;
+	private Explosion Area;
 
-	public void mover() {
-		//implementar mover porque es inverso al resto de los misiles
-		
-	}
 
 	@Override
 	public void destruccion() {
@@ -47,5 +45,11 @@ public class MisilAntibalistico extends Misiles{
 	
 	public void determinarObjetivo(int X,int Y){
 		this.posicionObjetivo.actualizarPosicion(X, Y);
+	}
+
+	@Override
+	public InformacionDibujable getInformacionDibujable() {
+		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , '+');
+		return info;
 	}
 }

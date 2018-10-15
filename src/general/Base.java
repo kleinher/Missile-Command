@@ -1,6 +1,10 @@
 package general;
 
 import java.util.LinkedList;
+
+import taller2.grafico.Dibujable;
+import taller2.grafico.InformacionDibujable;
+
 import java.util.Iterator;
 
 /**
@@ -10,14 +14,15 @@ import java.util.Iterator;
  * @author LosPi
  *
  */
-public class Base {
+public class Base implements Dibujable{
 	private Posicion posicion;
 	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
 	private boolean estaViva;
 
 	public Base() {
 		this.posicion = new Posicion();
-		this.setEstaViva(false);
+		this.estaViva=false;
+		this.listaMisilesAntibalisticos=new LinkedList<MisilAntibalistico>();
 	}
 
 	/**
@@ -33,7 +38,6 @@ public class Base {
 	public Base(int posX, int posY) {
 		this();
 		this.posicion.actualizarPosicion(posX, posY);
-		this.listaMisilesAntibalisticos=new LinkedList<MisilAntibalistico>();
 	}
 
 	/**
@@ -64,7 +68,7 @@ public class Base {
 
 			// Agrego 15 MisilesAntibalisticos a la lista de misiles antibalisticos de cada
 			// base
-			for (int j = 0; j == 15; j++) {
+			for (int j = 0; j < 15; j++) {
 				bases[i].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[i].posicion));
 			}
 		}
@@ -89,20 +93,21 @@ public class Base {
 	 * y luego agrega los misiles a la lista de misiles en pantalla
 	 * 
 	 * @param base >> La base desde la que se dispara
-	 * @param listaMisilesAntibalisticosEnPantalla >> El misil que se va a disparar
+	 * @param MisilesAliadosEnPantalla >> El misil que se va a disparar
 	 */
-	public static void Disparar(Base base, LinkedList<MisilAntibalistico> listaMisilesAntibalisticosEnPantalla) {
+	public static void Disparar(Base base, LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla) {
 		int posX = 40, posY = 240;
 		Iterator<MisilAntibalistico> Iter = base.listaMisilesAntibalisticos.iterator();
+		if(!base.listaMisilesAntibalisticos.isEmpty()) {
 		MisilAntibalistico aux = base.listaMisilesAntibalisticos.element();
 		for (int i = 1; i <= 9; i++) {
 			aux.determinarObjetivo(posX, posY);
-			listaMisilesAntibalisticosEnPantalla.add(aux);
+			MisilesAliadosEnPantalla.add(aux);
 			Iter.remove();
 			aux = Iter.next();
 			posX += 55;
 		}
-
+		}
 	}
 
 	public void destruccion() {
@@ -115,5 +120,11 @@ public class Base {
 
 	public void setEstaViva(boolean estaViva) {
 		this.estaViva = estaViva;
+	}
+
+	@Override
+	public InformacionDibujable getInformacionDibujable() {
+		InformacionDibujable info = new InformacionDibujable(this.posicion.getPosicionX(),this.posicion.getPosicionY() , 'B');
+		return info;
 	}
 }
