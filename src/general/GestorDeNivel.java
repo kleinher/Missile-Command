@@ -2,7 +2,10 @@ package general;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
+
 import enemigos.*;
+import taller2.grafico.Dibujable;
 import taller2.modelo.Graficador;
 
 /**
@@ -45,6 +48,7 @@ public class GestorDeNivel {
 	private LinkedList<LinkedList<Enemigo>> EnemigosEnEspera;
 
 	// Variables aliadas
+
 	private LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla;
 	private LinkedList<Explosion> explosionesEnPantalla;
 	private Ciudad Ciudades[];
@@ -60,7 +64,7 @@ public class GestorDeNivel {
 	private GestorDeNivel() {
 
 		this.puntajeJugador = new PuntajeJugador();
-		
+		this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 		this.EnemigosEnPantalla = new LinkedList<Enemigo>();
 		
 		// Instancia las nueve ciudades
@@ -114,8 +118,13 @@ public class GestorDeNivel {
 
 		// Lanzo la primer oleada de enemigos
 		Enemigo.lanzarEnemigos(EnemigosEnEspera.poll(), EnemigosEnPantalla);
+		
 		// LANZAR MISILES ALIADOS HARDCODEADOS
-
+		Base.Disparar(Bases[1],MisilesAliadosEnPantalla);
+		Base.Disparar(Bases[2],MisilesAliadosEnPantalla);
+		Base.Disparar(Bases[3],MisilesAliadosEnPantalla);
+		
+		List<Dibujable> listaDibujables = new LinkedList<Dibujable>();
 		// Mientras hayan enemigos
 		while (!EnemigosEnEspera.isEmpty()) {
 
@@ -129,8 +138,10 @@ public class GestorDeNivel {
 			this.actualizarPosiciones();
 			Colisiones.comprobarColision(EnemigosEnPantalla, explosionesEnPantalla, Ciudades, Bases);
 			// dibujar();
-			Thread.sleep(1000 / Dificultad);
+			//Thread.sleep(1000 / Dificultad);
 			tics++;
+			;
+			Graficador.refrescarTopDown(listaDibujables, (1000/20));
 		}
 		if (!Ciudad.hayCiudades(Ciudades)) {
 			this.Perdio = true;

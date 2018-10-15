@@ -22,6 +22,7 @@ public class Base implements Dibujable{
 	public Base() {
 		this.posicion = new Posicion();
 		this.estaViva=false;
+		this.listaMisilesAntibalisticos=new LinkedList<MisilAntibalistico>();
 	}
 
 	/**
@@ -37,7 +38,6 @@ public class Base implements Dibujable{
 	public Base(int posX, int posY) {
 		this();
 		this.posicion.actualizarPosicion(posX, posY);
-		this.listaMisilesAntibalisticos=new LinkedList<MisilAntibalistico>();
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class Base implements Dibujable{
 
 			// Agrego 15 MisilesAntibalisticos a la lista de misiles antibalisticos de cada
 			// base
-			for (int j = 0; j == 15; j++) {
+			for (int j = 0; j < 15; j++) {
 				bases[i].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[i].posicion));
 			}
 		}
@@ -93,20 +93,21 @@ public class Base implements Dibujable{
 	 * y luego agrega los misiles a la lista de misiles en pantalla
 	 * 
 	 * @param base >> La base desde la que se dispara
-	 * @param listaMisilesAntibalisticosEnPantalla >> El misil que se va a disparar
+	 * @param MisilesAliadosEnPantalla >> El misil que se va a disparar
 	 */
-	public static void Disparar(Base base, LinkedList<MisilAntibalistico> listaMisilesAntibalisticosEnPantalla) {
+	public static void Disparar(Base base, LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla) {
 		int posX = 40, posY = 240;
 		Iterator<MisilAntibalistico> Iter = base.listaMisilesAntibalisticos.iterator();
+		if(!base.listaMisilesAntibalisticos.isEmpty()) {
 		MisilAntibalistico aux = base.listaMisilesAntibalisticos.element();
 		for (int i = 1; i <= 9; i++) {
 			aux.determinarObjetivo(posX, posY);
-			listaMisilesAntibalisticosEnPantalla.add(aux);
+			MisilesAliadosEnPantalla.add(aux);
 			Iter.remove();
 			aux = Iter.next();
 			posX += 55;
 		}
-
+		}
 	}
 
 	public void destruccion() {
