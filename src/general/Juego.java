@@ -13,6 +13,7 @@ public class Juego {
 	private static PuntajeJugador puntajeJugador= new PuntajeJugador();
 	/**
 	 * CONSTRUCTOR
+
 	 *
 	 * se inicializan todas las variables
 	 * 
@@ -27,6 +28,7 @@ public class Juego {
 	 * @throws InterruptedException
 	 */
 	public static void main(String args[]) throws InterruptedException {
+
 		Misiles.DeterminarPosicionesDeLasbases();
 		Oleada.DeterminarArregloDeMisiles();
 		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();

@@ -23,7 +23,7 @@ import taller2.modelo.Graficador;
 
 public class GestorDeNivel {
 	//Delay para la clase graficador
-	final private int delayMilis=5000;
+	final private int delayMilis=1000;
 	
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 	// Variables de juego
@@ -64,6 +64,7 @@ public class GestorDeNivel {
 	 * sus datos iniciales
 	 */
 	private GestorDeNivel() {
+		this.NivelActual=1;
 		this.puntajeJugador = new PuntajeJugador();
 		this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 		this.EnemigosEnPantalla = new LinkedList<Enemigo>();
@@ -75,9 +76,7 @@ public class GestorDeNivel {
 		// Instancia las tres bases
 		this.Bases=new Base[4];
 		Base.InstanciarBases(this.Bases);
-
 		this.Perdio = false;
-		//
 		this.Dificultad = 15;
 	}
 
@@ -86,9 +85,6 @@ public class GestorDeNivel {
 	 * que comienza un nuevo nivel
 	 */
 	public void gestionarNivel() {
-
-		this.NivelActual++;
-		
 		// Crea la lista de enemigos del nivel
 		this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
 		Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual);
@@ -96,9 +92,8 @@ public class GestorDeNivel {
 		MisilesAliadosEnPantalla=new LinkedList<MisilAntibalistico>();
 		// Incrementa la dificultad cuando aumenta un nivel
 		this.Dificultad += 5;
-
 		// REVIVIR CIUDAD EN CASO DE
-
+		this.NivelActual++;
 	}
 
 	/**
@@ -113,7 +108,8 @@ public class GestorDeNivel {
 	 * @throws InterruptedException
 	 */
 	public void loopDelNivel(PuntajeJugador puntajeJugador)throws InterruptedException {
-		int tics = 0;
+
+		//int tics = 0;
 
 		// Lanzo la primer oleada de enemigos
 		Enemigo.lanzarEnemigos(EnemigosEnEspera.poll(), EnemigosEnPantalla);
@@ -123,23 +119,22 @@ public class GestorDeNivel {
 		Base.Disparar(Bases[2],MisilesAliadosEnPantalla);
 		Base.Disparar(Bases[3],MisilesAliadosEnPantalla);
 		
-		List<Dibujable> listaDibujables = new LinkedList<Dibujable>();
 		// Mientras hayan enemigos
 		while (!EnemigosEnEspera.isEmpty()) {
-
+			Graficador.refrescarTopDown(ActualizarListaDibujables(), delayMilis);
 			// Cuando pasa 1 segundo, lanzo otra oleada de enemigos
-			if (tics == Dificultad) {
+			if (true) {
 				// Lanzo una nueva oleada de enemigos
 				Enemigo.lanzarEnemigos(EnemigosEnEspera.poll(), EnemigosEnPantalla);
-				tics = 0;
+				//tics = 0;
 			}
 
 			this.actualizarPosiciones();
 			Colisiones.comprobarColision(EnemigosEnPantalla, explosionesEnPantalla, Ciudades, Bases);
 			// dibujar();
 			//Thread.sleep(1000 / Dificultad);
-			tics++;
-			Graficador.refrescarTopDown(ActualizarListaDibujables(), delayMilis);
+			//tics++;
+			
 		}
 		if (!Ciudad.hayCiudades(Ciudades)) {
 			this.Perdio = true;
@@ -206,6 +201,7 @@ public class GestorDeNivel {
 	 * 
 	 */
 	private void actualizarPosiciones() {
+
 		// Actualiza posiciones de los de los enemigos
 		for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo enemigo = i.next();
