@@ -17,7 +17,7 @@ public class Base {
 
 	public Base() {
 		this.posicion = new Posicion();
-		this.estaViva=false;
+		this.setEstaViva(false);
 	}
 
 	/**
@@ -106,6 +106,14 @@ public class Base {
 	}
 
 	public void destruccion() {
-		this.estaViva=false;
+		this.setEstaViva(false);
+	}
+
+	public boolean isEstaViva() {
+		return estaViva;
+	}
+
+	public void setEstaViva(boolean estaViva) {
+		this.estaViva = estaViva;
 	}
 }
