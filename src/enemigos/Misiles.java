@@ -3,10 +3,10 @@ package enemigos;
 import java.util.Random;
 import general.Posicion;
 
-public abstract class Misiles extends Enemigo {
-	private static Posicion[] posicionDeLasBasesYCiudades = new Posicion[8];
-
-	public Misiles() {
+public abstract class Misiles extends Enemigo{ 
+	private static Posicion[] posicionDeLasBasesYCiudades;
+	
+	public Misiles (){
 		determinarObjetivo();
 		determinarInicio();
 	}
@@ -53,7 +53,7 @@ public abstract class Misiles extends Enemigo {
 		int posicionObjetivoX;
 		int posicionObjetivoY;
 		Random aleatorio = new Random();
-		posicionGeneralObjetivo = (aleatorio.nextInt(10));
+		posicionGeneralObjetivo = 1+(aleatorio.nextInt(9));
 
 		posicionObjetivoX = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionX();
 		posicionObjetivoY = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionY();
@@ -76,7 +76,6 @@ public abstract class Misiles extends Enemigo {
 	public void destruccion() {
 
 	}
-
 	/**
 	 * Determina la posicion de las bases y las ciudades para facilitar el
 	 * determinarObjetivo de cada misil
@@ -87,6 +86,7 @@ public abstract class Misiles extends Enemigo {
 		for (int i = 1; i <= 9; i++) {
 			posicionDeLasBasesYCiudades[i].actualizarPosicion(posX, posY);
 			posX += 55;
+
 		}
 
 	}

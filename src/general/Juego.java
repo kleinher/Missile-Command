@@ -1,5 +1,7 @@
 package general;
 
+import enemigos.Misiles;
+
 /**
  * Esta clase Representa al menu inicial del juego, que permite comenzar un
  * juego nuevo, asi como consultar la tabla de puntajes, etc
@@ -27,6 +29,8 @@ public class Juego {
 	public static void main(String args[]) throws InterruptedException {
 		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
 		Oleada.DeterminarArregloDeMisiles();
+		Misiles.DeterminarPosicionesDeLasbases();
+		
 		while (!nivel.Perdio()) {
 			nivel.gestionarNivel();
 			nivel.loopDelNivel(Juego.puntajeJugador);

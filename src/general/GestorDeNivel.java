@@ -59,13 +59,15 @@ public class GestorDeNivel {
 	 */
 	private GestorDeNivel() {
 		this.puntajeJugador = new PuntajeJugador();
-		this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
+		
 		this.EnemigosEnPantalla = new LinkedList<Enemigo>();
-
+		
 		// Instancia las nueve ciudades
+		this.Ciudades=new Ciudad[7];
 		Ciudad.InstanciarCiudades(this.Ciudades);
 
 		// Instancia las tres bases
+		this.Bases=new Base[4];
 		Base.InstanciarBases(this.Bases);
 
 		this.Perdio = false;
@@ -79,10 +81,14 @@ public class GestorDeNivel {
 	 * que comienza un nuevo nivel
 	 */
 	public void gestionarNivel() {
-		this.NivelActual++;
-		// Crea la lista de enemigos del nivel
-		Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual);
 
+		this.NivelActual++;
+		
+		// Crea la lista de enemigos del nivel
+		this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
+		Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual);
+		explosionesEnPantalla=new LinkedList<Explosion>();
+		MisilesAliadosEnPantalla=new LinkedList<MisilAntibalistico>();
 		// Incrementa la dificultad cuando aumenta un nivel
 		this.Dificultad += 5;
 
