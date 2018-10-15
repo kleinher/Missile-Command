@@ -10,8 +10,8 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 /*error!!!!! Fijense si saben como se soluciona **************************/
 	
 		MisilAntibalistico(Posicion pos){
-		super();
-		determinarInicio(pos);
+			super();
+			determinarInicio(pos);
 		}
 
 	/*variable que dice que exploto o no*/
