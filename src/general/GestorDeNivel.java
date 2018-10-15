@@ -20,8 +20,11 @@ import taller2.modelo.Graficador;
  * @author LosPi
  *
  */
-public class GestorDeNivel {
 
+public class GestorDeNivel {
+	//Delay para la clase graficador
+	final private int delayMilis=1000;
+	
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 	// Variables de juego
 	private int Dificultad;
@@ -29,7 +32,7 @@ public class GestorDeNivel {
 	private int NivelActual;
 	private PuntajeJugador  puntajeJugador;
 
-
+	List<? extends Dibujable> listaDibujables;
 
 	/**
 	 * @return Devuelve el nivel actual
@@ -78,7 +81,6 @@ public class GestorDeNivel {
 		this.Perdio = false;
 		//
 		this.Dificultad = 15;
-
 	}
 
 	/**
@@ -140,14 +142,27 @@ public class GestorDeNivel {
 			// dibujar();
 			//Thread.sleep(1000 / Dificultad);
 			tics++;
-			;
-			Graficador.refrescarTopDown(listaDibujables, (1000/20));
+			Graficador.refrescarTopDown(ActualizarListaDibujables(), delayMilis);
 		}
 		if (!Ciudad.hayCiudades(Ciudades)) {
 			this.Perdio = true;
 		}
 		 //contarPuntajes(puntajeJugador);
 		
+	}
+
+	private List<? extends Dibujable> ActualizarListaDibujables() {
+		List<? extends Dibujable> lista=new List<? extends Dibujable>();
+		/*Agrego los enemigos que est�n en pantalla*/
+		for(Iterator<Enemigo >i= EnemigosEnPantalla.iterator();i.hasNext();) {
+			
+		}
+		
+		for (Iterator<Enemigo> i = .iterator(); i.hasNext();) 
+		lista.add(this)
+		//= (List<? extends Dibujable>) new List<Object>();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private void contarPuntajes(PuntajeJugador puntajeJugador) {

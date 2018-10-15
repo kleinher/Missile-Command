@@ -111,7 +111,15 @@ public class Base implements Dibujable{
 	}
 
 	public void destruccion() {
-		this.estaViva=false;
+		this.setEstaViva(false);
+	}
+
+	public boolean isEstaViva() {
+		return estaViva;
+	}
+
+	public void setEstaViva(boolean estaViva) {
+		this.estaViva = estaViva;
 	}
 
 	@Override
