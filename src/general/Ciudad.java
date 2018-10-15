@@ -103,8 +103,8 @@ public class Ciudad implements Dibujable{
 
 	@Override
 	public InformacionDibujable getInformacionDibujable() {
-		
-		return null;
+		InformacionDibujable info = new InformacionDibujable(this.posicion.getPosicionX(),this.posicion.getPosicionY() , 'C');
+		return info;
 	}
 
 }

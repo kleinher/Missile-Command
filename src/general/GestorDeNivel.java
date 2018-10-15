@@ -174,7 +174,7 @@ public class GestorDeNivel {
 		}
 
 		// ACTUALIZAR EXPLOSIONES
-
+		
 		// ACTUALIZAR ESTELA
 	}
 
