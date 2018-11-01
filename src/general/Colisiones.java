@@ -30,7 +30,7 @@ public class Colisiones {
 	 *            >> Array de bases
 	 */
 	public static void comprobarColision(LinkedList<Enemigo> enemigos, LinkedList<Explosion> listaExplocionesEnPantalla,
-			Ciudad[] ciudades, Base[] bases) {
+			Ciudad[] ciudades, Base[] bases, LinkedList<MisilAntibalistico> misilesAliadosEnPantalla) {
 
 		// Recorro la lista de enemigos en pantalla
 		for (Iterator<Enemigo> i = enemigos.iterator(); i.hasNext();) {

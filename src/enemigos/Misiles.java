@@ -13,36 +13,45 @@ public abstract class Misiles extends Enemigo{
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */
 	public void mover(){
 		double pendiente;
-		double distancia;
 		int distanciaX;
 		int distanciaY;
-		int movimientoX;
-		int movimientoY;
+		double movimientoX;
+		double movimientoY;
 		
+
 		//Calculo de los catetos x e y(desplazamiento en x e y)
-		distanciaX = this.posicionInicial.getPosicionX() - this.posicionObjetivo.getPosicionX();
-		distanciaY = this.posicionInicial.getPosicionY() - this.posicionObjetivo.getPosicionY();
-		
-		//Calculo de la hipotenusa(distancia)
-		distancia = Math.sqrt(Math.pow(distanciaX, 2) + Math.pow(distanciaY, 2));
+		distanciaX = this.posicionObjetivo.getPosicionX() - this.posicionActual.getPosicionX();
+		distanciaY = this.posicionObjetivo.getPosicionY() - this.posicionActual.getPosicionY();
 		
 		//Calculo de la pendiente de la hipotenusa(distancia)
-		pendiente = distanciaX/distanciaY;
-		
+		if(distanciaX != 0) {
+			pendiente = (double)distanciaY/(double)distanciaX;
+		}
+		else {
+				pendiente = -1;
+		}
 		//Calculo del movimiento en X
-		movimientoX= (int)Math.sqrt(Math.pow(distancia, 2)/(1+Math.pow(pendiente,2)));
-		movimientoY= (int)pendiente*movimientoX;
+		movimientoX= (int)Math.sqrt(Math.pow(30, 2)/(1+Math.pow(pendiente,2)));
+		movimientoY= (int)(pendiente*movimientoX);
 		
 		//En base a la direccion se elige el signo correcto
 		if(distanciaX<0) 
 		{
 			movimientoX = ((-1)*movimientoX);
 		}
+		if(distanciaY<0) 
+		{
+			movimientoY = ((-1)*movimientoY);
+		}
+		
 		//Actualiza la posicion 
-		this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+movimientoX,
-											   this.posicionActual.getPosicionY()+movimientoY);
+		this.posicionActual.actualizarPosicion((int)(this.posicionActual.getPosicionX()+movimientoX),
+											   (int)(this.posicionActual.getPosicionY()+movimientoY));
+			  
 	}
+	 
 	/*Determina El objetivo de cada misil de manera aleatoria*/
+		
 	public void determinarObjetivo() {
 		int posicionGeneralObjetivo;
 		int posicionObjetivoX;

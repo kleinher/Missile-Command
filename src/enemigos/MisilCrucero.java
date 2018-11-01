@@ -12,7 +12,7 @@ public class MisilCrucero extends Misiles implements Dibujable{
 
 	@Override
 	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , 'C');
+		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , 'Z');
 		return info;
 	}
 

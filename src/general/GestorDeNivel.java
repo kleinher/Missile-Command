@@ -23,7 +23,7 @@ import taller2.modelo.Graficador;
 
 public class GestorDeNivel {
 	//Delay para la clase graficador
-	final private int delayMilis=1000;
+	final private int delayMilis=100;
 	
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 	// Variables de juego
@@ -109,7 +109,7 @@ public class GestorDeNivel {
 	 */
 	public void loopDelNivel(PuntajeJugador puntajeJugador)throws InterruptedException {
 
-		//int tics = 0;
+		int tics = 0;
 
 		// Lanzo la primer oleada de enemigos
 		Enemigo.lanzarEnemigos(EnemigosEnEspera.poll(), EnemigosEnPantalla);
@@ -123,17 +123,20 @@ public class GestorDeNivel {
 		while (!EnemigosEnEspera.isEmpty()) {
 			Graficador.refrescarTopDown(ActualizarListaDibujables(), delayMilis);
 			// Cuando pasa 1 segundo, lanzo otra oleada de enemigos
-			if (true) {
+			if (tics == 30) {
 				// Lanzo una nueva oleada de enemigos
 				Enemigo.lanzarEnemigos(EnemigosEnEspera.poll(), EnemigosEnPantalla);
-				//tics = 0;
+				tics = 0;
 			}
 
 			this.actualizarPosiciones();
-			Colisiones.comprobarColision(EnemigosEnPantalla, explosionesEnPantalla, Ciudades, Bases);
+			Colisiones.comprobarColision(EnemigosEnPantalla, 
+										explosionesEnPantalla,
+										Ciudades, Bases,
+										MisilesAliadosEnPantalla);
 			// dibujar();
 			//Thread.sleep(1000 / Dificultad);
-			//tics++;
+			tics++;
 			
 		}
 		if (!Ciudad.hayCiudades(Ciudades)) {
@@ -212,6 +215,9 @@ public class GestorDeNivel {
 		for (Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) {
 			MisilAntibalistico misil = i.next();
 			misil.mover();
+			if(misil.getPosicionActual().equals(misil.getPosicionObjetivo())) {
+				i.remove();
+			}
 		}
 
 		// ACTUALIZAR EXPLOSIONES
