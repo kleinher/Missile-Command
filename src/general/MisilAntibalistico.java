@@ -52,4 +52,22 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , '+');
 		return info;
 	}
+
+	public boolean alcanzoObjetivo() {
+		if(this.posicionActual.getPosicionY() < this.posicionObjetivo.getPosicionY())
+		{
+			return true;
+		}
+		if(this.posicionInicial.getPosicionX() > this.posicionObjetivo.getPosicionX())
+		{
+			if(this.posicionActual.getPosicionX() < this.posicionObjetivo.getPosicionX()){
+				return true;
+			}
+		}
+		else
+			if(this.posicionActual.getPosicionX() > this.posicionObjetivo.getPosicionX()){
+				return true;
+			}
+		return false;
+	}
 }

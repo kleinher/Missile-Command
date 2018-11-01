@@ -33,9 +33,8 @@ public class Posicion {
 	}
 	
 	/*Metodo equals para determinar si dos posiciones son iguales*/
-	 public boolean equals (Object pos) {
-		 Posicion pos1=(Posicion) pos;
-         if ((this.posicionX==pos1.getPosicionX()) && (this.posicionY==pos1.getPosicionY())) {
+	 public boolean equals (Posicion pos) {
+         if ((this.posicionX==pos.getPosicionX()) && (this.posicionY==pos.getPosicionY())) {
               return true; 
          } 
          else{ 

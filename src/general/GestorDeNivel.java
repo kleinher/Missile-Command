@@ -215,7 +215,7 @@ public class GestorDeNivel {
 		for (Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) {
 			MisilAntibalistico misil = i.next();
 			misil.mover();
-			if(misil.getPosicionActual().equals(misil.getPosicionObjetivo())) {
+			if(misil.alcanzoObjetivo()) {
 				i.remove();
 			}
 		}
