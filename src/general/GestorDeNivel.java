@@ -115,9 +115,9 @@ public class GestorDeNivel {
 		Enemigo.lanzarEnemigos(EnemigosEnEspera.poll(), EnemigosEnPantalla);
 		
 		// LANZAR MISILES ALIADOS HARDCODEADOS
-		Base.Disparar(Bases[1],MisilesAliadosEnPantalla);
-		Base.Disparar(Bases[2],MisilesAliadosEnPantalla);
-		Base.Disparar(Bases[3],MisilesAliadosEnPantalla);
+		Base.Disparar(Bases[1],MisilesAliadosEnPantalla,40);
+		Base.Disparar(Bases[2],MisilesAliadosEnPantalla,195);
+		Base.Disparar(Bases[3],MisilesAliadosEnPantalla,360);
 		
 		// Mientras hayan enemigos
 		while (!EnemigosEnEspera.isEmpty()) {
@@ -209,6 +209,9 @@ public class GestorDeNivel {
 		for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo enemigo = i.next();
 			enemigo.mover();
+			if(enemigo.alcanzoObjetivo()) {
+				i.remove();
+			}
 		}
 
 		// Actualiza la posicion de los misiles aliados

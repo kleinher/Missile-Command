@@ -68,5 +68,26 @@ public abstract class Enemigo implements Dibujable{
 
 		this.posicionActual = posicionActual;
 	}
+	public boolean alcanzoObjetivo() {
+		if(this.posicionActual.getPosicionY() > this.posicionObjetivo.getPosicionY())
+		{
+			return true;
+		}
+		if(this.posicionInicial.getPosicionX() > this.posicionObjetivo.getPosicionX())
+		{
+			if(this.posicionActual.getPosicionX() < this.posicionObjetivo.getPosicionX()){
+				return true;
+			}
+		}
+		else{
+			if(this.posicionInicial.getPosicionX() > this.posicionObjetivo.getPosicionX()){
+				if(this.posicionActual.getPosicionX() > this.posicionObjetivo.getPosicionX()){
+					return true;
+				}
+			}
+		}
+		if(this.posicionActual.equals(this.posicionObjetivo));
+		return false;
+	}
 
 }

@@ -64,10 +64,14 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 				return true;
 			}
 		}
-		else
-			if(this.posicionActual.getPosicionX() > this.posicionObjetivo.getPosicionX()){
-				return true;
+		else{
+			if(this.posicionInicial.getPosicionX() > this.posicionObjetivo.getPosicionX()){
+				if(this.posicionActual.getPosicionX() > this.posicionObjetivo.getPosicionX()){
+					return true;
+				}
 			}
+		}
+		if(this.posicionActual.equals(this.posicionObjetivo));
 		return false;
 	}
 }

@@ -95,16 +95,15 @@ public class Base implements Dibujable{
 	 * @param base >> La base desde la que se dispara
 	 * @param MisilesAliadosEnPantalla >> El misil que se va a disparar
 	 */
-	public static void Disparar(Base base, LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla) {
-		int posX = 40, posY = 240;
+	public static void Disparar(Base base, LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla, int posXA) {
+		int posX = posXA, posY = 240;
 		if(!base.listaMisilesAntibalisticos.isEmpty()) {
-		
-		for (int i = 1; i <= 3; i++) {
-			MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
-			aux.determinarObjetivo(posX, posY);
-			MisilesAliadosEnPantalla.add(aux);
-			posX += 55;
-		}
+			for (int i = 1; i <= 3; i++) {
+				MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
+				aux.determinarObjetivo(posX, posY);
+				MisilesAliadosEnPantalla.add(aux);
+				posX += 55;
+			}
 		}
 	}
 
