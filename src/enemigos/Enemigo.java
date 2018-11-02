@@ -21,18 +21,19 @@ public abstract class Enemigo implements Dibujable{
 		this.posicionInicial= new Posicion();
 		this.posicionObjetivo=new Posicion();
 	}
-	public void destruccion(LinkedList<Explosion> listaExplocionesEnPantalla,
-							LinkedList<Enemigo> enemigos)
+	public void destruccion(LinkedList<Explosion> explosionesAgregar,
+							LinkedList<Enemigo> enemigosAEliminar)
 	{
+		
 		//sumo el puntaje por destruir misiles enemigos en tiempo real
 		GestorDeNivel.getGestorDeNivel().getPuntajeJugador().actualizarScore(this.puntos);
 		
 		//Elimino el misil de la pantalla
-		enemigos.remove(this);
+		enemigosAEliminar.add(this);
 		
 		//creo una nueva explosion y la agrego a la lsita de explosiones en pantalla
 		Explosion nuevaExplosion = new Explosion(this.posicionActual);
-		listaExplocionesEnPantalla.add(nuevaExplosion);
+		explosionesAgregar.add(nuevaExplosion);
 	}
 
 	/**

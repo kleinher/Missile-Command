@@ -31,7 +31,9 @@ public class Colisiones {
 	 */
 	public static void comprobarColision(LinkedList<Enemigo> enemigos, LinkedList<Explosion> listaExplocionesEnPantalla,
 			Ciudad[] ciudades, Base[] bases, LinkedList<MisilAntibalistico> misilesAliadosEnPantalla) {
-
+		
+		LinkedList<Enemigo> enemigosAEliminar = new LinkedList<Enemigo>();
+		LinkedList<Explosion> explosionesAgregar = new LinkedList<Explosion>();
 		// Recorro la lista de enemigos en pantalla
 		for (Iterator<Enemigo> i = enemigos.iterator(); i.hasNext();) {
 			Enemigo enemigoAct = i.next();
@@ -42,7 +44,7 @@ public class Colisiones {
 				Explosion explosionActual = j.next();
 				if (colisionEnemigosConExplosiones(explosionActual, enemigoAct)) {
 					// Cuando enemigo colisiona con explosion destruyo enemigo
-					enemigoAct.destruccion(listaExplocionesEnPantalla, enemigos);
+					enemigoAct.destruccion(explosionesAgregar, enemigosAEliminar);
 					explotoEnemigo = true;
 				}
 			}
@@ -55,10 +57,14 @@ public class Colisiones {
 
 					// Si hay colision, destruyo base/ciudad y el misil enemigo
 					destruirObjetivo(enemigoAct.getPosicionActual(), ciudades, bases);
-					enemigoAct.destruccion(listaExplocionesEnPantalla, enemigos);
+					enemigoAct.destruccion(explosionesAgregar, enemigosAEliminar);
+					i.remove();
 				}
 			}
 		}
+		listaExplocionesEnPantalla.addAll(explosionesAgregar);
+		enemigos.removeAll(enemigosAEliminar);
+		
 	}
 
 	/**
