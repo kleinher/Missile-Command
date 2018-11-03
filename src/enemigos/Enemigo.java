@@ -1,9 +1,9 @@
 package enemigos;
 import java.util.Iterator;
 import java.util.LinkedList;
-import general.Explosion;
-import general.GestorDeNivel;
-import general.Posicion;
+import misiles.Explosion;
+import gestores.GestorDeNivel;
+import gestores.Posicion;
 import taller2.grafico.Dibujable;
 public abstract class Enemigo implements Dibujable{
 	protected int puntos;
