@@ -44,6 +44,7 @@ public abstract class Misiles extends Enemigo{
 
 		this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+movimientoX,
 											   this.posicionActual.getPosicionY()+movimientoY);
+		
 		//Clonar misil si llega a la mitad del mapa
 		if(this.posicionActual.getPosicionY()==210) {
 			Random aleatorio = new Random();
