@@ -213,15 +213,20 @@ public class GestorDeNivel {
 				i.remove();
 			}
 		}
-
+		
+		LinkedList<Enemigo> aliadosAEliminar = new LinkedList<Enemigo>();
+		LinkedList<Explosion> explosionesAgregar = new LinkedList<Explosion>();
 		// Actualiza la posicion de los misiles aliados
 		for (Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) {
 			MisilAntibalistico misil = i.next();
 			misil.mover();
 			if(misil.alcanzoObjetivo()) {
 				i.remove();
+				misil.destruccion(explosionesAgregar, aliadosAEliminar);
 			}
 		}
+		explosionesEnPantalla.addAll(explosionesAgregar);
+		MisilesAliadosEnPantalla.removeAll(aliadosAEliminar);
 
 		// ACTUALIZAR EXPLOSIONES
 		
