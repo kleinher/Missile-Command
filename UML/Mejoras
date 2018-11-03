@@ -1,0 +1,14 @@
+Fixes!
+*Especificamos el main
+*Agregamos una clase GestorEstructuras que......
++Se agrego la clase GestorEnemigos
+*Re-Clasificamos los paquetes de manera que sea ubicar las clases dentro del proyecto
+*Implementamos la deteccion preventiva(radar) de colision del misil inteligente
+*Implementamos el metodo "Esquivar" de misil inteligente
+*Corregimos el funcionamiento del "mover" de enemigos y aliados.(arreglar la simulacion del disparo)
+*Implementamos la clase Estela
+
+--AHORA nivel ya no necesita enviarle como parámetro las estructuras a cada 
+metodo, sino que cada metodo accede a las estructuras mediante 
+el GestorEstructuras.
+

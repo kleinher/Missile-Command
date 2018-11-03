@@ -1,5 +1,6 @@
-package enemigos;
+package misiles;
 
+import clasesPadres.Misiles;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 

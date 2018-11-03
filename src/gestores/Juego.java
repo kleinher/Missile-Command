@@ -1,6 +1,7 @@
-package general;
+package gestores;
 
-import enemigos.Misiles;
+import clasesPadres.Misiles;
+import puntajes.PuntajeJugador;
 
 /**
  * Esta clase Representa al menu inicial del juego, que permite comenzar un
@@ -30,7 +31,7 @@ public class Juego {
 	public static void main(String args[]) throws InterruptedException {
 
 		Misiles.DeterminarPosicionesDeLasbases();
-		Oleada.DeterminarArregloDeMisiles();
+		GestorEstructuras.DeterminarArregloDeMisiles();
 		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
 		
 		while (!nivel.Perdio()&& nivel.getNivelActual() != 17) {

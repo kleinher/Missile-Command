@@ -1,5 +1,6 @@
-package enemigos;
+package bombarderos;
 
+import clasesPadres.Bombardero;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 

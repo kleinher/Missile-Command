@@ -1,11 +1,30 @@
-package general;
+package puntajes;
 
 import java.util.Scanner;
+
+import gestores.GestorDeNivel;
+import gestores.GestorEstructuras;
 
 public class PuntajeJugador extends TablaDePuntajes{
 	private Integer score;
 	private String nombre;
 	
+	//
+	private void contarPuntajes(PuntajeJugador puntajeJugador) {
+		int contadorCiudades = 0;
+		int contadorBases = 0;
+
+		for (int i = 1; i < 7; i++) {
+			if (GestorEstructuras.getGestorEstructuras().getCiudades()[i].estaViva()) {
+				contadorCiudades++;
+			}
+		}
+		for (int i = 1; i < 4; i++) {
+			contadorBases += GestorEstructuras.getGestorEstructuras().getBases()[i].getCantMisiles();
+		}
+		puntajeJugador.CalcularPuntajePorNivel(GestorDeNivel.getGestorDeNivel().getNivelActual(), contadorBases, contadorCiudades);
+
+	}
 
 
 	private static int [] VDePuntajes= new int[4];
@@ -31,7 +50,9 @@ public class PuntajeJugador extends TablaDePuntajes{
 		
 		System.out.println("Jugador: ");
 		nombre = in.nextLine();
+		in.close();
 		return nombre;
+		
 	}
 	
 	private void InicializarTablaDePuntajePorCadaEnemigo() {

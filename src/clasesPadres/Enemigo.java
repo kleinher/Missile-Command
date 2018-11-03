@@ -1,9 +1,9 @@
-package enemigos;
-import java.util.Iterator;
+package clasesPadres;
 import java.util.LinkedList;
-import general.Explosion;
-import general.GestorDeNivel;
-import general.Posicion;
+
+import gestores.GestorDeNivel;
+import gestores.Posicion;
+import misiles.Explosion;
 import taller2.grafico.Dibujable;
 public abstract class Enemigo implements Dibujable{
 	protected int puntos;
@@ -40,12 +40,6 @@ public abstract class Enemigo implements Dibujable{
 	 * @param auxOleada	>Lista con los enemigos Restantes ??<<<<<<
 	 * @param EnemigosEnPantalla > Lista con Enemigos en pantalla
 	 */
-	public static void lanzarEnemigos(LinkedList<Enemigo> auxOleada, LinkedList<Enemigo> EnemigosEnPantalla) {
-		//Agrego los enemigos a la lista enemigosEnPantalla
-		for(Iterator<Enemigo> i= auxOleada.iterator(); i.hasNext();) {
-			EnemigosEnPantalla.add(i.next());
-		}
-	}
 	
 	public Posicion getPosicionInicial() {
 		return posicionInicial;

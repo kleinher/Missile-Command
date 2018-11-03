@@ -1,10 +1,10 @@
-package enemigos;
+package clasesPadres;
 import java.util.Random;
 
-import general.GestorDeNivel;
+import gestores.GestorDeNivel;
 import taller2.grafico.InformacionDibujable;
 
-public class Bombardero extends Enemigo{
+public abstract class Bombardero extends Enemigo{
 	
 	public Bombardero() {
 		super();

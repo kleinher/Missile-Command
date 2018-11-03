@@ -1,5 +1,6 @@
-package general;
+package misiles;
 
+import gestores.Posicion;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 

@@ -1,15 +1,14 @@
-package general;
+package misiles;
 
 
-import enemigos.Misiles;
+import clasesPadres.Misiles;
+import gestores.Posicion;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 
 public class MisilAntibalistico extends Misiles implements Dibujable{
 
-/*error!!!!! Fijense si saben como se soluciona **************************/
-	
-		MisilAntibalistico(Posicion pos){
+		public MisilAntibalistico(Posicion pos){
 			super();
 			determinarInicio(pos);
 		}

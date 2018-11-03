@@ -1,4 +1,4 @@
-package general;
+package puntajes;
 
 
 import java.util.Map;

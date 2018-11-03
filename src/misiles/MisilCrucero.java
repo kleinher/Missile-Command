@@ -1,5 +1,6 @@
-package enemigos;
+package misiles;
 
+import clasesPadres.Misiles;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 
@@ -12,7 +13,7 @@ public class MisilCrucero extends Misiles implements Dibujable{
 
 	@Override
 	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , 'Z');
+		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , 'C');
 		return info;
 	}
 

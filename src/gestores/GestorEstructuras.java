@@ -1,19 +1,23 @@
-package general;
+package gestores;
 
 import java.util.LinkedList;
 
-import enemigos.Enemigo;
+import clasesPadres.Enemigo;
+import estructurasAliadas.Base;
+import estructurasAliadas.Ciudad;
+import misiles.Explosion;
+import misiles.MisilAntibalistico;
 
 /**
  * --Corrección para Reentrega-- Se agrega esta nueva clase GestorEstructuras.
- * 
+ * Tiene una doble funcionalidad, la de contenedor de estructuras, para que la Clase Gestor Nivel no deba rehacer su
  * Esta Clase inicializa y contiene las estructuras de datos que se necesitan
  * para el juego Es Singleton, de manera que quien quiera usarla obtiene la
  * unica instancia existente para obtener las estructuras del juego
  * 
  * package general;
  * 
- * @author eze96
+ * @author T
  *
  */
 
@@ -56,12 +60,40 @@ public class GestorEstructuras {
 		explosionesEnPantalla = new LinkedList<Explosion>();
 		MisilesAliadosEnPantalla = new LinkedList<MisilAntibalistico>();
 	}
+	
+	/**
+	 * Vector que utiliza oleada para determinar en que niveles apareceran misiles
+	 * tontos e inteligentes
+	 */
+	static boolean[] VectorDeMisilesCrucerosPorNivel = new boolean[17];
+	
+
+	/**
+	 * Inicializa el vector que determina los misiles por nivel
+	 */
+	public static void DeterminarArregloDeMisiles() {
+		VectorDeMisilesCrucerosPorNivel[3] = true;
+		VectorDeMisilesCrucerosPorNivel[4] = true;
+		VectorDeMisilesCrucerosPorNivel[7] = true;
+		VectorDeMisilesCrucerosPorNivel[8] = true;
+		VectorDeMisilesCrucerosPorNivel[11] = true;
+		VectorDeMisilesCrucerosPorNivel[12] = true;
+		VectorDeMisilesCrucerosPorNivel[15] = true;
+		VectorDeMisilesCrucerosPorNivel[16] = true;
+	}
 
 	public static GestorEstructuras getGestorEstructuras() {
 		return GestorEstructuras;
 	}
+	
+	
 
 	/////// Getters y Setters
+	
+	public static boolean[] getVectorDeMisilesCrucerosPorNivel() {
+		return VectorDeMisilesCrucerosPorNivel;
+	}
+	
 	public LinkedList<Enemigo> getEnemigosEnPantalla() {
 		return EnemigosEnPantalla;
 	}

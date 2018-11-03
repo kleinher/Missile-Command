@@ -1,4 +1,4 @@
-package general;
+package gestores;
 /*Posicion general de todos los objetos */
 public class Posicion {
 	private int posicionX;
