@@ -1,13 +1,9 @@
-package gestores;
+package general;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import clasesPadres.Enemigo;
-import estructurasAliadas.Base;
-import estructurasAliadas.Ciudad;
-import misiles.Explosion;
-import misiles.MisilCruceroInteligente;
+import enemigos.Enemigo;
 
 /**
  * Esta clase, a traves de sus metodos estaticos, se encarga de checkear en cada
@@ -34,8 +30,10 @@ public class Colisiones {
 	 *            >> Array de bases
 	 */
 	public static void comprobarColision(LinkedList<Enemigo> enemigos, LinkedList<Explosion> listaExplocionesEnPantalla,
-			Ciudad[] ciudades, Base[] bases) {
-
+			Ciudad[] ciudades, Base[] bases, LinkedList<MisilAntibalistico> misilesAliadosEnPantalla) {
+		
+		LinkedList<Enemigo> enemigosAEliminar = new LinkedList<Enemigo>();
+		LinkedList<Explosion> explosionesAgregar = new LinkedList<Explosion>();
 		// Recorro la lista de enemigos en pantalla
 		for (Iterator<Enemigo> i = enemigos.iterator(); i.hasNext();) {
 			Enemigo enemigoAct = i.next();
@@ -46,7 +44,7 @@ public class Colisiones {
 				Explosion explosionActual = j.next();
 				if (colisionEnemigosConExplosiones(explosionActual, enemigoAct)) {
 					// Cuando enemigo colisiona con explosion destruyo enemigo
-					enemigoAct.destruccion(listaExplocionesEnPantalla, enemigos);
+					enemigoAct.destruccion(explosionesAgregar, enemigosAEliminar);
 					explotoEnemigo = true;
 				}
 			}
@@ -59,10 +57,14 @@ public class Colisiones {
 
 					// Si hay colision, destruyo base/ciudad y el misil enemigo
 					destruirObjetivo(enemigoAct.getPosicionActual(), ciudades, bases);
-					enemigoAct.destruccion(listaExplocionesEnPantalla, enemigos);
+					enemigoAct.destruccion(explosionesAgregar, enemigosAEliminar);
+					i.remove();
 				}
 			}
 		}
+		listaExplocionesEnPantalla.addAll(explosionesAgregar);
+		enemigos.removeAll(enemigosAEliminar);
+		
 	}
 
 	/**
@@ -96,10 +98,8 @@ public class Colisiones {
 	 * comprobarColisiones(), que chequea si el enemigo esta adentro del rango de
 	 * explosion
 	 * 
-	 * @param explosionActual
-	 *            >>Explosion actual
-	 * @param enemigoAct
-	 *            >>Enemigo actual
+	 * @param explosionActual >>Explosion actual
+	 * @param enemigoAct >>Enemigo actual
 	 * @return Devuelve verdadero si hay colision, falso en caso contrario
 	 */
 	private static boolean colisionEnemigosConExplosiones(Explosion explosionActual, Enemigo enemigoAct) {
@@ -107,52 +107,14 @@ public class Colisiones {
 		 * Si la distancia entre los dos puntos es menor al radio de explosion del
 		 * enemigo aliado => HAY COLISION
 		 */
-		if (enemigoAct instanceof MisilCruceroInteligente) {
-			return barrerRadar(explosionActual, enemigoAct);
-
-		} else {
-			int x1 = enemigoAct.getPosicionActual().getPosicionX();
-			int y1 = enemigoAct.getPosicionActual().getPosicionY();
-
-			int x2 = explosionActual.getPosicionActual().getPosicionX();
-			int y2 = explosionActual.getPosicionActual().getPosicionY();
-
-			boolean hayColision = ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual
-					.getRadio());
-
-			return hayColision;
-		}
-	}
-
-	/**
-	 * determina si el enemigo esta en el rango de explosion ampliado, si es asi
-	 * esquiva, sino devuelve true(mensaje de destruccion)
-	 * 
-	 * @param explosionActual
-	 * @param enemigoAct
-	 * @return 
-	 */
-	private static boolean barrerRadar(Explosion explosionActual, Enemigo enemigoAct) {
-		// retorna true si hay que eliminar el misil inteligente,
 		int x1 = enemigoAct.getPosicionActual().getPosicionX();
 		int y1 = enemigoAct.getPosicionActual().getPosicionY();
 
 		int x2 = explosionActual.getPosicionActual().getPosicionX();
 		int y2 = explosionActual.getPosicionActual().getPosicionY();
-		//
-		if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio()) {
-			return true;
-		} else if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio() * 2) {
-			boolean esquivarIzquierda;
-			if(x2>x1)
-				esquivarIzquierda=true;
-			else
-				esquivarIzquierda=false;
-			((MisilCruceroInteligente) enemigoAct).esquivar(esquivarIzquierda);
-			return false;
-		}
 
-		return false;
+		boolean hayColision = ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio());
 
+		return hayColision;
 	}
 }

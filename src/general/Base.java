@@ -1,12 +1,11 @@
-package estructurasAliadas;
+package general;
 
 import java.util.LinkedList;
 
-import gestores.GestorEstructuras;
-import gestores.Posicion;
-import misiles.MisilAntibalistico;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
+
+import java.util.Iterator;
 
 /**
  * Esta clase representa a cada una de las 3 bases que se necesitan en el juego
@@ -96,17 +95,15 @@ public class Base implements Dibujable{
 	 * @param base >> La base desde la que se dispara
 	 * @param MisilesAliadosEnPantalla >> El misil que se va a disparar
 	 */
-	public static void Disparar(int nBase, int posBase) {
-		Base base=GestorEstructuras.getGestorEstructuras().getBases()[nBase];
-		int posX = posBase, posY = 240;
+	public static void Disparar(Base base, LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla, int posXA) {
+		int posX = posXA, posY = 240;
 		if(!base.listaMisilesAntibalisticos.isEmpty()) {
-		
-		for (int i = 1; i <= 3; i++) {
-			MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
-			aux.determinarObjetivo(posX, posY);
-			GestorEstructuras.getGestorEstructuras().getMisilesAliadosEnPantalla().add(aux);
-			posX += 55;
-		}
+			for (int i = 1; i <= 3; i++) {
+				MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
+				aux.determinarObjetivo(posX, posY);
+				MisilesAliadosEnPantalla.add(aux);
+				posX += 55;
+			}
 		}
 	}
 
