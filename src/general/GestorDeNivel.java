@@ -115,9 +115,10 @@ public class GestorDeNivel {
 		Enemigo.lanzarEnemigos(EnemigosEnEspera.poll(), EnemigosEnPantalla);
 		
 		// LANZAR MISILES ALIADOS HARDCODEADOS
-		Base.Disparar(Bases[1],MisilesAliadosEnPantalla, 40);
-		Base.Disparar(Bases[2],MisilesAliadosEnPantalla, 150);
-		Base.Disparar(Bases[3],MisilesAliadosEnPantalla, 250);
+
+		Base.Disparar(Bases[1],MisilesAliadosEnPantalla,40);
+		Base.Disparar(Bases[2],MisilesAliadosEnPantalla,195);
+		Base.Disparar(Bases[3],MisilesAliadosEnPantalla,360);
 		
 		// Mientras hayan enemigos
 		while (!EnemigosEnEspera.isEmpty()) {
@@ -209,16 +210,24 @@ public class GestorDeNivel {
 		for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo enemigo = i.next();
 			enemigo.mover();
+			if(enemigo.alcanzoObjetivo()) {
+				i.remove();
+			}
 		}
-
+		
+		LinkedList<Enemigo> aliadosAEliminar = new LinkedList<Enemigo>();
+		LinkedList<Explosion> explosionesAgregar = new LinkedList<Explosion>();
 		// Actualiza la posicion de los misiles aliados
 		for (Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) {
 			MisilAntibalistico misil = i.next();
 			misil.mover();
 			if(misil.alcanzoObjetivo()) {
 				i.remove();
+				misil.destruccion(explosionesAgregar, aliadosAEliminar);
 			}
 		}
+		explosionesEnPantalla.addAll(explosionesAgregar);
+		MisilesAliadosEnPantalla.removeAll(aliadosAEliminar);
 
 		// ACTUALIZAR EXPLOSIONES
 		

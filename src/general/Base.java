@@ -98,13 +98,12 @@ public class Base implements Dibujable{
 	public static void Disparar(Base base, LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla, int posXA) {
 		int posX = posXA, posY = 240;
 		if(!base.listaMisilesAntibalisticos.isEmpty()) {
-		
-		for (int i = 1; i <= 3; i++) {
-			MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
-			aux.determinarObjetivo(posX, posY);
-			MisilesAliadosEnPantalla.add(aux);
-			posX += 55;
-		}
+			for (int i = 1; i <= 3; i++) {
+				MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
+				aux.determinarObjetivo(posX, posY);
+				MisilesAliadosEnPantalla.add(aux);
+				posX += 55;
+			}
 		}
 	}
 

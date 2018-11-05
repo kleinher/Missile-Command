@@ -1,6 +1,9 @@
 package general;
 
 
+import java.util.LinkedList;
+
+import enemigos.Enemigo;
 import enemigos.Misiles;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
@@ -33,8 +36,19 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 
 
 	@Override
-	public void destruccion() {
-		// TODO Auto-generated method stub
+	public void destruccion(LinkedList<Explosion> explosionesAgregar,
+			LinkedList<Enemigo> aliadosAEliminar) {
+		
+				//sumo el puntaje por destruir misiles enemigos en tiempo real
+				GestorDeNivel.getGestorDeNivel().getPuntajeJugador().actualizarScore(this.puntos);
+				
+				//Elimino el misil de la pantalla
+				aliadosAEliminar.add(this);
+				
+				//creo una nueva explosion y la agrego a la lsita de explosiones en pantalla
+				Explosion nuevaExplosion = new Explosion(this.posicionActual);
+				explosionesAgregar.add(nuevaExplosion);
+		
 	}
 	
 	//Determina la posicion inicial de cada misil, seteandolo en la posicion inicial de cada base
@@ -64,10 +78,14 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 				return true;
 			}
 		}
-		else
-			if(this.posicionActual.getPosicionX() > this.posicionObjetivo.getPosicionX()){
-				return true;
+		else{
+			if(this.posicionInicial.getPosicionX() > this.posicionObjetivo.getPosicionX()){
+				if(this.posicionActual.getPosicionX() > this.posicionObjetivo.getPosicionX()){
+					return true;
+				}
 			}
+		}
+		if(this.posicionActual.equals(this.posicionObjetivo));
 		return false;
 	}
 }

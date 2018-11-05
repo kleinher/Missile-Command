@@ -28,16 +28,19 @@ public abstract class Misiles extends Enemigo{
 			pendiente = (double)distanciaY/(double)distanciaX;
 		}
 		else {
+			if(this.posicionInicial.getPosicionY() > this.posicionObjetivo.getPosicionY())
 				pendiente = -1;
+			else
+				pendiente = 1;
 		}
 		//Calculo del movimiento en X
-		movimientoX= (int)Math.sqrt(Math.pow(10, 2)/(1+Math.pow(pendiente,2)));
+		movimientoX= Math.sqrt(Math.pow(10, 2)/(1+Math.pow(pendiente,2)));
 		//En base a la direccion se elige el signo correcto
 				if(distanciaX<0) 
 				{
 					movimientoX = ((-1)*movimientoX);
 				}
-		movimientoY= (int)(pendiente*movimientoX);
+		movimientoY= (pendiente*movimientoX);
 		
 		
 
