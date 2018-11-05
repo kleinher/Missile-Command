@@ -79,7 +79,7 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 			}
 		}
 		else{
-			if(this.posicionInicial.getPosicionX() > this.posicionObjetivo.getPosicionX()){
+			if(this.posicionInicial.getPosicionX() < this.posicionObjetivo.getPosicionX()){
 				if(this.posicionActual.getPosicionX() > this.posicionObjetivo.getPosicionX()){
 					return true;
 				}
