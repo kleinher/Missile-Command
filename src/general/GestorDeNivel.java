@@ -23,7 +23,7 @@ import taller2.modelo.Graficador;
 
 public class GestorDeNivel {
 	//Delay para la clase graficador
-	final private int delayMilis=100;
+	final private int delayMilis=50;
 	
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 	// Variables de juego
@@ -115,9 +115,9 @@ public class GestorDeNivel {
 		Enemigo.lanzarEnemigos(EnemigosEnEspera.poll(), EnemigosEnPantalla);
 		
 		// LANZAR MISILES ALIADOS HARDCODEADOS
-		Base.Disparar(Bases[1],MisilesAliadosEnPantalla);
-		Base.Disparar(Bases[2],MisilesAliadosEnPantalla);
-		Base.Disparar(Bases[3],MisilesAliadosEnPantalla);
+		Base.Disparar(Bases[1],MisilesAliadosEnPantalla, 40);
+		Base.Disparar(Bases[2],MisilesAliadosEnPantalla, 150);
+		Base.Disparar(Bases[3],MisilesAliadosEnPantalla, 250);
 		
 		// Mientras hayan enemigos
 		while (!EnemigosEnEspera.isEmpty()) {
