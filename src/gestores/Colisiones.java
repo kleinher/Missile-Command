@@ -3,10 +3,12 @@ package gestores;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import clasesPadres.Bombardero;
 import clasesPadres.Enemigo;
 import estructurasAliadas.Base;
 import estructurasAliadas.Ciudad;
 import misiles.Explosion;
+import misiles.MisilBalistico;
 import misiles.MisilCruceroInteligente;
 
 /**
@@ -18,7 +20,9 @@ import misiles.MisilCruceroInteligente;
  *
  */
 public class Colisiones {
-
+	private static int misilesEnemigosDestr=0;
+	private static int bombarderosDestr=0;
+	private static int misilesIntDestr=0;
 	/**
 	 * ---COMPROBAR COLISIONES--- Este metodo recorre la lista de enemigos, y
 	 * chequea si alguno intersecta con alguna explosion, de ser asi se lo informa
@@ -45,7 +49,16 @@ public class Colisiones {
 			for (Iterator<Explosion> j = listaExplocionesEnPantalla.iterator(); j.hasNext();) {
 				Explosion explosionActual = j.next();
 				if (colisionEnemigosConExplosiones(explosionActual, enemigoAct)) {
-					// Cuando enemigo colisiona con explosion destruyo enemigo
+					// Cuando enemigo colisiona con explosion destruyo enemigo y cuento que ene
+					
+					if(enemigoAct instanceof Bombardero)
+					if(enemigoAct instanceof MisilBalistico)
+						
+					if(enemigoAct instanceof MisilCruceroInteligente){
+						
+					}
+					
+					
 					enemigoAct.destruccion(listaExplocionesEnPantalla, enemigos);
 					explotoEnemigo = true;
 				}
@@ -105,12 +118,14 @@ public class Colisiones {
 	private static boolean colisionEnemigosConExplosiones(Explosion explosionActual, Enemigo enemigoAct) {
 		/*
 		 * Si la distancia entre los dos puntos es menor al radio de explosion del
-		 * enemigo aliado => HAY COLISION
+		 * enemigo aliado => HAY COLISION , si se produce una colision, determino que enemigos es con un instanceof 
+		 * para poder calcular el puntajer de su destruccion
 		 */
-		if (enemigoAct instanceof MisilCruceroInteligente) {
+		if (enemigoAct instanceof MisilCruceroInteligente)
+			//Si se trata de un misil inteligente determina si va a ser necesario esquivar
 			return barrerRadar(explosionActual, enemigoAct);
 
-		} else {
+		else {
 			int x1 = enemigoAct.getPosicionActual().getPosicionX();
 			int y1 = enemigoAct.getPosicionActual().getPosicionY();
 
@@ -119,7 +134,7 @@ public class Colisiones {
 
 			boolean hayColision = ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual
 					.getRadio());
-
+			
 			return hayColision;
 		}
 	}
@@ -133,13 +148,12 @@ public class Colisiones {
 	 * @return 
 	 */
 	private static boolean barrerRadar(Explosion explosionActual, Enemigo enemigoAct) {
-		// retorna true si hay que eliminar el misil inteligente,
+		// retorna true si hay que eliminar el misil inteligente
 		int x1 = enemigoAct.getPosicionActual().getPosicionX();
 		int y1 = enemigoAct.getPosicionActual().getPosicionY();
 
 		int x2 = explosionActual.getPosicionActual().getPosicionX();
 		int y2 = explosionActual.getPosicionActual().getPosicionY();
-		//
 		if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio()) {
 			return true;
 		} else if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio() * 2) {
@@ -155,4 +169,18 @@ public class Colisiones {
 		return false;
 
 	}
+
+	public static int getMisilesEnemigosDestr() {
+		return misilesEnemigosDestr;
+	}
+
+	public static int getBombarderosDestr() {
+		return bombarderosDestr;
+	}
+
+	public static int getMisilesIntDestr() {
+		return misilesIntDestr;
+	}
+	
 }
+

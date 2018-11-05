@@ -1,5 +1,6 @@
 package enemigos;
 
+import gestores.Colisiones;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 
@@ -15,5 +16,4 @@ public class MisilCrucero extends Misiles implements Dibujable{
 		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , 'Z');
 		return info;
 	}
-
 }

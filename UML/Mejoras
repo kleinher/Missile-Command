@@ -7,6 +7,8 @@ Fixes!
 *Implementamos el metodo "Esquivar" de misil inteligente
 *Corregimos el funcionamiento del "mover" de enemigos y aliados.(arreglar la simulacion del disparo)
 *Implementamos la clase Estela
+*Se agrego que se lancen bombarderos en la oleada
+*Agregamos mejor logica a la hora de calcular el puntaje al final de cada nivel
 
 --AHORA nivel ya no necesita enviarle como parámetro las estructuras a cada 
 metodo, sino que cada metodo accede a las estructuras mediante 

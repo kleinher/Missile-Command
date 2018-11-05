@@ -5,7 +5,6 @@ import gestores.GestorDeNivel;
 import taller2.grafico.InformacionDibujable;
 
 public abstract class Bombardero extends Enemigo{
-	
 	public Bombardero() {
 		super();
 		this.puntos=150;

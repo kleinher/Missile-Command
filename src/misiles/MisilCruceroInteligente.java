@@ -16,7 +16,6 @@ public class MisilCruceroInteligente extends Misiles implements Dibujable {
 		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),
 				this.posicionActual.getPosicionY(), 'O');
 		return info;
-
 	}
 
 	/**

@@ -3,6 +3,8 @@ package gestores;
 import java.util.LinkedList;
 import java.util.Random;
 
+import bombarderos.Avion;
+import bombarderos.Satelite;
 import clasesPadres.Enemigo;
 import misiles.MisilBalistico;
 import misiles.MisilCrucero;
@@ -39,12 +41,12 @@ public class Oleada {
 	 * ---CREAR LISTA DE OLEADAS POR NIVEL--- Metodo estatico que crea la lista de
 	 * Oleadas
 	 * 
-	 * @param Enemigos
+	 * @param enemigos
 	 *            >>Cada nodo de esta lista es una oleada
-	 * @param NumeroDeNivel
+	 * @param numeroDeNivel
 	 *            >>Numero de nivel
 	 */
-	public static void CrearListaDeOleadasPorNivel(LinkedList<LinkedList<Enemigo>> Enemigos, int NumeroDeNivel) {
+	public static void CrearListaDeOleadasPorNivel(LinkedList<LinkedList<Enemigo>> enemigos, int numeroDeNivel) {
 		Random aleatorio = new Random();
 		int oleada = 1;
 
@@ -67,11 +69,11 @@ public class Oleada {
 				numeroDeEnemigosPorNivel--;
 			}
 
-			// En todos los niveles se van a agregar los Misil Cruceros Inteligentes y los
-			// Misil cruceros apartir de la oleada 4
+			/* En todos los niveles se van a agregar los Misil Cruceros Inteligentes y los
+			 Misil cruceros apartir de la oleada 4 */
 			if (oleada == 4) {
 				
-				if (GestorEstructuras.VectorDeMisilesCrucerosPorNivel[NumeroDeNivel]) {
+				if (GestorEstructuras.VectorDeMisilesCrucerosPorNivel[numeroDeNivel]) {
 					MisilCruceroInteligente MCI = new MisilCruceroInteligente();
 					oleadaEnemigos.add(MCI);
 				} else {
@@ -79,9 +81,24 @@ public class Oleada {
 					oleadaEnemigos.add(MC);
 				}
 			}
+			
+			/*Se agregan a la oleada de enemigos 2 bombarderos por nivel, siendo aleatoriamente seleccionado si es un Satelite o un Avion
+			 * utilizando un random que devuelva 0 o 1 para determinar que bombardero sera el que se agregue a la oleada */
+			
+			if((oleada == 3) && (oleada == 7)){
+				int numeroDeBombarderosPorOleada = (aleatorio.nextInt(1));
+					if(numeroDeBombarderosPorOleada==1){
+						Avion A = new Avion();
+						oleadaEnemigos.add(A);
+					}
+					else{
+						Satelite S = new Satelite();
+						oleadaEnemigos.add(S);
+					}		
+				}
 
-			// Agrego la oleada a la lista de oleadas
-			Enemigos.add(oleadaEnemigos);
+			// Agrego la oleada de enemigos a la lista de oleadas
+			enemigos.add(oleadaEnemigos);
 		}
 
 	}

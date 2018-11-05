@@ -2,6 +2,7 @@ package puntajes;
 
 import java.util.Scanner;
 
+import gestores.Colisiones;
 import gestores.GestorDeNivel;
 import gestores.GestorEstructuras;
 
@@ -10,19 +11,20 @@ public class PuntajeJugador extends TablaDePuntajes{
 	private String nombre;
 
 	//
-	private void contarPuntajes(PuntajeJugador puntajeJugador) {
+	public void ActualizarPuntaje(PuntajeJugador puntajeJugador) {
 		int contadorCiudades = 0;
-		int contadorBases = 0;
-
+		int contadorMisilesSinUxBases = 0;
+		/* Cuento las ciudades vivas al terminar el nivel*/
 		for (int i = 1; i < 7; i++) {
 			if (GestorEstructuras.getGestorEstructuras().getCiudades()[i].estaViva()) {
 				contadorCiudades++;
 			}
 		}
+		/* Cuento los misiles sobrantes al terminar el nivel*/
 		for (int i = 1; i < 4; i++) {
-			contadorBases += GestorEstructuras.getGestorEstructuras().getBases()[i].getCantMisiles();
+			contadorMisilesSinUxBases += GestorEstructuras.getGestorEstructuras().getBases()[i].getCantMisiles();
 		}
-		puntajeJugador.CalcularPuntajePorNivel(GestorDeNivel.getGestorDeNivel().getNivelActual(), contadorBases, contadorCiudades);
+		puntajeJugador.CalcularPuntajePorNivel(GestorDeNivel.getGestorDeNivel().getNivelActual(), contadorMisilesSinUxBases, contadorCiudades,Colisiones.getMisilesEnemigosDestr(),Colisiones.getMisilesIntDestr(),Colisiones.getBombarderosDestr());
 
 	}
 
@@ -65,12 +67,14 @@ public class PuntajeJugador extends TablaDePuntajes{
 		VDePuntajes[2]=5;
 		//Puntaje por ciudades vivas
 		VDePuntajes[3]=100;
+		//Puntaje por Bombardero destruido
+		VDePuntajes[4]=25;
 	}
 	
-	public void CalcularPuntajePorNivel(int NivelAct, int misilesAliadosSinU, int ciuVi) {
+	private void CalcularPuntajePorNivel(int nivelAct, int misilesAliadosSinU, int ciuVi, int misilesBalisElim, int misilesIntDest, int bomDest) {
 		int MultiplicadorPorNivel=1;
-		if(NivelAct>2) {
-			switch (NivelAct) {
+		if(nivelAct>2) {
+			switch (nivelAct) {
 				case 3:MultiplicadorPorNivel=2;
 				break;
 				case 4:MultiplicadorPorNivel=2;
@@ -91,7 +95,8 @@ public class PuntajeJugador extends TablaDePuntajes{
 				break;
 				}
 		}
-		this.score += (MultiplicadorPorNivel*((VDePuntajes[2]*misilesAliadosSinU)+(VDePuntajes[3]*ciuVi)));
+		/* Calcula en base a los datos obtenidos por cada nivel sobre el desempeño del jugador multiplcandolo por el valor de puntaje de cada accion*/
+		this.score += (MultiplicadorPorNivel*((VDePuntajes[0]*misilesBalisElim)+(VDePuntajes[1]*misilesIntDest)+(VDePuntajes[2]*misilesAliadosSinU)+(VDePuntajes[3]*ciuVi)+(VDePuntajes[4]*bomDest)));
 	}
 	public String getNombre() {
 		return nombre;
@@ -109,4 +114,9 @@ public class PuntajeJugador extends TablaDePuntajes{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	/*//////////////////////////////// comentario Necesito contar cantidad de:
+
+				*Misiles Balisticos destruidos
+				*Misiles Inteligentes destruidos
+				*Bombarderos destruidos */
 }

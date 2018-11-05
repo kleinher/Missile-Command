@@ -79,5 +79,4 @@ public abstract class Enemigo implements Dibujable{
 
 		this.posicionActual = posicionActual;
 	}
-
 }
