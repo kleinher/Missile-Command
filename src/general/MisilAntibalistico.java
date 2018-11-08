@@ -40,7 +40,7 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 			LinkedList<Enemigo> aliadosAEliminar) {
 		
 				//sumo el puntaje por destruir misiles enemigos en tiempo real
-				GestorDeNivel.getGestorDeNivel().getPuntajeJugador().actualizarScore(this.puntos);
+				//GestorDeNivel.estructuras.getPuntajeJugador().actualizarScore(this.puntos);
 				
 				//Elimino el misil de la pantalla
 				aliadosAEliminar.add(this);

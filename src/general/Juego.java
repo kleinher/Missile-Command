@@ -34,10 +34,9 @@ public class Juego {
 		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
 		
 		while (!nivel.Perdio()&& nivel.getNivelActual() != 17) {
-			nivel.gestionarNivel();
 			nivel.loopDelNivel(Juego.puntajeJugador);
 			// PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
-
+			System.out.println("El nivel actual es : " + nivel.getNivelActual());
 		}
 		terminarJuego();
 		//TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(), nivel.getPuntajeJugador().getNombre());

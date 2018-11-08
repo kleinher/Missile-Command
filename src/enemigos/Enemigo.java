@@ -26,7 +26,7 @@ public abstract class Enemigo implements Dibujable{
 	{
 		
 		//sumo el puntaje por destruir misiles enemigos en tiempo real
-		GestorDeNivel.getGestorDeNivel().getPuntajeJugador().actualizarScore(this.puntos);
+		//GestorDeNivel.getGestorDeNivel().getPuntajeJugador().actualizarScore(this.puntos);
 		
 		//Elimino el misil de la pantalla
 		enemigosAEliminar.add(this);
