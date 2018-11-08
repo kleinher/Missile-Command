@@ -9,13 +9,14 @@ public class Bombardero extends Enemigo{
 	public Bombardero() {
 		super();
 		this.puntos=150;
+		determinarRecorrido();
 	}
 	
 	public void mover() {
 		if(this.posicionInicial.getPosicionX()==525)
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()-1,this.posicionActual.getPosicionY());
+			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()-5,this.posicionActual.getPosicionY());
 		else 
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+1, this.posicionActual.getPosicionY());
+			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+5, this.posicionActual.getPosicionY());
 	}
 	/*Determina la posicion inicial del borbardero, y su posicion de destino*/
 	public void determinarRecorrido() {
@@ -50,5 +51,10 @@ public class Bombardero extends Enemigo{
 	public InformacionDibujable getInformacionDibujable() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void desaparecer() {
+		
+		
 	}
 }

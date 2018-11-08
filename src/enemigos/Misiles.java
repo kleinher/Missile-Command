@@ -1,10 +1,12 @@
 package enemigos;
 
 import java.util.Random;
+
+import general.Estela;
 import general.Posicion;
 public abstract class Misiles extends Enemigo{ 
 	private static Posicion[] posicionDeLasBasesYCiudades;
-	
+	private Estela estela;
 	public Misiles (){
 		determinarObjetivo();
 		determinarInicio();
@@ -48,6 +50,8 @@ public abstract class Misiles extends Enemigo{
 		//Actualiza la posicion 
 		this.posicionActual.actualizarPosicion((int)(this.posicionActual.getPosicionX()+movimientoX),
 											   (int)(this.posicionActual.getPosicionY()+movimientoY));
+		//Agrego puntos a la estela
+		//this.estela.agregarPuntoALaEstela(this.posicionActual);
 			  
 	}
 	 

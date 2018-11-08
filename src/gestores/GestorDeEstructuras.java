@@ -9,6 +9,7 @@ import Aliados.Ciudad;
 import Aliados.Explosion;
 import Aliados.MisilAntibalistico;
 import enemigos.Enemigo;
+import general.Posicion;
 import taller2.grafico.Dibujable;
 import usuario.PuntajeJugador;
 /**
@@ -33,6 +34,9 @@ public class GestorDeEstructuras {
 		List<? extends Dibujable> listaDibujables;
 
 
+		//Lista de todas las estelas
+		LinkedList<Posicion> EstalasEnPantalla;
+
 		// Variables enemigas
 		/* Lista de Enemigos Mostrados y procesados durante el nivel */
 		LinkedList<Enemigo> EnemigosEnPantalla;
@@ -53,6 +57,7 @@ public class GestorDeEstructuras {
 			this.puntajeJugador = new PuntajeJugador();
 			this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 			this.EnemigosEnPantalla = new LinkedList<Enemigo>();
+			this.EstalasEnPantalla =new LinkedList<Posicion>();
 			
 			// Instancia las nueve ciudades
 			this.Ciudades=new Ciudad[7];

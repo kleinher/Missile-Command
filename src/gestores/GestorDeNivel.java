@@ -1,15 +1,9 @@
 package gestores;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 import Aliados.Base;
 import Aliados.Ciudad;
 import enemigos.*;
-import taller2.grafico.Dibujable;
 import taller2.modelo.Graficador;
-import usuario.PuntajeJugador;
 
 /**
  * Gestor de nivel se instancia en su misma clase para ser Singleton
@@ -28,8 +22,8 @@ public class GestorDeNivel {
 	private boolean Perdio;
 	private int NivelActual;
 	public GestorDeEstructuras estructuras;
-	//Delay para la clase graficador
-	final private int delayMilis=50;
+	// Delay para la clase graficador
+	final private int delayMilis = 50;
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 
 	// private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
@@ -46,8 +40,6 @@ public class GestorDeNivel {
 		estructuras = new GestorDeEstructuras();
 	}
 
-
-
 	/**
 	 * -------------LOOP NIVEL-----------
 	 * 
@@ -59,7 +51,7 @@ public class GestorDeNivel {
 	 * 
 	 * @throws InterruptedException
 	 */
-	public void loopDelNivel()throws InterruptedException {
+	public void loopDelNivel() throws InterruptedException {
 		estructuras.gestionarEstructuras();
 		this.NivelActual = estructuras.getNivelActual();
 		boolean Perdio = false;
@@ -67,13 +59,13 @@ public class GestorDeNivel {
 
 		// Lanzo la primer oleada de enemigos
 		Enemigo.lanzarEnemigos(estructuras.EnemigosEnEspera.poll(), estructuras.EnemigosEnPantalla);
-		
+
 		// LANZAR MISILES ALIADOS HARDCODEADOS
 
-		Base.Disparar(estructuras.Bases[1],estructuras.MisilesAliadosEnPantalla,40);
-		Base.Disparar(estructuras.Bases[2],estructuras.MisilesAliadosEnPantalla,195);
-		Base.Disparar(estructuras.Bases[3],estructuras.MisilesAliadosEnPantalla,360);
-		
+		Base.Disparar(estructuras.Bases[1], estructuras.MisilesAliadosEnPantalla, 40);
+		Base.Disparar(estructuras.Bases[2], estructuras.MisilesAliadosEnPantalla, 195);
+		Base.Disparar(estructuras.Bases[3], estructuras.MisilesAliadosEnPantalla, 360);
+
 		// Mientras hayan enemigos
 		while (!estructuras.EnemigosEnEspera.isEmpty()) {
 			Graficador.refrescarTopDown(estructuras.ActualizarListaDibujables(), delayMilis);
@@ -85,22 +77,19 @@ public class GestorDeNivel {
 			}
 
 			estructuras.actualizarPosiciones();
-			Colisiones.comprobarColision(estructuras.EnemigosEnPantalla, 
-					estructuras.explosionesEnPantalla,
-					estructuras.Ciudades, estructuras.Bases,
-					estructuras.MisilesAliadosEnPantalla);
+			Colisiones.comprobarColision(estructuras.EnemigosEnPantalla, estructuras.explosionesEnPantalla,
+					estructuras.Ciudades, estructuras.Bases, estructuras.MisilesAliadosEnPantalla);
 			// dibujar();
-			//Thread.sleep(1000 / Dificultad);
+			// Thread.sleep(1000 / Dificultad);
 			tics++;
-			
+
 		}
 		if (!Ciudad.hayCiudades(estructuras.Ciudades)) {
 			Perdio = true;
 		}
-		 //contarPuntajes(puntajeJugador);
-		
-	}
+		// contarPuntajes(puntajeJugador);
 
+	}
 
 	/**
 	 * METODO MAIN- Donde sucede la magia
@@ -111,24 +100,22 @@ public class GestorDeNivel {
 	public static void main(String args[]) throws InterruptedException {
 
 		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
-		
-		while (!nivel.Perdio()&& nivel.getNivelActual() != 17) {
+// errorrrrrr no corta nunca
+		while ((!nivel.Perdio()) && (nivel.getNivelActual() != 17)) {
 			nivel.loopDelNivel();
 			// PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
 			System.out.println("El nivel actual es : " + nivel.getNivelActual());
 		}
 		terminarJuego();
-		//TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(), nivel.getPuntajeJugador().getNombre());
+		// TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(),
+		// nivel.getPuntajeJugador().getNombre());
 	}
-
-
 
 	/**
 	 * 
 	 * @return Devuelve un booleano si perdio o no, en funi�n del estado de la
 	 *         partida
 	 */
-
 
 	/**
 	 * ---getGestorDeNivel--- Al ser singleton la clase este metodo se utiliza para
@@ -140,10 +127,8 @@ public class GestorDeNivel {
 		return GestorDeNivel;
 	}
 
-
-
 	public boolean Perdio() {
-		// TODO Auto-generated method stub
+
 		return this.Perdio;
 	}
 
