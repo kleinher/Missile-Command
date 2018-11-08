@@ -40,6 +40,9 @@ public class GestorDeNivel {
 	 * sus datos iniciales
 	 */
 	private GestorDeNivel() {
+
+		Misiles.DeterminarPosicionesDeLasbases();
+		Oleada.DeterminarArregloDeMisiles();
 		estructuras = new GestorDeEstructuras();
 	}
 
@@ -56,7 +59,7 @@ public class GestorDeNivel {
 	 * 
 	 * @throws InterruptedException
 	 */
-	public void loopDelNivel(PuntajeJugador puntajeJugador)throws InterruptedException {
+	public void loopDelNivel()throws InterruptedException {
 		estructuras.gestionarEstructuras();
 		this.NivelActual = estructuras.getNivelActual();
 		boolean Perdio = false;
@@ -99,7 +102,24 @@ public class GestorDeNivel {
 	}
 
 
+	/**
+	 * METODO MAIN- Donde sucede la magia
+	 * 
+	 * @param args
+	 * @throws InterruptedException
+	 */
+	public static void main(String args[]) throws InterruptedException {
 
+		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
+		
+		while (!nivel.Perdio()&& nivel.getNivelActual() != 17) {
+			nivel.loopDelNivel();
+			// PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
+			System.out.println("El nivel actual es : " + nivel.getNivelActual());
+		}
+		terminarJuego();
+		//TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(), nivel.getPuntajeJugador().getNombre());
+	}
 
 
 
@@ -127,7 +147,17 @@ public class GestorDeNivel {
 		return this.Perdio;
 	}
 
-
+	/**
+	 * METODO TERMINAR En teoria, guarda todo lo que se tenga que guardar, como los
+	 * puntajes. Imprime 'GameOver', o un blue Screen para asustar al usuario
+	 * desprevenido
+	 */
+	public static void terminarJuego() {
+		/* Guarda los puntajes en la tabla de puntajes */ /* Falta Pasarle todos los argumentos que necesita */
+		// tablaDePuntajes.actualizarTablaDePuntajes();
+		/* Imprimer Game Over */
+		System.out.println("Game Over");
+	}
 
 	public int getNivelActual() {
 		// TODO Auto-generated method stub
