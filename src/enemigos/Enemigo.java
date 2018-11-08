@@ -1,7 +1,8 @@
 package enemigos;
 import java.util.Iterator;
 import java.util.LinkedList;
-import general.Explosion;
+
+import Aliados.Explosion;
 import general.Posicion;
 import gestores.GestorDeNivel;
 import taller2.grafico.Dibujable;

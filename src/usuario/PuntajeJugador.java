@@ -1,4 +1,4 @@
-package general;
+package usuario;
 
 import java.util.Scanner;
 

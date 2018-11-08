@@ -4,12 +4,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import Aliados.Base;
+import Aliados.Ciudad;
 import enemigos.*;
-import general.Base;
-import general.Ciudad;
-import general.PuntajeJugador;
 import taller2.grafico.Dibujable;
 import taller2.modelo.Graficador;
+import usuario.PuntajeJugador;
 
 /**
  * Gestor de nivel se instancia en su misma clase para ser Singleton

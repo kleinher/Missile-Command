@@ -4,13 +4,13 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import Aliados.Base;
+import Aliados.Ciudad;
+import Aliados.Explosion;
+import Aliados.MisilAntibalistico;
 import enemigos.Enemigo;
-import general.Base;
-import general.Ciudad;
-import general.Explosion;
-import general.MisilAntibalistico;
-import general.PuntajeJugador;
 import taller2.grafico.Dibujable;
+import usuario.PuntajeJugador;
 /**
  * --Correcci�n para Reentrega-- Se agrega esta nueva clase GestorEstructuras.
  * Tiene una doble funcionalidad, la de contenedor de estructuras, para que la Clase Gestor Nivel no deba rehacer su

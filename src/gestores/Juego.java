@@ -1,7 +1,7 @@
 package gestores;
 
 import enemigos.Misiles;
-import general.PuntajeJugador;
+import usuario.PuntajeJugador;
 
 /**
  * Esta clase Representa al menu inicial del juego, que permite comenzar un

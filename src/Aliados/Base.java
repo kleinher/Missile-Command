@@ -1,7 +1,8 @@
-package general;
+package Aliados;
 
 import java.util.LinkedList;
 
+import general.Posicion;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 
