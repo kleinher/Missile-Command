@@ -50,12 +50,15 @@ public class Colisiones {
 				Explosion explosionActual = j.next();
 				if (colisionEnemigosConExplosiones(explosionActual, enemigoAct)) {
 					// Cuando enemigo colisiona con explosion destruyo enemigo y cuento que ene
-					
-					if(enemigoAct instanceof Bombardero)
-					if(enemigoAct instanceof MisilBalistico)
-						
+	
 					if(enemigoAct instanceof MisilCruceroInteligente){
-						
+						misilesIntDestr++;
+					}
+					if(enemigoAct instanceof MisilBalistico){
+						misilesIntDestr++;
+					}
+					if(enemigoAct instanceof Bombardero){
+						bombarderosDestr++;
 					}
 					
 					
