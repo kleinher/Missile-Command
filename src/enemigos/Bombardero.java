@@ -1,7 +1,7 @@
 package enemigos;
 import java.util.Random;
 
-import general.GestorDeNivel;
+import gestores.GestorDeNivel;
 import taller2.grafico.InformacionDibujable;
 
 public class Bombardero extends Enemigo{

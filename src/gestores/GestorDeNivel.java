@@ -1,10 +1,13 @@
-package general;
+package gestores;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import enemigos.*;
+import general.Base;
+import general.Ciudad;
+import general.PuntajeJugador;
 import taller2.grafico.Dibujable;
 import taller2.modelo.Graficador;
 

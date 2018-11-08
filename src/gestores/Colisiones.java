@@ -1,9 +1,14 @@
-package general;
+package gestores;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import enemigos.Enemigo;
+import general.Base;
+import general.Ciudad;
+import general.Explosion;
+import general.MisilAntibalistico;
+import general.Posicion;
 
 /**
  * Esta clase, a traves de sus metodos estaticos, se encarga de checkear en cada
