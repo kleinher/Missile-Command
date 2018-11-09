@@ -32,10 +32,6 @@ public class Explosion implements Dibujable{
 		this.radio = radio;
 	}
 
-	public void destruccion() {
-		// TODO Auto-generated method stub
-		
-	}
 	@Override
 	public InformacionDibujable getInformacionDibujable() {
 		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , 'E');

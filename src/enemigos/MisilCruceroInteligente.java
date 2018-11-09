@@ -23,10 +23,10 @@ public class MisilCruceroInteligente extends Misiles implements Dibujable {
 	 */
 	public void esquivar(boolean esquivarIzquierda) {
 		if (esquivarIzquierda) {
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX() - 2,
+			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX() - 4,
 					this.posicionActual.getPosicionY());
 		} else
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX() + 2,
+			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX() + 4,
 					this.posicionActual.getPosicionY());
 	}
 

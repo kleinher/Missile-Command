@@ -12,6 +12,7 @@ import enemigos.MisilBalistico;
 import enemigos.MisilCrucero;
 import enemigos.MisilCruceroInteligente;
 import enemigos.Satelite;
+import general.Posicion;
 
 /**
  * Esta clase representa a cada oleada dentro de la lista de Oleadas de cada
@@ -49,7 +50,7 @@ public class Oleada {
 	 * @param NumeroDeNivel
 	 *            >>Numero de nivel
 	 */
-	public static void CrearListaDeOleadasPorNivel(LinkedList<LinkedList<Enemigo>> Enemigos, int NumeroDeNivel) {
+	public static void CrearListaDeOleadasPorNivel(LinkedList<LinkedList<Enemigo>> Enemigos, int NumeroDeNivel, LinkedList<LinkedList<Posicion>> ListaDeEstelas) {
 		Random aleatorio = new Random();
 		int oleada = 1;
 
@@ -68,6 +69,7 @@ public class Oleada {
 
 				/* Genera Un numero Random de enemigos para cada oleada de 0 a 4 */
 				MisilBalistico MB = new MisilBalistico();
+				//ListaDeEstelas.add(MB.getEstela().getListaDeEstelas());
 				oleadaEnemigos.add(MB);
 				numeroDeEnemigosPorNivel--;
 			}

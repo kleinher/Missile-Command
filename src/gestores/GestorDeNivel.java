@@ -4,6 +4,7 @@ import Aliados.Base;
 import Aliados.Ciudad;
 import enemigos.*;
 import taller2.modelo.Graficador;
+import usuario.PuntajeJugador;
 
 /**
  * Gestor de nivel se instancia en su misma clase para ser Singleton
@@ -23,7 +24,7 @@ public class GestorDeNivel {
 	private int NivelActual;
 	public GestorDeEstructuras estructuras;
 	// Delay para la clase graficador
-	final private int delayMilis = 50;
+	final private int delayMilis = 200;
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 
 	// private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
@@ -100,11 +101,13 @@ public class GestorDeNivel {
 	public static void main(String args[]) throws InterruptedException {
 
 		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
+		PuntajeJugador puntaje = new PuntajeJugador();
 // errorrrrrr no corta nunca
 		while ((!nivel.Perdio()) && (nivel.getNivelActual() != 17)) {
 			nivel.loopDelNivel();
-			// PuntajeJugador.actualizarTablaDePuntajes(); // PARAMETROS
+			PuntajeJugador.ActualizarPuntaje(nivel.NivelActual, nivel.estructuras.Ciudades, nivel.estructuras.Bases); // PARAMETROS
 			System.out.println("El nivel actual es : " + nivel.getNivelActual());
+			System.out.println("El Puntaje es : " +puntaje.getScore());
 		}
 		terminarJuego();
 		// TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(),
@@ -145,7 +148,6 @@ public class GestorDeNivel {
 	}
 
 	public int getNivelActual() {
-		// TODO Auto-generated method stub
 		return this.NivelActual;
 	}
 

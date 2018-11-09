@@ -12,23 +12,29 @@ import java.util.LinkedList;
  */
 
 public class Estela {
-	/* Utilizo una lista de Posiciones, que serian puntos que se graficaran en la pantalla, agregandose puntos despues de cada movimiento de los misiles*/
-	private LinkedList<Posicion> listaDeEstelas = new LinkedList<Posicion>();
-/*Agrega una lista de puntos a la lista general de puntos a graficar*/
+	private LinkedList<Posicion> listaDeEstelas;
 	
-public void agregarPuntoALaListadibujable(Posicion pos) {
-	listaDeEstelas.add(pos);
+	public Estela() {
+		LinkedList<Posicion> listaDeEstelas = new LinkedList<Posicion>();
 	}
+	/* Utilizo una lista de Posiciones, que serian puntos que se graficaran en la pantalla, agregandose puntos despues de cada movimiento de los misiles*/
+
+	
+public LinkedList<Posicion> getListaDeEstelas() {
+	return listaDeEstelas;
+}
 
 /* Agrega al final el ultimo punto que es la ultima posicion que se movio el misil*/
 public void agregarPuntoALaEstela(Posicion pos) {
-	listaDeEstelas.add(pos);
+	this.listaDeEstelas.add(pos);
 	}
+
 /*Elimina la estela completa*/
 public void eliminarEstela() {
 	listaDeEstelas.clear();
 	//Preguntar si cuando se hace un clear de la lista de puntos se debe eliminar tambien de la lista de estelas en pantalla
 }
+
 /*Elimina los puntos determinados de la estela que se encuntran en un area de explosion*/
 public void eliminarPuntosDeLaEstela (LinkedList <Posicion> listaDePuntosAEliminar) {
 	listaDeEstelas.removeAll(listaDePuntosAEliminar);

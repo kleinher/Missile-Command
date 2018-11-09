@@ -78,7 +78,12 @@ public class Colisiones {
 
 				// Por cada enemigo verifico si llego a alguna de las bases o de las ciudades
 				if (enemigoAct.getPosicionActual().equals(enemigoAct.getPosicionObjetivo())) {
-
+					
+					//Comprobamos si es un bombardero para que desaparezca al final de la pantalla y no explote
+					if (enemigoAct instanceof Bombardero) {
+						enemigoAct.borrarEnemigoSinExplotar(enemigoAct,enemigosAEliminar);
+					}
+					else {
 					// Si hay colision, destruyo base/ciudad y el misil enemigo
 					destruirObjetivo(enemigoAct.getPosicionActual(), ciudades, bases);
 					enemigoAct.destruccion(explosionesAgregar, enemigosAEliminar);
@@ -86,6 +91,7 @@ public class Colisiones {
 				}
 			}
 		}
+	}
 		listaExplocionesEnPantalla.addAll(explosionesAgregar);
 		enemigos.removeAll(enemigosAEliminar);
 

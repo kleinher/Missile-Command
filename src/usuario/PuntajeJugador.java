@@ -8,12 +8,16 @@ import gestores.Colisiones;
 import gestores.GestorDeNivel;
 
 public class PuntajeJugador extends TablaDePuntajes{
-	private Integer score;
-	private String nombre;
+	private static int score;
+	private static String nombre;
 	
-
-	//
-	public void ActualizarPuntaje(PuntajeJugador puntajeJugador,Ciudad[] Ciudades, Base[] Bases) {
+	/**
+	 * Actualiza el puntaje al final de cada nivel
+	 * @param nivel
+	 * @param Ciudades
+	 * @param Bases
+	 */
+	public static void ActualizarPuntaje(int nivel,Ciudad[] Ciudades, Base[] Bases) {
 		int contadorCiudades = 0;
 		int contadorMisilesSinUxBases = 0;
 		/* Cuento las ciudades vivas al terminar el nivel*/
@@ -26,28 +30,23 @@ public class PuntajeJugador extends TablaDePuntajes{
 		for (int i = 1; i < 4; i++) {
 			contadorMisilesSinUxBases += Bases[i].getCantMisiles();
 		}
-		puntajeJugador.CalcularPuntajePorNivel(GestorDeNivel.getGestorDeNivel().getNivelActual(), contadorMisilesSinUxBases, contadorCiudades,Colisiones.getMisilesEnemigosDestr(),Colisiones.getMisilesIntDestr(),Colisiones.getBombarderosDestr());
+		//Mando como parametros, el nivel actual, misiles sin usar, misiles enemigos destruidos, misiles inteligentes destruidos y bombarderos destruidos
+		CalcularPuntajePorNivel(nivel, contadorMisilesSinUxBases, contadorCiudades,Colisiones.getMisilesEnemigosDestr(),Colisiones.getMisilesIntDestr(),Colisiones.getBombarderosDestr());
 
 	}
-
 
 	private static int [] VDePuntajes= new int[5];
 
-	public void actualizarScore(int puntos) {
-		score+=puntos;
-	}
 	public PuntajeJugador() {
 		InicializarTablaDePuntajePorCadaEnemigo();
 		this.score = 0;
 		//this.nombre = leerNombre();
 	}
-	public  Integer getScore() {
-		return score;
-	}
+
 	/*LEER NOMBRE JUGADOR
 	 * Solicita en pantalla que se carga un nuevo jugador
 	 * */
-	public String leerNombre(){
+	public static String leerNombre(){
 
 		Scanner in = new Scanner(System.in);
 		String nombre = new String();
@@ -57,9 +56,10 @@ public class PuntajeJugador extends TablaDePuntajes{
 		in.close();
 		return nombre;
 	}
-	
-	private void InicializarTablaDePuntajePorCadaEnemigo() {
-		
+	/**
+	 * Inicializa la tabla de puntajes para cada enemigo o variable aliada
+	 */
+	private static void InicializarTablaDePuntajePorCadaEnemigo() {
 		//Puntaje por matar un Misil Basico
 		VDePuntajes[0]=25;
 		//Puntaje por matar un Misil Crucero
@@ -71,8 +71,10 @@ public class PuntajeJugador extends TablaDePuntajes{
 		//Puntaje por Bombardero destruido
 		VDePuntajes[4]=25;
 	}
-	
-	private void CalcularPuntajePorNivel(int nivelAct, int misilesAliadosSinU, int ciuVi, int misilesBalisElim, int misilesIntDest, int bomDest) {
+	/**
+	 *  Calcular Puntajes por cada nivel multiplicando por un determinado criterio
+	 *  */
+	private static void CalcularPuntajePorNivel(int nivelAct, int misilesAliadosSinU, int ciuVi, int misilesBalisElim, int misilesIntDest, int bomDest) {
 		int MultiplicadorPorNivel=1;
 		if(nivelAct>2) {
 			switch (nivelAct) {
@@ -97,11 +99,9 @@ public class PuntajeJugador extends TablaDePuntajes{
 				}
 		}
 		/* Calcula en base a los datos obtenidos por cada nivel sobre el desempeño del jugador multiplcandolo por el valor de puntaje de cada accion*/
-		this.score += (MultiplicadorPorNivel*((VDePuntajes[0]*misilesBalisElim)+(VDePuntajes[1]*misilesIntDest)+(VDePuntajes[2]*misilesAliadosSinU)+(VDePuntajes[3]*ciuVi)+(VDePuntajes[4]*bomDest)));
+		score += (MultiplicadorPorNivel*((VDePuntajes[0]*misilesBalisElim)+(VDePuntajes[1]*misilesIntDest)+(VDePuntajes[2]*misilesAliadosSinU)+(VDePuntajes[3]*ciuVi)+(VDePuntajes[4]*bomDest)));
 	}
-	public String getNombre() {
-		return nombre;
-	}
+
 	
 	public static int[] getVDePuntajes() {
 		return VDePuntajes;
@@ -114,5 +114,11 @@ public class PuntajeJugador extends TablaDePuntajes{
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public  Integer getScore() {
+		return score;
 	}
 }

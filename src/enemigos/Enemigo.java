@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import Aliados.Explosion;
 import general.Posicion;
-import gestores.GestorDeNivel;
 import taller2.grafico.Dibujable;
 public abstract class Enemigo implements Dibujable{
 	protected int puntos;
@@ -35,6 +34,9 @@ public abstract class Enemigo implements Dibujable{
 		//creo una nueva explosion y la agrego a la lsita de explosiones en pantalla
 		Explosion nuevaExplosion = new Explosion(this.posicionActual);
 		explosionesAgregar.add(nuevaExplosion);
+	}
+	public void borrarEnemigoSinExplotar(Enemigo e,LinkedList<Enemigo> enemigosAEliminar) {
+		enemigosAEliminar.add(e);
 	}
 
 	/**

@@ -10,6 +10,16 @@ public abstract class Misiles extends Enemigo{
 	public Misiles (){
 		determinarObjetivo();
 		determinarInicio();
+		determinarEstela();
+	}
+	
+
+	private void determinarEstela() {
+		this.estela = new Estela();
+	}
+	
+	public Estela getEstela() {
+		return estela;
 	}
 
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */

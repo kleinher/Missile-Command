@@ -35,7 +35,7 @@ public class GestorDeEstructuras {
 
 
 		//Lista de todas las estelas
-		LinkedList<Posicion> EstalasEnPantalla;
+		LinkedList<LinkedList<Posicion>> EstelasEnPantalla;
 
 		// Variables enemigas
 		/* Lista de Enemigos Mostrados y procesados durante el nivel */
@@ -57,7 +57,7 @@ public class GestorDeEstructuras {
 			this.puntajeJugador = new PuntajeJugador();
 			this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 			this.EnemigosEnPantalla = new LinkedList<Enemigo>();
-			this.EstalasEnPantalla =new LinkedList<Posicion>();
+			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
 			
 			// Instancia las nueve ciudades
 			this.Ciudades=new Ciudad[7];
@@ -77,7 +77,7 @@ public class GestorDeEstructuras {
 		public void gestionarEstructuras() {
 			// Crea la lista de enemigos del nivel
 			this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
-			Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual);
+			Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual,EstelasEnPantalla);
 			explosionesEnPantalla=new LinkedList<Explosion>();
 			MisilesAliadosEnPantalla=new LinkedList<MisilAntibalistico>();
 			// Incrementa la dificultad cuando aumenta un nivel
