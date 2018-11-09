@@ -2,8 +2,6 @@ package gestores;
 
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.Set;
-import java.util.Vector;
 
 import enemigos.Avion;
 // Inicio1= de 0 a 175 / Inicio2 de 175 a 350 / inicio 3 de 350 a 525

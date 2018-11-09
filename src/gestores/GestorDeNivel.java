@@ -1,7 +1,10 @@
 package gestores;
 
+import java.util.LinkedList;
+
 import Aliados.Base;
 import Aliados.Ciudad;
+import Aliados.Explosion;
 import enemigos.*;
 import taller2.modelo.Graficador;
 import usuario.PuntajeJugador;
@@ -68,18 +71,23 @@ public class GestorDeNivel {
 		Base.Disparar(estructuras.Bases[3], estructuras.MisilesAliadosEnPantalla, 360);
 
 		// Mientras hayan enemigos
-		while (!estructuras.EnemigosEnEspera.isEmpty()) {
-			Graficador.refrescarTopDown(estructuras.ActualizarListaDibujables(), delayMilis);
+		while (!(estructuras.EnemigosEnEspera.isEmpty())) {
 			// Cuando pasa 1 segundo, lanzo otra oleada de enemigos
 			if (tics == 30) {
 				// Lanzo una nueva oleada de enemigos
 				Enemigo.lanzarEnemigos(estructuras.EnemigosEnEspera.poll(), estructuras.EnemigosEnPantalla);
 				tics = 0;
 			}
-
+			//actualizo el tamanio de las explosiones
+			actualizarTamanioDeExplosiones(estructuras.explosionesEnPantalla);
+			//Grafica
+			Graficador.refrescarTopDown(estructuras.ActualizarListaDibujables(), delayMilis);
+			//actualiza posiciones
 			estructuras.actualizarPosiciones();
+			//comprueba colisiones
 			Colisiones.comprobarColision(estructuras.EnemigosEnPantalla, estructuras.explosionesEnPantalla,
 					estructuras.Ciudades, estructuras.Bases, estructuras.MisilesAliadosEnPantalla);
+
 			// dibujar();
 			// Thread.sleep(1000 / Dificultad);
 			tics++;
@@ -88,11 +96,17 @@ public class GestorDeNivel {
 				System.out.println("perdiste");
 				break;
 			}
-
+			
 		}
+		
 
 		// contarPuntajes(puntajeJugador);
 
+	}
+
+	private void actualizarTamanioDeExplosiones(LinkedList<Explosion> explosionesEnPantalla) {
+		LinkedList<Explosion> ListaDeExplosionesAeliminar=Explosion.determinarTamanio(estructuras.explosionesEnPantalla);
+		estructuras.explosionesEnPantalla.removeAll(ListaDeExplosionesAeliminar);		
 	}
 
 	/**
@@ -105,10 +119,9 @@ public class GestorDeNivel {
 
 		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
 		PuntajeJugador puntaje = new PuntajeJugador();
-// errorrrrrr no corta nunca
 		while ((!nivel.Perdio()) && (nivel.getNivelActual() != 17)) {
 			nivel.loopDelNivel();
-			PuntajeJugador.ActualizarPuntaje(nivel.NivelActual, nivel.estructuras.Ciudades, nivel.estructuras.Bases); // PARAMETROS
+			PuntajeJugador.ActualizarPuntaje(nivel.NivelActual, nivel.estructuras.Ciudades, nivel.estructuras.Bases); 
 			System.out.println("El nivel actual es : " + nivel.getNivelActual());
 			System.out.println("El Puntaje es : " +puntaje.getScore());
 		}
