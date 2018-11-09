@@ -2,6 +2,9 @@ package general;
 
 import java.util.LinkedList;
 
+import taller2.grafico.Dibujable;
+import taller2.grafico.InformacionDibujable;
+
 /* Parte Grafica*/
 /**
  * La clase estela representa la estela de cada misil enemigo y aliado
@@ -11,11 +14,12 @@ import java.util.LinkedList;
  *
  */
 
-public class Estela {
+public class Estela implements Dibujable{
 	private LinkedList<Posicion> listaDeEstelas;
 	
-	public Estela() {
-		LinkedList<Posicion> listaDeEstelas = new LinkedList<Posicion>();
+	public Estela(Posicion posicionActual) {
+		this.listaDeEstelas = new LinkedList<Posicion>();
+		this.listaDeEstelas.addLast(posicionActual);
 	}
 	/* Utilizo una lista de Posiciones, que serian puntos que se graficaran en la pantalla, agregandose puntos despues de cada movimiento de los misiles*/
 
@@ -44,6 +48,14 @@ public static void ComprobarColisionDeExplosionConEstelas(Posicion posicionActua
 	
 	
 }
+
+
+@Override
+public InformacionDibujable getInformacionDibujable() {
+	InformacionDibujable info = new InformacionDibujable(this.listaDeEstelas.getLast().getPosicionX()+1,this.listaDeEstelas.getLast().getPosicionY()+1 , '|');
+	return info;
+}
+
 
 /************************* cada misil va a tener una instancia de estela, cuando se instancie un misil esta comienza vacia*/
 

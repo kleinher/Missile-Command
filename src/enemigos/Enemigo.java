@@ -3,6 +3,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import Aliados.Explosion;
+import general.Estela;
 import general.Posicion;
 import taller2.grafico.Dibujable;
 public abstract class Enemigo implements Dibujable{
@@ -11,9 +12,13 @@ public abstract class Enemigo implements Dibujable{
 	protected Posicion posicionObjetivo;
 	protected Posicion posicionActual;
 	//protected img Imagen;
+	private Estela estelaDeMisil=new Estela(this.posicionActual); 
 	
 	/*Variables Abstractas que van a implementar tanto bombardero como Misiles*/
 
+	public Estela getEstelaDeMisil() {
+		return estelaDeMisil;
+	}
 	public abstract void mover();
 	public Enemigo () {
 		this.puntos=25;

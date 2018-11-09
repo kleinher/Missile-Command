@@ -15,7 +15,7 @@ public abstract class Misiles extends Enemigo{
 	
 
 	private void determinarEstela() {
-		this.estela = new Estela();
+		this.estela = new Estela(posicionActual);
 	}
 	
 	public Estela getEstela() {
