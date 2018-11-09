@@ -25,6 +25,7 @@ public class GestorDeNivel {
 	public GestorDeEstructuras estructuras;
 	// Delay para la clase graficador
 	final private int delayMilis = 200;
+
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 
 	// private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
@@ -55,7 +56,6 @@ public class GestorDeNivel {
 	public void loopDelNivel() throws InterruptedException {
 		estructuras.gestionarEstructuras();
 		this.NivelActual = estructuras.getNivelActual();
-		boolean Perdio = false;
 		int tics = 0;
 
 		// Lanzo la primer oleada de enemigos
@@ -83,11 +83,14 @@ public class GestorDeNivel {
 			// dibujar();
 			// Thread.sleep(1000 / Dificultad);
 			tics++;
+			if (!Ciudad.hayCiudades(estructuras.Ciudades)) {
+				Perdio=true;
+				System.out.println("perdiste");
+				break;
+			}
 
 		}
-		if (!Ciudad.hayCiudades(estructuras.Ciudades)) {
-			Perdio = true;
-		}
+
 		// contarPuntajes(puntajeJugador);
 
 	}

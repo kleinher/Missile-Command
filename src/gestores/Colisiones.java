@@ -51,7 +51,7 @@ public class Colisiones {
 			Enemigo enemigoAct = i.next();
 			boolean explotoEnemigo = false;
 
-			// Primero busco colisiones con misiles antibalisticos
+			// Primero busco colisiones con missiles antibalisticos
 			for (Iterator<Explosion> j = listaExplocionesEnPantalla.iterator(); j.hasNext();) {
 				Explosion explosionActual = j.next();
 				Estela.ComprobarColisionDeExplosionConEstelas(explosionActual.getPosicionActual(),explosionActual.getRadio());

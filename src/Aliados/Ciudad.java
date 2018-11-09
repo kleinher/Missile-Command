@@ -11,24 +11,22 @@ import taller2.grafico.InformacionDibujable;
  * @author eze96
  *
  */
-public class Ciudad implements Dibujable{
+public class Ciudad implements Dibujable {
 	private Posicion posicion;
 	private boolean estaViva;
 
 	public Ciudad() {
-		this.estaViva=true;
+		this.estaViva = true;
 		this.posicion = new Posicion();
 	}
 
 	/**
 	 * Metodo Constructor de Ciudades
 	 * 
-	 * @param posX
-	 *            Determina la posicion en X de la ciudad, las ciudades tienen una
-	 *            distancia entre ellas de DistanciaEntreCiudad
-	 * @param posY
-	 *            Determina la posicion en Y de la ciudad, todas tienen la misma
-	 *            posicion
+	 * @param posX Determina la posicion en X de la ciudad, las ciudades tienen una
+	 *             distancia entre ellas de DistanciaEntreCiudad
+	 * @param posY Determina la posicion en Y de la ciudad, todas tienen la misma
+	 *             posicion
 	 */
 	public Ciudad(int posX, int posY) {
 		this();
@@ -37,8 +35,8 @@ public class Ciudad implements Dibujable{
 	}
 
 	/**
-	 * Este metodo instancia las Seis ciudades del vector de ciudades
-	 * y setea sus posiciones en la pantalla
+	 * Este metodo instancia las Seis ciudades del vector de ciudades y setea sus
+	 * posiciones en la pantalla
 	 * 
 	 * @param ciudades
 	 */
@@ -72,21 +70,26 @@ public class Ciudad implements Dibujable{
 	 * @return Retorna un booleano con la existencia o no de ciudades
 	 */
 	public static boolean hayCiudades(Ciudad[] ciudades) {
-		int indice = 1;
-		boolean hayCiudad = false;
+		boolean encontre = false;
 
-		// Recorro el vector de ciudades para comprobar si hay ciudades en pie
-		while (indice < ciudades.length && !hayCiudad) {
-
-			// En caso de que se encuentre una ciudad viva actualizo
-			if (ciudades[indice].estaViva) {
-				hayCiudad = true;
+		for (int i = 1; i < ciudades.length; i++) {
+			if (ciudades[i].estaViva) {
+				encontre = true;
+				break;
 			}
-			indice++;
 		}
-		return hayCiudad;
+		return encontre;
 	}
 
+	/*
+	 * int indice = 1; boolean hayCiudad = false; // Recorro el vector de ciudades
+	 * para comprobar si hay ciudades en pie while (indice < ciudades.length &&
+	 * !hayCiudad) {
+	 * 
+	 * // En caso de que se encuentre una ciudad viva actualizo if
+	 * (ciudades[indice].estaViva) { hayCiudad = true; } indice++; } return
+	 * hayCiudad; }
+	 */
 	/**
 	 * 
 	 * @return Retorna el estado de existencia de una ciudad en particular
@@ -96,7 +99,7 @@ public class Ciudad implements Dibujable{
 	}
 
 	public void destruccion() {
-		this.estaViva=false;
+		this.estaViva = false;
 	}
 
 	public Posicion getPosicion() {
@@ -105,7 +108,8 @@ public class Ciudad implements Dibujable{
 
 	@Override
 	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicion.getPosicionX(),this.posicion.getPosicionY() , 'C');
+		InformacionDibujable info = new InformacionDibujable(this.posicion.getPosicionX(), this.posicion.getPosicionY(),
+				'C');
 		return info;
 	}
 
