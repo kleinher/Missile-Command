@@ -111,7 +111,7 @@ public class GestorDeEstructuras {
 			}
 			/* Agrego las ciudades y las bases*/
 			for(int i=1;i<Bases.length;i++) {
-				if(Bases[i].isEstaViva())
+				//if(Bases[i].isEstaViva())
 					listaDibujables.add(Bases[i]);
 			}
 			for(int i=1;i<Ciudades.length;i++) {

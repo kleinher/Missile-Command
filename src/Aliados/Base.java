@@ -6,8 +6,6 @@ import general.Posicion;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 
-import java.util.Iterator;
-
 /**
  * Esta clase representa a cada una de las 3 bases que se necesitan en el juego
  * Posee un metodo estatico (InstanciarBases) que instancia dichas bases

@@ -9,11 +9,11 @@ public class Explosion implements Dibujable{
 	private int radio;
 	public Explosion() {
 		posicionActual = new Posicion();
-		this.radio=20;
+		this.radio=15;
 	}
 	public Explosion(Posicion pos){
 		this.posicionActual=new Posicion(pos);
-		this.radio=20;
+		this.radio=15;
 	}
 	public Posicion getPosicionActual() {
 		return posicionActual;
