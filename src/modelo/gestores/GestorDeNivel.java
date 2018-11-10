@@ -1,13 +1,13 @@
-package gestores;
+package modelo.gestores;
 
 import java.util.LinkedList;
 
-import Aliados.Base;
-import Aliados.Ciudad;
-import Aliados.Explosion;
-import enemigos.*;
+import modelo.Aliados.Base;
+import modelo.Aliados.Ciudad;
+import modelo.Aliados.Explosion;
+import modelo.enemigos.*;
+import modelo.usuario.PuntajeJugador;
 import taller2.modelo.Graficador;
-import usuario.PuntajeJugador;
 
 /**
  * Gestor de nivel se instancia en su misma clase para ser Singleton
@@ -27,7 +27,7 @@ public class GestorDeNivel {
 	private int NivelActual;
 	public GestorDeEstructuras estructuras;
 	// Delay para la clase graficador
-	final private int delayMilis = 200;
+	final private int delayMilis = 40;
 
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 
@@ -52,7 +52,7 @@ public class GestorDeNivel {
 	 * principal del juego
 	 * 
 	 * Lanza las oleadas de enemigos por cada nivel, realiza el cambio de dificultad
-	 * conforme se avanza en los niveles
+	 * conforme se avanza en los niveles, y dibuja los objetos dibujables en la pantalla
 	 * 
 	 * @throws InterruptedException
 	 */

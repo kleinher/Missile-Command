@@ -1,11 +1,11 @@
-package usuario;
+package modelo.usuario;
 
 import java.util.Scanner;
 
-import Aliados.Base;
-import Aliados.Ciudad;
-import gestores.Colisiones;
-import gestores.GestorDeNivel;
+import modelo.Aliados.Base;
+import modelo.Aliados.Ciudad;
+import modelo.gestores.Colisiones;
+import modelo.gestores.GestorDeNivel;
 
 public class PuntajeJugador extends TablaDePuntajes{
 	private static int score;
@@ -98,7 +98,7 @@ public class PuntajeJugador extends TablaDePuntajes{
 				break;
 				}
 		}
-		/* Calcula en base a los datos obtenidos por cada nivel sobre el desempeño del jugador multiplcandolo por el valor de puntaje de cada accion*/
+		/* Calcula en base a los datos obtenidos por cada nivel sobre el desempeï¿½o del jugador multiplcandolo por el valor de puntaje de cada accion*/
 		score += (MultiplicadorPorNivel*((VDePuntajes[0]*misilesBalisElim)+(VDePuntajes[1]*misilesIntDest)+(VDePuntajes[2]*misilesAliadosSinU)+(VDePuntajes[3]*ciuVi)+(VDePuntajes[4]*bomDest)));
 	}
 

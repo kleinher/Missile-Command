@@ -1,16 +1,16 @@
-package enemigos;
+package modelo.enemigos;
 
 import java.util.Random;
 
-import general.Estela;
-import general.Posicion;
+import modelo.general.Estela;
+import modelo.general.Posicion;
 public abstract class Misiles extends Enemigo{ 
 	private static Posicion[] posicionDeLasBasesYCiudades;
 	private Estela estela;
 	public Misiles (){
-		determinarObjetivo();
-		determinarInicio();
-		determinarEstela();
+		this.determinarObjetivo();
+		this.determinarInicio();
+		this.determinarEstela();
 	}
 	
 
@@ -61,7 +61,7 @@ public abstract class Misiles extends Enemigo{
 		this.posicionActual.actualizarPosicion((int)(this.posicionActual.getPosicionX()+movimientoX),
 											   (int)(this.posicionActual.getPosicionY()+movimientoY));
 		//Agrego puntos a la estela
-		//this.estela.agregarPuntoALaEstela(this.posicionActual);
+		this.estela.agregarPuntoALaEstela(this.posicionActual);
 			  
 	}
 	 

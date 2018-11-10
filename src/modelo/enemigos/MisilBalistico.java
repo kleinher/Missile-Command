@@ -1,4 +1,4 @@
-package enemigos;
+package modelo.enemigos;
 
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
@@ -9,5 +9,8 @@ public class MisilBalistico extends Misiles implements Dibujable{
 	public InformacionDibujable getInformacionDibujable() {
 		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , '*');
 		return info;
+	}
+	public MisilBalistico() {
+		super();
 	}
 }

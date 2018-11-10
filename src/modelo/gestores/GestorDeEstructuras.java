@@ -1,23 +1,22 @@
-package gestores;
+package modelo.gestores;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import Aliados.Base;
-import Aliados.Ciudad;
-import Aliados.Explosion;
-import Aliados.MisilAntibalistico;
-import enemigos.Enemigo;
-import general.Posicion;
+import modelo.Aliados.Base;
+import modelo.Aliados.Ciudad;
+import modelo.Aliados.Explosion;
+import modelo.Aliados.MisilAntibalistico;
+import modelo.enemigos.Enemigo;
+import modelo.general.Posicion;
+import modelo.usuario.PuntajeJugador;
 import taller2.grafico.Dibujable;
-import usuario.PuntajeJugador;
 /**
  * --Correcci�n para Reentrega-- Se agrega esta nueva clase GestorEstructuras.
  * Tiene una doble funcionalidad, la de contenedor de estructuras, para que la Clase Gestor Nivel no deba rehacer su
  * Esta Clase inicializa y contiene las estructuras de datos que se necesitan
- * para el juego Es Singleton, de manera que quien quiera usarla obtiene la
- * unica instancia existente para obtener las estructuras del juego
+ * para el juego
  * 
  * package general;
  * 
@@ -27,7 +26,6 @@ import usuario.PuntajeJugador;
 public class GestorDeEstructuras {
 	// Variables de juego
 		private int Dificultad;
-		private boolean Perdio;
 		private int NivelActual;
 		private PuntajeJugador  puntajeJugador;
 		
@@ -66,7 +64,6 @@ public class GestorDeEstructuras {
 			// Instancia las tres bases
 			this.Bases=new Base[4];
 			Base.InstanciarBases(this.Bases);
-			this.Perdio = false;
 			this.Dificultad = 15;
 		}
 		/**

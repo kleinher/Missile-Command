@@ -1,11 +1,11 @@
-package Aliados;
+package modelo.Aliados;
 
 
 import java.util.LinkedList;
 
-import enemigos.Enemigo;
-import enemigos.Misiles;
-import general.Posicion;
+import modelo.enemigos.Enemigo;
+import modelo.enemigos.Misiles;
+import modelo.general.Posicion;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 

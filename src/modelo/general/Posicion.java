@@ -1,4 +1,4 @@
-package general;
+package modelo.general;
 
 /*Posicion general de todos los objetos */
 public class Posicion {

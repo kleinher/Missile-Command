@@ -1,16 +1,15 @@
-package gestores;
+package modelo.gestores;
 
 import java.util.LinkedList;
 import java.util.Random;
 
-import enemigos.Avion;
-// Inicio1= de 0 a 175 / Inicio2 de 175 a 350 / inicio 3 de 350 a 525
-import enemigos.Enemigo;
-import enemigos.MisilBalistico;
-import enemigos.MisilCrucero;
-import enemigos.MisilCruceroInteligente;
-import enemigos.Satelite;
-import general.Posicion;
+import modelo.enemigos.Avion;
+import modelo.enemigos.Enemigo;
+import modelo.enemigos.MisilBalistico;
+import modelo.enemigos.MisilCrucero;
+import modelo.enemigos.MisilCruceroInteligente;
+import modelo.enemigos.Satelite;
+import modelo.general.Posicion;
 
 /**
  * Esta clase representa a cada oleada dentro de la lista de Oleadas de cada

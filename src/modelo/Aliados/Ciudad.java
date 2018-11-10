@@ -1,6 +1,6 @@
-package Aliados;
+package modelo.Aliados;
 
-import general.Posicion;
+import modelo.general.Posicion;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 

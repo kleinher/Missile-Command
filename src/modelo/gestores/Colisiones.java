@@ -1,18 +1,19 @@
-package gestores;
+package modelo.gestores;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import Aliados.Base;
-import Aliados.Ciudad;
-import Aliados.Explosion;
-import Aliados.MisilAntibalistico;
-import enemigos.Bombardero;
-import enemigos.Enemigo;
-import enemigos.MisilBalistico;
-import enemigos.MisilCruceroInteligente;
-import general.Estela;
-import general.Posicion;
+import modelo.Aliados.Base;
+import modelo.Aliados.Ciudad;
+import modelo.Aliados.Explosion;
+import modelo.Aliados.MisilAntibalistico;
+import modelo.enemigos.Bombardero;
+import modelo.enemigos.Enemigo;
+import modelo.enemigos.MisilBalistico;
+import modelo.enemigos.MisilCruceroInteligente;
+import modelo.enemigos.Misiles;
+import modelo.general.Estela;
+import modelo.general.Posicion;
 
 /**
  * Esta clase, a traves de sus metodos estaticos, se encarga de checkear en cada
@@ -50,7 +51,9 @@ public class Colisiones {
 		for (Iterator<Enemigo> i = enemigos.iterator(); i.hasNext();) {
 			Enemigo enemigoAct = i.next();
 			boolean explotoEnemigo = false;
-			enemigoAct.getEstelaDeMisil().agregarPuntoALaEstela(enemigoAct.getPosicionActual());
+			if(enemigoAct instanceof Misiles) {
+			((Misiles) enemigoAct).getEstela().agregarPuntoALaEstela(enemigoAct.getPosicionActual());
+			}
 			// Primero busco colisiones con missiles antibalisticos
 			for (Iterator<Explosion> j = listaExplocionesEnPantalla.iterator(); j.hasNext();) {
 				Explosion explosionActual = j.next();
