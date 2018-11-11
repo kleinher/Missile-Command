@@ -23,7 +23,7 @@ public abstract class Misiles extends Enemigo{
 	}
 
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */
-	public void mover(){
+	public void mover(int velocidad){
 		double pendiente;
 		int distanciaX;
 		int distanciaY;
@@ -46,7 +46,7 @@ public abstract class Misiles extends Enemigo{
 				pendiente = 1;
 		}
 		//Calculo del movimiento en X
-		movimientoX= Math.sqrt(Math.pow(10, 2)/(1+Math.pow(pendiente,2)));
+		movimientoX= Math.sqrt(Math.pow(velocidad, 2)/(1+Math.pow(pendiente,2)));
 		//En base a la direccion se elige el signo correcto
 				if(distanciaX<0) 
 				{
