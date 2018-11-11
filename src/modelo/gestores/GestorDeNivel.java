@@ -2,6 +2,7 @@ package modelo.gestores;
 
 import java.util.LinkedList;
 
+import controlador.Controlador;
 import modelo.Aliados.Base;
 import modelo.Aliados.Ciudad;
 import modelo.Aliados.Explosion;
@@ -24,8 +25,12 @@ import taller2.modelo.Graficador;
 
 public class GestorDeNivel {
 	private boolean Perdio;
+	public GestorDeEstructuras getEstructuras() {
+		return estructuras;
+	}
+
 	private int NivelActual;
-	public GestorDeEstructuras estructuras;
+	private GestorDeEstructuras estructuras;
 	// Delay para la clase graficador
 	final private int delayMilis = 40;
 
@@ -57,6 +62,7 @@ public class GestorDeNivel {
 	 * @throws InterruptedException
 	 */
 	public void loopDelNivel() throws InterruptedException {
+
 		estructuras.gestionarEstructuras();
 		this.NivelActual = estructuras.getNivelActual();
 		int tics = 0;
@@ -115,8 +121,11 @@ public class GestorDeNivel {
 	 * @param args
 	 * @throws InterruptedException
 	 */
-	public static void main(String args[]) throws InterruptedException {
-
+	public static void main(String args[]){
+		Controlador controlador = new Controlador();
+		controlador.Controlar();
+	}
+	public void modelar() throws InterruptedException {
 		GestorDeNivel nivel = GestorDeNivel.getGestorDeNivel();
 		PuntajeJugador puntaje = new PuntajeJugador();
 		while ((!nivel.Perdio()) && (nivel.getNivelActual() != 17)) {
@@ -143,6 +152,7 @@ public class GestorDeNivel {
 	 * @return Devuelve La UNICA instancia de Gestor de niveles
 	 */
 	public static GestorDeNivel getGestorDeNivel() {
+
 		return GestorDeNivel;
 	}
 
