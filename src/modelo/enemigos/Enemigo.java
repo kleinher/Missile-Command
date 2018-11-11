@@ -13,7 +13,7 @@ public abstract class Enemigo implements Dibujable{
 	//protected img Imagen; 
 	
 	/*Variables Abstractas que van a implementar tanto bombardero como Misiles*/
-	public abstract void mover();
+	public abstract void mover(int Velocidad);
 	
 	public Enemigo () {
 		this.puntos=25;

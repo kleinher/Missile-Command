@@ -22,10 +22,13 @@ public class Controlador extends JFrame {
 		timer = new Timer();
 		Pantalla pantalla = new Pantalla();
 		this.add(pantalla);
-		setTitle("Titulo");
-		setSize(480, 525);
+		setTitle("Missile Comand");
+		
+		setSize(525, 525);
 		setVisible(true);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		
 		// Timer task que se va a ejecturas cada determinados tics
 		TimerTask task = new TimerTask() {
@@ -49,10 +52,12 @@ public class Controlador extends JFrame {
 					timer.cancel();
 				}
 			}
-
+			
 			private void pintar() {
+				pantalla.setOpaque(true);
 				pantalla.setBackground(java.awt.Color.BLACK);
 				pantalla.paint(pantalla.getGraphics());
+				
 			}
 
 			public void modelar() {

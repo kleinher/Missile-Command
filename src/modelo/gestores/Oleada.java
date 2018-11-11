@@ -66,7 +66,7 @@ public class Oleada {
 
 				/* Genera Un numero Random de enemigos para cada oleada de 0 a 4 */
 				MisilBalistico MB = new MisilBalistico();
-				//ListaDeEstelas.add(MB.getEstela().getListaDeEstelas());
+				ListaDeEstelas.add(MB.getEstela().getListaDeEstelas());
 				oleadaEnemigos.add(MB);
 				numeroDeEnemigosPorNivel--;
 			}

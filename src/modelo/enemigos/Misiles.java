@@ -12,10 +12,9 @@ public abstract class Misiles extends Enemigo{
 		this.determinarInicio();
 		this.determinarEstela();
 	}
-	
 
 	private void determinarEstela() {
-		this.estela = new Estela(posicionActual);
+		this.estela = new Estela();
 	}
 	
 	public Estela getEstela() {
@@ -54,15 +53,13 @@ public abstract class Misiles extends Enemigo{
 				}
 		movimientoY= (pendiente*movimientoX);
 		
-		
-
+		//Agrego puntos a la estela
+		this.estela.agregarPuntoALaEstela(posicionActual);
 		
 		//Actualiza la posicion 
 		this.posicionActual.actualizarPosicion((int)(this.posicionActual.getPosicionX()+movimientoX),
 											   (int)(this.posicionActual.getPosicionY()+movimientoY));
-		//Agrego puntos a la estela
-		this.estela.agregarPuntoALaEstela(this.posicionActual);
-			  
+
 	}
 	 
 	/*Determina El objetivo de cada misil de manera aleatoria*/
