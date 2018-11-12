@@ -147,7 +147,7 @@ public class GestorDeEstructuras {
 			// Actualiza la posicion de los misiles aliados
 			for (Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) {
 				MisilAntibalistico misil = i.next();
-				misil.mover(Velocidad);
+				misil.mover(30);
 				if(misil.alcanzoObjetivo()) {
 					i.remove();
 					misil.destruccion(explosionesAgregar, aliadosAEliminar);
@@ -166,5 +166,11 @@ public class GestorDeEstructuras {
 		public int getNivelActual() {
 
 			return NivelActual;
+		}
+		public Base[] getBases() {
+			return Bases;
+		}
+		public LinkedList<MisilAntibalistico> getMisilesAliadosEnPantalla(){
+			return MisilesAliadosEnPantalla;
 		}
 }

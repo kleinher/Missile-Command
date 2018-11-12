@@ -1,5 +1,8 @@
 package controlador;
 
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -14,16 +17,20 @@ public class Controlador extends JFrame {
 	public static void main(String args[]) {
 		Controlador controlador = new Controlador();
 		controlador.Controlar();
+		
 
 	}
 
 	public void Controlar() {
 		Timer timer;
 		timer = new Timer();
+		//Variable de el JPanel "pantalla"
 		Pantalla pantalla = new Pantalla();
-		this.add(pantalla);
-		setTitle("Missile Comand");
+		add(pantalla);
+		pantalla.addMouseListener(new AdapterDeMira());
 		
+		//Configuracion del Frame principal
+		setTitle("Missile Comand");
 		setSize(525, 525);
 		setVisible(true);
 		setLocationRelativeTo(null);
@@ -70,7 +77,7 @@ public class Controlador extends JFrame {
 			}
 		
 		};
-		timer.schedule(task,10,1);
+		timer.schedule(task,2,10);
 	}
 	
 }

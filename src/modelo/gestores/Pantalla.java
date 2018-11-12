@@ -42,8 +42,8 @@ public class Pantalla extends JPanel{
 		
 		for (Iterator<MisilAntibalistico> i = misilesAliadosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo MisilAliado = i.next();
-			g.setColor(java.awt.Color.BLUE);
-			g.fillOval(MisilAliado.getPosicionActual().getPosicionX(),MisilAliado.getPosicionActual().getPosicionY(),4,4);
+			g.setColor(java.awt.Color.PINK);
+			g.fillOval(MisilAliado.getPosicionActual().getPosicionX(),MisilAliado.getPosicionActual().getPosicionY(),10,10);
 		}
 				
 		
