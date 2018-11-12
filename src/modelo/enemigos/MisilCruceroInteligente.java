@@ -30,5 +30,6 @@ public class MisilCruceroInteligente extends Misiles implements Dibujable {
 					this.posicionActual.getPosicionY());
 	}
 
+
 	// Aqui recalcular la recta que determina objetivos, que va a ser diferente
 }

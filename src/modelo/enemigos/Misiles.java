@@ -12,10 +12,9 @@ public abstract class Misiles extends Enemigo{
 		this.determinarInicio();
 		this.determinarEstela();
 	}
-	
 
 	private void determinarEstela() {
-		this.estela = new Estela(posicionActual);
+		this.estela = new Estela();
 	}
 	
 	public Estela getEstela() {
@@ -23,7 +22,7 @@ public abstract class Misiles extends Enemigo{
 	}
 
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */
-	public void mover(){
+	public void mover(int velocidad){
 		double pendiente;
 		int distanciaX;
 		int distanciaY;
@@ -46,7 +45,7 @@ public abstract class Misiles extends Enemigo{
 				pendiente = 1;
 		}
 		//Calculo del movimiento en X
-		movimientoX= Math.sqrt(Math.pow(10, 2)/(1+Math.pow(pendiente,2)));
+		movimientoX= Math.sqrt(Math.pow(velocidad, 2)/(1+Math.pow(pendiente,2)));
 		//En base a la direccion se elige el signo correcto
 				if(distanciaX<0) 
 				{
@@ -54,15 +53,13 @@ public abstract class Misiles extends Enemigo{
 				}
 		movimientoY= (pendiente*movimientoX);
 		
-		
-
+		//Agrego puntos a la estela
+		this.estela.agregarPuntoALaEstela(posicionActual);
 		
 		//Actualiza la posicion 
 		this.posicionActual.actualizarPosicion((int)(this.posicionActual.getPosicionX()+movimientoX),
 											   (int)(this.posicionActual.getPosicionY()+movimientoY));
-		//Agrego puntos a la estela
-		this.estela.agregarPuntoALaEstela(this.posicionActual);
-			  
+
 	}
 	 
 	/*Determina El objetivo de cada misil de manera aleatoria*/

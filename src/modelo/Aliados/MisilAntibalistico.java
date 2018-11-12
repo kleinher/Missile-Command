@@ -11,7 +11,6 @@ import taller2.grafico.InformacionDibujable;
 
 public class MisilAntibalistico extends Misiles implements Dibujable{
 
-/*error!!!!! Fijense si saben como se soluciona **************************/
 	
 		MisilAntibalistico(Posicion pos){
 			super();
