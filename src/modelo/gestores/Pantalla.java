@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import modelo.Aliados.Base;
 import modelo.Aliados.Ciudad;
+import modelo.Aliados.Explosion;
 import modelo.Aliados.MisilAntibalistico;
 import modelo.enemigos.Avion;
 import modelo.enemigos.Enemigo;
@@ -30,6 +31,7 @@ public class Pantalla extends JPanel{
 		DibujarBases(estructuras.Bases,g);
 		DibujarCiudades(estructuras.Ciudades,g);
 		DibujarMisilesAliados(estructuras.MisilesAliadosEnPantalla,g);
+		dibujarExplociones(estructuras.explosionesEnPantalla,g);
 		}
 	
 	/**
@@ -45,11 +47,15 @@ public class Pantalla extends JPanel{
 			g.setColor(java.awt.Color.PINK);
 			g.fillOval(MisilAliado.getPosicionActual().getPosicionX(),MisilAliado.getPosicionActual().getPosicionY(),10,10);
 		}
-				
-		
+	}
+	private void dibujarExplociones(LinkedList<Explosion> explosionesEnPantalla, Graphics g) {
+		for (Iterator<Explosion> i = explosionesEnPantalla.iterator(); i.hasNext();) {
+			Explosion explosion = i.next();
+			g.setColor(java.awt.Color.GRAY);
+			g.fillOval(explosion.getPosicionActual().getPosicionX()-(explosion.getRadio()/2),explosion.getPosicionActual().getPosicionY()-(explosion.getRadio()/2),explosion.getRadio() ,explosion.getRadio());
+		}
 		
 	}
-
 	/**
 	 * Dibuja las ciudades de color BLANCO
 	 * 
