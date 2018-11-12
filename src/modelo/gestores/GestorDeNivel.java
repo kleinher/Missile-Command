@@ -78,7 +78,7 @@ public class GestorDeNivel {
 		// Mientras hayan enemigos(No termino el nivel)
 		else {
 			// Cuando pasa 1 segundo, lanzo otra oleada de enemigos
-			if (tics == 10) {
+			if (tics == 20) {
 				// Lanzo una nueva oleada de enemigos
 				Enemigo.lanzarEnemigos(estructuras.EnemigosEnEspera.poll(), estructuras.EnemigosEnPantalla);
 				tics = 0;
