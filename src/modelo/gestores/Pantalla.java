@@ -84,11 +84,12 @@ public class Pantalla extends JPanel{
 				g.fillRect(bases[i].getPosicion().getPosicionX()-15,bases[1].getPosicion().getPosicionY()-10, 20, 5);
 				int espacio=-35;
 				for(int j=0;j<bases[i].getCantMisiles();j++) {
+					if(bases[i].isEstaViva()){
 					g.setColor(java.awt.Color.BLUE);
 					g.fillRect(bases[i].getPosicion().getPosicionX()+espacio, bases[i].getPosicion().getPosicionY()+5, 2, 7);
 					espacio+=4;
 				}
-
+			}
 			}
 		}
 	/**
