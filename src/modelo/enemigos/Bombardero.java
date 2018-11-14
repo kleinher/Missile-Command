@@ -12,9 +12,9 @@ public class Bombardero extends Enemigo{
 	
 	public void mover() {
 		if(this.posicionInicial.getPosicionX()==525)
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()- GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad(),this.posicionActual.getPosicionY());
+			this.posicionActual.actualizarPosicion((int)this.posicionActual.getPosicionX()-3,(int)this.posicionActual.getPosicionY());
 		else
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad(), this.posicionActual.getPosicionY());
+			this.posicionActual.actualizarPosicion((int)(this.posicionActual.getPosicionX()+3), (int)(this.posicionActual.getPosicionY()));
 	}
 	/*Determina la posicion inicial del borbardero, y su posicion de destino*/
 	public void determinarRecorrido() {

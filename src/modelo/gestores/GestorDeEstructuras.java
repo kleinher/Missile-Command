@@ -63,6 +63,7 @@ public class GestorDeEstructuras {
 			Base.InstanciarBases(this.Bases, this.Velocidad);
 		}
 		/**
+--
 		 * ---GESTIONAR Estructuras--- Funcion: Modifica la instancia nivel(de Juego) cada ves
 		 * que comienza un nuevo nivel
 		 */
@@ -72,7 +73,7 @@ public class GestorDeEstructuras {
 			this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
 			this.Bases=new Base[4];
 			Base.InstanciarBases(this.Bases, this.Velocidad);
-			
+			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
 			explosionesEnPantalla=new LinkedList<Explosion>();
 			MisilesAliadosEnPantalla=new LinkedList<MisilAntibalistico>();
 			

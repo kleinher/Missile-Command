@@ -38,6 +38,8 @@ public abstract class Misiles extends Enemigo{
 	}
 	public void mover() {
 		this.posicionActual.actualizarPosicion(movimientoX, movimientoY);
+		//Agrego puntos a la estela
+				this.estela.agregarPuntoALaEstela(this.posicionActual);
 	}
 
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */
@@ -70,8 +72,7 @@ public abstract class Misiles extends Enemigo{
 				}
 		movimientoY= (pendiente*movimientoX);
 		
-		//Agrego puntos a la estela
-		this.estela.agregarPuntoALaEstela(posicionActual);
+		
 
 	}
 	 
