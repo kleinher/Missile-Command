@@ -4,14 +4,23 @@ import java.util.Random;
 import modelo.gestores.GestorDeNivel;
 import taller2.grafico.InformacionDibujable;
 
+/**Enemigo Bombardero, utilizado para representar tanto a los Satelites como a los Aviones,
+ *  aparecen en un extremo de la pantalla y finalizan su recorrido en el extremo opuesto, disparando misiles ocacionalmente
+ * 
+ * @author Nicol
+ *
+ */
 public class Bombardero extends Enemigo{
-	
 	public Bombardero() {
 		super();
 		this.puntos=150;
 		determinarRecorrido();
 	}
 	
+
+	/** mover de los bombarderos, se mueven para la izquierda o derecha segun el punto de aparicion
+	 * 
+	 */
 	public void mover(int Velocidad) {
 		if(this.posicionInicial.getPosicionX()==525)
 			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()-Velocidad,this.posicionActual.getPosicionY());

@@ -38,7 +38,7 @@ public class GestorDeNivel {
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 
 	// private static Posicion[] vectorDePosicionesDeEstructurasAliadas;
-	// Esto que esta aca arriba ya estaba asi cuando llegue jaja
+	
 
 	/**
 	 * ---CONSTRUCTOR GESTOR DE NIVEL---- Se inicializan las Ciudades y Bases con
@@ -105,7 +105,7 @@ public class GestorDeNivel {
 	}
 
 	/**
-	 * METODO MAIN- Donde sucede la magia
+	 * Main
 	 * 
 	 * @param args
 	 * @throws InterruptedException
@@ -142,9 +142,8 @@ public class GestorDeNivel {
 	}
 
 	/**
-	 * METODO TERMINAR En teoria, guarda todo lo que se tenga que guardar, como los
-	 * puntajes. Imprime 'GameOver', o un blue Screen para asustar al usuario
-	 * desprevenido
+	 * METODO TERMINAR guarda todo lo que se tenga que guardar
+	 * 
 	 */
 	public void terminarJuego() {
 		/* Guarda los puntajes en la tabla de puntajes */ /* Falta Pasarle todos los argumentos que necesita */

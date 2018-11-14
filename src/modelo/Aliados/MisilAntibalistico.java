@@ -8,7 +8,11 @@ import modelo.enemigos.Misiles;
 import modelo.general.Posicion;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
-
+/**Representan a los misiles aliados, llegan hasta el objetivo que el jugador indique y luego provocan una explosion
+ * 
+ * @author Nicol
+ *
+ */
 public class MisilAntibalistico extends Misiles implements Dibujable{
 
 	
@@ -21,7 +25,7 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 	private boolean exploto;
 	public boolean isExploto() {
 		return exploto;
-	}
+	}		
 
 	public void setExploto(boolean exploto) {
 		this.exploto = exploto;
@@ -66,7 +70,10 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , '+');
 		return info;
 	}
-
+	/**
+	 * Retorna true si el objetivo fue alcanzado
+	 * 
+	 */
 	public boolean alcanzoObjetivo() {
 		if(this.posicionActual.getPosicionY() < this.posicionObjetivo.getPosicionY())
 		{

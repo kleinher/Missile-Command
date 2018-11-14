@@ -17,7 +17,7 @@ public class MisilCruceroInteligente extends Misiles implements Dibujable {
 
 	}
 
-	/**
+	/** Esquiva para la izquierda o derecha segun donde se ubique la explosion mas proxima en un rango hacia abajo
 	 * 
 	 * @param esquivarIzquierda
 	 */

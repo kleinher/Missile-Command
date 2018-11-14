@@ -1,10 +1,15 @@
 package modelo.enemigos;
 import java.util.Iterator;
 import java.util.LinkedList;
-
 import modelo.Aliados.Explosion;
 import modelo.general.Posicion;
 import taller2.grafico.Dibujable;
+/**
+ * Representa a todos los enemigos del juego
+ * 
+ * @author Nicol
+ *
+ */
 public abstract class Enemigo implements Dibujable{
 	protected int puntos;
 	protected Posicion posicionInicial;
@@ -72,6 +77,10 @@ public abstract class Enemigo implements Dibujable{
 
 		this.posicionActual = posicionActual;
 	}
+	/**Retorno true si se alcanzo el objetivo
+	 * 
+	 * @return
+	 */
 	public boolean alcanzoObjetivo() {
 		if(this.posicionActual.getPosicionY() > this.posicionObjetivo.getPosicionY())
 		{

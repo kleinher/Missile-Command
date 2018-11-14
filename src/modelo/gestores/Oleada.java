@@ -15,7 +15,7 @@ import modelo.general.Posicion;
  * Esta clase representa a cada oleada dentro de la lista de Oleadas de cada
  * nivel
  * 
- * @author LosPi
+ * @author 
  *
  */
 public class Oleada {

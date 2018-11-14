@@ -1,9 +1,13 @@
 package modelo.enemigos;
-
 import java.util.Random;
-
 import modelo.general.Estela;
 import modelo.general.Posicion;
+
+/**Modela todos los misiles del juego
+ * 
+ * @author Nicol
+ *
+ */
 public abstract class Misiles extends Enemigo{ 
 	private static Posicion[] posicionDeLasBasesYCiudades;
 	private Estela estela;
