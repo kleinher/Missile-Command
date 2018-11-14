@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import modelo.Aliados.Explosion;
 import modelo.general.Posicion;
+import modelo.gestores.GestorDeNivel;
 public abstract class Enemigo{
 	protected int puntos;
 	protected Posicion posicionInicial;
@@ -105,4 +106,12 @@ public abstract class Enemigo{
 			return false;
 	}
 
+	public void clonar(){
+		MisilBalistico enemigoClonado= new MisilBalistico(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad());
+		enemigoClonado.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY());
+		//Agregar Enemigo a la lista de enemigos en pantalla ((Nose como hacerlo sin que se rompa))
+		
+		
+		
+	}
 }

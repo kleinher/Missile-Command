@@ -139,4 +139,7 @@ public class GestorDeEstructuras {
 		public LinkedList<LinkedList<Enemigo>> getEnemigosEnEspera() {
 			return EnemigosEnEspera;
 		}
+		public LinkedList<Enemigo> getEnemigosEnPantalla() {
+			return EnemigosEnPantalla;
+		}
 }

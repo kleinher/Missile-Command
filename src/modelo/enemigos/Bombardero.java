@@ -15,6 +15,10 @@ public class Bombardero extends Enemigo{
 			this.posicionActual.actualizarPosicion((int)this.posicionActual.getPosicionX()-3,(int)this.posicionActual.getPosicionY());
 		else
 			this.posicionActual.actualizarPosicion((int)(this.posicionActual.getPosicionX()+3), (int)(this.posicionActual.getPosicionY()));
+	
+		if((int)this.posicionActual.getPosicionX()==250 || this.posicionActual.getPosicionX()==400) {
+			this.clonar();
+		}
 	}
 	/*Determina la posicion inicial del borbardero, y su posicion de destino*/
 	public void determinarRecorrido() {

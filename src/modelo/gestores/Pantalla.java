@@ -53,7 +53,7 @@ public class Pantalla extends JPanel {
 	}
 
 	/**
-	 * Dibuja los Misiles Aliados de color AZUL
+	 * Dibuja los Misiles Aliados de color CYAN
 	 * 
 	 * @param misilesAliadosEnPantalla
 	 * @param g
@@ -62,7 +62,7 @@ public class Pantalla extends JPanel {
 
 		for (Iterator<MisilAntibalistico> i = misilesAliadosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo MisilAliado = i.next();
-			g.setColor(java.awt.Color.PINK);
+			g.setColor(java.awt.Color.CYAN);
 			g.fillOval((int) MisilAliado.getPosicionActual().getPosicionX(),
 					(int) MisilAliado.getPosicionActual().getPosicionY(), 10, 10);
 		}
