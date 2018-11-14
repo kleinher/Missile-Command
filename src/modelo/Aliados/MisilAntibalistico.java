@@ -12,8 +12,8 @@ public class MisilAntibalistico extends Misiles{
 
 	
 		MisilAntibalistico(Posicion pos, double velocidad){
-			super(velocidad);
-			determinarInicio(pos);
+			super(velocidad,pos);
+			
 		}
 
 	/*variable que dice que exploto o no*/

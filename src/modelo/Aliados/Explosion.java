@@ -24,9 +24,9 @@ public class Explosion{
 		for (Iterator<Explosion> j = explosionesEnPantalla.iterator(); j.hasNext();) {
 				Explosion ExplAct=j.next();
 			if(ExplAct.contartick<5)
-				ExplAct.radio+=(5);
+				ExplAct.radio+=(10);
 			else
-				ExplAct.radio-=(5);
+				ExplAct.radio-=(1);
 			if(ExplAct.radio<0)
 				explosionesAEliminar.add(ExplAct);
 			ExplAct.contartick++;

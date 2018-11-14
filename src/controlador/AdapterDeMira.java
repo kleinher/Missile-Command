@@ -8,7 +8,7 @@ import modelo.Aliados.Base;
 
 public class AdapterDeMira extends MouseAdapter{
 	@Override
-	public void mouseClicked(MouseEvent ev) {
+	public void mousePressed(MouseEvent ev) {
 		Base.Disparar(ev.getX(), ev.getY());
 	}
 	

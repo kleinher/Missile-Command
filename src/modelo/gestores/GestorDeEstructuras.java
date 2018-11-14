@@ -24,7 +24,7 @@ import taller2.grafico.Dibujable;
  */
 public class GestorDeEstructuras {
 	// Variables de juego
-		private int Velocidad;
+		private double Velocidad;
 		private int NivelActual;
 		List<? extends Dibujable> listaDibujables;
 
@@ -49,7 +49,7 @@ public class GestorDeEstructuras {
 		
 		public GestorDeEstructuras() {
 			this.NivelActual=1;
-			this.Velocidad=2;
+			this.Velocidad=1.1;
 			this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 			this.EnemigosEnPantalla = new LinkedList<Enemigo>();
 			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
@@ -70,13 +70,14 @@ public class GestorDeEstructuras {
 		public void gestionarEstructuras() {
 			// Crea la lista de enemigos del nivel
 			this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
-			
+			this.Bases=new Base[4];
+			Base.InstanciarBases(this.Bases, this.Velocidad);
 			
 			explosionesEnPantalla=new LinkedList<Explosion>();
 			MisilesAliadosEnPantalla=new LinkedList<MisilAntibalistico>();
 			
 			// Incrementa la dificultad cuando aumenta un nivel
-			this.Velocidad*=1.5;
+			this.Velocidad*=1.2;
 			
 			// REVIVIR CIUDAD EN CASO DE
 			this.NivelActual++;
@@ -117,7 +118,7 @@ public class GestorDeEstructuras {
 			
 			// ACTUALIZAR ESTELA
 		}
-		public int getVelocidad() {
+		public double getVelocidad() {
 			return Velocidad;
 		}
 		/**

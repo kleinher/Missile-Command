@@ -14,6 +14,20 @@ public abstract class Misiles extends Enemigo{
 		this.determinarDesplazamiento(velocidad);
 		
 	}
+	public Misiles () {
+		
+	}
+	public Misiles (double velocidad, Posicion pos){
+		this.determinarObjetivo();
+		this.determinarInicio(pos);
+		this.determinarEstela();
+		this.determinarDesplazamiento(velocidad);
+		
+	}
+	public void determinarInicio(Posicion pos) {
+		this.posicionInicial.actualizarPosicion(pos.getPosicionX(),pos.getPosicionY());
+		this.posicionActual.actualizarPosicion(pos.getPosicionX(),pos.getPosicionY());
+	}
 
 	private void determinarEstela() {
 		this.estela = new Estela();
