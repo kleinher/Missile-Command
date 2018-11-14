@@ -1,15 +1,17 @@
 package modelo.enemigos;
 import java.util.Iterator;
+
 import java.util.LinkedList;
 
 import modelo.Aliados.Explosion;
 import modelo.general.Posicion;
-import taller2.grafico.Dibujable;
-public abstract class Enemigo implements Dibujable{
+public abstract class Enemigo{
 	protected int puntos;
 	protected Posicion posicionInicial;
 	protected Posicion posicionObjetivo;
 	protected Posicion posicionActual;
+	protected double movimientoX;
+	protected double movimientoY;
 	//protected img Imagen; 
 	
 	/*Variables Abstractas que van a implementar tanto bombardero como Misiles*/

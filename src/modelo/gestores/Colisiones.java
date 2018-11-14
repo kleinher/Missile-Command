@@ -149,11 +149,11 @@ public class Colisiones {
 			return barrerRadar(explosionActual, enemigoAct);
 
 		else {
-			int x1 = enemigoAct.getPosicionActual().getPosicionX();
-			int y1 = enemigoAct.getPosicionActual().getPosicionY();
+			double x1 = enemigoAct.getPosicionActual().getPosicionX();
+			double y1 = enemigoAct.getPosicionActual().getPosicionY();
 
-			int x2 = explosionActual.getPosicionActual().getPosicionX();
-			int y2 = explosionActual.getPosicionActual().getPosicionY();
+			double x2 = explosionActual.getPosicionActual().getPosicionX();
+			double y2 = explosionActual.getPosicionActual().getPosicionY();
 
 			boolean hayColision = ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual
 					.getRadio());
@@ -172,11 +172,11 @@ public class Colisiones {
 	 */
 	private static boolean barrerRadar(Explosion explosionActual, Enemigo enemigoAct) {
 		// retorna true si hay que eliminar el misil inteligente
-		int x1 = enemigoAct.getPosicionActual().getPosicionX();
-		int y1 = enemigoAct.getPosicionActual().getPosicionY();
+		double x1 = enemigoAct.getPosicionActual().getPosicionX();
+		double y1 = enemigoAct.getPosicionActual().getPosicionY();
 
-		int x2 = explosionActual.getPosicionActual().getPosicionX();
-		int y2 = explosionActual.getPosicionActual().getPosicionY();
+		double x2 = explosionActual.getPosicionActual().getPosicionX();
+		double y2 = explosionActual.getPosicionActual().getPosicionY();
 		if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio()) {
 			return true;
 		} else if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio() * 2) {

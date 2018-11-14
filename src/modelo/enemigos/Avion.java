@@ -1,12 +1,5 @@
 package modelo.enemigos;
 
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
+public class Avion extends Bombardero {
 
-public class Avion extends Bombardero implements Dibujable{
-	@Override
-	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , '>');
-		return info;
-	}
 }

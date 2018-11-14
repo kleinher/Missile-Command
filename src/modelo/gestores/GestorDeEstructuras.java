@@ -10,7 +10,6 @@ import modelo.Aliados.Explosion;
 import modelo.Aliados.MisilAntibalistico;
 import modelo.enemigos.Enemigo;
 import modelo.general.Posicion;
-import modelo.usuario.PuntajeJugador;
 import taller2.grafico.Dibujable;
 /**
  * --Correcci�n para Reentrega-- Se agrega esta nueva clase GestorEstructuras.
@@ -25,10 +24,8 @@ import taller2.grafico.Dibujable;
  */
 public class GestorDeEstructuras {
 	// Variables de juego
-		private int Dificultad;
+		private double Velocidad;
 		private int NivelActual;
-		private PuntajeJugador  puntajeJugador;
-		
 		List<? extends Dibujable> listaDibujables;
 
 
@@ -52,7 +49,7 @@ public class GestorDeEstructuras {
 		
 		public GestorDeEstructuras() {
 			this.NivelActual=1;
-			this.puntajeJugador = new PuntajeJugador();
+			this.Velocidad=1.1;
 			this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 			this.EnemigosEnPantalla = new LinkedList<Enemigo>();
 			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
@@ -63,8 +60,7 @@ public class GestorDeEstructuras {
 
 			// Instancia las tres bases
 			this.Bases=new Base[4];
-			Base.InstanciarBases(this.Bases);
-			this.Dificultad = 15;
+			Base.InstanciarBases(this.Bases, this.Velocidad);
 		}
 		/**
 		 * ---GESTIONAR Estructuras--- Funcion: Modifica la instancia nivel(de Juego) cada ves
@@ -74,52 +70,20 @@ public class GestorDeEstructuras {
 		public void gestionarEstructuras() {
 			// Crea la lista de enemigos del nivel
 			this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
-			Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual,EstelasEnPantalla);
+			this.Bases=new Base[4];
+			Base.InstanciarBases(this.Bases, this.Velocidad);
+			
 			explosionesEnPantalla=new LinkedList<Explosion>();
 			MisilesAliadosEnPantalla=new LinkedList<MisilAntibalistico>();
+			
 			// Incrementa la dificultad cuando aumenta un nivel
-			this.Dificultad += 5;
+			this.Velocidad*=1.2;
+			
 			// REVIVIR CIUDAD EN CASO DE
 			this.NivelActual++;
-		}
-		
-		/**
-		 * METODO QUE ACTUALIZA EN CADA TIC LA LISTA DE LOS ELEMENTOS DIBUJABLES
-
-		 * 
-		 * @return devuelve una lista de elementos dibujables
-		 */
-		public List<Dibujable> ActualizarListaDibujables() {
 			
-			/* Creo una nueva lista con todo lo que sea dibujable */
-			List<Dibujable> listaDibujables = new LinkedList<Dibujable>();
-
-			/* Agrego los enemigos que están en pantalla */
-			for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
-				listaDibujables.add(i.next());
-			}
-			/* Agrego las explosiones que estan en pantalla */
-			for (Iterator<Explosion> i = explosionesEnPantalla.iterator(); i.hasNext();) {
-				listaDibujables.add(i.next());
-			}
-			/* Agrego los misiles aliados que estan en pantalla */
-			for (Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) {
-				listaDibujables.add(i.next());
-			}
-			/* Agrego las ciudades y las bases*/
-			for(int i=1;i<Bases.length;i++) {
-				//if(Bases[i].isEstaViva())
-					listaDibujables.add(Bases[i]);
-			}
-			for(int i=1;i<Ciudades.length;i++) {
-				if(Ciudades[i].estaViva())
-					listaDibujables.add(Ciudades[i]);
-			}
-			return listaDibujables;
+			Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual,EstelasEnPantalla,Velocidad);
 		}
-		//
-
-
 
 		/**
 		 * ---ActualizarPosiciones--- Este metodo actualiza las posiciones de todos los
@@ -154,11 +118,23 @@ public class GestorDeEstructuras {
 			
 			// ACTUALIZAR ESTELA
 		}
+		public double getVelocidad() {
+			return Velocidad;
+		}
 		/**
 		 * @return Devuelve el nivel actual
 		 */
 		public int getNivelActual() {
 
 			return NivelActual;
+		}
+		public Base[] getBases() {
+			return Bases;
+		}
+		public LinkedList<MisilAntibalistico> getMisilesAliadosEnPantalla(){
+			return MisilesAliadosEnPantalla;
+		}
+		public LinkedList<LinkedList<Enemigo>> getEnemigosEnEspera() {
+			return EnemigosEnEspera;
 		}
 }

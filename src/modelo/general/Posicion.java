@@ -1,9 +1,12 @@
 package modelo.general;
 
+import taller2.grafico.Dibujable;
+import taller2.grafico.InformacionDibujable;
+
 /*Posicion general de todos los objetos */
-public class Posicion {
-	private int posicionX;
-	private int posicionY;
+public class Posicion implements Dibujable {
+	private double posicionX;
+	private double posicionY;
 
 	public Posicion() {
 		this.posicionX = 0;
@@ -15,9 +18,13 @@ public class Posicion {
 		this.posicionY = pos.getPosicionY();
 	}
 
+	public void actualizarPosicion(double x, double y) {
+		this.posicionX += x;
+		this.posicionY += y;
+	}
 	public void actualizarPosicion(int x, int y) {
-		this.posicionX = x;
-		this.posicionY = y;
+		this.posicionX = (double)x;
+		this.posicionY = (double)y;
 	}
 
 	public void actualizarPosicion(Posicion pos) {
@@ -25,11 +32,11 @@ public class Posicion {
 		this.posicionY = pos.getPosicionY();
 	}
 
-	public Integer getPosicionX() {
+	public double getPosicionX() {
 		return posicionX;
 	}
 
-	public Integer getPosicionY() {
+	public double getPosicionY() {
 		return posicionY;
 	}
 
@@ -51,6 +58,11 @@ public class Posicion {
 			return true;
 		else
 			return false;
+	}
+	public InformacionDibujable getInformacionDibujable() {
+		InformacionDibujable info = new InformacionDibujable((int)this.posicionX,
+				(int)this.posicionY, '#');
+		return info;
 	}
 	/*
 	 * if ((this.posicionX==pos.getPosicionX()) &&

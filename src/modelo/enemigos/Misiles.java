@@ -7,28 +7,44 @@ import modelo.general.Posicion;
 public abstract class Misiles extends Enemigo{ 
 	private static Posicion[] posicionDeLasBasesYCiudades;
 	private Estela estela;
-	public Misiles (){
+	public Misiles (double velocidad){
 		this.determinarObjetivo();
 		this.determinarInicio();
 		this.determinarEstela();
+		this.determinarDesplazamiento(velocidad);
+		
 	}
-	
+	public Misiles () {
+		
+	}
+	public Misiles (double velocidad, Posicion pos){
+		this.determinarObjetivo();
+		this.determinarInicio(pos);
+		this.determinarEstela();
+		this.determinarDesplazamiento(velocidad);
+		
+	}
+	public void determinarInicio(Posicion pos) {
+		this.posicionInicial.actualizarPosicion(pos.getPosicionX(),pos.getPosicionY());
+		this.posicionActual.actualizarPosicion(pos.getPosicionX(),pos.getPosicionY());
+	}
 
 	private void determinarEstela() {
-		this.estela = new Estela(posicionActual);
+		this.estela = new Estela();
 	}
 	
 	public Estela getEstela() {
 		return estela;
 	}
+	public void mover() {
+		this.posicionActual.actualizarPosicion(movimientoX, movimientoY);
+	}
 
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */
-	public void mover(){
+	public void determinarDesplazamiento(double velocidad){
 		double pendiente;
-		int distanciaX;
-		int distanciaY;
-		double movimientoX;
-		double movimientoY;
+		double distanciaX;
+		double distanciaY;
 		
 
 		//Calculo de los catetos x e y(desplazamiento en x e y)
@@ -46,7 +62,7 @@ public abstract class Misiles extends Enemigo{
 				pendiente = 1;
 		}
 		//Calculo del movimiento en X
-		movimientoX= Math.sqrt(Math.pow(10, 2)/(1+Math.pow(pendiente,2)));
+		movimientoX= Math.sqrt(Math.pow(velocidad, 2)/(1+Math.pow(pendiente,2)));
 		//En base a la direccion se elige el signo correcto
 				if(distanciaX<0) 
 				{
@@ -54,25 +70,18 @@ public abstract class Misiles extends Enemigo{
 				}
 		movimientoY= (pendiente*movimientoX);
 		
-		
-
-		
-		//Actualiza la posicion 
-		this.posicionActual.actualizarPosicion((int)(this.posicionActual.getPosicionX()+movimientoX),
-											   (int)(this.posicionActual.getPosicionY()+movimientoY));
 		//Agrego puntos a la estela
-		this.estela.agregarPuntoALaEstela(this.posicionActual);
-			  
+		this.estela.agregarPuntoALaEstela(posicionActual);
+
 	}
 	 
-	/*Determina El objetivo de cada misil de manera aleatoria*/
-		
+	/*Determina El objetivo de cada misil enemigo de manera aleatoria*/
 	public void determinarObjetivo() {
 		int posicionGeneralObjetivo;
-		int posicionObjetivoX;
-		int posicionObjetivoY;
+		double posicionObjetivoX;
+		double posicionObjetivoY;
 		Random aleatorio = new Random();
-		posicionGeneralObjetivo = 1+(aleatorio.nextInt(9));
+		posicionGeneralObjetivo = (1+(aleatorio.nextInt(9)));
 
 		posicionObjetivoX = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionX();
 		posicionObjetivoY = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionY();

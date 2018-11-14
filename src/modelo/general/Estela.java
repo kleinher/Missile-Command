@@ -2,9 +2,6 @@ package modelo.general;
 
 import java.util.LinkedList;
 
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
-
 /* Parte Grafica*/
 /**
  * La clase estela representa la estela de cada misil enemigo y aliado
@@ -14,12 +11,11 @@ import taller2.grafico.InformacionDibujable;
  *
  */
 
-public class Estela implements Dibujable {
+public class Estela   {
 	private LinkedList<Posicion> listaDeEstelas;
 
-	public Estela(Posicion posicionActual) {
+	public Estela() {
 		this.listaDeEstelas = new LinkedList<Posicion>();
-		this.listaDeEstelas.addLast(posicionActual);
 	}
 	/*
 	 * Utilizo una lista de Posiciones, que serian puntos que se graficaran en la
@@ -35,7 +31,7 @@ public class Estela implements Dibujable {
 	 * misil
 	 */
 	public void agregarPuntoALaEstela(Posicion pos) {
-		this.listaDeEstelas.add(pos);
+		this.listaDeEstelas.addLast(pos);
 	}
 
 	/* Elimina la estela completa */
@@ -57,12 +53,7 @@ public class Estela implements Dibujable {
 
 	}
 
-	@Override
-	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.listaDeEstelas.get(1).getPosicionX(),
-				this.listaDeEstelas.get(1).getPosicionY(), '/');
-		return info;
-	}
+
 
 	/*************************
 	 * cada misil va a tener una instancia de estela, cuando se instancie un misil

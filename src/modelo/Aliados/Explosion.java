@@ -1,13 +1,12 @@
 package modelo.Aliados;
 
 import java.util.Iterator;
+
 import java.util.LinkedList;
 
 import modelo.general.Posicion;
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
 
-public class Explosion implements Dibujable{
+public class Explosion{
 	private Posicion posicionActual;
 	private int radio;
 	private int contartick=0;
@@ -25,9 +24,9 @@ public class Explosion implements Dibujable{
 		for (Iterator<Explosion> j = explosionesEnPantalla.iterator(); j.hasNext();) {
 				Explosion ExplAct=j.next();
 			if(ExplAct.contartick<5)
-				ExplAct.radio+=(5);
+				ExplAct.radio+=(10);
 			else
-				ExplAct.radio-=(5);
+				ExplAct.radio-=(1);
 			if(ExplAct.radio<0)
 				explosionesAEliminar.add(ExplAct);
 			ExplAct.contartick++;
@@ -56,11 +55,7 @@ public class Explosion implements Dibujable{
 		this.radio = radio;
 	}
 
-	@Override
-	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , 'E');
-		return info;
-	}
+
 	
 	
 	

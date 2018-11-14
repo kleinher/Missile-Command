@@ -1,8 +1,6 @@
 package modelo.enemigos;
 import java.util.Random;
-
 import modelo.gestores.GestorDeNivel;
-import taller2.grafico.InformacionDibujable;
 
 public class Bombardero extends Enemigo{
 	
@@ -14,9 +12,9 @@ public class Bombardero extends Enemigo{
 	
 	public void mover() {
 		if(this.posicionInicial.getPosicionX()==525)
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()-7,this.posicionActual.getPosicionY());
+			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()- GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad(),this.posicionActual.getPosicionY());
 		else
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+7, this.posicionActual.getPosicionY());
+			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX()+GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad(), this.posicionActual.getPosicionY());
 	}
 	/*Determina la posicion inicial del borbardero, y su posicion de destino*/
 	public void determinarRecorrido() {
@@ -47,14 +45,9 @@ public class Bombardero extends Enemigo{
 		}
 	}
 
-	@Override
-	public InformacionDibujable getInformacionDibujable() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void desaparecer() {
 		
 		
 	}
+
 }

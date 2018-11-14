@@ -3,19 +3,17 @@ package modelo.Aliados;
 
 import java.util.LinkedList;
 
+
 import modelo.enemigos.Enemigo;
 import modelo.enemigos.Misiles;
 import modelo.general.Posicion;
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
 
-public class MisilAntibalistico extends Misiles implements Dibujable{
+public class MisilAntibalistico extends Misiles{
 
-/*error!!!!! Fijense si saben como se soluciona **************************/
 	
-		MisilAntibalistico(Posicion pos){
-			super();
-			determinarInicio(pos);
+		MisilAntibalistico(Posicion pos, double velocidad){
+			super(velocidad,pos);
+			
 		}
 
 	/*variable que dice que exploto o no*/
@@ -62,11 +60,6 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 		this.posicionObjetivo.actualizarPosicion(X, Y);
 	}
 
-	@Override
-	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , '+');
-		return info;
-	}
 
 	public boolean alcanzoObjetivo() {
 		if(this.posicionActual.getPosicionY() < this.posicionObjetivo.getPosicionY())
