@@ -47,12 +47,6 @@ public class Bombardero extends Enemigo{
 		}
 	}
 
-	@Override
-	public InformacionDibujable getInformacionDibujable() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void desaparecer() {
 		
 		

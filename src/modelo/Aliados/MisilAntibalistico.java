@@ -9,7 +9,7 @@ import modelo.general.Posicion;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 
-public class MisilAntibalistico extends Misiles implements Dibujable{
+public class MisilAntibalistico extends Misiles{
 
 	
 		MisilAntibalistico(Posicion pos){
@@ -61,11 +61,6 @@ public class MisilAntibalistico extends Misiles implements Dibujable{
 		this.posicionObjetivo.actualizarPosicion(X, Y);
 	}
 
-	@Override
-	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , '+');
-		return info;
-	}
 
 	public boolean alcanzoObjetivo() {
 		if(this.posicionActual.getPosicionY() < this.posicionObjetivo.getPosicionY())

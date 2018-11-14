@@ -52,7 +52,7 @@ public class GestorDeEstructuras {
 		
 		public GestorDeEstructuras() {
 			this.NivelActual=1;
-			this.Velocidad=4;
+			this.Velocidad=2;
 			this.puntajeJugador = new PuntajeJugador();
 			this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 			this.EnemigosEnPantalla = new LinkedList<Enemigo>();
@@ -74,58 +74,19 @@ public class GestorDeEstructuras {
 		public void gestionarEstructuras() {
 			// Crea la lista de enemigos del nivel
 			this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
-			Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual,EstelasEnPantalla);
+			
+			
 			explosionesEnPantalla=new LinkedList<Explosion>();
 			MisilesAliadosEnPantalla=new LinkedList<MisilAntibalistico>();
+			
 			// Incrementa la dificultad cuando aumenta un nivel
 			this.Velocidad*=1.5;
+			
 			// REVIVIR CIUDAD EN CASO DE
 			this.NivelActual++;
-		}
-		
-		/**
-		 * METODO QUE ACTUALIZA EN CADA TIC LA LISTA DE LOS ELEMENTOS DIBUJABLES
-
-		 * 
-		 * @return devuelve una lista de elementos dibujables
-		 */
-		public List<Dibujable> ActualizarListaDibujables() {
 			
-			/* Creo una nueva lista con todo lo que sea dibujable */
-			List<Dibujable> listaDibujables = new LinkedList<Dibujable>();
-
-			/* Agrego los enemigos que están en pantalla */
-			for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
-				listaDibujables.add(i.next());
-			}
-			/* Agrego las explosiones que estan en pantalla */
-			for (Iterator<Explosion> i = explosionesEnPantalla.iterator(); i.hasNext();) {
-				listaDibujables.add(i.next());
-			}
-			/* Agrego los misiles aliados que estan en pantalla */
-			for (Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) {
-				listaDibujables.add(i.next());
-			}
-			/* Agrego las ciudades y las bases*/
-			for(int i=1;i<Bases.length;i++) {
-				//if(Bases[i].isEstaViva())
-					listaDibujables.add(Bases[i]);
-			}
-			for(int i=1;i<Ciudades.length;i++) {
-				if(Ciudades[i].estaViva())
-					listaDibujables.add(Ciudades[i]);
-			}
-			for(Iterator<LinkedList<Posicion>> i= EstelasEnPantalla.iterator(); i.hasNext();) {
-				LinkedList<Posicion> nodo = i.next();
-				for(Iterator<Posicion> j= nodo.iterator(); j.hasNext();) {
-					listaDibujables.add(j.next());
-				}
-			}
-			return listaDibujables;
+			Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual,EstelasEnPantalla);
 		}
-		//
-
-
 
 		/**
 		 * ---ActualizarPosiciones--- Este metodo actualiza las posiciones de todos los
@@ -136,7 +97,7 @@ public class GestorDeEstructuras {
 			// Actualiza posiciones de los de los enemigos
 			for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 				Enemigo enemigo = i.next();
-				enemigo.mover(Velocidad);
+				enemigo.mover(2);
 				if(enemigo.alcanzoObjetivo()) {
 					i.remove();
 				}
@@ -147,7 +108,7 @@ public class GestorDeEstructuras {
 			// Actualiza la posicion de los misiles aliados
 			for (Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) {
 				MisilAntibalistico misil = i.next();
-				misil.mover(30);
+				misil.mover(2);
 				if(misil.alcanzoObjetivo()) {
 					i.remove();
 					misil.destruccion(explosionesAgregar, aliadosAEliminar);
@@ -172,5 +133,8 @@ public class GestorDeEstructuras {
 		}
 		public LinkedList<MisilAntibalistico> getMisilesAliadosEnPantalla(){
 			return MisilesAliadosEnPantalla;
+		}
+		public LinkedList<LinkedList<Enemigo>> getEnemigosEnEspera() {
+			return EnemigosEnEspera;
 		}
 }

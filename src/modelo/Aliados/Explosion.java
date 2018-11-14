@@ -7,7 +7,7 @@ import modelo.general.Posicion;
 import taller2.grafico.Dibujable;
 import taller2.grafico.InformacionDibujable;
 
-public class Explosion implements Dibujable{
+public class Explosion{
 	private Posicion posicionActual;
 	private int radio;
 	private int contartick=0;
@@ -56,11 +56,7 @@ public class Explosion implements Dibujable{
 		this.radio = radio;
 	}
 
-	@Override
-	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY() , 'E');
-		return info;
-	}
+
 	
 	
 	

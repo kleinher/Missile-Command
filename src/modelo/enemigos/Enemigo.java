@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import modelo.Aliados.Explosion;
 import modelo.general.Posicion;
 import taller2.grafico.Dibujable;
-public abstract class Enemigo implements Dibujable{
+public abstract class Enemigo{
 	protected int puntos;
 	protected Posicion posicionInicial;
 	protected Posicion posicionObjetivo;

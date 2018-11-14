@@ -24,8 +24,10 @@ public class Pantalla extends JPanel{
 	 * 
 	 */
 	@Override
-	public void paint(Graphics g) {
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		setOpaque(true);
+		setBackground(java.awt.Color.BLACK);
 		GestorDeEstructuras estructuras = GestorDeNivel.getGestorDeNivel().getEstructuras();
 		DibujarEnemigos(estructuras.EnemigosEnPantalla,g);
 		DibujarBases(estructuras.Bases,g);
@@ -45,16 +47,17 @@ public class Pantalla extends JPanel{
 		for (Iterator<MisilAntibalistico> i = misilesAliadosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo MisilAliado = i.next();
 			g.setColor(java.awt.Color.PINK);
-			g.fillOval(MisilAliado.getPosicionActual().getPosicionX(),MisilAliado.getPosicionActual().getPosicionY(),10,10);
+			g.fillOval((int)MisilAliado.getPosicionActual().getPosicionX(),(int)MisilAliado.getPosicionActual().getPosicionY(),10,10);
 		}
 	}
 	private void dibujarExplociones(LinkedList<Explosion> explosionesEnPantalla, Graphics g) {
+		if(explosionesEnPantalla != null){
 		for (Iterator<Explosion> i = explosionesEnPantalla.iterator(); i.hasNext();) {
 			Explosion explosion = i.next();
 			g.setColor(java.awt.Color.GRAY);
-			g.fillOval(explosion.getPosicionActual().getPosicionX()-(explosion.getRadio()/2),explosion.getPosicionActual().getPosicionY()-(explosion.getRadio()/2),explosion.getRadio() ,explosion.getRadio());
+			g.fillOval((int)explosion.getPosicionActual().getPosicionX()-(explosion.getRadio()/2),(int)explosion.getPosicionActual().getPosicionY()-(explosion.getRadio()/2),explosion.getRadio() ,explosion.getRadio());
 		}
-		
+		}
 	}
 	/**
 	 * Dibuja las ciudades de color BLANCO
@@ -68,7 +71,7 @@ public class Pantalla extends JPanel{
 		for(int i=1;i<ciudad.length;i++) {
 			if(ciudad[i].estaViva()) {
 				g.setColor(java.awt.Color.WHITE);
-				g.fillRect(ciudad[i].getPosicion().getPosicionX()-15, ciudad[i].getPosicion().getPosicionY()-10, 12, 5);
+				g.fillRect((int)ciudad[i].getPosicion().getPosicionX()-15, (int)ciudad[i].getPosicion().getPosicionY()-10, 12, 5);
 			}
 		}
 		
@@ -87,11 +90,11 @@ public class Pantalla extends JPanel{
 			
 			for(int i=1;i<bases.length;i++) {
 				g.setColor(java.awt.Color.GREEN);
-				g.fillRect(bases[i].getPosicion().getPosicionX()-15,bases[1].getPosicion().getPosicionY()-10, 20, 5);
+				g.fillRect((int)bases[i].getPosicion().getPosicionX()-15,(int)bases[1].getPosicion().getPosicionY()-10, 20, 5);
 				int espacio=-35;
 				for(int j=0;j<bases[i].getCantMisiles();j++) {
 					g.setColor(java.awt.Color.BLUE);
-					g.fillRect(bases[i].getPosicion().getPosicionX()+espacio, bases[i].getPosicion().getPosicionY()+5, 2, 7);
+					g.fillRect((int)bases[i].getPosicion().getPosicionX()+espacio, (int)bases[i].getPosicion().getPosicionY()+5, 2, 7);
 					espacio+=4;
 				}
 
@@ -115,23 +118,23 @@ public class Pantalla extends JPanel{
 			Enemigo enemigo = i.next();
 			if(enemigo instanceof MisilBalistico) {
 				g.setColor(java.awt.Color.RED);
-				g.fillOval(enemigo.getPosicionActual().getPosicionX(),enemigo.getPosicionActual().getPosicionY(),4,4);
+				g.fillOval((int)enemigo.getPosicionActual().getPosicionX(),(int)enemigo.getPosicionActual().getPosicionY(),4,4);
 			}
 			if(enemigo instanceof Avion) {
 				g.setColor(java.awt.Color.PINK);
-				g.fillOval(enemigo.getPosicionActual().getPosicionX(),enemigo.getPosicionActual().getPosicionY(),6,4);
+				g.fillOval((int)enemigo.getPosicionActual().getPosicionX(),(int)enemigo.getPosicionActual().getPosicionY(),6,4);
 			}
 			if(enemigo instanceof Satelite) {
 				g.setColor(java.awt.Color.MAGENTA);
-				g.fillOval(enemigo.getPosicionActual().getPosicionX(),enemigo.getPosicionActual().getPosicionY(),8,6);
+				g.fillOval((int)enemigo.getPosicionActual().getPosicionX(),(int)enemigo.getPosicionActual().getPosicionY(),8,6);
 			}
 			if(enemigo instanceof MisilCrucero) {
 				g.setColor(java.awt.Color.CYAN);
-				g.fillRect(enemigo.getPosicionActual().getPosicionX(),enemigo.getPosicionActual().getPosicionY(),5,5);
+				g.fillRect((int)enemigo.getPosicionActual().getPosicionX(),(int)enemigo.getPosicionActual().getPosicionY(),5,5);
 			}
 			if(enemigo instanceof MisilCruceroInteligente) {
 				g.setColor(java.awt.Color.ORANGE);
-				g.fillRect(enemigo.getPosicionActual().getPosicionX(),enemigo.getPosicionActual().getPosicionY(),5,5);
+				g.fillRect((int)enemigo.getPosicionActual().getPosicionX(),(int)enemigo.getPosicionActual().getPosicionY(),5,5);
 			}
 	}
 }

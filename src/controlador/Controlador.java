@@ -50,7 +50,7 @@ public class Controlador extends JFrame {
 					this.modelar();
 
 					// ACA SE PINTA EL GRAFICO
-					Graficador.refrescarTopDown(juego.getEstructuras().ActualizarListaDibujables(), 200);
+					//Graficador.refrescarTopDown(juego.getEstructuras().ActualizarListaDibujables(), 200);
 					this.pintar();
 					
 				}
@@ -61,10 +61,10 @@ public class Controlador extends JFrame {
 			}
 			
 			private void pintar() {
-				pantalla.setOpaque(true);
-				pantalla.setBackground(java.awt.Color.BLACK);
-				pantalla.paint(pantalla.getGraphics());
-				
+				//pantalla.setOpaque(true);
+				//pantalla.setBackground(java.awt.Color.BLACK);
+				//pantalla.paint(pantalla.getGraphics());
+				repaint();
 			}
 
 			public void modelar() {
@@ -77,7 +77,7 @@ public class Controlador extends JFrame {
 			}
 		
 		};
-		timer.schedule(task,2,10);
+		timer.schedule(task,2,16);
 	}
 	
 }

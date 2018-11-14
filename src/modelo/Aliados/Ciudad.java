@@ -11,7 +11,7 @@ import taller2.grafico.InformacionDibujable;
  * @author eze96
  *
  */
-public class Ciudad implements Dibujable {
+public class Ciudad{
 	private Posicion posicion;
 	private boolean estaViva;
 
@@ -106,11 +106,5 @@ public class Ciudad implements Dibujable {
 		return posicion;
 	}
 
-	@Override
-	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicion.getPosicionX(), this.posicion.getPosicionY(),
-				'C');
-		return info;
-	}
 
 }

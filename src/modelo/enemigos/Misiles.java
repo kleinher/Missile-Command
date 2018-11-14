@@ -24,8 +24,8 @@ public abstract class Misiles extends Enemigo{
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */
 	public void mover(int velocidad){
 		double pendiente;
-		int distanciaX;
-		int distanciaY;
+		double distanciaX;
+		double distanciaY;
 		double movimientoX;
 		double movimientoY;
 		
@@ -62,14 +62,14 @@ public abstract class Misiles extends Enemigo{
 
 	}
 	 
-	/*Determina El objetivo de cada misil de manera aleatoria*/
+	/*Determina El objetivo de cada misil enemigo de manera aleatoria*/
 		
 	public void determinarObjetivo() {
 		int posicionGeneralObjetivo;
-		int posicionObjetivoX;
-		int posicionObjetivoY;
+		double posicionObjetivoX;
+		double posicionObjetivoY;
 		Random aleatorio = new Random();
-		posicionGeneralObjetivo = 1+(aleatorio.nextInt(9));
+		posicionGeneralObjetivo = (1+(aleatorio.nextInt(9)));
 
 		posicionObjetivoX = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionX();
 		posicionObjetivoY = posicionDeLasBasesYCiudades[posicionGeneralObjetivo].getPosicionY();

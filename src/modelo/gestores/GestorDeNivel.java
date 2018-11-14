@@ -67,18 +67,20 @@ public class GestorDeNivel {
 			estructuras.gestionarEstructuras();
 		}
 		//Cuando termine el nivel
-		if((estructuras.EnemigosEnEspera.isEmpty())) {
+		if(estructuras.EnemigosEnEspera.isEmpty() & estructuras.EnemigosEnPantalla.isEmpty()) {
 			//Actualizo puntaje al final del nivel
 			PuntajeJugador.ActualizarPuntaje(this.NivelActual, estructuras.Ciudades, estructuras.Bases);
 			
 			//En este gestionar de estructuras se estan actualizando 
 			//todas las estructuras para un nivel en especifico
 			estructuras.gestionarEstructuras();
+			tics=0;
+			System.out.println("Cambio de nivel");
 		}
 		// Mientras hayan enemigos(No termino el nivel)
 		else {
 			// Cuando pasa 1 segundo, lanzo otra oleada de enemigos
-			if (tics == 20) {
+			if (tics==200 & !estructuras.EnemigosEnEspera.isEmpty() ) {
 				// Lanzo una nueva oleada de enemigos
 				Enemigo.lanzarEnemigos(estructuras.EnemigosEnEspera.poll(), estructuras.EnemigosEnPantalla);
 				tics = 0;
@@ -86,7 +88,7 @@ public class GestorDeNivel {
 			//actualizo el tamanio de las explosiones
 			actualizarTamanioDeExplosiones(estructuras.explosionesEnPantalla);
 			//Grafica
-			Graficador.refrescarTopDown(estructuras.ActualizarListaDibujables(), delayMilis);
+			//Graficador.refrescarTopDown(estructuras.ActualizarListaDibujables(), delayMilis);
 			//actualiza posiciones
 			estructuras.actualizarPosiciones();
 			//comprueba colisiones

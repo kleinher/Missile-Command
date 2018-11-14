@@ -15,7 +15,7 @@ import taller2.grafico.InformacionDibujable;
  * @author LosPi
  *
  */
-public class Base implements Dibujable{
+public class Base {
 	private Posicion posicion;
 	private LinkedList<MisilAntibalistico> listaMisilesAntibalisticos;
 	private boolean estaViva;
@@ -131,11 +131,11 @@ public class Base implements Dibujable{
 	 * --En caso de que no exista ninguna base va a devolver un 0.
 	 * --
 	 * */
-	private static int buscarBaseMasCercana(int posX,Base[] bases) {
-		int distancia = 9999;
+	private static int buscarBaseMasCercana(double posX,Base[] bases) {
+		double distancia = 9999;
 		int base=0;
 		for(int i=1; i<=3;i++) {
-			int auxDistancia = Math.abs(bases[i].getPosicion().getPosicionX() - posX);
+			double auxDistancia = Math.abs(bases[i].getPosicion().getPosicionX() - posX);
 			if((auxDistancia < distancia)
 				& bases[i].isEstaViva() & !bases[i].listaMisilesAntibalisticos.isEmpty()) {
 				distancia = auxDistancia;
@@ -157,9 +157,5 @@ public class Base implements Dibujable{
 		this.estaViva = estaViva;
 	}
 
-	@Override
-	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicion.getPosicionX(),this.posicion.getPosicionY() , 'B');
-		return info;
-	}
+
 }

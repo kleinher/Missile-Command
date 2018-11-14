@@ -5,8 +5,8 @@ import taller2.grafico.InformacionDibujable;
 
 /*Posicion general de todos los objetos */
 public class Posicion implements Dibujable {
-	private int posicionX;
-	private int posicionY;
+	private double posicionX;
+	private double posicionY;
 
 	public Posicion() {
 		this.posicionX = 0;
@@ -18,7 +18,7 @@ public class Posicion implements Dibujable {
 		this.posicionY = pos.getPosicionY();
 	}
 
-	public void actualizarPosicion(int x, int y) {
+	public void actualizarPosicion(double x, double y) {
 		this.posicionX = x;
 		this.posicionY = y;
 	}
@@ -28,11 +28,11 @@ public class Posicion implements Dibujable {
 		this.posicionY = pos.getPosicionY();
 	}
 
-	public Integer getPosicionX() {
+	public double getPosicionX() {
 		return posicionX;
 	}
 
-	public Integer getPosicionY() {
+	public double getPosicionY() {
 		return posicionY;
 	}
 
@@ -56,8 +56,8 @@ public class Posicion implements Dibujable {
 			return false;
 	}
 	public InformacionDibujable getInformacionDibujable() {
-		InformacionDibujable info = new InformacionDibujable(this.posicionX,
-				this.posicionY, '#');
+		InformacionDibujable info = new InformacionDibujable((int)this.posicionX,
+				(int)this.posicionY, '#');
 		return info;
 	}
 	/*
