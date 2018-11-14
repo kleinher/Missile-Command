@@ -14,6 +14,7 @@ public abstract class Misiles extends Enemigo{
 		this.determinarDesplazamiento(velocidad);
 		
 	}
+	
 	public Misiles () {
 		
 	}
@@ -99,8 +100,6 @@ public abstract class Misiles extends Enemigo{
 		this.posicionActual.actualizarPosicion(aparicionEnX, aparicionEnY);
 	}
 	public void destruccion(){
-
-		
 	}
 	/* Determina la posicion de las bases y las ciudades para facilitar el determinarObjetivo de cada misil*/
 	public static void DeterminarPosicionesDeLasbases() {

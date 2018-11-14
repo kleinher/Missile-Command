@@ -9,6 +9,7 @@ import modelo.Aliados.Ciudad;
 import modelo.Aliados.Explosion;
 import modelo.Aliados.MisilAntibalistico;
 import modelo.enemigos.Enemigo;
+import modelo.enemigos.Misiles;
 import modelo.general.Posicion;
 import taller2.grafico.Dibujable;
 /**
@@ -96,7 +97,7 @@ public class GestorDeEstructuras {
 			for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 				Enemigo enemigo = i.next();
 				enemigo.mover();
-				if(enemigo.alcanzoObjetivo()) {
+				if(enemigo.alcanzoObjetivo()) { 
 					i.remove();
 				}
 			}

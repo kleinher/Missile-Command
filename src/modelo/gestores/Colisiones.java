@@ -72,6 +72,7 @@ public class Colisiones {
 					}
 					// Cuando enemigo colisiona con explosion destruyo enemigo
 					enemigoAct.destruccion(explosionesAgregar, enemigosAEliminar);
+						
 					explotoEnemigo = true;
 				}
 			}
@@ -97,6 +98,7 @@ public class Colisiones {
 	}
 		listaExplocionesEnPantalla.addAll(explosionesAgregar);
 		enemigos.removeAll(enemigosAEliminar);
+		
 
 	}
 
