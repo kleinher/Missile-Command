@@ -1,8 +1,6 @@
 package modelo.Aliados;
 
 import modelo.general.Posicion;
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
 
 /**
  * Esta Clase Representa cada una de las 6 Ciudades del juego, posee un metodo

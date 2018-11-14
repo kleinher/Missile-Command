@@ -3,17 +3,16 @@ package modelo.Aliados;
 
 import java.util.LinkedList;
 
+
 import modelo.enemigos.Enemigo;
 import modelo.enemigos.Misiles;
 import modelo.general.Posicion;
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
 
 public class MisilAntibalistico extends Misiles{
 
 	
-		MisilAntibalistico(Posicion pos){
-			super();
+		MisilAntibalistico(Posicion pos, double velocidad){
+			super(velocidad);
 			determinarInicio(pos);
 		}
 

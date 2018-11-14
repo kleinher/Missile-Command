@@ -19,8 +19,8 @@ public class Posicion implements Dibujable {
 	}
 
 	public void actualizarPosicion(double x, double y) {
-		this.posicionX = x;
-		this.posicionY = y;
+		this.posicionX += x;
+		this.posicionY += y;
 	}
 
 	public void actualizarPosicion(Posicion pos) {

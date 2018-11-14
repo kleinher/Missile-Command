@@ -10,7 +10,6 @@ import modelo.Aliados.Explosion;
 import modelo.Aliados.MisilAntibalistico;
 import modelo.enemigos.Enemigo;
 import modelo.general.Posicion;
-import modelo.usuario.PuntajeJugador;
 import taller2.grafico.Dibujable;
 /**
  * --Correcci�n para Reentrega-- Se agrega esta nueva clase GestorEstructuras.
@@ -27,8 +26,6 @@ public class GestorDeEstructuras {
 	// Variables de juego
 		private int Velocidad;
 		private int NivelActual;
-		private PuntajeJugador  puntajeJugador;
-		
 		List<? extends Dibujable> listaDibujables;
 
 
@@ -53,7 +50,6 @@ public class GestorDeEstructuras {
 		public GestorDeEstructuras() {
 			this.NivelActual=1;
 			this.Velocidad=2;
-			this.puntajeJugador = new PuntajeJugador();
 			this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 			this.EnemigosEnPantalla = new LinkedList<Enemigo>();
 			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
@@ -64,7 +60,7 @@ public class GestorDeEstructuras {
 
 			// Instancia las tres bases
 			this.Bases=new Base[4];
-			Base.InstanciarBases(this.Bases);
+			Base.InstanciarBases(this.Bases, this.Velocidad);
 		}
 		/**
 		 * ---GESTIONAR Estructuras--- Funcion: Modifica la instancia nivel(de Juego) cada ves
@@ -85,7 +81,7 @@ public class GestorDeEstructuras {
 			// REVIVIR CIUDAD EN CASO DE
 			this.NivelActual++;
 			
-			Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual,EstelasEnPantalla);
+			Oleada.CrearListaDeOleadasPorNivel(EnemigosEnEspera, NivelActual,EstelasEnPantalla,Velocidad);
 		}
 
 		/**
@@ -97,7 +93,7 @@ public class GestorDeEstructuras {
 			// Actualiza posiciones de los de los enemigos
 			for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 				Enemigo enemigo = i.next();
-				enemigo.mover(2);
+				enemigo.mover();
 				if(enemigo.alcanzoObjetivo()) {
 					i.remove();
 				}
@@ -108,7 +104,7 @@ public class GestorDeEstructuras {
 			// Actualiza la posicion de los misiles aliados
 			for (Iterator<MisilAntibalistico> i = MisilesAliadosEnPantalla.iterator(); i.hasNext();) {
 				MisilAntibalistico misil = i.next();
-				misil.mover(2);
+				misil.mover();
 				if(misil.alcanzoObjetivo()) {
 					i.remove();
 					misil.destruccion(explosionesAgregar, aliadosAEliminar);
@@ -120,6 +116,9 @@ public class GestorDeEstructuras {
 			// ACTUALIZAR EXPLOSIONES
 			
 			// ACTUALIZAR ESTELA
+		}
+		public int getVelocidad() {
+			return Velocidad;
 		}
 		/**
 		 * @return Devuelve el nivel actual

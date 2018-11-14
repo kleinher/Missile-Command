@@ -7,10 +7,12 @@ import modelo.general.Posicion;
 public abstract class Misiles extends Enemigo{ 
 	private static Posicion[] posicionDeLasBasesYCiudades;
 	private Estela estela;
-	public Misiles (){
+	public Misiles (double velocidad){
 		this.determinarObjetivo();
 		this.determinarInicio();
 		this.determinarEstela();
+		this.determinarDesplazamiento(velocidad);
+		
 	}
 
 	private void determinarEstela() {
@@ -20,14 +22,15 @@ public abstract class Misiles extends Enemigo{
 	public Estela getEstela() {
 		return estela;
 	}
+	public void mover() {
+		this.posicionActual.actualizarPosicion(movimientoX, movimientoY);
+	}
 
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */
-	public void mover(int velocidad){
+	public void determinarDesplazamiento(double velocidad){
 		double pendiente;
 		double distanciaX;
 		double distanciaY;
-		double movimientoX;
-		double movimientoY;
 		
 
 		//Calculo de los catetos x e y(desplazamiento en x e y)
@@ -55,15 +58,10 @@ public abstract class Misiles extends Enemigo{
 		
 		//Agrego puntos a la estela
 		this.estela.agregarPuntoALaEstela(posicionActual);
-		
-		//Actualiza la posicion 
-		this.posicionActual.actualizarPosicion((int)(this.posicionActual.getPosicionX()+movimientoX),
-											   (int)(this.posicionActual.getPosicionY()+movimientoY));
 
 	}
 	 
 	/*Determina El objetivo de cada misil enemigo de manera aleatoria*/
-		
 	public void determinarObjetivo() {
 		int posicionGeneralObjetivo;
 		double posicionObjetivoX;

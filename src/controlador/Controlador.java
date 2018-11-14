@@ -1,17 +1,14 @@
 package controlador;
 
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import modelo.gestores.GestorDeNivel;
 import modelo.gestores.Pantalla;
-import taller2.modelo.Graficador;
 
 public class Controlador extends JFrame {
 	public static void main(String args[]) {

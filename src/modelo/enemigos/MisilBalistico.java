@@ -1,12 +1,11 @@
 package modelo.enemigos;
 
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
-
 /*Implementa lo mismo que misiles*/
 public class MisilBalistico extends Misiles{
 
-	public MisilBalistico() {
-		super();
+	public MisilBalistico(double velocidad) {
+		super(velocidad);
 	}
+
+
 }

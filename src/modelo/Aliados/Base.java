@@ -2,11 +2,10 @@ package modelo.Aliados;
 
 import java.util.LinkedList;
 
+
 import modelo.general.Posicion;
 import modelo.gestores.GestorDeEstructuras;
 import modelo.gestores.GestorDeNivel;
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
 
 /**
  * Esta clase representa a cada una de las 3 bases que se necesitan en el juego
@@ -48,7 +47,7 @@ public class Base {
 	 * @param bases
 	 *            Vector de 3 bases
 	 */
-	public static void InstanciarBases(Base[] bases) {
+	public static void InstanciarBases(Base[] bases, double velocidad) {
 		// Se instancian las 3 bases del vector de ciudades
 		int posX = 40;
 		int posY = 450;
@@ -70,7 +69,7 @@ public class Base {
 			// Agrego 15 MisilesAntibalisticos a la lista de misiles antibalisticos de cada
 			// base
 			for (int j = 0; j < 15; j++) {
-				bases[i].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[i].posicion));
+				bases[i].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[i].posicion, velocidad));
 			}
 		}
 
@@ -123,6 +122,7 @@ public class Base {
 														Base base,int posX, int posY) {
 		MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
 		aux.determinarObjetivo(posX, posY);
+		aux.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad());
 		MisilesAliadosEnPantalla.add(aux);
 	}
 	

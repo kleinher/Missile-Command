@@ -2,13 +2,11 @@ package modelo.gestores;
 
 import java.util.LinkedList;
 
-import controlador.Controlador;
-import modelo.Aliados.Base;
+
 import modelo.Aliados.Ciudad;
 import modelo.Aliados.Explosion;
 import modelo.enemigos.*;
 import modelo.usuario.PuntajeJugador;
-import taller2.modelo.Graficador;
 
 /**
  * Gestor de nivel se instancia en su misma clase para ser Singleton
@@ -32,8 +30,6 @@ public class GestorDeNivel {
 
 	private int NivelActual;
 	private GestorDeEstructuras estructuras;
-	// Delay para la clase graficador
-	final private int delayMilis = 40;
 
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
 
@@ -114,7 +110,6 @@ public class GestorDeNivel {
 	 */
 
 	public void modelar() throws InterruptedException {
-		PuntajeJugador puntaje = new PuntajeJugador();
 		this.loopDelNivel();
 		PuntajeJugador.ActualizarPuntaje(this.NivelActual, this.estructuras.Ciudades, this.estructuras.Bases); 
 		// TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(),

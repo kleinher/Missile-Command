@@ -1,12 +1,9 @@
 package modelo.enemigos;
 
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
-
 /*Implementa lo mismo que misiles*/
 public class MisilCruceroInteligente extends Misiles{
-	public MisilCruceroInteligente() {
-		super();
+	public MisilCruceroInteligente(double velocidad) {
+		super(velocidad);
 		this.puntos = 125;
 	}
 	/**

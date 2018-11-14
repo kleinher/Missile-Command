@@ -2,9 +2,6 @@ package modelo.general;
 
 import java.util.LinkedList;
 
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
-
 /* Parte Grafica*/
 /**
  * La clase estela representa la estela de cada misil enemigo y aliado

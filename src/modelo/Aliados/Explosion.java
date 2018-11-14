@@ -1,11 +1,10 @@
 package modelo.Aliados;
 
 import java.util.Iterator;
+
 import java.util.LinkedList;
 
 import modelo.general.Posicion;
-import taller2.grafico.Dibujable;
-import taller2.grafico.InformacionDibujable;
 
 public class Explosion{
 	private Posicion posicionActual;

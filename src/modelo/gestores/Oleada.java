@@ -47,7 +47,7 @@ public class Oleada {
 	 * @param NumeroDeNivel
 	 *            >>Numero de nivel
 	 */
-	public static void CrearListaDeOleadasPorNivel(LinkedList<LinkedList<Enemigo>> Enemigos, int NumeroDeNivel, LinkedList<LinkedList<Posicion>> ListaDeEstelas) {
+	public static void CrearListaDeOleadasPorNivel(LinkedList<LinkedList<Enemigo>> Enemigos, int NumeroDeNivel, LinkedList<LinkedList<Posicion>> ListaDeEstelas, double Velocidad) {
 		Random aleatorio = new Random();
 		int oleada = 1;
 
@@ -65,7 +65,8 @@ public class Oleada {
 			for (int i = numeroDeEnemigosPorOleada; i != 0; i--) {
 
 				/* Genera Un numero Random de enemigos para cada oleada de 0 a 4 */
-				MisilBalistico MB = new MisilBalistico();
+				MisilBalistico MB = new MisilBalistico(Velocidad);
+				MB.determinarDesplazamiento(Velocidad);
 				ListaDeEstelas.add(MB.getEstela().getListaDeEstelas());
 				oleadaEnemigos.add(MB);
 				numeroDeEnemigosPorNivel--;
@@ -75,10 +76,10 @@ public class Oleada {
 			// Misil cruceros apartir de la oleada 4
 			if (oleada == 4) {
 				if (VectorDeMisilesCrucerosPorNivel[NumeroDeNivel]) {
-					MisilCruceroInteligente MCI = new MisilCruceroInteligente();
+					MisilCruceroInteligente MCI = new MisilCruceroInteligente(Velocidad);
 					oleadaEnemigos.add(MCI);
 				} else {
-					MisilCrucero MC = new MisilCrucero();
+					MisilCrucero MC = new MisilCrucero(Velocidad);
 					oleadaEnemigos.add(MC);
 				}
 			}
