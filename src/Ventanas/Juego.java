@@ -20,7 +20,7 @@ public class Juego extends JFrame {
 		Timer timer;
 		timer = new Timer();
 		//Variable de el JPanel "pantalla"
-		Pantalla pantalla = new Pantalla();
+		 pantalla = new Pantalla();
 		add(pantalla);
 		pantalla.addMouseListener(new AdapterDeMiraMouse());
 		pantalla.addKeyListener(new AdapterDeMiraTeclado());

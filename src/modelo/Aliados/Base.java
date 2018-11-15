@@ -1,7 +1,7 @@
 package modelo.Aliados;
 
+import java.io.LineNumberInputStream;
 import java.util.LinkedList;
-
 
 import modelo.general.Posicion;
 import modelo.gestores.GestorDeEstructuras;
@@ -21,8 +21,8 @@ public class Base {
 
 	public Base() {
 		this.posicion = new Posicion();
-		this.estaViva=true;
-		this.listaMisilesAntibalisticos=new LinkedList<MisilAntibalistico>();
+		this.estaViva = true;
+		this.listaMisilesAntibalisticos = new LinkedList<MisilAntibalistico>();
 	}
 
 	/**
@@ -30,8 +30,8 @@ public class Base {
 	 * 
 	 * @param posX
 	 *            Determina la posicion en X de la base, las ciudades tienen una
-	 *            distancia entre ellas de DistanciaEntreBases determina la posicion
-	 *            en Y de la base, todas tienen la misma posicion
+	 *            distancia entre ellas de DistanciaEntreBases determina la
+	 *            posicion en Y de la base, todas tienen la misma posicion
 	 * @param posY
 	 *            Es la coordenada Y en la pantalla
 	 */
@@ -41,8 +41,8 @@ public class Base {
 	}
 
 	/**
-	 * Este metodo estatico Crea las 3 Instancias necesarias y setea sus posiciones
-	 * en la pantalla
+	 * Este metodo estatico Crea las 3 Instancias necesarias y setea sus
+	 * posiciones en la pantalla
 	 * 
 	 * @param bases
 	 *            Vector de 3 bases
@@ -53,20 +53,22 @@ public class Base {
 		int posY = 450;
 		int DistanciaEntreBases = 220;
 
-		// En este FOR se setean las posiciones en la pantalla de todas las ciudades
+		// En este FOR se setean las posiciones en la pantalla de todas las
+		// ciudades
 		for (int i = 1; i < bases.length; i++) {
 			bases[i] = new Base(posX, posY);
 			// Aumento la posicion para la ciudad siguiente
 			posX += DistanciaEntreBases;
 
 			/*
-			 * Cuando se pasa la tercera ciudad hay una en la mitad, por lo tanto se suma
-			 * una distancia mas para que no se superponga
+			 * Cuando se pasa la tercera ciudad hay una en la mitad, por lo
+			 * tanto se suma una distancia mas para que no se superponga
 			 */
 			if (i == 3)
 				posX += DistanciaEntreBases;
 
-			// Agrego 15 MisilesAntibalisticos a la lista de misiles antibalisticos de cada
+			// Agrego 15 MisilesAntibalisticos a la lista de misiles
+			// antibalisticos de cada
 			// base
 			for (int j = 0; j < 15; j++) {
 				bases[i].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[i].posicion, velocidad));
@@ -88,56 +90,67 @@ public class Base {
 	 * testear, y luego agrego los misiles a la lista de misiles en pantalla
 	 */
 	/**
-	 * ---DISPARAR sin teclado--- 
-	 * Este disparar recibe una posicion a disparar y elige la base mas cercana
-	 * En este se dispara cuando no se determina explicitamente la base
-	 * @param posX posicion a disparar en X
-	 * @param posY posicion a disparar en Y
+	 * ---DISPARAR sin teclado--- Este disparar recibe una posicion a disparar y
+	 * elige la base mas cercana En este se dispara cuando no se determina
+	 * explicitamente la base
+	 * 
+	 * @param posX
+	 *            posicion a disparar en X
+	 * @param posY
+	 *            posicion a disparar en Y
 	 */
 	public static void Disparar(int posX, int posY) {
 		GestorDeEstructuras estructura = GestorDeNivel.getGestorDeNivel().getEstructuras();
 		Base[] base = estructura.getBases();
 		LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla = estructura.getMisilesAliadosEnPantalla();
-		
-		int numeroDeBase = buscarBaseMasCercana(posX,base);
-		
-		if(numeroDeBase != 0) {
-				lanzarElMisilAlInfinitoYMasAlla(MisilesAliadosEnPantalla,base[numeroDeBase], posX, posY);
+
+		int numeroDeBase = buscarBaseMasCercana(posX, base);
+
+		if (numeroDeBase != 0) {
+			lanzarElMisilAlInfinitoYMasAlla(MisilesAliadosEnPantalla, base[numeroDeBase], posX, posY);
 		}
 	}
+
 	/**
-	 * ---DISPARAR con teclado--- 
-	 * Este disparar recibe una posicion a disparar y elige la base mas cercana
-	 * En este se dispara cuando no se determina explicitamente la base
-	 * @param posX posicion a disparar en X
-	 * @param posY posicion a disparar en Y
+	 * ---DISPARAR con teclado--- Este disparar recibe una posicion a disparar y
+	 * elige la base mas cercana En este se dispara cuando no se determina
+	 * explicitamente la base
+	 * 
+	 * @param posX
+	 *            posicion a disparar en X
+	 * @param posY
+	 *            posicion a disparar en Y
 	 */
 	public static void Disparar(int posX, int posY, int numeroDeBase) {
 		GestorDeEstructuras estructura = GestorDeNivel.getGestorDeNivel().getEstructuras();
 		Base[] base = estructura.getBases();
-		LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla = estructura.getMisilesAliadosEnPantalla();
-		lanzarElMisilAlInfinitoYMasAlla(MisilesAliadosEnPantalla,base[numeroDeBase], posX, posY);
+		if (base[numeroDeBase].isEstaViva()) {
+			LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla = estructura.getMisilesAliadosEnPantalla();
+			lanzarElMisilAlInfinitoYMasAlla(MisilesAliadosEnPantalla, base[numeroDeBase], posX, posY);
+		}
 	}
+
 	private static void lanzarElMisilAlInfinitoYMasAlla(LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla,
-														Base base,int posX, int posY) {
-		MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
-		aux.determinarObjetivo(posX, posY);
-		aux.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad()+5);
-		MisilesAliadosEnPantalla.add(aux);
+			Base base, int posX, int posY) {
+		if (!base.listaMisilesAntibalisticos.isEmpty()) {
+			MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
+			aux.determinarObjetivo(posX, posY);
+			aux.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad() + 5);
+			MisilesAliadosEnPantalla.add(aux);
+		}
 	}
-	
-	/* --Este método digno de Programacion I lo que hace es buscar la base más cercana
-	 * --Lo que tiene de bueno es que comprueba si la base sigue viva.
-	 * --En caso de que no exista ninguna base va a devolver un 0.
-	 * --
-	 * */
-	private static int buscarBaseMasCercana(double posX,Base[] bases) {
+
+	/*
+	 * --Este método digno de Programacion I lo que hace es buscar la base más
+	 * cercana --Lo que tiene de bueno es que comprueba si la base sigue viva.
+	 * --En caso de que no exista ninguna base va a devolver un 0. --
+	 */
+	private static int buscarBaseMasCercana(double posX, Base[] bases) {
 		double distancia = 9999;
-		int base=0;
-		for(int i=1; i<=3;i++) {
+		int base = 0;
+		for (int i = 1; i <= 3; i++) {
 			double auxDistancia = Math.abs(bases[i].getPosicion().getPosicionX() - posX);
-			if((auxDistancia < distancia)
-				& bases[i].isEstaViva() & !bases[i].listaMisilesAntibalisticos.isEmpty()) {
+			if ((auxDistancia < distancia) & bases[i].isEstaViva() & !bases[i].listaMisilesAntibalisticos.isEmpty()) {
 				distancia = auxDistancia;
 				base = i;
 			}
@@ -156,6 +169,5 @@ public class Base {
 	public void setEstaViva(boolean estaViva) {
 		this.estaViva = estaViva;
 	}
-
 
 }
