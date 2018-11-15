@@ -8,6 +8,7 @@ import modelo.Aliados.Base;
 import modelo.Aliados.Ciudad;
 import modelo.Aliados.Explosion;
 import modelo.Aliados.MisilAntibalistico;
+import modelo.enemigos.Bombardero;
 import modelo.enemigos.Enemigo;
 import modelo.enemigos.Misiles;
 import modelo.general.Posicion;
@@ -93,14 +94,30 @@ public class GestorDeEstructuras {
 		 * 
 		 */
 		public void actualizarPosiciones() {
+			boolean Clonar=false;
+			LinkedList<Enemigo> ListaDeEnemigosAClonar = new LinkedList<Enemigo>();
 			// Actualiza posiciones de los de los enemigos
 			for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 				Enemigo enemigo = i.next();
 				enemigo.mover();
+					if((enemigo instanceof Bombardero)&((int)enemigo.getPosicionActual().getPosicionX()== 200)){
+						
+						ListaDeEnemigosAClonar.add(enemigo);
+						ListaDeEnemigosAClonar=enemigo.clonar();
+					}
+					if(((int)enemigo.getPosicionActual().getPosicionY()==200)){
+						ListaDeEnemigosAClonar=enemigo.clonar();
+					}
 				if(enemigo.alcanzoObjetivo()) { 
 					i.remove();
-				}
+				}	
 			}
+				if(!ListaDeEnemigosAClonar.isEmpty()){
+					EnemigosEnPantalla.addAll(ListaDeEnemigosAClonar);
+					ListaDeEnemigosAClonar.clear();
+				}
+				
+			
 			
 			LinkedList<Enemigo> aliadosAEliminar = new LinkedList<Enemigo>();
 			LinkedList<Explosion> explosionesAgregar = new LinkedList<Explosion>();
