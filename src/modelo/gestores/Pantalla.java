@@ -1,8 +1,10 @@
 package modelo.gestores;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -69,10 +71,18 @@ public class Pantalla extends JPanel {
 	}
 
 	private void DibujarExplociones(LinkedList<Explosion> explosionesEnPantalla, Graphics g) {
+		
 		if (explosionesEnPantalla != null) {
+			Color[] colores = new Color[3];
+			colores[0] = java.awt.Color.GREEN;
+			colores[1] = java.awt.Color.BLUE;
+			colores[2] = java.awt.Color.RED;
+			Random random = new Random();
+			int randomNumber;
 			for (Iterator<Explosion> i = explosionesEnPantalla.iterator(); i.hasNext();) {
+				randomNumber = random.nextInt(3);
 				Explosion explosion = i.next();
-				g.setColor(java.awt.Color.GRAY);
+				g.setColor(colores[randomNumber]);
 				g.fillOval((int) explosion.getPosicionActual().getPosicionX() - (explosion.getRadio() / 2),
 						(int) explosion.getPosicionActual().getPosicionY() - (explosion.getRadio() / 2),
 						explosion.getRadio(), explosion.getRadio());
