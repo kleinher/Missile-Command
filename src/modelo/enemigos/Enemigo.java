@@ -106,11 +106,12 @@ public abstract class Enemigo{
 			return false;
 	}
 
-	public void clonar(){
+	public LinkedList<Enemigo> clonar(){
+		LinkedList<Enemigo> l= new LinkedList<Enemigo>();
 		MisilBalistico enemigoClonado= new MisilBalistico(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad());
 		enemigoClonado.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY());
-		//Agregar Enemigo a la lista de enemigos en pantalla ((Nose como hacerlo sin que se rompa))
-		
+		l.add(enemigoClonado);
+		return l;
 		
 		
 	}
