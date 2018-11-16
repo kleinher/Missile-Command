@@ -1,10 +1,13 @@
 package modelo.enemigos;
+import java.io.LineNumberInputStream;
 import java.util.Iterator;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 import modelo.Aliados.Explosion;
 import modelo.general.Posicion;
+import modelo.gestores.GestorDeEstructuras;
 import modelo.gestores.GestorDeNivel;
 public abstract class Enemigo{
 	protected int puntos;
@@ -105,14 +108,43 @@ public abstract class Enemigo{
 		if(this.posicionActual.equals(this.posicionObjetivo));
 			return false;
 	}
-
-	public LinkedList<Enemigo> clonar(){
+/**
+ * Creo un nuevo misil (o varios) con un nuevo objetivo que parte desde la posicion 180
+ * 
+ * 
+ * @return LinkedList<Enemigo> (Retorno una lista para poder agregar a la lista de enemigos en pantalla una vez termino de iterarla)
+ */
+	public LinkedList<Enemigo> clonarMisil(){
 		LinkedList<Enemigo> l= new LinkedList<Enemigo>();
-		MisilBalistico enemigoClonado= new MisilBalistico(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad());
+		Random aleatorio = new Random(System.currentTimeMillis());
+		int intAletorio = aleatorio.nextInt(3);
+		if(intAletorio>0) {
+		MisilBalistico enemigoClonado= new MisilBalistico();
+		enemigoClonado.determinarObjetivo();
+		enemigoClonado.posicionInicial.actualizarPosicion(this.posicionActual.getPosicionX(),180);
+		enemigoClonado.posicionActual.actualizarPosicion(enemigoClonado.posicionInicial.getPosicionX(),180);
+		enemigoClonado.determinarEstela();
+		enemigoClonado.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad());
+		GestorDeNivel.getGestorDeNivel().getEstructuras().getEstelasEnPantalla().add(enemigoClonado.getEstela().getListaDeEstelas());
+		l.add(enemigoClonado);
+		}
+		return l;
+	}
+	/**Muy similar al metodo anterior pero en este caso se clona a partir de un Bombardero con ligeros cambios
+	 * 
+	 * 
+	 * @return LinkedList<Enemigo> (Retorno una lista para poder agregar a la lista de enemigos en pantalla una vez termino de iterarla)
+	 */
+	public LinkedList<Enemigo> ClonarBombardero(){
+		LinkedList<Enemigo> l= new LinkedList<Enemigo>();
+		MisilBalistico enemigoClonado= new MisilBalistico();
+		enemigoClonado.determinarObjetivo();
+		enemigoClonado.posicionInicial.actualizarPosicion(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY());
 		enemigoClonado.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY());
+		enemigoClonado.determinarEstela();
+		enemigoClonado.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad());
+		GestorDeNivel.getGestorDeNivel().getEstructuras().getEstelasEnPantalla().add(enemigoClonado.getEstela().getListaDeEstelas());
 		l.add(enemigoClonado);
 		return l;
-		
-		
 	}
 }
