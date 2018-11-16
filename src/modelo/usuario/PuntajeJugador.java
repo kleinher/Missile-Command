@@ -72,7 +72,7 @@ public class PuntajeJugador extends TablaDePuntajes{
 	 *  */
 	private static void CalcularPuntajePorNivel(int nivelAct, int misilesAliadosSinU, int ciuVi, int misilesBalisElim, int misilesIntDest, int bomDest) {
 		int MultiplicadorPorNivel=1;
-		if(nivelAct>2) {
+		if((nivelAct)>2) {
 			switch (nivelAct) {
 				case 3:MultiplicadorPorNivel=2;
 				break;

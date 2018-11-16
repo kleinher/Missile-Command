@@ -65,7 +65,7 @@ public class Colisiones {
 						misilesIntDestr++;
 					}
 					if (enemigoAct instanceof MisilBalistico) {
-						misilesIntDestr++;
+						misilesEnemigosDestr++;
 					}
 					if (enemigoAct instanceof Bombardero) {
 						bombarderosDestr++;
