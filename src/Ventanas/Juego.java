@@ -30,6 +30,7 @@ public class Juego extends JFrame {
 		//Configuracion del Frame principal
 		setTitle("Missile Comand");
 		setSize(525, 525);
+		setResizable(false);
 		setVisible(true);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
