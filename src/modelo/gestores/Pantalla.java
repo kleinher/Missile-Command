@@ -1,6 +1,7 @@
 package modelo.gestores;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -32,6 +33,7 @@ public class Pantalla extends JPanel {
 		super.paintComponent(g);
 		setOpaque(true);
 		setBackground(java.awt.Color.BLACK);
+		setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 		GestorDeEstructuras estructuras = GestorDeNivel.getGestorDeNivel().getEstructuras();
 		DibujarEnemigos(estructuras.EnemigosEnPantalla, g);
 		DibujarBases(estructuras.Bases, g);
@@ -40,10 +42,16 @@ public class Pantalla extends JPanel {
 		DibujarExplociones(estructuras.explosionesEnPantalla, g);
 		DibujarEstela(estructuras.EstelasEnPantalla,g);
 		DibujarScore(PuntajeJugador.getScore(),g);
+		DibujarImprimirNivel(estructuras.getNivelActual(),g);
 	}
-
 	private void DibujarScore(Integer score,Graphics g) {
 		g.drawString(score.toString(), 50, 50);
+
+	}
+
+	private void DibujarImprimirNivel(int nivelActual, Graphics g) {
+		g.setColor(java.awt.Color.WHITE);
+		g.drawString("Nivel Actual:"+String.valueOf(nivelActual-1),5, 20);
 	}
 
 	private void DibujarEstela(LinkedList<LinkedList<Posicion>> estelasEnPantalla, Graphics g) {
@@ -145,8 +153,8 @@ public class Pantalla extends JPanel {
 	/**
 	 * Dibuja los enemigos en pantalla
 	 * 
-	 * Rojo:Misiles Balisticos Rosa:Aviones Magenta:Satelites Cyan:Misiles Cruceros
-	 * Naranja:Misiles Cruceros Inteligentes
+	 * Rojo:Misiles Balisticos(Puntos) Rosa:Aviones(Ovalos) Magenta:Satelites(Ovalos grandes) Cyan:Misiles Cruceros(Cuadrados)
+	 * Naranja:Misiles Cruceros Inteligentes(cuadrados)
 	 * 
 	 * @param EnemigosEnPantalla
 	 * @param g
@@ -161,14 +169,14 @@ public class Pantalla extends JPanel {
 						(int) enemigo.getPosicionActual().getPosicionY(), 4, 4);
 			}
 			if (enemigo instanceof Avion) {
-				g.setColor(java.awt.Color.PINK);
+				g.setColor(java.awt.Color.GREEN);
 				g.fillOval((int) enemigo.getPosicionActual().getPosicionX(),
-						(int) enemigo.getPosicionActual().getPosicionY(), 6, 4);
+						(int) enemigo.getPosicionActual().getPosicionY(), 7, 5);
 			}
 			if (enemigo instanceof Satelite) {
 				g.setColor(java.awt.Color.MAGENTA);
 				g.fillOval((int) enemigo.getPosicionActual().getPosicionX(),
-						(int) enemigo.getPosicionActual().getPosicionY(), 8, 6);
+						(int) enemigo.getPosicionActual().getPosicionY(), 9, 7);
 			}
 			if (enemigo instanceof MisilCrucero) {
 				g.setColor(java.awt.Color.CYAN);

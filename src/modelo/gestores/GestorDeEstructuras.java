@@ -10,6 +10,7 @@ import modelo.Aliados.Explosion;
 import modelo.Aliados.MisilAntibalistico;
 import modelo.enemigos.Bombardero;
 import modelo.enemigos.Enemigo;
+import modelo.enemigos.MisilBalistico;
 import modelo.enemigos.Misiles;
 import modelo.general.Posicion;
 import modelo.usuario.PuntajeJugador;
@@ -92,23 +93,20 @@ public class GestorDeEstructuras {
 
 		/**
 		 * ---ActualizarPosiciones--- Este metodo actualiza las posiciones de todos los
-		 * objetos del juego
+		 * enemigos del juego y se encarga de clonar Misiles de ser necesario
 		 * 
 		 */
 		public void actualizarPosiciones() {
-			boolean Clonar=false;
 			LinkedList<Enemigo> ListaDeEnemigosAClonar = new LinkedList<Enemigo>();
 			// Actualiza posiciones de los de los enemigos
 			for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 				Enemigo enemigo = i.next();
 				enemigo.mover();
-					if((enemigo instanceof Bombardero)&((int)enemigo.getPosicionActual().getPosicionX()== 200)){
-						
-						ListaDeEnemigosAClonar.add(enemigo);
-						ListaDeEnemigosAClonar=enemigo.clonar();
+					if((enemigo instanceof Bombardero)&&(((int)enemigo.getPosicionActual().getPosicionX()==150)||((int)enemigo.getPosicionActual().getPosicionX()==350))){
+						ListaDeEnemigosAClonar=enemigo.ClonarBombardero();
 					}
-					if(((int)enemigo.getPosicionActual().getPosicionY()==200)){
-						ListaDeEnemigosAClonar=enemigo.clonar();
+					if((enemigo instanceof MisilBalistico) &&((int)enemigo.getPosicionActual().getPosicionY()==180)){
+						ListaDeEnemigosAClonar=enemigo.clonarMisil();
 					}
 				if(enemigo.alcanzoObjetivo()) { 
 					i.remove();
@@ -160,5 +158,8 @@ public class GestorDeEstructuras {
 		}
 		public LinkedList<Enemigo> getEnemigosEnPantalla() {
 			return EnemigosEnPantalla;
+		}
+		public LinkedList<LinkedList<Posicion>> getEstelasEnPantalla() {
+			return EstelasEnPantalla;
 		}
 }

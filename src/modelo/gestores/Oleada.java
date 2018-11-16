@@ -92,7 +92,7 @@ public class Oleada {
 			 */
 
 			if ((oleada == 3) || (oleada == 7)) {
-				int numeroDeBombarderosPorOleada = (aleatorio.nextInt(1));
+				int numeroDeBombarderosPorOleada = (aleatorio.nextInt(2));
 				if (numeroDeBombarderosPorOleada == 1) {
 					Avion A = new Avion();
 					oleadaEnemigos.add(A);

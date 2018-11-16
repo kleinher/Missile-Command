@@ -16,7 +16,6 @@ public abstract class Misiles extends Enemigo{
 	}
 	
 	public Misiles () {
-		
 	}
 	public Misiles (double velocidad, Posicion pos){
 		this.determinarObjetivo();
@@ -30,7 +29,7 @@ public abstract class Misiles extends Enemigo{
 		this.posicionActual.actualizarPosicion(pos.getPosicionX(),pos.getPosicionY());
 	}
 
-	private void determinarEstela() {
+	public void determinarEstela() {
 		this.estela = new Estela();
 	}
 	
