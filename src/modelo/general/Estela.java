@@ -51,7 +51,7 @@ public class Estela   {
 		listaDeEstelas.removeAll(listaDePuntosAEliminar);
 	}
 
-	public static void ComprobarColisionDeExplosionConEstelas(Posicion posicionActual, int radio) {
+	public static void ComprobarColisionDeExplosionConEstelas(Posicion posicionActual, double radio) {
 
 	}
 

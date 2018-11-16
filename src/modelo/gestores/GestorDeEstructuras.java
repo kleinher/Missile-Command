@@ -12,6 +12,7 @@ import modelo.enemigos.Bombardero;
 import modelo.enemigos.Enemigo;
 import modelo.enemigos.Misiles;
 import modelo.general.Posicion;
+import modelo.usuario.PuntajeJugador;
 import taller2.grafico.Dibujable;
 /**
  * --Correcci�n para Reentrega-- Se agrega esta nueva clase GestorEstructuras.
@@ -50,6 +51,7 @@ public class GestorDeEstructuras {
 		Base Bases[];
 		
 		public GestorDeEstructuras() {
+			PuntajeJugador.InicializarTablaDePuntajePorCadaEnemigo();
 			this.NivelActual=1;
 			this.Velocidad=1.1;
 			this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();

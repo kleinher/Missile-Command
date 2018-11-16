@@ -19,6 +19,7 @@ import modelo.enemigos.MisilCrucero;
 import modelo.enemigos.MisilCruceroInteligente;
 import modelo.enemigos.Satelite;
 import modelo.general.Posicion;
+import modelo.usuario.PuntajeJugador;
 
 /*Parte Grafica*/
 public class Pantalla extends JPanel {
@@ -38,7 +39,11 @@ public class Pantalla extends JPanel {
 		DibujarMisilesAliados(estructuras.MisilesAliadosEnPantalla, g);
 		DibujarExplociones(estructuras.explosionesEnPantalla, g);
 		DibujarEstela(estructuras.EstelasEnPantalla,g);
-		
+		DibujarScore(PuntajeJugador.getScore(),g);
+	}
+
+	private void DibujarScore(Integer score,Graphics g) {
+		g.drawString(score.toString(), 50, 50);
 	}
 
 	private void DibujarEstela(LinkedList<LinkedList<Posicion>> estelasEnPantalla, Graphics g) {
@@ -74,18 +79,18 @@ public class Pantalla extends JPanel {
 		
 		if (explosionesEnPantalla != null) {
 			Color[] colores = new Color[3];
-			colores[0] = java.awt.Color.GREEN;
-			colores[1] = java.awt.Color.BLUE;
-			colores[2] = java.awt.Color.RED;
+			colores[0] = java.awt.Color.CYAN;
+			colores[1] = java.awt.Color.white;
+			colores[2] = java.awt.Color.LIGHT_GRAY;
 			Random random = new Random();
 			int randomNumber;
 			for (Iterator<Explosion> i = explosionesEnPantalla.iterator(); i.hasNext();) {
 				randomNumber = random.nextInt(3);
 				Explosion explosion = i.next();
 				g.setColor(colores[randomNumber]);
-				g.fillOval((int) explosion.getPosicionActual().getPosicionX() - (explosion.getRadio() / 2),
-						(int) explosion.getPosicionActual().getPosicionY() - (explosion.getRadio() / 2),
-						explosion.getRadio(), explosion.getRadio());
+				g.fillOval((int) explosion.getPosicionActual().getPosicionX() - ((int)explosion.getRadio() / 2),
+						(int) explosion.getPosicionActual().getPosicionY() - ((int)explosion.getRadio() / 2),
+						(int)explosion.getRadio(), (int)explosion.getRadio());
 			}
 		}
 	}

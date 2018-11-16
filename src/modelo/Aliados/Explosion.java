@@ -8,11 +8,11 @@ import modelo.general.Posicion;
 
 public class Explosion{
 	private Posicion posicionActual;
-	private int radio;
+	private double radio;
 	private int contartick=0;
 	public Explosion() {
 		posicionActual = new Posicion();
-		this.radio=1;
+		this.radio=0.5;
 	}
 	/**
 	 * Determina el tamanio del radio y cuando debe desaparecer la explosion
@@ -47,7 +47,7 @@ public class Explosion{
 		this.posicionActual = posicionActual;
 	}
 
-	public int getRadio() {
+	public double getRadio() {
 		return radio;
 	}
 

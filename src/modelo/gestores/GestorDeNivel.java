@@ -83,8 +83,6 @@ public class GestorDeNivel {
 			}
 			//actualizo el tamanio de las explosiones
 			actualizarTamanioDeExplosiones(estructuras.explosionesEnPantalla);
-			//Grafica
-			//Graficador.refrescarTopDown(estructuras.ActualizarListaDibujables(), delayMilis);
 			//actualiza posiciones
 			estructuras.actualizarPosiciones();
 			//comprueba colisiones
@@ -111,7 +109,6 @@ public class GestorDeNivel {
 
 	public void modelar() throws InterruptedException {
 		this.loopDelNivel();
-		PuntajeJugador.ActualizarPuntaje(this.NivelActual, this.estructuras.Ciudades, this.estructuras.Bases); 
 		// TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(),
 		// nivel.getPuntajeJugador().getNombre());
 	}
