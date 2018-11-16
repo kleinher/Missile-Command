@@ -1,5 +1,12 @@
 package modelo.gestores;
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,6 +20,7 @@ import modelo.enemigos.Enemigo;
 import modelo.enemigos.MisilBalistico;
 import modelo.enemigos.Misiles;
 import modelo.general.Posicion;
+import modelo.usuario.InformacionJugador;
 import modelo.usuario.PuntajeJugador;
 import taller2.grafico.Dibujable;
 /**
@@ -31,6 +39,10 @@ public class GestorDeEstructuras {
 		private double Velocidad;
 		private int NivelActual;
 		List<? extends Dibujable> listaDibujables;
+		
+		//variables Usadas para guardar y cargar la tabla de puntajes
+		ObjectOutputStream salida=null;
+		ObjectInputStream entrada=null;
 
 
 		//Lista de todas las estelas
@@ -58,6 +70,10 @@ public class GestorDeEstructuras {
 			this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 			this.EnemigosEnPantalla = new LinkedList<Enemigo>();
 			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
+			
+			//Lista que carga desde memoria con los puntajes anteriormente persistidos
+			LinkedList<InformacionJugador> ListaDePuntajes=obtenerLista();
+			
 			
 			// Instancia las nueve ciudades
 			this.Ciudades=new Ciudad[7];
@@ -162,4 +178,41 @@ public class GestorDeEstructuras {
 		public LinkedList<LinkedList<Posicion>> getEstelasEnPantalla() {
 			return EstelasEnPantalla;
 		}
+		
+		
+		
+		
+		
+		
+		
+		private void guardaLista(LinkedList<InformacionJugador> listaDePuntajes) {
+			try {
+				String home = System.getProperty("user.home");
+				salida = new ObjectOutputStream(new FileOutputStream(home+"Tabla de Puntaje"));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	        try {
+				salida.writeObject(listaDePuntajes);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		private LinkedList<InformacionJugador> obtenerLista() {
+	        
+	    	LinkedList<InformacionJugador> lista =  new LinkedList<InformacionJugador>();
+	        try {
+	        entrada = new ObjectInputStream(new FileInputStream("/Missile-Command/Puntajes/ranklist.dat"));
+	        }catch (EOFException e){
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        return lista;
+	    }
+		 public void ResetearTabla(LinkedList<InformacionJugador> lista) {
+			 lista.clear();
+		 }
 }

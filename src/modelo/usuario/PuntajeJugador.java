@@ -1,11 +1,13 @@
 package modelo.usuario;
 
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.Scanner;
 import modelo.Aliados.Base;
 import modelo.Aliados.Ciudad;
 import modelo.gestores.Colisiones;
 
-public class PuntajeJugador extends TablaDePuntajes{
+public class PuntajeJugador {
 	private static int score;
 	private static String nombre;
 	
@@ -101,7 +103,55 @@ public class PuntajeJugador extends TablaDePuntajes{
 								(VDePuntajes[3]*ciuVi)+
 								(VDePuntajes[4]*bomDest)));
 	}
-
+	/**Primero intenta actualizar la lista, si al intentar actualizar devuelve false, significa que el jugador no entro
+	 * en el ranking y debe imprimirlo posteriormente mostrar la tabla actual sin actualizar,
+	 *  de lo contrario ya se actualizo y ordeno y se debe mostrar la tabla actualizada en pantalla
+	 * 
+	 * @param ListaDePuntajes
+	 * @param Info
+	 * @param CantidadAMostar
+	 */
+    public void MostrarYActualizarPuntaje(LinkedList<InformacionJugador> ListaDePuntajes, InformacionJugador Info,int CantidadAMostar) {
+    		boolean actualizo = actualizarLista(ListaDePuntajes,Info,CantidadAMostar);//retorna un booleano el puntaje alcanzado fue suficiente	
+    		if((!actualizo)) {
+    			
+    			//Imprimir que el puntaje alcanzado no fue suficiente
+    		}
+    		MostrarTablaEnPantalla(ListaDePuntajes, CantidadAMostar);
+    }
+    
+    /**
+     * Actualizar la lista de puntajes de ser necesario y ordenarla
+     * 
+     * @param listaDePuntajes
+     * @param info
+     * @param cantidadAMostar
+     * @return
+     */
+	private boolean actualizarLista(LinkedList<InformacionJugador> listaDePuntajes, InformacionJugador info, int cantidadAMostar) {
+		boolean actualizo=false;
+		if(cantidadAMostar>listaDePuntajes.size()){
+			listaDePuntajes.add(info);
+			actualizo=true;
+		}else{
+			if (listaDePuntajes.get(cantidadAMostar).puntajeRank<info.puntajeRank) {
+				listaDePuntajes.remove(cantidadAMostar);
+				listaDePuntajes.add(info);
+				actualizo=true;
+			}
+		}
+		if(actualizo)
+		Collections.sort(listaDePuntajes);
+		return actualizo;
+	}
+	
+	
+	private void MostrarTablaEnPantalla(LinkedList<InformacionJugador> ListaDePuntajes,int CantidadAMostar) {	
+    	Table frame = new Table(ListaDePuntajes,CantidadAMostar);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+    }
 	
 	public static int[] getVDePuntajes() {
 		return VDePuntajes;
