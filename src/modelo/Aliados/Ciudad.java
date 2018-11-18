@@ -58,6 +58,7 @@ public class Ciudad{
 				posX += DistanciaEntreCiudades;
 			}
 		}
+		ciudades[5]=new Ciudad(355,431);
 	}
 
 	/**

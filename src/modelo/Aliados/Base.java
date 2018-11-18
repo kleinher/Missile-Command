@@ -28,12 +28,10 @@ public class Base {
 	/**
 	 * Metodo constructor de Base
 	 * 
-	 * @param posX
-	 *            Determina la posicion en X de la base, las ciudades tienen una
-	 *            distancia entre ellas de DistanciaEntreBases determina la
-	 *            posicion en Y de la base, todas tienen la misma posicion
-	 * @param posY
-	 *            Es la coordenada Y en la pantalla
+	 * @param posX Determina la posicion en X de la base, las ciudades tienen una
+	 *             distancia entre ellas de DistanciaEntreBases determina la
+	 *             posicion en Y de la base, todas tienen la misma posicion
+	 * @param posY Es la coordenada Y en la pantalla
 	 */
 	public Base(int posX, int posY) {
 		this();
@@ -41,11 +39,10 @@ public class Base {
 	}
 
 	/**
-	 * Este metodo estatico Crea las 3 Instancias necesarias y setea sus
-	 * posiciones en la pantalla
+	 * Este metodo estatico Crea las 3 Instancias necesarias y setea sus posiciones
+	 * en la pantalla
 	 * 
-	 * @param bases
-	 *            Vector de 3 bases
+	 * @param bases Vector de 3 bases
 	 */
 	public static void InstanciarBases(Base[] bases, double velocidad) {
 		// Se instancian las 3 bases del vector de ciudades
@@ -76,20 +73,20 @@ public class Base {
 	 * elige la base mas cercana En este se dispara cuando no se determina
 	 * explicitamente la base
 	 * 
-	 * @param posX
-	 *            posicion a disparar en X
-	 * @param posY
-	 *            posicion a disparar en Y
+	 * @param posX posicion a disparar en X
+	 * @param posY posicion a disparar en Y
 	 */
 	public static void Disparar(int posX, int posY) {
-		GestorDeEstructuras estructura = GestorDeNivel.getGestorDeNivel().getEstructuras();
-		Base[] base = estructura.getBases();
-		LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla = estructura.getMisilesAliadosEnPantalla();
+		if (posY < 385) {
+			GestorDeEstructuras estructura = GestorDeNivel.getGestorDeNivel().getEstructuras();
+			Base[] base = estructura.getBases();
+			LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla = estructura.getMisilesAliadosEnPantalla();
 
-		int numeroDeBase = buscarBaseMasCercana(posX, base);
+			int numeroDeBase = buscarBaseMasCercana(posX, base);
 
-		if (numeroDeBase != 0) {
-			lanzarElMisilAlInfinitoYMasAlla(MisilesAliadosEnPantalla, base[numeroDeBase], posX, posY);
+			if (numeroDeBase != 0) {
+				lanzarElMisilAlInfinitoYMasAlla(MisilesAliadosEnPantalla, base[numeroDeBase], posX, posY);
+			}
 		}
 	}
 
@@ -98,17 +95,17 @@ public class Base {
 	 * elige la base mas cercana En este se dispara cuando no se determina
 	 * explicitamente la base
 	 * 
-	 * @param posX
-	 *            posicion a disparar en X
-	 * @param posY
-	 *            posicion a disparar en Y
+	 * @param posX posicion a disparar en X
+	 * @param posY posicion a disparar en Y
 	 */
 	public static void Disparar(int posX, int posY, int numeroDeBase) {
-		GestorDeEstructuras estructura = GestorDeNivel.getGestorDeNivel().getEstructuras();
-		Base[] base = estructura.getBases();
-		if (base[numeroDeBase].isEstaViva()) {
-			LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla = estructura.getMisilesAliadosEnPantalla();
-			lanzarElMisilAlInfinitoYMasAlla(MisilesAliadosEnPantalla, base[numeroDeBase], posX, posY);
+		if (posY < 385) {
+			GestorDeEstructuras estructura = GestorDeNivel.getGestorDeNivel().getEstructuras();
+			Base[] base = estructura.getBases();
+			if (base[numeroDeBase].isEstaViva()) {
+				LinkedList<MisilAntibalistico> MisilesAliadosEnPantalla = estructura.getMisilesAliadosEnPantalla();
+				lanzarElMisilAlInfinitoYMasAlla(MisilesAliadosEnPantalla, base[numeroDeBase], posX, posY);
+			}
 		}
 	}
 
@@ -124,8 +121,8 @@ public class Base {
 
 	/*
 	 * --Este método digno de Programacion I lo que hace es buscar la base más
-	 * cercana --Lo que tiene de bueno es que comprueba si la base sigue viva.
-	 * --En caso de que no exista ninguna base va a devolver un 0. --
+	 * cercana --Lo que tiene de bueno es que comprueba si la base sigue viva. --En
+	 * caso de que no exista ninguna base va a devolver un 0. --
 	 */
 	private static int buscarBaseMasCercana(double posX, Base[] bases) {
 		double distancia = 9999;

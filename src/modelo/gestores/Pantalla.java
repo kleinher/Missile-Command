@@ -143,7 +143,7 @@ public class Pantalla extends JPanel {
 		for (int i = 1; i < ciudad.length; i++) {
 			if (ciudad[i].estaViva()) {
 				g.drawImage(img, (int) ciudad[i].getPosicion().getPosicionX(),
-						(int) ciudad[1].getPosicion().getPosicionY(), null);
+						(int) ciudad[i].getPosicion().getPosicionY(), null);
 //				g.setColor(java.awt.Color.WHITE);
 //				g.fillRect((int) ciudad[i].getPosicion().getPosicionX() - 15,
 //						(int) ciudad[i].getPosicion().getPosicionY() - 10, 12, 5);
@@ -206,14 +206,24 @@ public class Pantalla extends JPanel {
 						(int) enemigo.getPosicionActual().getPosicionY(), 6, 6);
 			}
 			if (enemigo instanceof Avion) {
-				g.setColor(java.awt.Color.GREEN);
-				g.fillOval((int) enemigo.getPosicionActual().getPosicionX(),
-						(int) enemigo.getPosicionActual().getPosicionY(), 7, 5);
+				if(enemigo.getPosicionInicial().getPosicionX() == 0) {
+					Image img = ImportarImagen(g, "imagenes/AvionDerecha.png");
+					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX(), (int) enemigo.getPosicionActual().getPosicionY(), null);	
+				}
+				else {
+					Image img = ImportarImagen(g, "imagenes/Avion.png");
+					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX(), (int) enemigo.getPosicionActual().getPosicionY(), null);
+				}
 			}
 			if (enemigo instanceof Satelite) {
-				g.setColor(java.awt.Color.MAGENTA);
-				g.fillOval((int) enemigo.getPosicionActual().getPosicionX(),
-						(int) enemigo.getPosicionActual().getPosicionY(), 9, 7);
+				if(enemigo.getPosicionInicial().getPosicionX() == 0) {
+					Image img = ImportarImagen(g, "imagenes/bombarderoDerecha.png");
+					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX()+14, (int) enemigo.getPosicionActual().getPosicionY()+14, null);	
+				}
+				else {
+					Image img = ImportarImagen(g, "imagenes/bombarderoIzquierda.png");
+					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX()+14, (int) enemigo.getPosicionActual().getPosicionY()+14, null);
+				}
 			}
 			if (enemigo instanceof MisilCrucero) {
 				g.setColor(java.awt.Color.CYAN);
