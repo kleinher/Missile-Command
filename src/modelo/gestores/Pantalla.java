@@ -29,7 +29,7 @@ import modelo.usuario.PuntajeJugador;
 
 /*Parte Grafica*/
 public class Pantalla extends JPanel {
-	
+
 	/**
 	 * Se Encarga de Dibujar todos los elementos del juego en la pantalla
 	 * 
@@ -47,39 +47,41 @@ public class Pantalla extends JPanel {
 		DibujarCiudades(estructuras.Ciudades, g);
 		DibujarMisilesAliados(estructuras.MisilesAliadosEnPantalla, g);
 		DibujarExplociones(estructuras.explosionesEnPantalla, g);
-		DibujarEstela(estructuras.EstelasEnPantalla,g);
-		DibujarScore(PuntajeJugador.getScore(),g);
-		DibujarImprimirNivel(estructuras.getNivelActual(),g);
+		DibujarEstela(estructuras.EstelasEnPantalla, g);
+		DibujarScore(PuntajeJugador.getScore(), g);
+		DibujarImprimirNivel(estructuras.getNivelActual(), g);
 	}
+
 	private void DibujarImagenFondo(Graphics g) {
 		Image imagen = null;
-		imagen = ImportarImagen(g,"imagenes/fondo.jpg");
+		imagen = ImportarImagen(g, "imagenes/fondo.jpg");
 		g.drawImage(imagen, 0, 0, null);
 	}
+
 	private Image ImportarImagen(Graphics g, String imgFileName) {
-		Image img=null;
+		Image img = null;
 		URL imgUrl = getClass().getClassLoader().getResource(imgFileName);
-		if(imgUrl == null) {
+		if (imgUrl == null) {
 			System.err.println("No se encuntra el archivo: " + imgFileName);
-		}
-		else {
+		} else {
 			try {
 				img = ImageIO.read(imgUrl);
-			}catch (IOException ex) {
+			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
-			
+
 		}
 		return img;
-		}
-	private void DibujarScore(Integer score,Graphics g) {
+	}
+
+	private void DibujarScore(Integer score, Graphics g) {
 		g.drawString(score.toString(), 50, 50);
 
 	}
 
 	private void DibujarImprimirNivel(int nivelActual, Graphics g) {
 		g.setColor(java.awt.Color.WHITE);
-		g.drawString("Nivel Actual:"+String.valueOf(nivelActual-1),5, 20);
+		g.drawString("Nivel Actual:" + String.valueOf(nivelActual - 1), 5, 20);
 	}
 
 	private void DibujarEstela(LinkedList<LinkedList<Posicion>> estelasEnPantalla, Graphics g) {
@@ -88,7 +90,7 @@ public class Pantalla extends JPanel {
 			for (Iterator<Posicion> j = estelaDeMisil.iterator(); j.hasNext();) {
 				Posicion PosEstelaAct = j.next();
 				g.setColor(java.awt.Color.RED);
-				g.fillRect((int) PosEstelaAct.getPosicionX()+3,(int) PosEstelaAct.getPosicionY(), 1, 1);
+				g.fillRect((int) PosEstelaAct.getPosicionX() + 3, (int) PosEstelaAct.getPosicionY(), 1, 1);
 			}
 		}
 	}
@@ -104,12 +106,13 @@ public class Pantalla extends JPanel {
 		for (Iterator<MisilAntibalistico> i = misilesAliadosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo MisilAliado = i.next();
 			g.setColor(java.awt.Color.RED);
-			g.fillRect((int) MisilAliado.getPosicionActual().getPosicionX(),(int) MisilAliado.getPosicionActual().getPosicionY(), 3, 8);
+			g.fillRect((int) MisilAliado.getPosicionActual().getPosicionX(),
+					(int) MisilAliado.getPosicionActual().getPosicionY(), 3, 8);
 		}
 	}
 
 	private void DibujarExplociones(LinkedList<Explosion> explosionesEnPantalla, Graphics g) {
-		
+
 		if (explosionesEnPantalla != null) {
 			Color[] colores = new Color[3];
 			colores[0] = java.awt.Color.CYAN;
@@ -121,9 +124,9 @@ public class Pantalla extends JPanel {
 				randomNumber = random.nextInt(3);
 				Explosion explosion = i.next();
 				g.setColor(colores[randomNumber]);
-				g.fillOval((int) explosion.getPosicionActual().getPosicionX() - ((int)explosion.getRadio() / 2),
-						(int) explosion.getPosicionActual().getPosicionY() - ((int)explosion.getRadio() / 2),
-						(int)explosion.getRadio(), (int)explosion.getRadio());
+				g.fillOval((int) explosion.getPosicionActual().getPosicionX() - ((int) explosion.getRadio() / 2),
+						(int) explosion.getPosicionActual().getPosicionY() - ((int) explosion.getRadio() / 2),
+						(int) explosion.getRadio(), (int) explosion.getRadio());
 			}
 		}
 	}
@@ -136,10 +139,11 @@ public class Pantalla extends JPanel {
 	 * @param g
 	 */
 	private void DibujarCiudades(Ciudad[] ciudad, Graphics g) {
-		Image img = ImportarImagen(g,"imagenes/bases.jpg");
+		Image img = ImportarImagen(g, "imagenes/bases.jpg");
 		for (int i = 1; i < ciudad.length; i++) {
 			if (ciudad[i].estaViva()) {
-				g.drawImage(img,(int) ciudad[i].getPosicion().getPosicionX() - 15 ,(int) ciudad[1].getPosicion().getPosicionY() - 12,null);
+				g.drawImage(img, (int) ciudad[i].getPosicion().getPosicionX(),
+						(int) ciudad[1].getPosicion().getPosicionY(), null);
 //				g.setColor(java.awt.Color.WHITE);
 //				g.fillRect((int) ciudad[i].getPosicion().getPosicionX() - 15,
 //						(int) ciudad[i].getPosicion().getPosicionY() - 10, 12, 5);
@@ -179,8 +183,9 @@ public class Pantalla extends JPanel {
 	/**
 	 * Dibuja los enemigos en pantalla
 	 * 
-	 * Rojo:Misiles Balisticos(Puntos) Rosa:Aviones(Ovalos) Magenta:Satelites(Ovalos grandes) Cyan:Misiles Cruceros(Cuadrados)
-	 * Naranja:Misiles Cruceros Inteligentes(cuadrados)
+	 * Rojo:Misiles Balisticos(Puntos) Rosa:Aviones(Ovalos) Magenta:Satelites(Ovalos
+	 * grandes) Cyan:Misiles Cruceros(Cuadrados) Naranja:Misiles Cruceros
+	 * Inteligentes(cuadrados)
 	 * 
 	 * @param EnemigosEnPantalla
 	 * @param g

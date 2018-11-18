@@ -39,8 +39,8 @@ public class Ciudad{
 	 * @param ciudades
 	 */
 	public static void InstanciarCiudades(Ciudad[] ciudades) {
-		int posX = 95;
-		int posY = 450;
+		int posX = 80;
+		int posY = 439;
 		int DistanciaEntreCiudades = 55;
 
 		// En este FOR se setean las posiciones en la pantalla de todas las ciudades
