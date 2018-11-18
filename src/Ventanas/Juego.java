@@ -29,7 +29,7 @@ public class Juego extends JFrame {
 		pantalla.requestFocusInWindow();
 		//Configuracion del Frame principal
 		setTitle("Missile Comand");
-		setSize(525, 525);
+		setSize(525, 511);
 		setResizable(false);
 		setVisible(true);
 		setLocationRelativeTo(null);

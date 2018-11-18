@@ -158,22 +158,22 @@ public class Pantalla extends JPanel {
 	 * @param g
 	 */
 	private void DibujarBases(Base[] bases, Graphics g) {
-//		Image img = ImportarImagen(g,"imagenes/bases.jpg");
-		for (int i = 1; i < bases.length; i++) {
-//			g.drawImage(img,(int) bases[i].getPosicion().getPosicionX() - 15 ,(int) bases[1].getPosicion().getPosicionY() - 10,null);
-			g.fillRect((int) bases[i].getPosicion().getPosicionX() - 15,
-					(int) bases[1].getPosicion().getPosicionY() - 10, 20, 5);
-			int espacio = -35;
-			if (bases[i].isEstaViva()) {
-				for (int j = 0; j < bases[i].getCantMisiles(); j++) {
-					g.setColor(java.awt.Color.BLUE);
-					g.fillRect((int) bases[i].getPosicion().getPosicionX() + espacio,
-							(int) bases[i].getPosicion().getPosicionY() + 5, 2, 7);
-					espacio += 4;
-				}
-			}
-
-		}
+////		Image img = ImportarImagen(g,"imagenes/bases.jpg");
+//		for (int i = 1; i < bases.length; i++) {
+////			g.drawImage(img,(int) bases[i].getPosicion().getPosicionX() - 15 ,(int) bases[1].getPosicion().getPosicionY() - 10,null);
+//			g.fillRect((int) bases[i].getPosicion().getPosicionX() - 15,
+//					(int) bases[1].getPosicion().getPosicionY() - 10, 20, 5);
+//			int espacio = -35;
+//			if (bases[i].isEstaViva()) {
+//				for (int j = 0; j < bases[i].getCantMisiles(); j++) {
+//					g.setColor(java.awt.Color.BLUE);
+//					g.fillRect((int) bases[i].getPosicion().getPosicionX() + espacio,
+//							(int) bases[i].getPosicion().getPosicionY() + 5, 2, 7);
+//					espacio += 4;
+//				}
+//			}
+//
+//		}
 	}
 
 	/**

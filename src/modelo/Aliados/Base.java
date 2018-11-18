@@ -49,32 +49,14 @@ public class Base {
 	 */
 	public static void InstanciarBases(Base[] bases, double velocidad) {
 		// Se instancian las 3 bases del vector de ciudades
-		int posX = 40;
-		int posY = 450;
-		int DistanciaEntreBases = 220;
-
-		// En este FOR se setean las posiciones en la pantalla de todas las
-		// ciudades
-		for (int i = 1; i < bases.length; i++) {
-			bases[i] = new Base(posX, posY);
-			// Aumento la posicion para la ciudad siguiente
-			posX += DistanciaEntreBases;
-
-			/*
-			 * Cuando se pasa la tercera ciudad hay una en la mitad, por lo
-			 * tanto se suma una distancia mas para que no se superponga
-			 */
-			if (i == 3)
-				posX += DistanciaEntreBases;
-
-			// Agrego 15 MisilesAntibalisticos a la lista de misiles
-			// antibalisticos de cada
-			// base
-			for (int j = 0; j < 15; j++) {
-				bases[i].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[i].posicion, velocidad));
-			}
+		bases[1] = new Base(50, 438);
+		bases[2] = new Base(260, 438);
+		bases[3] = new Base(500, 438);
+		for (int j = 0; j < 15; j++) {
+			bases[1].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[1].posicion, velocidad));
+			bases[2].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[2].posicion, velocidad));
+			bases[3].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[3].posicion, velocidad));
 		}
-
 	}
 
 	public Posicion getPosicion() {
