@@ -11,9 +11,8 @@ import modelo.gestores.GestorDeNivel;
 import modelo.gestores.Pantalla;
 
 public class Controlador extends JFrame {
-	public static void main(String args[]) {
-		Controlador controlador = new Controlador();
-		controlador.Controlar();
+	public Controlador() {
+		this.Controlar();
 		
 
 	}
