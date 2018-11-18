@@ -135,7 +135,7 @@ public class Base {
 		if (!base.listaMisilesAntibalisticos.isEmpty()) {
 			MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
 			aux.determinarObjetivo(posX, posY);
-			aux.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad() + 11);
+			aux.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad() + 6);
 			MisilesAliadosEnPantalla.add(aux);
 		}
 	}

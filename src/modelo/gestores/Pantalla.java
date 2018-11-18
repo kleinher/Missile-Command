@@ -3,10 +3,15 @@ package modelo.gestores;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import modelo.Aliados.Base;
@@ -24,6 +29,7 @@ import modelo.usuario.PuntajeJugador;
 
 /*Parte Grafica*/
 public class Pantalla extends JPanel {
+	
 	/**
 	 * Se Encarga de Dibujar todos los elementos del juego en la pantalla
 	 * 
@@ -31,6 +37,7 @@ public class Pantalla extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		DibujarImagenFondo(g);
 		setOpaque(true);
 		setBackground(java.awt.Color.BLACK);
 		setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
@@ -44,6 +51,27 @@ public class Pantalla extends JPanel {
 		DibujarScore(PuntajeJugador.getScore(),g);
 		DibujarImprimirNivel(estructuras.getNivelActual(),g);
 	}
+	private void DibujarImagenFondo(Graphics g) {
+		Image imagen = null;
+		imagen = ImportarImagen(g,"imagenes/fondo.jpg");
+		g.drawImage(imagen, 0, 0, null);
+	}
+	private Image ImportarImagen(Graphics g, String imgFileName) {
+		Image img=null;
+		URL imgUrl = getClass().getClassLoader().getResource(imgFileName);
+		if(imgUrl == null) {
+			System.err.println("No se encuntra el archivo: " + imgFileName);
+		}
+		else {
+			try {
+				img = ImageIO.read(imgUrl);
+			}catch (IOException ex) {
+				ex.printStackTrace();
+			}
+			
+		}
+		return img;
+		}
 	private void DibujarScore(Integer score,Graphics g) {
 		g.drawString(score.toString(), 50, 50);
 
@@ -59,11 +87,9 @@ public class Pantalla extends JPanel {
 			LinkedList<Posicion> estelaDeMisil = i.next();
 			for (Iterator<Posicion> j = estelaDeMisil.iterator(); j.hasNext();) {
 				Posicion PosEstelaAct = j.next();
-				g.setColor(java.awt.Color.WHITE);
-				g.fillRect((int) PosEstelaAct.getPosicionX(),(int) PosEstelaAct.getPosicionY(), 1, 1);
-				
+				g.setColor(java.awt.Color.RED);
+				g.fillRect((int) PosEstelaAct.getPosicionX()+3,(int) PosEstelaAct.getPosicionY(), 1, 1);
 			}
-		
 		}
 	}
 
@@ -77,9 +103,8 @@ public class Pantalla extends JPanel {
 
 		for (Iterator<MisilAntibalistico> i = misilesAliadosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo MisilAliado = i.next();
-			g.setColor(java.awt.Color.CYAN);
-			g.fillOval((int) MisilAliado.getPosicionActual().getPosicionX(),
-					(int) MisilAliado.getPosicionActual().getPosicionY(), 10, 10);
+			g.setColor(java.awt.Color.RED);
+			g.fillRect((int) MisilAliado.getPosicionActual().getPosicionX(),(int) MisilAliado.getPosicionActual().getPosicionY(), 3, 8);
 		}
 	}
 
@@ -111,12 +136,13 @@ public class Pantalla extends JPanel {
 	 * @param g
 	 */
 	private void DibujarCiudades(Ciudad[] ciudad, Graphics g) {
-
+		Image img = ImportarImagen(g,"imagenes/bases.jpg");
 		for (int i = 1; i < ciudad.length; i++) {
 			if (ciudad[i].estaViva()) {
-				g.setColor(java.awt.Color.WHITE);
-				g.fillRect((int) ciudad[i].getPosicion().getPosicionX() - 15,
-						(int) ciudad[i].getPosicion().getPosicionY() - 10, 12, 5);
+				g.drawImage(img,(int) ciudad[i].getPosicion().getPosicionX() - 15 ,(int) ciudad[1].getPosicion().getPosicionY() - 12,null);
+//				g.setColor(java.awt.Color.WHITE);
+//				g.fillRect((int) ciudad[i].getPosicion().getPosicionX() - 15,
+//						(int) ciudad[i].getPosicion().getPosicionY() - 10, 12, 5);
 			}
 		}
 
@@ -132,9 +158,9 @@ public class Pantalla extends JPanel {
 	 * @param g
 	 */
 	private void DibujarBases(Base[] bases, Graphics g) {
-
+//		Image img = ImportarImagen(g,"imagenes/bases.jpg");
 		for (int i = 1; i < bases.length; i++) {
-			g.setColor(java.awt.Color.GREEN);
+//			g.drawImage(img,(int) bases[i].getPosicion().getPosicionX() - 15 ,(int) bases[1].getPosicion().getPosicionY() - 10,null);
 			g.fillRect((int) bases[i].getPosicion().getPosicionX() - 15,
 					(int) bases[1].getPosicion().getPosicionY() - 10, 20, 5);
 			int espacio = -35;
@@ -164,9 +190,15 @@ public class Pantalla extends JPanel {
 		for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo enemigo = i.next();
 			if (enemigo instanceof MisilBalistico) {
-				g.setColor(java.awt.Color.RED);
+				Color[] colores = new Color[3];
+				colores[0] = java.awt.Color.RED;
+				colores[1] = java.awt.Color.white;
+				colores[2] = java.awt.Color.GREEN;
+				Random random = new Random();
+				Color colorRandom = colores[random.nextInt(3)];
+				g.setColor(colorRandom);
 				g.fillOval((int) enemigo.getPosicionActual().getPosicionX(),
-						(int) enemigo.getPosicionActual().getPosicionY(), 4, 4);
+						(int) enemigo.getPosicionActual().getPosicionY(), 6, 6);
 			}
 			if (enemigo instanceof Avion) {
 				g.setColor(java.awt.Color.GREEN);
