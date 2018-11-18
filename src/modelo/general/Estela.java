@@ -31,7 +31,9 @@ public class Estela   {
 	 * misil
 	 */
 	public void agregarPuntoALaEstela(Posicion pos) {
-		this.listaDeEstelas.addLast(pos);
+		Posicion posEstela=new Posicion();
+		posEstela.actualizarPosicion((int)pos.getPosicionX(), (int)pos.getPosicionY());
+		this.listaDeEstelas.addLast(posEstela);
 	}
 
 	/* Elimina la estela completa */

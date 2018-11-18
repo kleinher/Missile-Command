@@ -122,7 +122,7 @@ public class Base {
 														Base base,int posX, int posY) {
 		MisilAntibalistico aux = base.listaMisilesAntibalisticos.poll();
 		aux.determinarObjetivo(posX, posY);
-		aux.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad()+10);
+		aux.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad()+5);
 		MisilesAliadosEnPantalla.add(aux);
 	}
 	

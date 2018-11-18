@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import modelo.Aliados.Explosion;
 import modelo.general.Posicion;
+import modelo.gestores.GestorDeNivel;
 public abstract class Enemigo{
 	protected int puntos;
 	protected Posicion posicionInicial;
@@ -23,20 +24,27 @@ public abstract class Enemigo{
 		this.posicionInicial= new Posicion();
 		this.posicionObjetivo=new Posicion();
 	}
+	/**
+	 * 
+	 * @param explosionesAgregar
+	 * @param enemigosAEliminar
+	 */
 	public void destruccion(LinkedList<Explosion> explosionesAgregar,
 							LinkedList<Enemigo> enemigosAEliminar)
 	{
-		
-		//sumo el puntaje por destruir misiles enemigos en tiempo real
-		//GestorDeNivel.getGestorDeNivel().getPuntajeJugador().actualizarScore(this.puntos);
-		
 		//Elimino el misil de la pantalla
 		enemigosAEliminar.add(this);
+		
+		//Elimino las estelas de pantalla
+		if ((this) instanceof Misiles) {
+			((Misiles) this).getEstela().eliminarEstela();
+		}
 		
 		//creo una nueva explosion y la agrego a la lsita de explosiones en pantalla
 		Explosion nuevaExplosion = new Explosion(this.posicionActual);
 		explosionesAgregar.add(nuevaExplosion);
 	}
+	
 	public void borrarEnemigoSinExplotar(Enemigo e,LinkedList<Enemigo> enemigosAEliminar) {
 		enemigosAEliminar.add(e);
 	}
@@ -73,7 +81,9 @@ public abstract class Enemigo{
 	public void setPosicionActual(Posicion posicionActual) {
 
 		this.posicionActual = posicionActual;
-	}
+	}/**Retorna true si se alcanzo el objetivo
+		
+	 */
 	public boolean alcanzoObjetivo() {
 		if(this.posicionActual.getPosicionY() > this.posicionObjetivo.getPosicionY())
 		{
@@ -93,7 +103,15 @@ public abstract class Enemigo{
 			}
 		}
 		if(this.posicionActual.equals(this.posicionObjetivo));
-		return false;
+			return false;
 	}
 
+	public void clonar(){
+		MisilBalistico enemigoClonado= new MisilBalistico(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad());
+		enemigoClonado.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX(),this.posicionActual.getPosicionY());
+		//Agregar Enemigo a la lista de enemigos en pantalla ((Nose como hacerlo sin que se rompa))
+		
+		
+		
+	}
 }

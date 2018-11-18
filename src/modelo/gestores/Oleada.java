@@ -74,7 +74,7 @@ public class Oleada {
 
 			// En todos los niveles se van a agregar los Misil Cruceros Inteligentes y los
 			// Misil cruceros apartir de la oleada 4
-			if (oleada == 4) {
+			if ((oleada == 4)){
 				if (VectorDeMisilesCrucerosPorNivel[NumeroDeNivel]) {
 					MisilCruceroInteligente MCI = new MisilCruceroInteligente(Velocidad);
 					oleadaEnemigos.add(MCI);

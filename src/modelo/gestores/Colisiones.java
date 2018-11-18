@@ -51,9 +51,9 @@ public class Colisiones {
 		for (Iterator<Enemigo> i = enemigos.iterator(); i.hasNext();) {
 			Enemigo enemigoAct = i.next();
 			boolean explotoEnemigo = false;
-			if(enemigoAct instanceof Misiles) {
-			((Misiles) enemigoAct).getEstela().agregarPuntoALaEstela(enemigoAct.getPosicionActual());
-			}
+//			if(enemigoAct instanceof Misiles) {
+//			((Misiles) enemigoAct).getEstela().agregarPuntoALaEstela(enemigoAct.getPosicionActual());
+//			}
 			// Primero busco colisiones con missiles antibalisticos
 			for (Iterator<Explosion> j = listaExplocionesEnPantalla.iterator(); j.hasNext();) {
 				Explosion explosionActual = j.next();
@@ -72,6 +72,7 @@ public class Colisiones {
 					}
 					// Cuando enemigo colisiona con explosion destruyo enemigo
 					enemigoAct.destruccion(explosionesAgregar, enemigosAEliminar);
+						
 					explotoEnemigo = true;
 				}
 			}
@@ -97,6 +98,7 @@ public class Colisiones {
 	}
 		listaExplocionesEnPantalla.addAll(explosionesAgregar);
 		enemigos.removeAll(enemigosAEliminar);
+		
 
 	}
 
@@ -179,7 +181,7 @@ public class Colisiones {
 		double y2 = explosionActual.getPosicionActual().getPosicionY();
 		if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio()) {
 			return true;
-		} else if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio() * 2) {
+		} else if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio() + 5) {
 			boolean esquivarIzquierda;
 			if (x2 > x1)
 				esquivarIzquierda = true;

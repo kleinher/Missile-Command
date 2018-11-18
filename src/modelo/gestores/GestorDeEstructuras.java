@@ -9,6 +9,7 @@ import modelo.Aliados.Ciudad;
 import modelo.Aliados.Explosion;
 import modelo.Aliados.MisilAntibalistico;
 import modelo.enemigos.Enemigo;
+import modelo.enemigos.Misiles;
 import modelo.general.Posicion;
 import taller2.grafico.Dibujable;
 /**
@@ -63,6 +64,7 @@ public class GestorDeEstructuras {
 			Base.InstanciarBases(this.Bases, this.Velocidad);
 		}
 		/**
+--
 		 * ---GESTIONAR Estructuras--- Funcion: Modifica la instancia nivel(de Juego) cada ves
 		 * que comienza un nuevo nivel
 		 */
@@ -72,7 +74,7 @@ public class GestorDeEstructuras {
 			this.EnemigosEnEspera = new LinkedList<LinkedList<Enemigo>>();
 			this.Bases=new Base[4];
 			Base.InstanciarBases(this.Bases, this.Velocidad);
-			
+			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
 			explosionesEnPantalla=new LinkedList<Explosion>();
 			MisilesAliadosEnPantalla=new LinkedList<MisilAntibalistico>();
 			
@@ -95,7 +97,7 @@ public class GestorDeEstructuras {
 			for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 				Enemigo enemigo = i.next();
 				enemigo.mover();
-				if(enemigo.alcanzoObjetivo()) {
+				if(enemigo.alcanzoObjetivo()) { 
 					i.remove();
 				}
 			}
@@ -136,5 +138,8 @@ public class GestorDeEstructuras {
 		}
 		public LinkedList<LinkedList<Enemigo>> getEnemigosEnEspera() {
 			return EnemigosEnEspera;
+		}
+		public LinkedList<Enemigo> getEnemigosEnPantalla() {
+			return EnemigosEnPantalla;
 		}
 }

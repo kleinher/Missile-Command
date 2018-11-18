@@ -29,9 +29,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Menu extends Application {
+	Controlador juego;
 	Stage VentanaMenu;
 	Pane raiz;
 	Scene escena;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		VentanaMenu=primaryStage;
@@ -80,6 +82,7 @@ public class Menu extends Application {
 			menuReglas.setTranslateX(100);
 			
 			final int offset = 400;
+			//////COMIENZO DE JUEGO
 			BotonDeMenu btnJugar = new BotonDeMenu("JUGAR");
 			btnJugar.setOnMouseClicked(event -> {
 				FadeTransition ft = new FadeTransition(Duration.seconds(0.5), this);
@@ -88,7 +91,7 @@ public class Menu extends Application {
 				ft.setOnFinished(evt -> setVisible(false));
 				ft.play();
 					VentanaMenu.close();
-					Controlador empezar=new Controlador();
+					Controlador controlador = new Controlador();
 					
 					
 			});

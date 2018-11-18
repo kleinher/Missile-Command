@@ -14,6 +14,7 @@ public abstract class Misiles extends Enemigo{
 		this.determinarDesplazamiento(velocidad);
 		
 	}
+	
 	public Misiles () {
 		
 	}
@@ -38,6 +39,17 @@ public abstract class Misiles extends Enemigo{
 	}
 	public void mover() {
 		this.posicionActual.actualizarPosicion(movimientoX, movimientoY);
+		
+		//Agrego puntos a la estela
+		this.estela.agregarPuntoALaEstela(this.posicionActual);
+		
+		/*if((int)this.posicionActual.getPosicionY() == 250 ) {
+			if(this instanceof MisilBalistico) {
+				this.clonar();
+			}
+		
+		}*/
+			
 	}
 
 	/*Este metodo va a calcular el desplazamiento del misil balistico interplanetario(Enemigo) */
@@ -70,8 +82,7 @@ public abstract class Misiles extends Enemigo{
 				}
 		movimientoY= (pendiente*movimientoX);
 		
-		//Agrego puntos a la estela
-		this.estela.agregarPuntoALaEstela(posicionActual);
+		
 
 	}
 	 
@@ -98,8 +109,6 @@ public abstract class Misiles extends Enemigo{
 		this.posicionActual.actualizarPosicion(aparicionEnX, aparicionEnY);
 	}
 	public void destruccion(){
-
-		
 	}
 	/* Determina la posicion de las bases y las ciudades para facilitar el determinarObjetivo de cada misil*/
 	public static void DeterminarPosicionesDeLasbases() {

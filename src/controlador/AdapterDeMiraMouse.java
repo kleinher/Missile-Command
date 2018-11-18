@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import modelo.Aliados.Base;
 
 
-public class AdapterDeMira extends MouseAdapter{
+public class AdapterDeMiraMouse extends MouseAdapter{
 	@Override
 	public void mousePressed(MouseEvent ev) {
 		Base.Disparar(ev.getX(), ev.getY());

@@ -1,11 +1,16 @@
 package modelo.enemigos;
 
+import modelo.gestores.GestorDeNivel;
+
 /*Implementa lo mismo que misiles*/
-public class MisilCruceroInteligente extends Misiles{
+public class MisilCruceroInteligente extends Misiles {
+
 	public MisilCruceroInteligente(double velocidad) {
+
 		super(velocidad);
 		this.puntos = 125;
 	}
+
 	/**
 	 * 
 	 * @param esquivarIzquierda
@@ -14,11 +19,12 @@ public class MisilCruceroInteligente extends Misiles{
 		if (esquivarIzquierda) {
 			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX() - 4,
 					this.posicionActual.getPosicionY());
-		} else
+		} else {
 			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX() + 4,
 					this.posicionActual.getPosicionY());
+		}
+		this.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad());
 	}
-
 
 	// Aqui recalcular la recta que determina objetivos, que va a ser diferente
 }

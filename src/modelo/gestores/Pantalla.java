@@ -16,6 +16,7 @@ import modelo.enemigos.MisilBalistico;
 import modelo.enemigos.MisilCrucero;
 import modelo.enemigos.MisilCruceroInteligente;
 import modelo.enemigos.Satelite;
+import modelo.general.Posicion;
 
 /*Parte Grafica*/
 public class Pantalla extends JPanel {
@@ -33,11 +34,26 @@ public class Pantalla extends JPanel {
 		DibujarBases(estructuras.Bases, g);
 		DibujarCiudades(estructuras.Ciudades, g);
 		DibujarMisilesAliados(estructuras.MisilesAliadosEnPantalla, g);
-		dibujarExplociones(estructuras.explosionesEnPantalla, g);
+		DibujarExplociones(estructuras.explosionesEnPantalla, g);
+		DibujarEstela(estructuras.EstelasEnPantalla,g);
+		
+	}
+
+	private void DibujarEstela(LinkedList<LinkedList<Posicion>> estelasEnPantalla, Graphics g) {
+		for (Iterator<LinkedList<Posicion>> i = estelasEnPantalla.iterator(); i.hasNext();) {
+			LinkedList<Posicion> estelaDeMisil = i.next();
+			for (Iterator<Posicion> j = estelaDeMisil.iterator(); j.hasNext();) {
+				Posicion PosEstelaAct = j.next();
+				g.setColor(java.awt.Color.WHITE);
+				g.fillRect((int) PosEstelaAct.getPosicionX(),(int) PosEstelaAct.getPosicionY(), 1, 1);
+				
+			}
+		
+		}
 	}
 
 	/**
-	 * Dibuja los Misiles Aliados de color AZUL
+	 * Dibuja los Misiles Aliados de color CYAN
 	 * 
 	 * @param misilesAliadosEnPantalla
 	 * @param g
@@ -46,13 +62,13 @@ public class Pantalla extends JPanel {
 
 		for (Iterator<MisilAntibalistico> i = misilesAliadosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo MisilAliado = i.next();
-			g.setColor(java.awt.Color.PINK);
+			g.setColor(java.awt.Color.CYAN);
 			g.fillOval((int) MisilAliado.getPosicionActual().getPosicionX(),
 					(int) MisilAliado.getPosicionActual().getPosicionY(), 10, 10);
 		}
 	}
 
-	private void dibujarExplociones(LinkedList<Explosion> explosionesEnPantalla, Graphics g) {
+	private void DibujarExplociones(LinkedList<Explosion> explosionesEnPantalla, Graphics g) {
 		if (explosionesEnPantalla != null) {
 			for (Iterator<Explosion> i = explosionesEnPantalla.iterator(); i.hasNext();) {
 				Explosion explosion = i.next();
