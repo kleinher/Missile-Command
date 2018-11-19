@@ -48,9 +48,18 @@ public class GestorDeEstructuras {
 		//Lista de todas las estelas
 		LinkedList<LinkedList<Posicion>> EstelasEnPantalla;
 
+		public void setBases(Base[] bases) {
+			Bases = bases;
+		}
 		// Variables enemigas
 		/* Lista de Enemigos Mostrados y procesados durante el nivel */
 		LinkedList<Enemigo> EnemigosEnPantalla;
+		public Ciudad[] getCiudades() {
+			return Ciudades;
+		}
+		public LinkedList<Explosion> getExplosionesEnPantalla() {
+			return explosionesEnPantalla;
+		}
 		/*
 		 * Lista de Enemigos en espera (Oleada) por ser procesados y aparecer en el
 		 * nivel

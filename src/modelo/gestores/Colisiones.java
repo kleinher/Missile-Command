@@ -88,6 +88,7 @@ public class Colisiones {
 						enemigoAct.borrarEnemigoSinExplotar(enemigoAct,enemigosAEliminar);
 					}
 					else {
+					enemigoAct.setPosicionActual(enemigoAct.getPosicionObjetivo());
 					// Si hay colision, destruyo base/ciudad y el misil enemigo
 					destruirObjetivo(enemigoAct.getPosicionActual(), ciudades, bases);
 					enemigoAct.destruccion(explosionesAgregar, enemigosAEliminar);
@@ -124,6 +125,7 @@ public class Colisiones {
 		for (int i = 1; i < bases.length; i++) {
 			if (bases[i].getPosicion().equals(posicionActual)) {
 				bases[i].destruccion();
+				return;
 			}
 		}
 	}

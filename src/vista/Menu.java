@@ -49,7 +49,6 @@ public class Menu extends Application {
 			ImageView vista = new ImageView(imagen);
 			vista.setFitHeight(480);
 			vista.setFitWidth(525);
-
 			MenuJuego menu = new MenuJuego();
 			raiz.getChildren().addAll(vista, menu);
 			escena = new Scene(raiz);

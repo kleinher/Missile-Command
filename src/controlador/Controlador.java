@@ -6,7 +6,7 @@ public class Controlador {
 	public static Juego Juego;
 	public Controlador() {
 		Juego = new Juego();
-		Juego.Controlar();
+		Juego.dibujarPantalla();
 	}
 	
 }

@@ -1,4 +1,4 @@
-package modelo.gestores;
+package vista;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -25,6 +25,8 @@ import modelo.enemigos.MisilCrucero;
 import modelo.enemigos.MisilCruceroInteligente;
 import modelo.enemigos.Satelite;
 import modelo.general.Posicion;
+import modelo.gestores.GestorDeEstructuras;
+import modelo.gestores.GestorDeNivel;
 import modelo.usuario.PuntajeJugador;
 
 /*Parte Grafica*/
@@ -42,13 +44,12 @@ public class Pantalla extends JPanel {
 		setBackground(java.awt.Color.BLACK);
 		setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 		GestorDeEstructuras estructuras = GestorDeNivel.getGestorDeNivel().getEstructuras();
-		DibujarEnemigos(estructuras.EnemigosEnPantalla, g);
-		DibujarBases(estructuras.Bases, g);
-		DibujarCiudades(estructuras.Ciudades, g);
-		DibujarMisilesAliados(estructuras.MisilesAliadosEnPantalla, g);
-		DibujarExplociones(estructuras.explosionesEnPantalla, g);
-		DibujarEstela(estructuras.EstelasEnPantalla, g);
-		DibujarScore(PuntajeJugador.getScore(), g);
+		DibujarEnemigos(GestorDeNivel.getGestorDeNivel().getEstructuras().getEnemigosEnPantalla(), g);
+		DibujarBases(GestorDeNivel.getGestorDeNivel().getEstructuras().getBases(), g);
+		DibujarCiudades(GestorDeNivel.getGestorDeNivel().getEstructuras().getCiudades(), g);
+		DibujarMisilesAliados(GestorDeNivel.getGestorDeNivel().getEstructuras().getMisilesAliadosEnPantalla(), g);
+		DibujarExplociones(GestorDeNivel.getGestorDeNivel().getEstructuras().getExplosionesEnPantalla(), g);
+		DibujarEstela(GestorDeNivel.getGestorDeNivel().getEstructuras().getEstelasEnPantalla(), g);
 		DibujarImprimirNivel(estructuras.getNivelActual(), g);
 	}
 
