@@ -37,6 +37,7 @@ import taller2.grafico.Dibujable;
 public class GestorDeEstructuras {
 	// Variables de juego
 		private double Velocidad;
+		private LinkedList<InformacionJugador> ListaDePuntajes;
 		private int NivelActual;
 		public void setNivelActual(int nivelActual) {
 			NivelActual = nivelActual;
@@ -51,6 +52,9 @@ public class GestorDeEstructuras {
 		//Lista de todas las estelas
 		LinkedList<LinkedList<Posicion>> EstelasEnPantalla;
 
+		public LinkedList<InformacionJugador> getListaDePuntajes() {
+			return ListaDePuntajes;
+		}
 		public void setBases(Base[] bases) {
 			Bases = bases;
 		}
@@ -84,7 +88,7 @@ public class GestorDeEstructuras {
 			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
 			
 			//Lista que carga desde memoria con los puntajes anteriormente persistidos
-			LinkedList<InformacionJugador> ListaDePuntajes=obtenerLista();
+			ListaDePuntajes=obtenerLista();
 			
 			
 			// Instancia las nueve ciudades

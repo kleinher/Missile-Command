@@ -32,6 +32,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import modelo.gestores.GestorDeNivel;
 
+import modelo.usuario.PuntajeJugador;
+
 public class Menu extends Application {
 	Text texto;
 	ScrollPane scroll;
@@ -46,7 +48,7 @@ public class Menu extends Application {
 		this.raiz = new Pane();
 		raiz.setPrefSize(525, 480);
 		try {
-			InputStream is = Files.newInputStream(Paths.get("res/imagenes/fondo.png"));
+			InputStream is = Files.newInputStream(Paths.get("src/imagenes/fondo1.png"));
 			Image imagen = new Image(is);
 			is.close();
 			ImageView vista = new ImageView(imagen);
@@ -170,6 +172,12 @@ public class Menu extends Application {
 				}
 			});
 			BotonDeMenu btnCantJugadores = new BotonDeMenu("TABLA DE RANKING");
+			btnCantJugadores.setOnMouseClicked(event -> {
+				PuntajeJugador p = new PuntajeJugador();
+				p.MostrarTablaEnPantalla(GestorDeNivel.getGestorDeNivel().getEstructuras().getListaDePuntajes(), 5);
+			});
+			
+			
 
 			BotonDeMenu btnHistoria = new BotonDeMenu("HISTORIA");
 			btnHistoria.setOnMouseClicked(event -> {
@@ -343,15 +351,15 @@ public class Menu extends Application {
 				});
 			});
 
-			Icono icono0 = new Icono("res/imagenes/MBIParaMenu.png");
+			Icono icono0 = new Icono("src/imagenes/MBIParaMenu.png");
 			// Text nombre0= new Text("Misil Balistico Interplanetario");
 			Icono icono1 = new Icono("src/imagenes/bombarderoDerecha.png");
 			// Text nombre1 = new Text("Satelite");
 			Icono icono2 = new Icono("src/imagenes/Avion.png");
 			// Text nombre2 = new Text("Avion");
-			Icono icono3 = new Icono("res/imagenes/MisilTontoParaMenu.png");
+			Icono icono3 = new Icono("src/imagenes/MisilTontoParaMenu.png");
 			// Text nombre3 = new Text("Misil Crucero Tonto");
-			Icono icono4 = new Icono("res/imagenes/InteligenteParaMenu.png");
+			Icono icono4 = new Icono("src/imagenes/InteligenteParaMenu.png");
 			// Text nombre4 = new Text("Misil Crucero Inteligente");
 			Marco marco0 = new Marco("Satelite");
 			Marco marco1 = new Marco("Misil Balistico Interplanetario");

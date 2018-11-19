@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import modelo.Aliados.Ciudad;
 import modelo.Aliados.Explosion;
 import modelo.enemigos.*;
+import modelo.usuario.InformacionJugador;
 import modelo.usuario.PuntajeJugador;
 
 /**
@@ -145,7 +146,10 @@ public class GestorDeNivel {
 		/* Guarda los puntajes en la tabla de puntajes */ /* Falta Pasarle todos los argumentos que necesita */
 		// tablaDePuntajes.actualizarTablaDePuntajes();
 		/* Imprimer Game Over */
+		
 		JOptionPane.showMessageDialog(null, "		!GAME OVER!");
+		InformacionJugador Info = new InformacionJugador("1", "Pepe",2156, 45.5);
+		PuntajeJugador.MostrarYActualizarPuntaje(GestorDeNivel.getGestorDeNivel().getEstructuras().getListaDePuntajes(), Info, 5);
 	}
 
 	public int getNivelActual() {

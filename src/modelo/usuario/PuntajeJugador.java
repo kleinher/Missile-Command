@@ -114,7 +114,7 @@ public class PuntajeJugador {
 	 * @param Info
 	 * @param CantidadAMostar
 	 */
-    public void MostrarYActualizarPuntaje(LinkedList<InformacionJugador> ListaDePuntajes, InformacionJugador Info,int CantidadAMostar) {
+    public static void MostrarYActualizarPuntaje(LinkedList<InformacionJugador> ListaDePuntajes, InformacionJugador Info,int CantidadAMostar) {
     		boolean actualizo = actualizarLista(ListaDePuntajes,Info,CantidadAMostar);//retorna un booleano el puntaje alcanzado fue suficiente	
     		if((!actualizo)) {
     			
@@ -132,7 +132,7 @@ public class PuntajeJugador {
      * @param cantidadAMostar
      * @return
      */
-	private boolean actualizarLista(LinkedList<InformacionJugador> listaDePuntajes, InformacionJugador info, int cantidadAMostar) {
+	private static boolean actualizarLista(LinkedList<InformacionJugador> listaDePuntajes, InformacionJugador info, int cantidadAMostar) {
 		boolean actualizo=false;
 		if(cantidadAMostar>listaDePuntajes.size()){
 			listaDePuntajes.add(info);
@@ -150,7 +150,7 @@ public class PuntajeJugador {
 	}
 	
 	
-	private void MostrarTablaEnPantalla(LinkedList<InformacionJugador> ListaDePuntajes,int CantidadAMostar) {	
+	public static void MostrarTablaEnPantalla(LinkedList<InformacionJugador> ListaDePuntajes,int CantidadAMostar) {	
     	Table frame = new Table(ListaDePuntajes,CantidadAMostar);
         frame.pack();
         frame.setVisible(true);

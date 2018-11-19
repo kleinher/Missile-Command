@@ -183,7 +183,7 @@ public class Colisiones {
 		double y2 = explosionActual.getPosicionActual().getPosicionY();
 		if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio()) {
 			return true;
-		} else if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio() + 10) {
+		} else if ((Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow(y2 - y1, 2))) < explosionActual.getRadio() + 5) {
 			boolean esquivarIzquierda;
 			if (x2 > x1)
 				esquivarIzquierda = true;
