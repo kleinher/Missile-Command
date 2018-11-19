@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import javax.swing.JOptionPane;
+
 import controlador.Controlador;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
@@ -28,6 +30,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import modelo.gestores.GestorDeNivel;
 
 public class Menu extends Application {
 	Text texto;
@@ -152,7 +155,20 @@ public class Menu extends Application {
 			});
 
 			BotonDeMenu btnNivelInicial = new BotonDeMenu("NIVEL INICIAL");
-
+			btnNivelInicial.setOnMouseClicked(event->{
+				
+				boolean valorcorrecto=false;
+				while(!valorcorrecto) {
+					int nivel=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Nivel desde el que quiere iniciar"));
+					if(nivel<17&nivel>0) {
+						GestorDeNivel.getGestorDeNivel().getEstructuras().setNivelActual(nivel);
+						valorcorrecto=true;
+					}
+						else {
+							JOptionPane.showMessageDialog(null, "Ingrese un Nivel Válido");
+						}
+				}
+			});
 			BotonDeMenu btnCantJugadores = new BotonDeMenu("TABLA DE RANKING");
 
 			BotonDeMenu btnHistoria = new BotonDeMenu("HISTORIA");

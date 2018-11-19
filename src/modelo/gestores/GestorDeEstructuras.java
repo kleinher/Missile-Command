@@ -38,6 +38,9 @@ public class GestorDeEstructuras {
 	// Variables de juego
 		private double Velocidad;
 		private int NivelActual;
+		public void setNivelActual(int nivelActual) {
+			NivelActual = nivelActual;
+		}
 		List<? extends Dibujable> listaDibujables;
 		
 		//variables Usadas para guardar y cargar la tabla de puntajes
