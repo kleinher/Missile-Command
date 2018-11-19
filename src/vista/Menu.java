@@ -328,28 +328,28 @@ public class Menu extends Application {
 				});
 			});
 
-			// Icono icono0 = new Icono("res/imagenes/MBIParaMenu.png");
+			Icono icono0 = new Icono("res/imagenes/MBIParaMenu.png");
 			// Text nombre0= new Text("Misil Balistico Interplanetario");
-			// Icono icono1 = new Icono("src/imagenes/bombarderoDerecha.png");
+			Icono icono1 = new Icono("src/imagenes/bombarderoDerecha.png");
 			// Text nombre1 = new Text("Satelite");
-			// Icono icono2 = new Icono("src/imagenes/Avion.png");
+			Icono icono2 = new Icono("src/imagenes/Avion.png");
 			// Text nombre2 = new Text("Avion");
-			// Icono icono3 = new Icono("res/imagenes/MisilTontoParaMenu.png");
+			Icono icono3 = new Icono("res/imagenes/MisilTontoParaMenu.png");
 			// Text nombre3 = new Text("Misil Crucero Tonto");
-			// Icono icono4 = new Icono("res/imagenes/InteligenteParaMenu.png");
+			Icono icono4 = new Icono("res/imagenes/InteligenteParaMenu.png");
 			// Text nombre4 = new Text("Misil Crucero Inteligente");
-			Marco marco0 = new Marco("res/imagenes/MBIParaMenu.png", "Satelite");
-			Marco marco1 = new Marco("src/imagenes/bombarderoDerecha.png", "Misil Balistico Interplanetario");
-			Marco marco2 = new Marco("src/imagenes/Avion.png", "Avion");
-			Marco marco3 = new Marco("res/imagenes/MisilTontoParaMenu.png", "Misil Crucero Tonto");
-			Marco marco4 = new Marco("res/imagenes/InteligenteParaMenu.png", "Misil Crucero Inteligente");
+			Marco marco0 = new Marco("Satelite");
+			Marco marco1 = new Marco("Misil Balistico Interplanetario");
+			Marco marco2 = new Marco("Avion");
+			Marco marco3 = new Marco("Misil Crucero Tonto");
+			Marco marco4 = new Marco("Misil Crucero Inteligente");
 
 			menuPpal.getChildren().addAll(btnJugar, btnReglas, btnOptions, btnSalir);
 			menuConfig.getChildren().addAll(btnNivelInicial, btnCantJugadores, btnVolver0);
 			menuReglas.getChildren().addAll(btnHistoria, btnComoJugar, btnTiposDeEnemigos, btnVolver1);
 			menuHistoria.getChildren().addAll(btnVolver2);
 			menuComoJugar.getChildren().addAll(btnVolver3);
-			menuTiposDeEnemigos.getChildren().addAll(btnVolver4, marco0, marco1, marco2, marco3, marco4);
+			menuTiposDeEnemigos.getChildren().addAll(btnVolver4,icono0, marco0,icono1, marco1,icono2, marco2,icono3, marco3,icono4, marco4);
 			Rectangle bg = new Rectangle(800, 600);
 			bg.setFill(Color.GREY);
 			bg.setOpacity(0.4);
@@ -499,38 +499,43 @@ public class Menu extends Application {
 
 	}
 
-
 	private class Marco extends StackPane {
 
-		public Marco(String path, String nombre) {
+		public Marco(String nombre) {
 			texto = new Text(nombre);
 			texto.getFont();
-			texto.setFont(Font.font(20));
+			texto.setFont(Font.font(15));
 			texto.setFill(Color.WHITE);
 
 			// rectangulo que encuadre a El Enemigo con su nombre
-			Rectangle marco = new Rectangle(400, 30);
-			marco.setOpacity(0.6);// Transparencia
+			Rectangle marco = new Rectangle(400, 20);
+			marco.setOpacity(0.3);// Transparencia
 			marco.setFill(javafx.scene.paint.Color.BLACK);
-			try {
-				InputStream is = Files.newInputStream(Paths.get(path));
-				Image imagen = new Image(is);
-				is.close();
-				ImageView vista = new ImageView(imagen);
-				vista.setFitHeight(40);
-				vista.setFitWidth(40);
-				setRotate(-0.5);
-				
-				getChildren().addAll(texto, vista);
-				
-			} catch (IOException ex) {
-				System.out.println("error al cargar el icono");
-			}
+
+			this.getChildren().addAll(marco, texto);
 
 			// marco.setEffect(new GaussianBlur(3.5));// efecto blur
 
 		}
 
+	}
+
+	private class Icono extends StackPane {
+		public Icono(String path) {
+			try {
+				InputStream is = Files.newInputStream(Paths.get(path));
+				Image imagen = new Image(is);
+				is.close();
+				ImageView vista = new ImageView(imagen);
+				vista.setFitHeight(30);
+				vista.setFitWidth(30);
+				setRotate(-0.5);
+				this.getChildren().addAll(vista);
+			} catch (IOException ex) {
+				System.out.println("error al cargar el icono");
+			}
+
+		}
 	}
 
 	public static void main(String[] args) {
