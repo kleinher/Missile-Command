@@ -226,12 +226,12 @@ public class Pantalla extends JPanel {
 			if (enemigo instanceof Satelite) {
 				if (enemigo.getPosicionInicial().getPosicionX() == 0) {
 					Image img = ImportarImagen(g, "imagenes/bombarderoDerecha.png");
-					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX() + 14,
-							(int) enemigo.getPosicionActual().getPosicionY() + 14, null);
+					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX() - 7,
+							(int) enemigo.getPosicionActual().getPosicionY() - 7, null);
 				} else {
 					Image img = ImportarImagen(g, "imagenes/bombarderoIzquierda.png");
-					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX() + 14,
-							(int) enemigo.getPosicionActual().getPosicionY() + 14, null);
+					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX() - 7,
+							(int) enemigo.getPosicionActual().getPosicionY() - 7, null);
 				}
 			}
 			if (enemigo instanceof MisilCrucero) {
