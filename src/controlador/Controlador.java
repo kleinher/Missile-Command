@@ -1,6 +1,6 @@
 package controlador;
 
-import Ventanas.Juego;
+import vista.Juego;
 
 public class Controlador {
 	public static Juego Juego;

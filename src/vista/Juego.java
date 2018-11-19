@@ -1,4 +1,4 @@
-package Ventanas;
+package vista;
 
 
 
@@ -12,7 +12,6 @@ import controlador.AdapterDeMiraMouse;
 import controlador.AdapterDeMiraTeclado;
 import modelo.gestores.GestorDeEstructuras;
 import modelo.gestores.GestorDeNivel;
-import vista.Pantalla;
 
 public class Juego extends JFrame {
 	//Variable de el JPanel "pantalla"
