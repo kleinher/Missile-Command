@@ -28,6 +28,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import modelo.gestores.GestorDeNivel;
+import modelo.usuario.PuntajeJugador;
 
 public class Menu extends Application {
 	Text texto;
@@ -154,6 +156,12 @@ public class Menu extends Application {
 			BotonDeMenu btnNivelInicial = new BotonDeMenu("NIVEL INICIAL");
 
 			BotonDeMenu btnCantJugadores = new BotonDeMenu("TABLA DE RANKING");
+			btnCantJugadores.setOnMouseClicked(event -> {
+				PuntajeJugador p = new PuntajeJugador();
+				p.MostrarTablaEnPantalla(GestorDeNivel.getGestorDeNivel().getEstructuras().getListaDePuntajes(), 5);
+			});
+			
+			
 
 			BotonDeMenu btnHistoria = new BotonDeMenu("HISTORIA");
 			btnHistoria.setOnMouseClicked(event -> {

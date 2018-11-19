@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
@@ -86,13 +87,17 @@ public class Pantalla extends JPanel {
 	}
 
 	private void DibujarEstela(LinkedList<LinkedList<Posicion>> estelasEnPantalla, Graphics g) {
-		for (Iterator<LinkedList<Posicion>> i = estelasEnPantalla.iterator(); i.hasNext();) {
-			LinkedList<Posicion> estelaDeMisil = i.next();
-			for (Iterator<Posicion> j = estelaDeMisil.iterator(); j.hasNext();) {
-				Posicion PosEstelaAct = j.next();
-				g.setColor(java.awt.Color.RED);
-				g.fillRect((int) PosEstelaAct.getPosicionX() + 3, (int) PosEstelaAct.getPosicionY(), 1, 1);
+		try {
+			for (Iterator<LinkedList<Posicion>> i = estelasEnPantalla.iterator(); i.hasNext();) {
+				LinkedList<Posicion> estelaDeMisil = i.next();
+				for (Iterator<Posicion> j = estelaDeMisil.iterator(); j.hasNext();) {
+					Posicion PosEstelaAct = j.next();
+					g.setColor(java.awt.Color.RED);
+					g.fillRect((int) PosEstelaAct.getPosicionX() + 3, (int) PosEstelaAct.getPosicionY(), 1, 1);
+				}
 			}
+		} catch (ConcurrentModificationException e) {
+			// no quiero que haga nada
 		}
 	}
 
@@ -145,9 +150,9 @@ public class Pantalla extends JPanel {
 			if (ciudad[i].estaViva()) {
 				g.drawImage(img, (int) ciudad[i].getPosicion().getPosicionX(),
 						(int) ciudad[i].getPosicion().getPosicionY(), null);
-//				g.setColor(java.awt.Color.WHITE);
-//				g.fillRect((int) ciudad[i].getPosicion().getPosicionX() - 15,
-//						(int) ciudad[i].getPosicion().getPosicionY() - 10, 12, 5);
+				// g.setColor(java.awt.Color.WHITE);
+				// g.fillRect((int) ciudad[i].getPosicion().getPosicionX() - 15,
+				// (int) ciudad[i].getPosicion().getPosicionY() - 10, 12, 5);
 			}
 		}
 
@@ -163,22 +168,23 @@ public class Pantalla extends JPanel {
 	 * @param g
 	 */
 	private void DibujarBases(Base[] bases, Graphics g) {
-////		Image img = ImportarImagen(g,"imagenes/bases.jpg");
-//		for (int i = 1; i < bases.length; i++) {
-////			g.drawImage(img,(int) bases[i].getPosicion().getPosicionX() - 15 ,(int) bases[1].getPosicion().getPosicionY() - 10,null);
-//			g.fillRect((int) bases[i].getPosicion().getPosicionX() - 15,
-//					(int) bases[1].getPosicion().getPosicionY() - 10, 20, 5);
-//			int espacio = -35;
-//			if (bases[i].isEstaViva()) {
-//				for (int j = 0; j < bases[i].getCantMisiles(); j++) {
-//					g.setColor(java.awt.Color.BLUE);
-//					g.fillRect((int) bases[i].getPosicion().getPosicionX() + espacio,
-//							(int) bases[i].getPosicion().getPosicionY() + 5, 2, 7);
-//					espacio += 4;
-//				}
-//			}
-//
-//		}
+		//// Image img = ImportarImagen(g,"imagenes/bases.jpg");
+		// for (int i = 1; i < bases.length; i++) {
+		//// g.drawImage(img,(int) bases[i].getPosicion().getPosicionX() - 15 ,(int)
+		//// bases[1].getPosicion().getPosicionY() - 10,null);
+		// g.fillRect((int) bases[i].getPosicion().getPosicionX() - 15,
+		// (int) bases[1].getPosicion().getPosicionY() - 10, 20, 5);
+		// int espacio = -35;
+		// if (bases[i].isEstaViva()) {
+		// for (int j = 0; j < bases[i].getCantMisiles(); j++) {
+		// g.setColor(java.awt.Color.BLUE);
+		// g.fillRect((int) bases[i].getPosicion().getPosicionX() + espacio,
+		// (int) bases[i].getPosicion().getPosicionY() + 5, 2, 7);
+		// espacio += 4;
+		// }
+		// }
+		//
+		// }
 	}
 
 	/**
@@ -191,8 +197,8 @@ public class Pantalla extends JPanel {
 	 * @param EnemigosEnPantalla
 	 * @param g
 	 */
-	private void DibujarEnemigos(LinkedList<Enemigo> EnemigosEnPantalla, Graphics g) {
-
+	private synchronized void DibujarEnemigos(LinkedList<Enemigo> EnemigosEnPantalla, Graphics g) {
+		try {
 		for (Iterator<Enemigo> i = EnemigosEnPantalla.iterator(); i.hasNext();) {
 			Enemigo enemigo = i.next();
 			if (enemigo instanceof MisilBalistico) {
@@ -207,23 +213,25 @@ public class Pantalla extends JPanel {
 						(int) enemigo.getPosicionActual().getPosicionY(), 6, 6);
 			}
 			if (enemigo instanceof Avion) {
-				if(enemigo.getPosicionInicial().getPosicionX() == 0) {
+				if (enemigo.getPosicionInicial().getPosicionX() == 0) {
 					Image img = ImportarImagen(g, "imagenes/AvionDerecha.png");
-					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX(), (int) enemigo.getPosicionActual().getPosicionY(), null);	
-				}
-				else {
+					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX(),
+							(int) enemigo.getPosicionActual().getPosicionY(), null);
+				} else {
 					Image img = ImportarImagen(g, "imagenes/Avion.png");
-					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX(), (int) enemigo.getPosicionActual().getPosicionY(), null);
+					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX(),
+							(int) enemigo.getPosicionActual().getPosicionY(), null);
 				}
 			}
 			if (enemigo instanceof Satelite) {
-				if(enemigo.getPosicionInicial().getPosicionX() == 0) {
+				if (enemigo.getPosicionInicial().getPosicionX() == 0) {
 					Image img = ImportarImagen(g, "imagenes/bombarderoDerecha.png");
-					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX()+14, (int) enemigo.getPosicionActual().getPosicionY()+14, null);	
-				}
-				else {
+					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX() + 14,
+							(int) enemigo.getPosicionActual().getPosicionY() + 14, null);
+				} else {
 					Image img = ImportarImagen(g, "imagenes/bombarderoIzquierda.png");
-					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX()+14, (int) enemigo.getPosicionActual().getPosicionY()+14, null);
+					g.drawImage(img, (int) enemigo.getPosicionActual().getPosicionX() + 14,
+							(int) enemigo.getPosicionActual().getPosicionY() + 14, null);
 				}
 			}
 			if (enemigo instanceof MisilCrucero) {
@@ -237,5 +245,9 @@ public class Pantalla extends JPanel {
 						(int) enemigo.getPosicionActual().getPosicionY(), 5, 5);
 			}
 		}
+		}catch( ConcurrentModificationException e) {
+			// no quiero que haga nada
+		}
+		
 	}
 }
