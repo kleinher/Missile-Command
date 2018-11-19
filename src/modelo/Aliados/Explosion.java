@@ -23,8 +23,8 @@ public class Explosion{
 		LinkedList<Explosion> explosionesAEliminar=new LinkedList<Explosion>();
 		for (Iterator<Explosion> j = explosionesEnPantalla.iterator(); j.hasNext();) {
 				Explosion ExplAct=j.next();
-			if(ExplAct.contartick<5)
-				ExplAct.radio+=(10);
+			if(ExplAct.contartick<50)
+				ExplAct.radio+=(1);
 			else
 				ExplAct.radio-=(1);
 			if(ExplAct.radio<0)

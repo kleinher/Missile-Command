@@ -214,7 +214,7 @@ public class GestorDeEstructuras {
 	        
 	    	LinkedList<InformacionJugador> lista =  new LinkedList<InformacionJugador>();
 	        try {
-	        entrada = new ObjectInputStream(new FileInputStream("/Missile-Command/Puntajes/ranklist.dat"));
+	        entrada = new ObjectInputStream(new FileInputStream("Puntajes/ranklist.dat"));
 	        }catch (EOFException e){
 	        } catch (IOException e) {
 	            e.printStackTrace();
