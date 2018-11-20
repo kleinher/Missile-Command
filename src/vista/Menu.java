@@ -568,6 +568,7 @@ public class Menu extends Application {
 			} catch (IOException ex) {
 				System.out.println("error al cargar el icono");
 			}
+			
 
 		}
 	}
