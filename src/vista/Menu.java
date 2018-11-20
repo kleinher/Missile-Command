@@ -34,6 +34,13 @@ import modelo.gestores.GestorDeNivel;
 
 import modelo.usuario.PuntajeJugador;
 
+/**
+ * Menu Principal desde donde se puede Jugar, configurar, ver las reglas del
+ * juego
+ * 
+ * @author eze96
+ *
+ */
 public class Menu extends Application {
 	Text texto;
 	ScrollPane scroll;
@@ -95,19 +102,15 @@ public class Menu extends Application {
 
 			final int offset = 100;
 
-			/*
-			 * ACLARACION: QUISE HACER UN METODO QUE INICIALICE TODOS LOS BOTONES PARA
-			 * MEJORAR LA LEGIBILIDAD, PERO ME TIRABA ERRORES EN EJECUCION EN EL VBOX
-			 * 'menuPpal', QUE DEBUGGEANDO NO PUDE RESOLVER
+			/*Aclarción para la corrección:
+			 * Para mejorar la legibilidad, quise hacer un método que inicialice los
+			 * botones, pero esto tiraba muchos errores en ejecución, que por falta de
+			 * conocimiento en JavaFx no pude resolver, por lo que los botones se incializan
+			 * aquí mismo funcionando correctamente.
 			 */
-			
-			
-			
-			
+
 			// INICIALIZO BOTONES
-			
-			
-			
+
 			/**
 			 * BOTON DE INICIO DE JUEGO
 			 */
@@ -164,21 +167,20 @@ public class Menu extends Application {
 			});
 
 			BotonDeMenu btnNivelInicial = new BotonDeMenu("NIVEL INICIAL");
-			btnNivelInicial.setOnMouseClicked(event->{
-				
-				boolean valorcorrecto=false;
-				while(!valorcorrecto) {
+			btnNivelInicial.setOnMouseClicked(event -> {
+
+				boolean valorcorrecto = false;
+				while (!valorcorrecto) {
 					try {
-					Integer nivel=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Nivel desde el que quiere iniciar"));
-					if(nivel<17&nivel>=0) {
-						GestorDeNivel.getGestorDeNivel().getEstructuras().setNivelActual(nivel);
-						valorcorrecto=true;
-					}
-						else {
+						Integer nivel = Integer
+								.parseInt(JOptionPane.showInputDialog("Ingrese el Nivel desde el que quiere iniciar"));
+						if (nivel < 17 & nivel >= 0) {
+							GestorDeNivel.getGestorDeNivel().getEstructuras().setNivelActual(nivel);
+							valorcorrecto = true;
+						} else {
 							JOptionPane.showMessageDialog(null, "Ingrese un Nivel Valido");
 						}
-					}
-					catch(Exception e){
+					} catch (Exception e) {
 						JOptionPane.showMessageDialog(null, "Ingrese un Nivel Valido");
 					}
 				}
@@ -187,10 +189,8 @@ public class Menu extends Application {
 			btnCantJugadores.setOnMouseClicked(event -> {
 				PuntajeJugador p = new PuntajeJugador();
 				p.MostrarTablaEnPantalla(GestorDeNivel.getGestorDeNivel().getEstructuras().getListaDePuntajes(), 5);
-				
+
 			});
-			
-			
 
 			BotonDeMenu btnHistoria = new BotonDeMenu("HISTORIA");
 			btnHistoria.setOnMouseClicked(event -> {
@@ -385,7 +385,8 @@ public class Menu extends Application {
 			menuReglas.getChildren().addAll(btnHistoria, btnComoJugar, btnTiposDeEnemigos, btnVolver1);
 			menuHistoria.getChildren().addAll(btnVolver2);
 			menuComoJugar.getChildren().addAll(btnVolver3);
-			menuTiposDeEnemigos.getChildren().addAll(btnVolver4,icono0, marco0,icono1, marco1,icono2, marco2,icono3, marco3,icono4, marco4);
+			menuTiposDeEnemigos.getChildren().addAll(btnVolver4, icono0, marco0, icono1, marco1, icono2, marco2, icono3,
+					marco3, icono4, marco4);
 			Rectangle bg = new Rectangle(800, 600);
 			bg.setFill(Color.GREY);
 			bg.setOpacity(0.4);
@@ -486,13 +487,16 @@ public class Menu extends Application {
 		}
 
 	}
+
 	public static void mostrarEscena() {
 		VentanaMenu.show();
 	}
 
-	// StackPane funciona como una Stack, una cosa se apila sobre la otra,
+	// ( StackPane funciona como una Stack, una cosa se apila sobre la otra),
+
 	/**
-	 * Clase Que representa Un boton
+	 * Cada instancia representa un texto embebido en un marco que representa un
+	 * botón del menú.
 	 * 
 	 * @author eze96
 	 *
@@ -559,6 +563,13 @@ public class Menu extends Application {
 
 	}
 
+	/**
+	 * Cada instancia contiene un ícono que sirve para la descripcion de enemigos en
+	 * el menu
+	 * 
+	 * @author eze96
+	 *
+	 */
 	private class Icono extends StackPane {
 		public Icono(String path) {
 			try {
@@ -573,7 +584,6 @@ public class Menu extends Application {
 			} catch (IOException ex) {
 				System.out.println("error al cargar el icono");
 			}
-			
 
 		}
 	}
