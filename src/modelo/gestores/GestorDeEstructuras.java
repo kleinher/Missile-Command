@@ -39,6 +39,9 @@ public class GestorDeEstructuras {
 		private double Velocidad;
 		private LinkedList<InformacionJugador> ListaDePuntajes;
 		private int NivelActual;
+		public void setNivelActual(int nivelActual) {
+			NivelActual = nivelActual;
+		}
 		List<? extends Dibujable> listaDibujables;
 		
 		//variables Usadas para guardar y cargar la tabla de puntajes

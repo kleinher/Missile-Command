@@ -3,6 +3,9 @@ package modelo.usuario;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
 import modelo.Aliados.Base;
 import modelo.Aliados.Ciudad;
 import modelo.gestores.Colisiones;
@@ -116,6 +119,7 @@ public class PuntajeJugador {
     		if((!actualizo)) {
     			
     			//Imprimir que el puntaje alcanzado no fue suficiente
+    			JOptionPane.showMessageDialog(null, "El Puntaje no fue suficiente! ",null, JOptionPane.WARNING_MESSAGE);
     		}
     		MostrarTablaEnPantalla(ListaDePuntajes, CantidadAMostar);
     }
