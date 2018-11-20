@@ -58,7 +58,7 @@ public class Posicion implements Dibujable {
 	 */
 	public boolean equals(Posicion pos) {
 		if (((Math.sqrt(Math.pow((pos.getPosicionX() - this.posicionX), 2)
-				+ Math.pow(this.posicionY - pos.getPosicionY(), 2))) < 10))
+				+ Math.pow(pos.getPosicionY() - this.posicionY, 2))) < 20))
 			return true;
 		else
 			return false;

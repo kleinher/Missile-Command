@@ -72,7 +72,7 @@ public class GestorDeEstructuras {
 			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
 			
 			//Lista que carga desde memoria con los puntajes anteriormente persistidos
-			LinkedList<InformacionJugador> ListaDePuntajes=obtenerLista();
+//			LinkedList<InformacionJugador> ListaDePuntajes=obtenerLista();
 			
 			
 			// Instancia las nueve ciudades

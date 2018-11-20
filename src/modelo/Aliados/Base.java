@@ -49,7 +49,7 @@ public class Base {
 		bases[1] = new Base(50, 438);
 		bases[2] = new Base(260, 438);
 		bases[3] = new Base(500, 438);
-		for (int j = 0; j < 15; j++) {
+		for (int j = 0; j < 10; j++) {
 			bases[1].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[1].posicion, velocidad));
 			bases[2].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[2].posicion, velocidad));
 			bases[3].listaMisilesAntibalisticos.add(new MisilAntibalistico(bases[3].posicion, velocidad));
@@ -60,7 +60,7 @@ public class Base {
 		return posicion;
 	}
 
-	public int getCantMisiles() {
+	public Integer getCantMisiles() {
 		return this.listaMisilesAntibalisticos.size();
 	}
 

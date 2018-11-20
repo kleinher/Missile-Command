@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
@@ -85,6 +86,7 @@ public class Pantalla extends JPanel {
 	}
 
 	private void DibujarEstela(LinkedList<LinkedList<Posicion>> estelasEnPantalla, Graphics g) {
+		try {
 		for (Iterator<LinkedList<Posicion>> i = estelasEnPantalla.iterator(); i.hasNext();) {
 			LinkedList<Posicion> estelaDeMisil = i.next();
 			for (Iterator<Posicion> j = estelaDeMisil.iterator(); j.hasNext();) {
@@ -92,6 +94,9 @@ public class Pantalla extends JPanel {
 				g.setColor(java.awt.Color.RED);
 				g.fillRect((int) PosEstelaAct.getPosicionX() + 3, (int) PosEstelaAct.getPosicionY(), 1, 1);
 			}
+		}
+		}catch(ConcurrentModificationException e){
+			System.err.println("No es un error, se sacaron todas las estelas de pantalla");
 		}
 	}
 
@@ -112,7 +117,7 @@ public class Pantalla extends JPanel {
 	}
 
 	private void DibujarExplociones(LinkedList<Explosion> explosionesEnPantalla, Graphics g) {
-
+		try {
 		if (explosionesEnPantalla != null) {
 			Color[] colores = new Color[3];
 			colores[0] = java.awt.Color.CYAN;
@@ -128,6 +133,9 @@ public class Pantalla extends JPanel {
 						(int) explosion.getPosicionActual().getPosicionY() - ((int) explosion.getRadio() / 2),
 						(int) explosion.getRadio(), (int) explosion.getRadio());
 			}
+		}
+		}catch(ConcurrentModificationException e) {
+			System.err.println("No es un error, se sacaron todas las explociones de pantalla");
 		}
 	}
 
@@ -162,22 +170,14 @@ public class Pantalla extends JPanel {
 	 * @param g
 	 */
 	private void DibujarBases(Base[] bases, Graphics g) {
-////		Image img = ImportarImagen(g,"imagenes/bases.jpg");
-//		for (int i = 1; i < bases.length; i++) {
-////			g.drawImage(img,(int) bases[i].getPosicion().getPosicionX() - 15 ,(int) bases[1].getPosicion().getPosicionY() - 10,null);
-//			g.fillRect((int) bases[i].getPosicion().getPosicionX() - 15,
-//					(int) bases[1].getPosicion().getPosicionY() - 10, 20, 5);
-//			int espacio = -35;
-//			if (bases[i].isEstaViva()) {
-//				for (int j = 0; j < bases[i].getCantMisiles(); j++) {
-//					g.setColor(java.awt.Color.BLUE);
-//					g.fillRect((int) bases[i].getPosicion().getPosicionX() + espacio,
-//							(int) bases[i].getPosicion().getPosicionY() + 5, 2, 7);
-//					espacio += 4;
-//				}
-//			}
-//
-//		}
+		for (int i = 1; i < bases.length; i++) {
+			if (bases[i].isEstaViva()) {
+				String string = String.format("imagenes/misilesEnBase/%d.png",bases[i].getCantMisiles());
+				Image img = ImportarImagen(g, string);
+				g.drawImage(img, (int)bases[i].getPosicion().getPosicionX()-28, (int)bases[i].getPosicion().getPosicionY()-10, null);
+			}
+
+		}
 	}
 
 	/**

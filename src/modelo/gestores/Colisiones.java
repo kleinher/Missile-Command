@@ -91,7 +91,6 @@ public class Colisiones {
 					// Si hay colision, destruyo base/ciudad y el misil enemigo
 					destruirObjetivo(enemigoAct.getPosicionActual(), ciudades, bases);
 					enemigoAct.destruccion(explosionesAgregar, enemigosAEliminar);
-					i.remove();
 				}
 			}
 		}
