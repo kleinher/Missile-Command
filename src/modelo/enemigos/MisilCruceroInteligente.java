@@ -17,11 +17,11 @@ public class MisilCruceroInteligente extends Misiles {
 	 */
 	public void esquivar(boolean esquivarIzquierda) {
 		if (esquivarIzquierda) {
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX() - 4,
-					this.posicionActual.getPosicionY());
+			this.posicionActual.actualizarPosicion((int)this.posicionActual.getPosicionX() - 4,
+					(int)this.posicionActual.getPosicionY());
 		} else {
-			this.posicionActual.actualizarPosicion(this.posicionActual.getPosicionX() + 4,
-					this.posicionActual.getPosicionY());
+			this.posicionActual.actualizarPosicion((int)this.posicionActual.getPosicionX() + 4,
+					(int)this.posicionActual.getPosicionY());
 		}
 		this.determinarDesplazamiento(GestorDeNivel.getGestorDeNivel().getEstructuras().getVelocidad());
 	}

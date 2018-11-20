@@ -2,10 +2,12 @@ package modelo.gestores;
 
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
 
 import modelo.Aliados.Ciudad;
 import modelo.Aliados.Explosion;
 import modelo.enemigos.*;
+import modelo.usuario.InformacionJugador;
 import modelo.usuario.PuntajeJugador;
 
 /**
@@ -63,10 +65,10 @@ public class GestorDeNivel {
 			estructuras.gestionarEstructuras();
 		}
 		//Cuando termine el nivel
-		if(estructuras.EnemigosEnEspera.isEmpty() & estructuras.EnemigosEnPantalla.isEmpty()) {
+		if(estructuras.EnemigosEnEspera.isEmpty() & estructuras.EnemigosEnPantalla.isEmpty() & estructuras.explosionesEnPantalla.isEmpty()) {
 			//Actualizo puntaje al final del nivel
 			PuntajeJugador.ActualizarPuntaje(this.NivelActual, estructuras.Ciudades, estructuras.Bases);
-			
+			JOptionPane.showMessageDialog(null, "		¡Pasate de nivel! \n" + "Tu puntaje actual es: " + PuntajeJugador.getScore());
 			//En este gestionar de estructuras se estan actualizando 
 			//todas las estructuras para un nivel en especifico
 			estructuras.gestionarEstructuras();
@@ -144,7 +146,10 @@ public class GestorDeNivel {
 		/* Guarda los puntajes en la tabla de puntajes */ /* Falta Pasarle todos los argumentos que necesita */
 		// tablaDePuntajes.actualizarTablaDePuntajes();
 		/* Imprimer Game Over */
-		System.out.println("Game Over");
+		
+		JOptionPane.showMessageDialog(null, "		!GAME OVER!");
+		InformacionJugador Info = new InformacionJugador("1", "Pepe",2156, 45.5);
+		PuntajeJugador.MostrarYActualizarPuntaje(GestorDeNivel.getGestorDeNivel().getEstructuras().getListaDePuntajes(), Info, 5);
 	}
 
 	public int getNivelActual() {

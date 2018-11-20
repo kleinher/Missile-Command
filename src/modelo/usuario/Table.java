@@ -11,15 +11,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import vista.Menu;
+
 public class Table extends JFrame {
-	public Table() {
-		
-	}
+	final JTable table;
 
     public Table(LinkedList<InformacionJugador> ListaDePuntajes,int CantidadAMostar) {
         super(" Ranking ");
         DefaultTableModel modelo = new DefaultTableModel(); 
-        final JTable table = new JTable(modelo);
+         table= new JTable(modelo);
         table.setEnabled(false);
         table.getTableHeader().getDefaultRenderer();
         table.getTableHeader().setReorderingAllowed(false);
@@ -41,7 +41,11 @@ public class Table extends JFrame {
         
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                System.exit(0);
+            	table.setVisible(false);
+            	//Menu.VentanaMenu.show();
+                //System.exit(0);
+            	
+            	
             }
               
         });

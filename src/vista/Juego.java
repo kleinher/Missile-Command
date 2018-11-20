@@ -1,4 +1,4 @@
-package Ventanas;
+package vista;
 
 
 
@@ -6,21 +6,22 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import controlador.AdapterDeMiraMouse;
 import controlador.AdapterDeMiraTeclado;
+import modelo.gestores.GestorDeEstructuras;
 import modelo.gestores.GestorDeNivel;
-import modelo.gestores.Pantalla;
 
 public class Juego extends JFrame {
 	//Variable de el JPanel "pantalla"
 	public Pantalla pantalla;
 	
-	public void Controlar() {
+	public void dibujarPantalla() {
 		Timer timer;
 		timer = new Timer();
 		//Variable de el JPanel "pantalla"
-		 pantalla = new Pantalla();
+		pantalla = new Pantalla();
 		add(pantalla);
 		pantalla.addMouseListener(new AdapterDeMiraMouse());
 		pantalla.addKeyListener(new AdapterDeMiraTeclado());
@@ -44,18 +45,19 @@ public class Juego extends JFrame {
 			@Override
 			public void run() {
 
-				if ((!juego.Perdio()) && (juego.getNivelActual() != 17)) {
+				if ((!juego.Perdio()) && (juego.getNivelActual() != 17) || (!juego.getEstructuras().getEnemigosEnPantalla().isEmpty())){
 					// Aca se actualiza todo
 					this.modelar();
-
 					// ACA SE PINTA EL GRAFICO
-					//Graficador.refrescarTopDown(juego.getEstructuras().ActualizarListaDibujables(), 200);
+					//Graficador.refrescarTopDown(juego.getEstructuras().ActualizarListaDibujables(), 200);\
 					this.pintar();
 					
 				}
 				else{
-					juego.terminarJuego();
-					timer.cancel();
+					if(juego.getEstructuras().getEnemigosEnPantalla().isEmpty()) {
+						juego.terminarJuego();
+						timer.cancel();
+					}
 				}
 			}
 			

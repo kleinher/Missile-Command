@@ -37,7 +37,11 @@ import taller2.grafico.Dibujable;
 public class GestorDeEstructuras {
 	// Variables de juego
 		private double Velocidad;
+		private LinkedList<InformacionJugador> ListaDePuntajes;
 		private int NivelActual;
+		public void setNivelActual(int nivelActual) {
+			NivelActual = nivelActual;
+		}
 		List<? extends Dibujable> listaDibujables;
 		
 		//variables Usadas para guardar y cargar la tabla de puntajes
@@ -48,9 +52,21 @@ public class GestorDeEstructuras {
 		//Lista de todas las estelas
 		LinkedList<LinkedList<Posicion>> EstelasEnPantalla;
 
+		public LinkedList<InformacionJugador> getListaDePuntajes() {
+			return ListaDePuntajes;
+		}
+		public void setBases(Base[] bases) {
+			Bases = bases;
+		}
 		// Variables enemigas
 		/* Lista de Enemigos Mostrados y procesados durante el nivel */
 		LinkedList<Enemigo> EnemigosEnPantalla;
+		public Ciudad[] getCiudades() {
+			return Ciudades;
+		}
+		public LinkedList<Explosion> getExplosionesEnPantalla() {
+			return explosionesEnPantalla;
+		}
 		/*
 		 * Lista de Enemigos en espera (Oleada) por ser procesados y aparecer en el
 		 * nivel
@@ -72,9 +88,7 @@ public class GestorDeEstructuras {
 			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
 			
 			//Lista que carga desde memoria con los puntajes anteriormente persistidos
-//			LinkedList<InformacionJugador> ListaDePuntajes=obtenerLista();
-			
-			
+			ListaDePuntajes=obtenerLista();
 			// Instancia las nueve ciudades
 			this.Ciudades=new Ciudad[7];
 			Ciudad.InstanciarCiudades(this.Ciudades);
@@ -205,7 +219,7 @@ public class GestorDeEstructuras {
 	        
 	    	LinkedList<InformacionJugador> lista =  new LinkedList<InformacionJugador>();
 	        try {
-	        entrada = new ObjectInputStream(new FileInputStream("/Missile-Command/Puntajes/ranklist.dat"));
+	        entrada = new ObjectInputStream(new FileInputStream("Puntajes/ranklist.dat"));
 	        }catch (EOFException e){
 	        } catch (IOException e) {
 	            e.printStackTrace();
