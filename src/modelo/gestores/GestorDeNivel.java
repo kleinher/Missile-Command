@@ -30,7 +30,6 @@ public class GestorDeNivel {
 		return estructuras;
 	}
 
-	private int NivelActual;
 	private GestorDeEstructuras estructuras;
 
 	static GestorDeNivel GestorDeNivel = new GestorDeNivel();
@@ -46,7 +45,7 @@ public class GestorDeNivel {
 		tics=0;
 		Misiles.DeterminarPosicionesDeLasbases();
 		Oleada.DeterminarArregloDeMisiles();
-		estructuras = new GestorDeEstructuras();
+		estructuras = new GestorDeEstructuras(0);
 	}
 
 	/**
@@ -60,15 +59,15 @@ public class GestorDeNivel {
 	 * 
 	 * @throws InterruptedException
 	 */
-	public void loopDelNivel() throws InterruptedException {
+	public void modelar() throws InterruptedException {
 		if(estructuras.EnemigosEnEspera==null) {
 			estructuras.gestionarEstructuras();
 		}
 		//Cuando termine el nivel
 		if(estructuras.EnemigosEnEspera.isEmpty() & estructuras.EnemigosEnPantalla.isEmpty() & estructuras.explosionesEnPantalla.isEmpty()) {
 			//Actualizo puntaje al final del nivel
-			PuntajeJugador.ActualizarPuntaje(this.NivelActual, estructuras.Ciudades, estructuras.Bases);
-			JOptionPane.showMessageDialog(null, "		¡Pasate de nivel! \n" + "Tu puntaje actual es: " + PuntajeJugador.getScore());
+			PuntajeJugador.ActualizarPuntaje(estructuras.getNivelActual(), estructuras.Ciudades, estructuras.Bases);
+			JOptionPane.showMessageDialog(null, "		ï¿½Pasate de nivel! \n" + "Tu puntaje actual es: " + PuntajeJugador.getScore());
 			//En este gestionar de estructuras se estan actualizando 
 			//todas las estructuras para un nivel en especifico
 			estructuras.gestionarEstructuras();
@@ -101,20 +100,6 @@ public class GestorDeNivel {
 		LinkedList<Explosion> ListaDeExplosionesAeliminar=Explosion.determinarTamanio(estructuras.explosionesEnPantalla);
 		estructuras.explosionesEnPantalla.removeAll(ListaDeExplosionesAeliminar);		
 	}
-
-	/**
-	 * METODO MAIN- Donde sucede la magia
-	 * 
-	 * @param args
-	 * @throws InterruptedException
-	 */
-
-	public void modelar() throws InterruptedException {
-		this.loopDelNivel();
-		// TablaDePuntajes.actualizarTablaDePuntajes(nivel.getPuntajeJugador().getScore(),
-		// nivel.getPuntajeJugador().getNombre());
-	}
-
 	/**
 	 * 
 	 * @return Devuelve un booleano si perdio o no, en funiï¿½n del estado de la
@@ -142,6 +127,7 @@ public class GestorDeNivel {
 	 * puntajes. Imprime 'GameOver', o un blue Screen para asustar al usuario
 	 * desprevenido
 	 */
+	@SuppressWarnings("static-access")
 	public void terminarJuego() {
 		/* Guarda los puntajes en la tabla de puntajes */ /* Falta Pasarle todos los argumentos que necesita */
 		// tablaDePuntajes.actualizarTablaDePuntajes();
@@ -150,10 +136,6 @@ public class GestorDeNivel {
 		JOptionPane.showMessageDialog(null, "		!GAME OVER!");
 		InformacionJugador Info = new InformacionJugador("1", "Pepe",2156, 45.5);
 		PuntajeJugador.MostrarYActualizarPuntaje(GestorDeNivel.getGestorDeNivel().getEstructuras().getListaDePuntajes(), Info, 5);
-	}
-
-	public int getNivelActual() {
-		return this.NivelActual;
 	}
 
 }

@@ -15,7 +15,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.effect.Glow;
@@ -102,11 +101,11 @@ public class Menu extends Application {
 
 			final int offset = 100;
 
-			/*Aclarción para la corrección:
-			 * Para mejorar la legibilidad, quise hacer un método que inicialice los
-			 * botones, pero esto tiraba muchos errores en ejecución, que por falta de
+			/*Aclarciï¿½n para la correcciï¿½n:
+			 * Para mejorar la legibilidad, quise hacer un mï¿½todo que inicialice los
+			 * botones, pero esto tiraba muchos errores en ejecuciï¿½n, que por falta de
 			 * conocimiento en JavaFx no pude resolver, por lo que los botones se incializan
-			 * aquí mismo funcionando correctamente.
+			 * aquï¿½ mismo funcionando correctamente.
 			 */
 
 			// INICIALIZO BOTONES
@@ -397,55 +396,55 @@ public class Menu extends Application {
 
 		private String dameHistoria() {
 			String Historia = " Missile Command es un juego de arcade de 1980 de Atari. \r\n"
-					+ "Es un juego muy popular que combina diversión con un mensaje sobre\r\n"
+					+ "Es un juego muy popular que combina diversiï¿½n con un mensaje sobre\r\n"
 					+ "los peligros de la guerra.\r\n"
-					+ "Originalmente  llamado ‘Armageddon', Missile Command fue diseñado\r\n"
-					+ "durante la época de la “guerra fría”\r\n" + "entre Estados Unidos y Rusia. \r\n" + "\r\n"
-					+ " La idea de desarrollar Missile Command comenzó con una historia\r\n"
-					+ "en una revista sobre satélites que capturó la atención del\r\n"
-					+ "presidente de Atari, quien pasó la nota a Lyle Rains. \r\n"
-					+ "Rains le pidió a Dave Theurer que dirija los esfuerzos en crear\r\n"
-					+ "este clásico juego lleno de acción. \r\n"
-					+ "La “regla principal” para los desarrolladores fue que éste sería\r\n"
+					+ "Originalmente  llamado ï¿½Armageddon', Missile Command fue diseï¿½ado\r\n"
+					+ "durante la ï¿½poca de la ï¿½guerra frï¿½aï¿½\r\n" + "entre Estados Unidos y Rusia. \r\n" + "\r\n"
+					+ " La idea de desarrollar Missile Command comenzï¿½ con una historia\r\n"
+					+ "en una revista sobre satï¿½lites que capturï¿½ la atenciï¿½n del\r\n"
+					+ "presidente de Atari, quien pasï¿½ la nota a Lyle Rains. \r\n"
+					+ "Rains le pidiï¿½ a Dave Theurer que dirija los esfuerzos en crear\r\n"
+					+ "este clï¿½sico juego lleno de acciï¿½n. \r\n"
+					+ "La ï¿½regla principalï¿½ para los desarrolladores fue que ï¿½ste serï¿½a\r\n"
 					+ "enteramente un juego defensivo, no un juego ofensivo.\r\n" + "\r\n"
 					+ " Missile Command le da al jugador el control sobre 3 silos de\r\n"
 					+ "misiles que protegen 6 ciudades en tierra. \r\n"
-					+ "Cada silo tiene 10 antimisiles, y el jugador decidía\r\n"
-					+ "desde que silo dispararía el próximo antimisil.\r\n"
+					+ "Cada silo tiene 10 antimisiles, y el jugador decidï¿½a\r\n"
+					+ "desde que silo dispararï¿½a el prï¿½ximo antimisil.\r\n"
 					+ "El objetivo de cada antimisil era indicado con un cursor que era \r\n"
-					+ "posicionado mediante una pequeña bola que rotaba y luego\r\n"
-					+ "con 3 botones en la consola de juego se elegìa que silo disparaba\r\n" + "el antimisil.\r\n"
-					+ "\r\n" + " Es interesante notar que el juego no menciona una época o lugar,\r\n"
-					+ "aunque el diseño original se refiere a 6 ciudades \r\n"
+					+ "posicionado mediante una pequeï¿½a bola que rotaba y luego\r\n"
+					+ "con 3 botones en la consola de juego se elegï¿½a que silo disparaba\r\n" + "el antimisil.\r\n"
+					+ "\r\n" + " Es interesante notar que el juego no menciona una ï¿½poca o lugar,\r\n"
+					+ "aunque el diseï¿½o original se refiere a 6 ciudades \r\n"
 					+ "de la costa oeste de Estados Unidos: \r\n"
 					+ "Eureka, San Francisco, San Luis Obispo, Santa Barbara, \r\n" + "Los Angeles, y San Diego, \r\n"
-					+ "las cuales forman parte del “anillo de fuego” y que en esa época \r\n"
-					+ "se pensaba serían las ciudades más vulnerables en caso de\r\n"
-					+ "un ataque nuclear soviético, y que de hecho fueron rodeadas por \r\n"
+					+ "las cuales forman parte del ï¿½anillo de fuegoï¿½ y que en esa ï¿½poca \r\n"
+					+ "se pensaba serï¿½an las ciudades mï¿½s vulnerables en caso de\r\n"
+					+ "un ataque nuclear soviï¿½tico, y que de hecho fueron rodeadas por \r\n"
 					+ "silos de misiles de defensa. \r\n"
 					+ "Sin embargo, el manual del Atari 2600 indica una historia\r\n"
-					+ "enteramente de ficción para el juego, la cual se presenta aquí:\r\n" + "\r\n"
+					+ "enteramente de ficciï¿½n para el juego, la cual se presenta aquï¿½:\r\n" + "\r\n"
 					+ "Aliens del planeta Krytol han comenzado un ataque sobre el \r\n"
 					+ "planeta Zardon. Los Krytolianos son guerreros que buscan destruir\r\n"
-					+ "y aprovecharse el planeta Zardon. Zardon es el último de los\r\n"
-					+ "planetas pacíficos. Los Zardonianos son personas hábiles y \r\n"
+					+ "y aprovecharse el planeta Zardon. Zardon es el ï¿½ltimo de los\r\n"
+					+ "planetas pacï¿½ficos. Los Zardonianos son personas hï¿½biles y \r\n"
 					+ "trabajadoras, ellos mismos construyeron sus ciudades y son ricas \r\n"
-					+ "en recursos. Además, Zardon es realmente un planeta libre de \r\n" + "crímenes y violencia.\r\n"
+					+ "en recursos. Ademï¿½s, Zardon es realmente un planeta libre de \r\n" + "crï¿½menes y violencia.\r\n"
 					+ "\r\n" + "Zardon ha construido un sistema de defensa poderoso. \r\n"
-					+ "Varias bases de misiles antibalìsticos han sido establecidas \r\n"
-					+ "dentro de las ciudades de Zardon. Los Zardonianos están listos \r\n"
-					+ "para un ataque, y estàn preparados para pelear -si es necesario- \r\n"
+					+ "Varias bases de misiles antibalï¿½sticos han sido establecidas \r\n"
+					+ "dentro de las ciudades de Zardon. Los Zardonianos estï¿½n listos \r\n"
+					+ "para un ataque, y estï¿½n preparados para pelear -si es necesario- \r\n"
 					+ "para salvar sus ciudades.\r\n" + "\r\n"
 					+ "Como comandante de la base, es tu responsabilidad proteger y \r\n"
 					+ "defender las 6 ciudades del planeta de Zardon. Los Krytolianos \r\n"
-					+ "han empezado a disparar misiles balìsticos interplanetarios, \r\n"
-					+ "están apuntando a tus ciudades y hacia tus 3 bases de misiles: \r\n"
-					+ "Alpha, Delta y Omega. Tu única defensa es devolver el fuego con \r\n"
-					+ "misiles antibalìsticos. Pero, ¡cuidado!, los Krytolianos son \r\n"
-					+ "astutos, también tienen misiles crucero. Los misiles crucero se \r\n"
-					+ "ven como satélites, pero son tan dañinos como \r\n"
-					+ "los misiles balísticos interplanetarios.\r\n" + "\r\n"
-					+ "Deberás usar tus misiles antibalísticos (MABs) para detener al \r\n"
+					+ "han empezado a disparar misiles balï¿½sticos interplanetarios, \r\n"
+					+ "estï¿½n apuntando a tus ciudades y hacia tus 3 bases de misiles: \r\n"
+					+ "Alpha, Delta y Omega. Tu ï¿½nica defensa es devolver el fuego con \r\n"
+					+ "misiles antibalï¿½sticos. Pero, ï¿½cuidado!, los Krytolianos son \r\n"
+					+ "astutos, tambiï¿½n tienen misiles crucero. Los misiles crucero se \r\n"
+					+ "ven como satï¿½lites, pero son tan daï¿½inos como \r\n"
+					+ "los misiles balï¿½sticos interplanetarios.\r\n" + "\r\n"
+					+ "Deberï¿½s usar tus misiles antibalï¿½sticos (MABs) para detener al \r\n"
 					+ "enemigo, antes que tu alegre y armonioso planeta sea destruido.\r\n" + "";
 
 			return Historia;
@@ -453,35 +452,35 @@ public class Menu extends Application {
 
 		private String dameComoJugar() {
 			String ComoJugar = "El objetivo del juego es defender tus ciudades y bases de misiles, \r\n"
-					+ "El enemigo dispara misiles balísticos interplanetarios (MBI) y \r\n"
+					+ "El enemigo dispara misiles balï¿½sticos interplanetarios (MBI) y \r\n"
 					+ "misiles crucero, ambos tienen como objetivo destruir tus ciudades \r\n"
 					+ "y bases militares. Hay 2 tipos de misil crucero: misiles cruceros \r\n"
-					+ "tontos (que caen en línea recta) y misiles crucero inteligentes, \r\n"
-					+ "los cuales tratarán de evadir tus misiles antibalísticos (MABs). \r\n" + "\r\n"
+					+ "tontos (que caen en lï¿½nea recta) y misiles crucero inteligentes, \r\n"
+					+ "los cuales tratarï¿½n de evadir tus misiles antibalï¿½sticos (MABs). \r\n" + "\r\n"
 					+ "El enemigo ataca en una serie de oleadas que puede variar en el \r\n"
-					+ "número de misiles balísticos interplanetarios que atacan. \r\n"
-					+ "Cada oleada de misiles se mueve más rápido que la oleada anterior. \r\n"
-					+ "Mientras más rápida es la oleada, \r\n" + "más difícil es defender las ciudades. \r\n"
-					+ "Por este motivo, mientras más rápida es la oleada, \r\n"
-					+ "más alto será el puntaje ganado. \r\n" + "\r\n"
-					+ "Con cada oleada, tenés 30 MABs para defenderte, \r\n"
-					+ "10 en cada uno de los silos, los cuales están ubicados en la \r\n"
+					+ "nï¿½mero de misiles balï¿½sticos interplanetarios que atacan. \r\n"
+					+ "Cada oleada de misiles se mueve mï¿½s rï¿½pido que la oleada anterior. \r\n"
+					+ "Mientras mï¿½s rï¿½pida es la oleada, \r\n" + "mï¿½s difï¿½cil es defender las ciudades. \r\n"
+					+ "Por este motivo, mientras mï¿½s rï¿½pida es la oleada, \r\n"
+					+ "mï¿½s alto serï¿½ el puntaje ganado. \r\n" + "\r\n"
+					+ "Con cada oleada, tenï¿½s 30 MABs para defenderte, \r\n"
+					+ "10 en cada uno de los silos, los cuales estï¿½n ubicados en la \r\n"
 					+ "parte inferior de la pantalla, a la izquierda, al centro \r\n"
 					+ "y a la derecha. Una vez que has disparado los 30 MABs,\r\n"
-					+ " estarás indefenso hasta que comience una nueva oleada.\r\n" + "\r\n"
-					+ "Cada vez que un MAB llega a su destino o alcanza algún misil \r\n"
-					+ "enemigo ocurre una explosión. La onda expansiva de esta explosión \r\n"
-					+ "puede ocasionar que otros misiles balísticos interplanetarios o \r\n"
-					+ "crucero que se encuentran en la zona de impacto también sean \r\n"
-					+ "destruidos. Si la explosión del MAB no alcanza la cabeza del misil, \r\n"
-					+ "éste seguirá con su trayectoria, sólo se verá afectada la estela que \r\n"
+					+ " estarï¿½s indefenso hasta que comience una nueva oleada.\r\n" + "\r\n"
+					+ "Cada vez que un MAB llega a su destino o alcanza algï¿½n misil \r\n"
+					+ "enemigo ocurre una explosiï¿½n. La onda expansiva de esta explosiï¿½n \r\n"
+					+ "puede ocasionar que otros misiles balï¿½sticos interplanetarios o \r\n"
+					+ "crucero que se encuentran en la zona de impacto tambiï¿½n sean \r\n"
+					+ "destruidos. Si la explosiï¿½n del MAB no alcanza la cabeza del misil, \r\n"
+					+ "ï¿½ste seguirï¿½ con su trayectoria, sï¿½lo se verï¿½ afectada la estela que \r\n"
 					+ "deja a su paso..\r\n" + "\r\n"
-					+ "Debes tener en cuenta que hay un umbral (línea horizontal imaginaria) \r\n"
-					+ "en el campo de juego, debajo de la cual no podrás disparar misiles. \r\n"
-					+ "De esta manera se protege a los silos \r\n" + "y las ciudades de la autodestrucción.\r\n"
-					+ "\r\n" + "Si logras sobrevivir a la oleada, pasarás al siguiente nivel, \r\n"
+					+ "Debes tener en cuenta que hay un umbral (lï¿½nea horizontal imaginaria) \r\n"
+					+ "en el campo de juego, debajo de la cual no podrï¿½s disparar misiles. \r\n"
+					+ "De esta manera se protege a los silos \r\n" + "y las ciudades de la autodestrucciï¿½n.\r\n"
+					+ "\r\n" + "Si logras sobrevivir a la oleada, pasarï¿½s al siguiente nivel, \r\n"
 					+ "si no logras sobrevivir a la oleada, \r\n"
-					+ "tendrás sólo otra oportunidad para volver a defenderte.\r\n" + "\r\n"
+					+ "tendrï¿½s sï¿½lo otra oportunidad para volver a defenderte.\r\n" + "\r\n"
 					+ "El juego finaliza cuando todas las ciudades son destruidas.\r\n" + "";
 			return ComoJugar;
 		}
@@ -496,7 +495,7 @@ public class Menu extends Application {
 
 	/**
 	 * Cada instancia representa un texto embebido en un marco que representa un
-	 * botón del menú.
+	 * botï¿½n del menï¿½.
 	 * 
 	 * @author eze96
 	 *
@@ -564,7 +563,7 @@ public class Menu extends Application {
 	}
 
 	/**
-	 * Cada instancia contiene un ícono que sirve para la descripcion de enemigos en
+	 * Cada instancia contiene un ï¿½cono que sirve para la descripcion de enemigos en
 	 * el menu
 	 * 
 	 * @author eze96

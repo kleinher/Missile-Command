@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class InformacionJugador implements Serializable,Comparable<InformacionJugador>{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7274265027354244411L;
 	String posicionRank;
 	String nombreRank;
 	int  puntajeRank;

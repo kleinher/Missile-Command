@@ -1,6 +1,7 @@
 package modelo.gestores;
 
 import java.io.EOFException;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,7 +19,6 @@ import modelo.Aliados.MisilAntibalistico;
 import modelo.enemigos.Bombardero;
 import modelo.enemigos.Enemigo;
 import modelo.enemigos.MisilBalistico;
-import modelo.enemigos.Misiles;
 import modelo.general.Posicion;
 import modelo.usuario.InformacionJugador;
 import modelo.usuario.PuntajeJugador;
@@ -79,10 +79,11 @@ public class GestorDeEstructuras {
 		Ciudad Ciudades[];
 		Base Bases[];
 		
-		public GestorDeEstructuras() {
+		public GestorDeEstructuras(int NivelInicial) {
 			PuntajeJugador.InicializarTablaDePuntajePorCadaEnemigo();
 			this.NivelActual=1;
 			this.Velocidad=1.1;
+			
 			this.MisilesAliadosEnPantalla= new LinkedList<MisilAntibalistico>();
 			this.EnemigosEnPantalla = new LinkedList<Enemigo>();
 			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
@@ -111,9 +112,14 @@ public class GestorDeEstructuras {
 			this.EstelasEnPantalla =new LinkedList<LinkedList<Posicion>>();
 			explosionesEnPantalla=new LinkedList<Explosion>();
 			MisilesAliadosEnPantalla=new LinkedList<MisilAntibalistico>();
-			
+			if(NivelActual == 1) {
+				this.Velocidad=1.1;
+			}
+			else {
+				this.Velocidad=(1.1*(NivelActual-1));
+			}
 			// Incrementa la dificultad cuando aumenta un nivel
-			this.Velocidad*=1.2;
+			//this.Velocidad*=1.2;
 			
 			// REVIVIR CIUDAD EN CASO DE
 			this.NivelActual++;
@@ -199,6 +205,7 @@ public class GestorDeEstructuras {
 		
 		
 		
+		@SuppressWarnings("unused")
 		private void guardaLista(LinkedList<InformacionJugador> listaDePuntajes) {
 			try {
 				String home = System.getProperty("user.home");
@@ -216,7 +223,7 @@ public class GestorDeEstructuras {
 		}
 		
 		private LinkedList<InformacionJugador> obtenerLista() {
-	        
+			
 	    	LinkedList<InformacionJugador> lista =  new LinkedList<InformacionJugador>();
 	        try {
 	        entrada = new ObjectInputStream(new FileInputStream("Puntajes/ranklist.dat"));

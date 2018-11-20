@@ -3,17 +3,20 @@ package vista;
 
 
 import java.util.Timer;
+
 import java.util.TimerTask;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import controlador.AdapterDeMiraMouse;
 import controlador.AdapterDeMiraTeclado;
-import modelo.gestores.GestorDeEstructuras;
 import modelo.gestores.GestorDeNivel;
 
 public class Juego extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1569274065069919396L;
 	//Variable de el JPanel "pantalla"
 	public Pantalla pantalla;
 	
@@ -45,7 +48,7 @@ public class Juego extends JFrame {
 			@Override
 			public void run() {
 
-				if ((!juego.Perdio()) && (juego.getNivelActual() != 17) || (!juego.getEstructuras().getEnemigosEnPantalla().isEmpty())){
+				if ((!juego.Perdio()) && (juego.getEstructuras().getNivelActual() != 17) || (!juego.getEstructuras().getEnemigosEnPantalla().isEmpty())){
 					// Aca se actualiza todo
 					this.modelar();
 					// ACA SE PINTA EL GRAFICO
@@ -55,8 +58,9 @@ public class Juego extends JFrame {
 				}
 				else{
 					if(juego.getEstructuras().getEnemigosEnPantalla().isEmpty()) {
-						juego.terminarJuego();
 						timer.cancel();
+						juego.terminarJuego();
+						
 					}
 				}
 			}

@@ -1,5 +1,5 @@
 package modelo.enemigos;
-import java.io.LineNumberInputStream;
+
 import java.util.Iterator;
 
 import java.util.LinkedList;
@@ -7,7 +7,6 @@ import java.util.Random;
 
 import modelo.Aliados.Explosion;
 import modelo.general.Posicion;
-import modelo.gestores.GestorDeEstructuras;
 import modelo.gestores.GestorDeNivel;
 public abstract class Enemigo{
 	protected int puntos;

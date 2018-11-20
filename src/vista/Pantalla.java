@@ -1,10 +1,10 @@
 package vista;
 
 import java.awt.Color;
+
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ConcurrentModificationException;
@@ -28,10 +28,14 @@ import modelo.enemigos.Satelite;
 import modelo.general.Posicion;
 import modelo.gestores.GestorDeEstructuras;
 import modelo.gestores.GestorDeNivel;
-import modelo.usuario.PuntajeJugador;
 
 /*Parte Grafica*/
 public class Pantalla extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7900737902395308470L;
 
 	/**
 	 * Se Encarga de Dibujar todos los elementos del juego en la pantalla
@@ -76,6 +80,7 @@ public class Pantalla extends JPanel {
 		return img;
 	}
 
+	@SuppressWarnings("unused")
 	private void DibujarScore(Integer score, Graphics g) {
 		g.drawString(score.toString(), 50, 50);
 
@@ -118,7 +123,7 @@ public class Pantalla extends JPanel {
 	}
 
 	private void DibujarExplociones(LinkedList<Explosion> explosionesEnPantalla, Graphics g) {
-
+		try {
 		if (explosionesEnPantalla != null) {
 			Color[] colores = new Color[3];
 			colores[0] = java.awt.Color.CYAN;
@@ -134,6 +139,9 @@ public class Pantalla extends JPanel {
 						(int) explosion.getPosicionActual().getPosicionY() - ((int) explosion.getRadio() / 2),
 						(int) explosion.getRadio(), (int) explosion.getRadio());
 			}
+		}
+		}catch(ConcurrentModificationException e) {
+			//No hacer nada
 		}
 	}
 
@@ -168,23 +176,15 @@ public class Pantalla extends JPanel {
 	 * @param g
 	 */
 	private void DibujarBases(Base[] bases, Graphics g) {
-		//// Image img = ImportarImagen(g,"imagenes/bases.jpg");
-		// for (int i = 1; i < bases.length; i++) {
-		//// g.drawImage(img,(int) bases[i].getPosicion().getPosicionX() - 15 ,(int)
-		//// bases[1].getPosicion().getPosicionY() - 10,null);
-		// g.fillRect((int) bases[i].getPosicion().getPosicionX() - 15,
-		// (int) bases[1].getPosicion().getPosicionY() - 10, 20, 5);
-		// int espacio = -35;
-		// if (bases[i].isEstaViva()) {
-		// for (int j = 0; j < bases[i].getCantMisiles(); j++) {
-		// g.setColor(java.awt.Color.BLUE);
-		// g.fillRect((int) bases[i].getPosicion().getPosicionX() + espacio,
-		// (int) bases[i].getPosicion().getPosicionY() + 5, 2, 7);
-		// espacio += 4;
-		// }
-		// }
-		//
-		// }
+		for (int i = 1; i < bases.length; i++) {
+			if (bases[i].isEstaViva()) {
+				String string = String.format("imagenes/misilesEnBase/%d.png", bases[i].getCantMisiles());
+				Image img = ImportarImagen(g, string);
+				g.drawImage(img, (int) bases[i].getPosicion().getPosicionX() - 28,
+						(int) bases[i].getPosicion().getPosicionY() - 10, null);
+			}
+
+		}
 	}
 
 	/**

@@ -22,7 +22,7 @@ public class Bombardero extends Enemigo{
 		int AparicionEnX;
 		int AparicionEnY;
 		Random aleatorio = new Random();
-		if (GestorDeNivel.getGestorDeNivel().getNivelActual()<5) {
+		if (GestorDeNivel.getGestorDeNivel().getEstructuras().getNivelActual()<5) {
 			/*Determina una posicion random de */
 			AparicionEnY = (40+aleatorio.nextInt(121));
 		} else {/*

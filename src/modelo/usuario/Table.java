@@ -1,6 +1,7 @@
 package modelo.usuario;
 
 import java.awt.Dimension;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Iterator;
@@ -11,9 +12,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import vista.Menu;
-
 public class Table extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1893990002534317554L;
 	final JTable table;
 
     public Table(LinkedList<InformacionJugador> ListaDePuntajes,int CantidadAMostar) {

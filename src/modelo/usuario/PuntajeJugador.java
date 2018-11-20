@@ -164,10 +164,10 @@ public class PuntajeJugador {
 		VDePuntajes = vDePuntajes;
 	}
 	public void setScore(Integer score) {
-		this.score = score;
+		PuntajeJugador.score = score;
 	}
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		PuntajeJugador.nombre = nombre;
 	}
 	public String getNombre() {
 		return nombre;

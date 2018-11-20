@@ -1,6 +1,6 @@
 package controlador;
 
-import java.awt.MouseInfo;
+
 import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -8,7 +8,8 @@ import java.awt.event.KeyEvent;
 import modelo.Aliados.Base;
 
 public class AdapterDeMiraTeclado extends KeyAdapter {
-	 @Override
+	 @SuppressWarnings("static-access")
+	@Override
 	 public void keyPressed(KeyEvent e){
 		 if(e.getKeyCode() == e.VK_1) {
 			 Point p = Controlador.Juego.pantalla.getMousePosition();
