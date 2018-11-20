@@ -168,14 +168,19 @@ public class Menu extends Application {
 				
 				boolean valorcorrecto=false;
 				while(!valorcorrecto) {
-					int nivel=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Nivel desde el que quiere iniciar"));
-					if(nivel<17&nivel>0) {
+					try {
+					Integer nivel=Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Nivel desde el que quiere iniciar"));
+					if(nivel<17&nivel>=0) {
 						GestorDeNivel.getGestorDeNivel().getEstructuras().setNivelActual(nivel);
 						valorcorrecto=true;
 					}
 						else {
-							JOptionPane.showMessageDialog(null, "Ingrese un Nivel Válido");
+							JOptionPane.showMessageDialog(null, "Ingrese un Nivel Valido");
 						}
+					}
+					catch(Exception e){
+						JOptionPane.showMessageDialog(null, "Ingrese un Nivel Valido");
+					}
 				}
 			});
 			BotonDeMenu btnCantJugadores = new BotonDeMenu("TABLA DE RANKING");
