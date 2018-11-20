@@ -35,7 +35,7 @@ public class Menu extends Application {
 	Text texto;
 	ScrollPane scroll;
 	Controlador juego;
-	Stage VentanaMenu;
+	public static Stage VentanaMenu;
 	Pane raiz;
 	Scene escena;
 
@@ -97,7 +97,14 @@ public class Menu extends Application {
 			 * MEJORAR LA LEGIBILIDAD, PERO ME TIRABA ERRORES EN EJECUCION EN EL VBOX
 			 * 'menuPpal', QUE DEBUGGEANDO NO PUDE RESOLVER
 			 */
+			
+			
+			
+			
 			// INICIALIZO BOTONES
+			
+			
+			
 			/**
 			 * BOTON DE INICIO DE JUEGO
 			 */
@@ -108,7 +115,7 @@ public class Menu extends Application {
 				ft.setToValue(0);
 				ft.setOnFinished(evt -> setVisible(false));
 				ft.play();
-				VentanaMenu.close();
+				VentanaMenu.hide();
 				Controlador controlador = new Controlador();
 
 			});
@@ -159,6 +166,7 @@ public class Menu extends Application {
 			btnCantJugadores.setOnMouseClicked(event -> {
 				PuntajeJugador p = new PuntajeJugador();
 				p.MostrarTablaEnPantalla(GestorDeNivel.getGestorDeNivel().getEstructuras().getListaDePuntajes(), 5);
+				
 			});
 			
 			
@@ -456,6 +464,9 @@ public class Menu extends Application {
 			return ComoJugar;
 		}
 
+	}
+	public static void mostrarEscena() {
+		VentanaMenu.show();
 	}
 
 	// StackPane funciona como una Stack, una cosa se apila sobre la otra,
