@@ -5,7 +5,7 @@
 
 <h4>Menu interactivo con opciones de display</h4>
 
-![](Menu.gif)
+![](menu.gif)
 
 <h4>Primer nivel enemigos básicos</h4>
 
